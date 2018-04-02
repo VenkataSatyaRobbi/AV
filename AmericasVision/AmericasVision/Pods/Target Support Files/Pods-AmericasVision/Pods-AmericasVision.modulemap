@@ -1,0 +1,6 @@
+framework module Pods_AmericasVision {
+  umbrella header "Pods-AmericasVision-umbrella.h"
+
+  export *
+  module * { export * }
+}

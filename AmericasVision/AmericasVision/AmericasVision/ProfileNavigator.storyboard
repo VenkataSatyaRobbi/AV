@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WP5-YC-K2G">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profile-->
+        <scene sceneID="Y1Z-Hb-cap">
+            <objects>
+                <viewController id="NSb-6s-cHe" customClass="ProfileViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9JO-53-z9a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="dtG-06-sfT"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="6ek-pC-mMY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1jg-ft-Fj7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="111"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mLz-4B-DTb">
+            <objects>
+                <navigationController storyboardIdentifier="ProfileNavigate" automaticallyAdjustsScrollViewInsets="NO" id="WP5-YC-K2G" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="profile" landscapeImage="profile" largeContentSizeImage="profile" selectedImage="profileselected" id="MFx-0g-vz2">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                        <color key="badgeColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Epx-wf-dBU">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="NSb-6s-cHe" kind="relationship" relationship="rootViewController" id="8s8-lB-zEg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="666-BJ-BGV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="-661"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="profile" width="21" height="18"/>
+        <image name="profileselected" width="21" height="18"/>
+    </resources>
+</document>
