@@ -14,16 +14,24 @@
 		D463910D2070377100C4E3DA /* AV.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D463910C2070377100C4E3DA /* AV.storyboard */; };
 		D463910F207037CB00C4E3DA /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D463910E207037CB00C4E3DA /* SignInViewController.swift */; };
 		D4639111207041D400C4E3DA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4639110207041D400C4E3DA /* SignUpViewController.swift */; };
-		D4761E98207138130065ACD7 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4761E97207138130065ACD7 /* MarketViewController.swift */; };
+		D4761E98207138130065ACD7 /* VotingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4761E97207138130065ACD7 /* VotingViewController.swift */; };
 		D4761E9A207138260065ACD7 /* NewsfeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4761E99207138260065ACD7 /* NewsfeedViewController.swift */; };
-		D4761E9C207138430065ACD7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4761E9B207138430065ACD7 /* ProfileViewController.swift */; };
 		D4761E9E207138660065ACD7 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4761E9D207138660065ACD7 /* ChatViewController.swift */; };
 		D4761EA0207142650065ACD7 /* NewsNavigator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4761E9F207142650065ACD7 /* NewsNavigator.storyboard */; };
-		D4761EA2207143AC0065ACD7 /* MarketNavigator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4761EA1207143AC0065ACD7 /* MarketNavigator.storyboard */; };
-		D4761EA4207143F10065ACD7 /* ProfileNavigator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4761EA3207143F10065ACD7 /* ProfileNavigator.storyboard */; };
-		D4761EA62071442A0065ACD7 /* HomeNavigator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4761EA52071442A0065ACD7 /* HomeNavigator.storyboard */; };
+		D4761EA2207143AC0065ACD7 /* VotingNavigator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4761EA1207143AC0065ACD7 /* VotingNavigator.storyboard */; };
+		D4761EA4207143F10065ACD7 /* MusicNavigator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4761EA3207143F10065ACD7 /* MusicNavigator.storyboard */; };
+		D4761EA62071442A0065ACD7 /* MarketNavigator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4761EA52071442A0065ACD7 /* MarketNavigator.storyboard */; };
 		D4761EA8207144550065ACD7 /* ChatNavigator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4761EA7207144550065ACD7 /* ChatNavigator.storyboard */; };
 		D4761EAE207193E90065ACD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4761EAD207193E90065ACD7 /* GoogleService-Info.plist */; };
+		D4761EB02072FC9F0065ACD7 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4761EAF2072FC9F0065ACD7 /* MusicViewController.swift */; };
+		D4761EB22072FCB80065ACD7 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4761EB12072FCB80065ACD7 /* MarketViewController.swift */; };
+		D4FA49DE207994C300CC425B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FA49DD207994C300CC425B /* SWRevealViewController.m */; };
+		D4FA49EE207AF0EC00CC425B /* ProfileMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA49ED207AF0EC00CC425B /* ProfileMenuViewController.swift */; };
+		D4FA49F0207AF45500CC425B /* ProfileMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA49EF207AF45500CC425B /* ProfileMenuTableViewCell.swift */; };
+		D4FA49F2207C5B3C00CC425B /* AVAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA49F1207C5B3C00CC425B /* AVAuthService.swift */; };
+		D4FA49F4207C6EA200CC425B /* PropertyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA49F3207C6EA200CC425B /* PropertyConfig.swift */; };
+		D4FA49F8207D0D7D00CC425B /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FA49F5207D0D7C00CC425B /* ProgressHUD.m */; };
+		D4FA49F9207D0D7D00CC425B /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D4FA49F6207D0D7C00CC425B /* ProgressHUD.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,16 +46,27 @@
 		D463910C2070377100C4E3DA /* AV.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AV.storyboard; sourceTree = "<group>"; };
 		D463910E207037CB00C4E3DA /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		D4639110207041D400C4E3DA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		D4761E97207138130065ACD7 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
+		D4761E97207138130065ACD7 /* VotingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingViewController.swift; sourceTree = "<group>"; };
 		D4761E99207138260065ACD7 /* NewsfeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedViewController.swift; sourceTree = "<group>"; };
-		D4761E9B207138430065ACD7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D4761E9D207138660065ACD7 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D4761E9F207142650065ACD7 /* NewsNavigator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewsNavigator.storyboard; sourceTree = "<group>"; };
-		D4761EA1207143AC0065ACD7 /* MarketNavigator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MarketNavigator.storyboard; sourceTree = "<group>"; };
-		D4761EA3207143F10065ACD7 /* ProfileNavigator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileNavigator.storyboard; sourceTree = "<group>"; };
-		D4761EA52071442A0065ACD7 /* HomeNavigator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeNavigator.storyboard; sourceTree = "<group>"; };
+		D4761EA1207143AC0065ACD7 /* VotingNavigator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VotingNavigator.storyboard; sourceTree = "<group>"; };
+		D4761EA3207143F10065ACD7 /* MusicNavigator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MusicNavigator.storyboard; sourceTree = "<group>"; };
+		D4761EA52071442A0065ACD7 /* MarketNavigator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MarketNavigator.storyboard; sourceTree = "<group>"; };
 		D4761EA7207144550065ACD7 /* ChatNavigator.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChatNavigator.storyboard; sourceTree = "<group>"; };
 		D4761EAD207193E90065ACD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D4761EAF2072FC9F0065ACD7 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
+		D4761EB12072FCB80065ACD7 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
+		D4FA49DB207994C200CC425B /* AmericasVision-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AmericasVision-Bridging-Header.h"; sourceTree = "<group>"; };
+		D4FA49DC207994C300CC425B /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		D4FA49DD207994C300CC425B /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		D4FA49ED207AF0EC00CC425B /* ProfileMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuViewController.swift; sourceTree = "<group>"; };
+		D4FA49EF207AF45500CC425B /* ProfileMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuTableViewCell.swift; sourceTree = "<group>"; };
+		D4FA49F1207C5B3C00CC425B /* AVAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAuthService.swift; sourceTree = "<group>"; };
+		D4FA49F3207C6EA200CC425B /* PropertyConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyConfig.swift; sourceTree = "<group>"; };
+		D4FA49F5207D0D7C00CC425B /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		D4FA49F6207D0D7C00CC425B /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		D4FA49F7207D0D7C00CC425B /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,24 +120,51 @@
 			isa = PBXGroup;
 			children = (
 				D4761EAD207193E90065ACD7 /* GoogleService-Info.plist */,
+				D4FA49DC207994C300CC425B /* SWRevealViewController.h */,
+				D4FA49DD207994C300CC425B /* SWRevealViewController.m */,
+				D4639106207036F300C4E3DA /* Info.plist */,
 				D46390FA207036F300C4E3DA /* AppDelegate.swift */,
 				D4639101207036F300C4E3DA /* Assets.xcassets */,
-				D463910C2070377100C4E3DA /* AV.storyboard */,
-				D4761EA7207144550065ACD7 /* ChatNavigator.storyboard */,
-				D4761EA52071442A0065ACD7 /* HomeNavigator.storyboard */,
-				D4761EA3207143F10065ACD7 /* ProfileNavigator.storyboard */,
-				D4761EA1207143AC0065ACD7 /* MarketNavigator.storyboard */,
-				D4761E9F207142650065ACD7 /* NewsNavigator.storyboard */,
-				D4761E9D207138660065ACD7 /* ChatViewController.swift */,
-				D4639103207036F300C4E3DA /* LaunchScreen.storyboard */,
-				D4639106207036F300C4E3DA /* Info.plist */,
-				D463910E207037CB00C4E3DA /* SignInViewController.swift */,
-				D4639110207041D400C4E3DA /* SignUpViewController.swift */,
-				D4761E97207138130065ACD7 /* MarketViewController.swift */,
-				D4761E99207138260065ACD7 /* NewsfeedViewController.swift */,
-				D4761E9B207138430065ACD7 /* ProfileViewController.swift */,
+				D4FA49FC207D943700CC425B /* Storyboards */,
+				D4FA49FD207D947D00CC425B /* ViewControllers */,
+				D4FA49DB207994C200CC425B /* AmericasVision-Bridging-Header.h */,
+				D4FA49F6207D0D7C00CC425B /* ProgressHUD.bundle */,
+				D4FA49F7207D0D7C00CC425B /* ProgressHUD.h */,
+				D4FA49F5207D0D7C00CC425B /* ProgressHUD.m */,
+				D4FA49F1207C5B3C00CC425B /* AVAuthService.swift */,
+				D4FA49F3207C6EA200CC425B /* PropertyConfig.swift */,
 			);
 			path = AmericasVision;
+			sourceTree = "<group>";
+		};
+		D4FA49FC207D943700CC425B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D463910C2070377100C4E3DA /* AV.storyboard */,
+				D4761EA7207144550065ACD7 /* ChatNavigator.storyboard */,
+				D4761EA52071442A0065ACD7 /* MarketNavigator.storyboard */,
+				D4761EA3207143F10065ACD7 /* MusicNavigator.storyboard */,
+				D4761EA1207143AC0065ACD7 /* VotingNavigator.storyboard */,
+				D4761E9F207142650065ACD7 /* NewsNavigator.storyboard */,
+				D4639103207036F300C4E3DA /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D4FA49FD207D947D00CC425B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D4FA49EF207AF45500CC425B /* ProfileMenuTableViewCell.swift */,
+				D4FA49ED207AF0EC00CC425B /* ProfileMenuViewController.swift */,
+				D463910E207037CB00C4E3DA /* SignInViewController.swift */,
+				D4639110207041D400C4E3DA /* SignUpViewController.swift */,
+				D4761E9D207138660065ACD7 /* ChatViewController.swift */,
+				D4761E97207138130065ACD7 /* VotingViewController.swift */,
+				D4761E99207138260065ACD7 /* NewsfeedViewController.swift */,
+				D4761EAF2072FC9F0065ACD7 /* MusicViewController.swift */,
+				D4761EB12072FCB80065ACD7 /* MarketViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +202,7 @@
 				TargetAttributes = {
 					D46390F6207036F300C4E3DA = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 					};
 				};
 			};
@@ -182,14 +229,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4761EA4207143F10065ACD7 /* ProfileNavigator.storyboard in Resources */,
-				D4761EA62071442A0065ACD7 /* HomeNavigator.storyboard in Resources */,
+				D4761EA4207143F10065ACD7 /* MusicNavigator.storyboard in Resources */,
+				D4761EA62071442A0065ACD7 /* MarketNavigator.storyboard in Resources */,
 				D4761EAE207193E90065ACD7 /* GoogleService-Info.plist in Resources */,
 				D4761EA8207144550065ACD7 /* ChatNavigator.storyboard in Resources */,
 				D4639105207036F300C4E3DA /* LaunchScreen.storyboard in Resources */,
 				D463910D2070377100C4E3DA /* AV.storyboard in Resources */,
 				D4639102207036F300C4E3DA /* Assets.xcassets in Resources */,
-				D4761EA2207143AC0065ACD7 /* MarketNavigator.storyboard in Resources */,
+				D4761EA2207143AC0065ACD7 /* VotingNavigator.storyboard in Resources */,
+				D4FA49F9207D0D7D00CC425B /* ProgressHUD.bundle in Resources */,
 				D4761EA0207142650065ACD7 /* NewsNavigator.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,13 +309,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4761E9C207138430065ACD7 /* ProfileViewController.swift in Sources */,
 				D4761E9A207138260065ACD7 /* NewsfeedViewController.swift in Sources */,
-				D4761E98207138130065ACD7 /* MarketViewController.swift in Sources */,
+				D4761E98207138130065ACD7 /* VotingViewController.swift in Sources */,
+				D4761EB22072FCB80065ACD7 /* MarketViewController.swift in Sources */,
+				D4FA49F0207AF45500CC425B /* ProfileMenuTableViewCell.swift in Sources */,
 				D4761E9E207138660065ACD7 /* ChatViewController.swift in Sources */,
 				D4639111207041D400C4E3DA /* SignUpViewController.swift in Sources */,
+				D4FA49DE207994C300CC425B /* SWRevealViewController.m in Sources */,
+				D4761EB02072FC9F0065ACD7 /* MusicViewController.swift in Sources */,
+				D4FA49F2207C5B3C00CC425B /* AVAuthService.swift in Sources */,
 				D463910F207037CB00C4E3DA /* SignInViewController.swift in Sources */,
+				D4FA49F8207D0D7D00CC425B /* ProgressHUD.m in Sources */,
 				D46390FB207036F300C4E3DA /* AppDelegate.swift in Sources */,
+				D4FA49EE207AF0EC00CC425B /* ProfileMenuViewController.swift in Sources */,
+				D4FA49F4207C6EA200CC425B /* PropertyConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,12 +459,18 @@
 			baseConfigurationReference = 8CFB0380C16A0716129E9C7F /* Pods-AmericasVision.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AmericasVision/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeroGravity.AmericasVision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AmericasVision/AmericasVision-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -420,12 +481,17 @@
 			baseConfigurationReference = 70026634E6D636FAAB5C124C /* Pods-AmericasVision.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AmericasVision/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeroGravity.AmericasVision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AmericasVision/AmericasVision-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

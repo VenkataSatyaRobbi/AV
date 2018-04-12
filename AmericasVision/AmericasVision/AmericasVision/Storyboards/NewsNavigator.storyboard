@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ac0-bF-mfd">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--News-->
+        <scene sceneID="Z7V-3c-qLq">
+            <objects>
+                <viewController id="uGh-Hu-3Yo" customClass="NewsfeedViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WGq-5g-E3L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="5WH-7k-4FS"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="News" id="77G-ns-2qe">
+                        <leftBarButtonItems>
+                            <barButtonItem title="Profile" image="profileselected" landscapeImage="profileselected" id="GR0-FA-8vt"/>
+                            <barButtonItem title="Sign out" image="signout" landscapeImage="signout" id="Gv0-zv-JeI">
+                                <connections>
+                                    <action selector="Signout:" destination="uGh-Hu-3Yo" id="Myu-AM-DHJ"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Home" image="homeselected" landscapeImage="homeselected" id="rzF-o5-yRa"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="HomeButton" destination="rzF-o5-yRa" id="LbG-9P-uPU"/>
+                        <outlet property="ProfileButton" destination="GR0-FA-8vt" id="RT1-TB-S35"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yMU-As-1dP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2154" y="111"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7zO-4d-U6u">
+            <objects>
+                <navigationController storyboardIdentifier="NewsNavigate" automaticallyAdjustsScrollViewInsets="NO" id="Ac0-bF-mfd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="rss" landscapeImage="rss" largeContentSizeImage="rss" selectedImage="rssselected" id="o9M-PQ-jss">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                        <color key="badgeColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nfg-mc-ARR">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uGh-Hu-3Yo" kind="relationship" relationship="rootViewController" id="eSx-MK-bnR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JP3-HI-5Hx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2154" y="-661"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="homeselected" width="26" height="22"/>
+        <image name="profileselected" width="21" height="18"/>
+        <image name="rss" width="25" height="25"/>
+        <image name="rssselected" width="25" height="25"/>
+        <image name="signout" width="25" height="26"/>
+    </resources>
+</document>
