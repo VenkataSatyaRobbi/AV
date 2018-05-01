@@ -14,15 +14,10 @@ import FirebaseStorage
 class ProfileMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var ProfileImage: UIImageView!
+    @IBOutlet weak var ProfileLabel: UILabel!
     var ProfileMenuOptionsArray: Array = [String]()
     var ProfileMenuImagesArray: Array = [UIImage]()
-    
-    var firdatabaseRef: DatabaseReference!{
-        return Database.database().reference()
-    }
-    var firstorageRef: Storage{
-        return Storage.storage()
-    }
+    var rowNumber: Int!
     
     
     override func viewDidLoad() {
@@ -34,7 +29,29 @@ class ProfileMenuViewController: UIViewController, UITableViewDelegate, UITableV
         ProfileMenuOptionsArray = ["My Profile","Settings","Sign out"]
         ProfileMenuImagesArray = [UIImage(named: "profileselected")!, UIImage(named: "settings")!, UIImage(named: "signout")!]
         
-        // Do any additional setup after loading the view.
+        if Auth.auth().currentUser != nil {
+            let AVStorageRef = Storage.storage().reference(forURL: PropertyConfig.FIRSTORAGE_ROOT_REF).child("profileImage").child((Auth.auth().currentUser?.uid)!)
+            AVStorageRef.downloadURL { (url, error) in
+                if error != nil{
+                    print(error?.localizedDescription as Any)
+                    return
+                }
+                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                    if error != nil {
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                    guard let imageData = UIImage(data: data!) else { return }
+                    DispatchQueue.main.async {
+                        self.ProfileImage.image = imageData
+                    }
+                    
+                }).resume()
+            }
+            
+            
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,9 +71,41 @@ class ProfileMenuViewController: UIViewController, UITableViewDelegate, UITableV
         return ProfileMenuCell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        rowNumber = indexPath.row
+        if rowNumber == 2 {
+            Signout()
+        }
+    }
     
-    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     self.performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
-     }*/
+    func Signout() {
+        do {
+            try Auth.auth().signOut()
+        }catch let SignOutError {
+            print(SignOutError)
+        }
+        let storyboard = UIStoryboard(name: "AV", bundle: nil)
+        let signinViewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
+        self.present(signinViewController, animated: true, completion: nil)
+    }
+    
     
 }
+
+
+/*extension UIImageView{
+ func downloadImage(from imageURL: String){
+ let url = URLRequest(url: URL(string: imageURL)!)
+ 
+ let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+ if error != nil{
+ print(error!)
+ return
+ }
+ DispatchQueue.main.async {
+ self.image = UIImage(data: data!)
+ }
+ }
+ task.resume()
+ }
+ }*/

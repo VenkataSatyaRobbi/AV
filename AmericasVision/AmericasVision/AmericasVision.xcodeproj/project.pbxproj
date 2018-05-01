@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C61304E56792B8B800622D3B /* Pods_AmericasVision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812CD0268CBC06E0044E0603 /* Pods_AmericasVision.framework */; };
+		D408D2DE2095E5BB008DD80A /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2DD2095E5BB008DD80A /* PostCollectionViewCell.swift */; };
 		D46390FB207036F300C4E3DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46390FA207036F300C4E3DA /* AppDelegate.swift */; };
 		D4639102207036F300C4E3DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4639101207036F300C4E3DA /* Assets.xcassets */; };
 		D4639105207036F300C4E3DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4639103207036F300C4E3DA /* LaunchScreen.storyboard */; };
@@ -32,12 +33,19 @@
 		D4FA49F4207C6EA200CC425B /* PropertyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA49F3207C6EA200CC425B /* PropertyConfig.swift */; };
 		D4FA49F8207D0D7D00CC425B /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FA49F5207D0D7C00CC425B /* ProgressHUD.m */; };
 		D4FA49F9207D0D7D00CC425B /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D4FA49F6207D0D7C00CC425B /* ProgressHUD.bundle */; };
+		D4FA49FF2082AD9F00CC425B /* NewsFeedAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA49FE2082AD9F00CC425B /* NewsFeedAdminViewController.swift */; };
+		D4FA4A022082FBF100CC425B /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA4A012082FBF100CC425B /* Post.swift */; };
+		D4FA4A082086D86700CC425B /* CurrentUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA4A072086D86700CC425B /* CurrentUserInfo.swift */; };
+		D4FA4A0D208822BF00CC425B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA4A0A208822BF00CC425B /* FBSDKLoginKit.framework */; };
+		D4FA4A0E208822BF00CC425B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA4A0B208822BF00CC425B /* Bolts.framework */; };
+		D4FA4A0F208822BF00CC425B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA4A0C208822BF00CC425B /* FBSDKCoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		70026634E6D636FAAB5C124C /* Pods-AmericasVision.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmericasVision.release.xcconfig"; path = "Pods/Target Support Files/Pods-AmericasVision/Pods-AmericasVision.release.xcconfig"; sourceTree = "<group>"; };
 		812CD0268CBC06E0044E0603 /* Pods_AmericasVision.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmericasVision.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFB0380C16A0716129E9C7F /* Pods-AmericasVision.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmericasVision.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AmericasVision/Pods-AmericasVision.debug.xcconfig"; sourceTree = "<group>"; };
+		D408D2DD2095E5BB008DD80A /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		D46390F7207036F300C4E3DA /* AmericasVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmericasVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46390FA207036F300C4E3DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4639101207036F300C4E3DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +75,12 @@
 		D4FA49F5207D0D7C00CC425B /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		D4FA49F6207D0D7C00CC425B /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		D4FA49F7207D0D7C00CC425B /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		D4FA49FE2082AD9F00CC425B /* NewsFeedAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedAdminViewController.swift; sourceTree = "<group>"; };
+		D4FA4A012082FBF100CC425B /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		D4FA4A072086D86700CC425B /* CurrentUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserInfo.swift; sourceTree = "<group>"; };
+		D4FA4A0A208822BF00CC425B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		D4FA4A0B208822BF00CC425B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		D4FA4A0C208822BF00CC425B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +88,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4FA4A0E208822BF00CC425B /* Bolts.framework in Frameworks */,
+				D4FA4A0F208822BF00CC425B /* FBSDKCoreKit.framework in Frameworks */,
+				D4FA4A0D208822BF00CC425B /* FBSDKLoginKit.framework in Frameworks */,
 				C61304E56792B8B800622D3B /* Pods_AmericasVision.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +101,9 @@
 		41A766FA7AA78133F248BC0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4FA4A0B208822BF00CC425B /* Bolts.framework */,
+				D4FA4A0C208822BF00CC425B /* FBSDKCoreKit.framework */,
+				D4FA4A0A208822BF00CC425B /* FBSDKLoginKit.framework */,
 				812CD0268CBC06E0044E0603 /* Pods_AmericasVision.framework */,
 			);
 			name = Frameworks;
@@ -119,20 +139,22 @@
 		D46390F9207036F300C4E3DA /* AmericasVision */ = {
 			isa = PBXGroup;
 			children = (
+				D4FA4A002082FBE000CC425B /* Model */,
 				D4761EAD207193E90065ACD7 /* GoogleService-Info.plist */,
+				D4639106207036F300C4E3DA /* Info.plist */,
 				D4FA49DC207994C300CC425B /* SWRevealViewController.h */,
 				D4FA49DD207994C300CC425B /* SWRevealViewController.m */,
-				D4639106207036F300C4E3DA /* Info.plist */,
+				D4FA49F7207D0D7C00CC425B /* ProgressHUD.h */,
+				D4FA49F5207D0D7C00CC425B /* ProgressHUD.m */,
 				D46390FA207036F300C4E3DA /* AppDelegate.swift */,
+				D4FA49DB207994C200CC425B /* AmericasVision-Bridging-Header.h */,
+				D4FA49F1207C5B3C00CC425B /* AVAuthService.swift */,
+				D4FA49F3207C6EA200CC425B /* PropertyConfig.swift */,
+				D4FA4A072086D86700CC425B /* CurrentUserInfo.swift */,
+				D4FA49F6207D0D7C00CC425B /* ProgressHUD.bundle */,
 				D4639101207036F300C4E3DA /* Assets.xcassets */,
 				D4FA49FC207D943700CC425B /* Storyboards */,
 				D4FA49FD207D947D00CC425B /* ViewControllers */,
-				D4FA49DB207994C200CC425B /* AmericasVision-Bridging-Header.h */,
-				D4FA49F6207D0D7C00CC425B /* ProgressHUD.bundle */,
-				D4FA49F7207D0D7C00CC425B /* ProgressHUD.h */,
-				D4FA49F5207D0D7C00CC425B /* ProgressHUD.m */,
-				D4FA49F1207C5B3C00CC425B /* AVAuthService.swift */,
-				D4FA49F3207C6EA200CC425B /* PropertyConfig.swift */,
 			);
 			path = AmericasVision;
 			sourceTree = "<group>";
@@ -163,8 +185,18 @@
 				D4761E99207138260065ACD7 /* NewsfeedViewController.swift */,
 				D4761EAF2072FC9F0065ACD7 /* MusicViewController.swift */,
 				D4761EB12072FCB80065ACD7 /* MarketViewController.swift */,
+				D4FA49FE2082AD9F00CC425B /* NewsFeedAdminViewController.swift */,
+				D408D2DD2095E5BB008DD80A /* PostCollectionViewCell.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D4FA4A002082FBE000CC425B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D4FA4A012082FBF100CC425B /* Post.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,17 +341,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4FA4A082086D86700CC425B /* CurrentUserInfo.swift in Sources */,
 				D4761E9A207138260065ACD7 /* NewsfeedViewController.swift in Sources */,
 				D4761E98207138130065ACD7 /* VotingViewController.swift in Sources */,
 				D4761EB22072FCB80065ACD7 /* MarketViewController.swift in Sources */,
 				D4FA49F0207AF45500CC425B /* ProfileMenuTableViewCell.swift in Sources */,
+				D4FA49FF2082AD9F00CC425B /* NewsFeedAdminViewController.swift in Sources */,
 				D4761E9E207138660065ACD7 /* ChatViewController.swift in Sources */,
 				D4639111207041D400C4E3DA /* SignUpViewController.swift in Sources */,
 				D4FA49DE207994C300CC425B /* SWRevealViewController.m in Sources */,
 				D4761EB02072FC9F0065ACD7 /* MusicViewController.swift in Sources */,
 				D4FA49F2207C5B3C00CC425B /* AVAuthService.swift in Sources */,
 				D463910F207037CB00C4E3DA /* SignInViewController.swift in Sources */,
+				D4FA4A022082FBF100CC425B /* Post.swift in Sources */,
 				D4FA49F8207D0D7D00CC425B /* ProgressHUD.m in Sources */,
+				D408D2DE2095E5BB008DD80A /* PostCollectionViewCell.swift in Sources */,
 				D46390FB207036F300C4E3DA /* AppDelegate.swift in Sources */,
 				D4FA49EE207AF0EC00CC425B /* ProfileMenuViewController.swift in Sources */,
 				D4FA49F4207C6EA200CC425B /* PropertyConfig.swift in Sources */,
@@ -461,6 +497,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = AmericasVision/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -483,6 +523,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = AmericasVision/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (

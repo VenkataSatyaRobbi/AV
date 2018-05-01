@@ -6,12 +6,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Music-->
+        <!--America's Vision-->
         <scene sceneID="Y1Z-Hb-cap">
             <objects>
                 <viewController id="NSb-6s-cHe" customClass="MusicViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,19 +20,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dtG-06-sfT"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Music" id="6ek-pC-mMY">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Profile" image="profileselected" landscapeImage="profileselected" id="tvx-Ms-uHu"/>
-                            <barButtonItem title="Sign out" image="signout" landscapeImage="signout" id="j0V-mg-A5R">
-                                <connections>
-                                    <action selector="Signout:" destination="NSb-6s-cHe" id="uPq-X0-tfo"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Home" image="homeselected" landscapeImage="homeselected" id="lyu-cx-Q7C"/>
+                    <navigationItem key="navigationItem" title="America's Vision" id="6ek-pC-mMY">
+                        <barButtonItem key="leftBarButtonItem" title="Profile" image="profileselected" landscapeImage="profileselected" id="tvx-Ms-uHu"/>
+                        <barButtonItem key="rightBarButtonItem" title="Admin" image="adminconsole" landscapeImage="adminconsole" id="lyu-cx-Q7C"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="HomeButton" destination="lyu-cx-Q7C" id="32h-W9-3TR"/>
                         <outlet property="ProfileButton" destination="tvx-Ms-uHu" id="oR1-7d-IoL"/>
                     </connections>
                 </viewController>
@@ -41,11 +32,11 @@
             </objects>
             <point key="canvasLocation" x="139" y="111"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Music-->
         <scene sceneID="mLz-4B-DTb">
             <objects>
                 <navigationController storyboardIdentifier="ProfileNavigate" automaticallyAdjustsScrollViewInsets="NO" id="WP5-YC-K2G" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="music" landscapeImage="music" largeContentSizeImage="music" selectedImage="musicselected" id="MFx-0g-vz2">
+                    <tabBarItem key="tabBarItem" title="Music" image="music" landscapeImage="music" largeContentSizeImage="music" selectedImage="musicselected" id="MFx-0g-vz2">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                         <color key="badgeColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                     </tabBarItem>
@@ -68,10 +59,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="homeselected" width="26" height="22"/>
-        <image name="music" width="19" height="20"/>
-        <image name="musicselected" width="19" height="20"/>
-        <image name="profileselected" width="21" height="18"/>
-        <image name="signout" width="25" height="26"/>
+        <image name="adminconsole" width="23" height="23"/>
+        <image name="music" width="15" height="16"/>
+        <image name="musicselected" width="15" height="16"/>
+        <image name="profileselected" width="20" height="18"/>
     </resources>
 </document>

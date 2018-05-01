@@ -8,12 +8,15 @@
 
 import UIKit
 import FirebaseAuth
+import FBSDKLoginKit
 
 class SignInViewController: UIViewController {
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
+    
+    @IBOutlet weak var SignInwFBButton: FBSDKLoginButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +40,8 @@ class SignInViewController: UIViewController {
         signInButton.isEnabled = false
         checkTextField()
         
+        //SignInwFBButton.delegate = self
+        //SignInwFBButton.readPermissions = ["public_profile"]
         // Do any additional setup after loading the view.
     }
     
@@ -51,9 +56,31 @@ class SignInViewController: UIViewController {
         view.endEditing(true)
     }
     
+   /* func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if  error != nil{
+            print(error.localizedDescription)
+            return
+        }
+        if (result.token) != nil{
+            let token:FBSDKAccessToken = result.token
+            print(FBSDKAccessToken.current().tokenString)
+            
+            let loggedInPage = self.storyboard?.instantiateViewController(withIdentifier: "AVtabBarcontroller") as! UITabBarController
+            
+            /*let loggedInPageView = UINavigationController(rootViewController: loggedInPage)
+            
+            let appdelegate = UIApplication.shared.delegate as! AppDelegate
+            appdelegate.window?.rootViewController = loggedInPageView*/
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        
+    }
+    */
     func checkTextField(){
-        emailField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
-        passwordField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+        emailField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
+        passwordField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
     }
     
     @objc func textFieldDidChange(){
@@ -79,6 +106,8 @@ class SignInViewController: UIViewController {
         })
         
     }
+    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

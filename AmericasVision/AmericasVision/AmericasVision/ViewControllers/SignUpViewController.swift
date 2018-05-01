@@ -21,12 +21,14 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var ConfirmPasswordField: UITextField!
     @IBOutlet weak var ProfilePlaceHolderImage: UIImageView!
     @IBOutlet weak var SignUpButton: UIButton!
-    
+    @IBOutlet weak var PasswordsMatchLabel: UILabel!
+    @IBOutlet weak var PasswordsDonotMatchLabel: UILabel!
     var ProfileSelectedImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        PasswordsDonotMatchLabel.isHidden = true
+        PasswordsMatchLabel.isHidden = true
         FirstNameField.backgroundColor = UIColor.clear
         FirstNameField.tintColor = UIColor.white
         FirstNameField.attributedPlaceholder = NSAttributedString(string: FirstNameField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.9)])
@@ -78,7 +80,7 @@ class SignUpViewController: UIViewController {
         ProfilePlaceHolderImage.layer.cornerRadius = ProfilePlaceHolderImage.frame.height/2
         ProfilePlaceHolderImage.clipsToBounds = true
         
-        let profilePhotoTapGesture = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.selectProfileImage))
+        let profilePhotoTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.selectProfileImage))
         ProfilePlaceHolderImage.addGestureRecognizer(profilePhotoTapGesture)
         ProfilePlaceHolderImage.isUserInteractionEnabled = true
         
@@ -88,22 +90,35 @@ class SignUpViewController: UIViewController {
     }
     
     func checkTextField(){
-        FirstNameField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
-        LastNameField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
-        PhoneField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
-        EmailField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
-        PasswordField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
-        ConfirmPasswordField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+        FirstNameField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
+        LastNameField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
+        PhoneField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
+        EmailField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
+        PasswordField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
+        ConfirmPasswordField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
     }
     
     @objc func textFieldDidChange(){
-        guard let FirstNameValue = FirstNameField.text, !FirstNameValue.isEmpty, let LastNameValue = LastNameField.text, !LastNameValue.isEmpty, let PhoneValue = PhoneField.text, !PhoneValue.isEmpty, let EmailValue = EmailField.text, !EmailValue.isEmpty, let PasswordValue = PasswordField.text, !PasswordValue.isEmpty, let ConfirmPasswordValue = ConfirmPasswordField.text, !ConfirmPasswordValue.isEmpty, ConfirmPasswordValue == PasswordValue else {
+        guard let FirstNameValue = FirstNameField.text, !FirstNameValue.isEmpty, let LastNameValue = LastNameField.text, !LastNameValue.isEmpty, let PhoneValue = PhoneField.text, !PhoneValue.isEmpty, let EmailValue = EmailField.text, !EmailValue.isEmpty, let PasswordValue = PasswordField.text, !PasswordValue.isEmpty, let ConfirmPasswordValue = ConfirmPasswordField.text, !ConfirmPasswordValue.isEmpty else {
+            PasswordsDonotMatchLabel.isHidden = true
+            PasswordsMatchLabel.isHidden = true
             SignUpButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
             SignUpButton.isEnabled = false
             return
         }
+        if ConfirmPasswordValue == PasswordValue{
+            PasswordsMatchLabel.isHidden = false
+            PasswordsDonotMatchLabel.isHidden = true
+            PasswordsMatchLabel.textColor = .green
         SignUpButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         SignUpButton.isEnabled = true
+        }else{
+            PasswordsDonotMatchLabel.isHidden = false
+            PasswordsMatchLabel.isHidden = true
+            PasswordsDonotMatchLabel.textColor = .red
+            SignUpButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
+            SignUpButton.isEnabled = false
+        }
     }
     
     @objc func selectProfileImage() {
@@ -131,12 +146,10 @@ class SignUpViewController: UIViewController {
             }, onError: {
                 (errorString) in
                 ProgressHUD.showError(errorString!)
-                //print(errorString!)
             })
         }else {
             ProgressHUD.showError("Profile photo cannot be blank")
-            //print("Profile photo cannot be blank")
-        }
+            }
     }
 }
 

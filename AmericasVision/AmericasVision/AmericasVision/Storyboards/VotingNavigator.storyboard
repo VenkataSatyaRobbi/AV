@@ -6,46 +6,89 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Votes-->
+        <!--America's Vision-->
         <scene sceneID="gEA-ZG-977">
             <objects>
                 <viewController id="je3-Pf-8qT" customClass="VotingViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4HI-cy-Kij">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilephotoplaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="dMh-Zj-Zqf">
+                                <rect key="frame" x="20" y="134" width="130" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="3jT-zA-CUQ"/>
+                                    <constraint firstAttribute="height" constant="130" id="xTT-Wx-Uc3"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilephotoplaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="EHV-0q-VDP">
+                                <rect key="frame" x="225" y="134" width="130" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="fl0-NO-8uf"/>
+                                    <constraint firstAttribute="width" constant="130" id="gwf-aY-b8n"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Democrat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Td6-Jo-tuX">
+                                <rect key="frame" x="47" y="87" width="76" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Candidate 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLN-5C-icn">
+                                <rect key="frame" x="40" y="289" width="91" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Republic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmm-EA-oNa">
+                                <rect key="frame" x="257" y="87" width="67" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Candidate 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jN-B6-Afk">
+                                <rect key="frame" x="245" y="289" width="93" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="EHV-0q-VDP" firstAttribute="top" secondItem="b0S-wQ-9ho" secondAttribute="top" constant="70" id="OPQ-Do-KfO"/>
+                            <constraint firstItem="dMh-Zj-Zqf" firstAttribute="leading" secondItem="b0S-wQ-9ho" secondAttribute="leading" constant="20" id="s2Q-bF-hAq"/>
+                            <constraint firstItem="dMh-Zj-Zqf" firstAttribute="top" secondItem="b0S-wQ-9ho" secondAttribute="top" constant="70" id="xa6-Dc-F7Q"/>
+                            <constraint firstItem="EHV-0q-VDP" firstAttribute="trailing" secondItem="b0S-wQ-9ho" secondAttribute="trailing" constant="-20" id="xsj-89-5kM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="b0S-wQ-9ho"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Votes" id="hX0-gz-YRy">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Profile" image="profileselected" landscapeImage="profileselected" id="dc1-rI-hOC"/>
-                            <barButtonItem title="Sign out" image="signout" landscapeImage="signout" id="vZb-eI-x6t">
-                                <connections>
-                                    <action selector="Signout:" destination="je3-Pf-8qT" id="pBx-vT-ZaL"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Home" image="homeselected" landscapeImage="homeselected" id="kp5-zF-Kba"/>
+                    <navigationItem key="navigationItem" title="America's Vision" id="hX0-gz-YRy">
+                        <barButtonItem key="leftBarButtonItem" title="Profile" image="profileselected" landscapeImage="profileselected" id="dc1-rI-hOC"/>
+                        <barButtonItem key="rightBarButtonItem" title="Admin" image="adminconsole" landscapeImage="adminconsole" id="kp5-zF-Kba"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="HomeButton" destination="kp5-zF-Kba" id="Ls2-Fd-TNy"/>
+                        <outlet property="CandidateViewFirstParty" destination="dMh-Zj-Zqf" id="WBx-oa-SdB"/>
+                        <outlet property="CandidateViewSecondParty" destination="EHV-0q-VDP" id="fgr-D5-w1s"/>
                         <outlet property="ProfileButton" destination="dc1-rI-hOC" id="by1-Ul-oBi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zLp-Vj-J8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1059" y="111"/>
+            <point key="canvasLocation" x="-1060" y="110.19490254872565"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Votes-->
         <scene sceneID="2aA-02-fmR">
             <objects>
                 <navigationController storyboardIdentifier="MarketNavigate" automaticallyAdjustsScrollViewInsets="NO" id="oIH-oJ-PNk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="voting" landscapeImage="voting" largeContentSizeImage="voting" selectedImage="votingselected" id="EbW-5N-5lx">
+                    <tabBarItem key="tabBarItem" title="Votes" image="voting" landscapeImage="voting" largeContentSizeImage="voting" selectedImage="votingselected" id="EbW-5N-5lx">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                         <color key="badgeColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                     </tabBarItem>
@@ -68,10 +111,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="homeselected" width="26" height="22"/>
-        <image name="profileselected" width="21" height="18"/>
-        <image name="signout" width="25" height="26"/>
-        <image name="voting" width="25" height="25"/>
-        <image name="votingselected" width="25" height="25"/>
+        <image name="adminconsole" width="23" height="23"/>
+        <image name="profilephotoplaceholder" width="396" height="355"/>
+        <image name="profileselected" width="20" height="18"/>
+        <image name="voting" width="23" height="23"/>
+        <image name="votingselected" width="23" height="23"/>
     </resources>
 </document>

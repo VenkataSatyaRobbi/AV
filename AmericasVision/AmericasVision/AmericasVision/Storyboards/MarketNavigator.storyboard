@@ -6,12 +6,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Market Place-->
+        <!--America's Vision-->
         <scene sceneID="cEI-Zg-0Wt">
             <objects>
                 <viewController id="vjs-Eh-6ch" customClass="MarketViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,19 +20,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="SeT-S6-Lgv"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Market Place" id="WUX-Vf-ATa">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Profile" image="profileselected" landscapeImage="profileselected" largeContentSizeImage="profileselected" id="BP2-Xg-iaK"/>
-                            <barButtonItem title="Sign out" image="signout" landscapeImage="signout" id="Wi9-wd-v8Y">
-                                <connections>
-                                    <action selector="Signout:" destination="vjs-Eh-6ch" id="Qug-rG-6QL"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Home" image="homeselected" landscapeImage="homeselected" id="4E4-Qq-Phm"/>
+                    <navigationItem key="navigationItem" title="America's Vision" id="WUX-Vf-ATa">
+                        <barButtonItem key="leftBarButtonItem" title="Profile" image="profileselected" landscapeImage="profileselected" largeContentSizeImage="profileselected" id="BP2-Xg-iaK"/>
+                        <barButtonItem key="rightBarButtonItem" title="Admin" image="adminconsole" landscapeImage="adminconsole" id="4E4-Qq-Phm"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="HomeButton" destination="4E4-Qq-Phm" id="YN5-eN-2rZ"/>
                         <outlet property="ProfileButton" destination="BP2-Xg-iaK" id="hmI-ok-r14"/>
                     </connections>
                 </viewController>
@@ -41,11 +32,11 @@
             </objects>
             <point key="canvasLocation" x="1328" y="111"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Market Place-->
         <scene sceneID="ssK-aG-Lg0">
             <objects>
                 <navigationController storyboardIdentifier="HomeNavigate" automaticallyAdjustsScrollViewInsets="NO" id="GMC-Xq-CEb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="cart" landscapeImage="cart" largeContentSizeImage="cart" selectedImage="cartselected" id="sXF-2j-niK">
+                    <tabBarItem key="tabBarItem" title="Market Place" image="cart" landscapeImage="cart" largeContentSizeImage="cart" selectedImage="cartselected" id="sXF-2j-niK">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                         <color key="badgeColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                     </tabBarItem>
@@ -68,10 +59,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cart" width="27" height="27"/>
-        <image name="cartselected" width="27" height="27"/>
-        <image name="homeselected" width="26" height="22"/>
-        <image name="profileselected" width="21" height="18"/>
-        <image name="signout" width="25" height="26"/>
+        <image name="adminconsole" width="23" height="23"/>
+        <image name="cart" width="23" height="23"/>
+        <image name="cartselected" width="23" height="23"/>
+        <image name="profileselected" width="20" height="18"/>
     </resources>
 </document>

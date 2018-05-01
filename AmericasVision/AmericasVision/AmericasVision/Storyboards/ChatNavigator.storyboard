@@ -6,12 +6,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Chat-->
+        <!--America's Vision-->
         <scene sceneID="H8u-Nt-wgf">
             <objects>
                 <viewController id="cAd-Pw-F7V" customClass="ChatViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,19 +20,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="wXP-jP-BmB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Chat" id="zoa-lR-0EH">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Profile" image="profileselected" landscapeImage="profileselected" largeContentSizeImage="profileselected" id="nI4-7h-w5V"/>
-                            <barButtonItem title="Sign out" image="signout" landscapeImage="signout" id="Ox6-aN-vbO">
-                                <connections>
-                                    <action selector="Signout:" destination="cAd-Pw-F7V" id="WDt-j7-Kfj"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Home" image="homeselected" landscapeImage="homeselected" id="qiG-RY-Adb"/>
+                    <navigationItem key="navigationItem" title="America's Vision" id="zoa-lR-0EH">
+                        <barButtonItem key="leftBarButtonItem" title="Profile" image="profileselected" landscapeImage="profileselected" largeContentSizeImage="profileselected" id="nI4-7h-w5V"/>
+                        <barButtonItem key="rightBarButtonItem" title="Admin" image="adminconsole" landscapeImage="adminconsole" id="qiG-RY-Adb"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="HomeButton" destination="qiG-RY-Adb" id="mnN-L2-xmL"/>
                         <outlet property="ProfileButton" destination="nI4-7h-w5V" id="PCN-Xn-bbq"/>
                     </connections>
                 </viewController>
@@ -41,11 +32,11 @@
             </objects>
             <point key="canvasLocation" x="2419" y="111"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Messaging-->
         <scene sceneID="PBC-RP-Iij">
             <objects>
                 <navigationController storyboardIdentifier="ChatNavigate" automaticallyAdjustsScrollViewInsets="NO" id="Icf-cE-15Z" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="chat" landscapeImage="chat" largeContentSizeImage="chat" selectedImage="chatselected" id="S3a-Tc-2Ur">
+                    <tabBarItem key="tabBarItem" title="Messaging" image="chat" landscapeImage="chat" largeContentSizeImage="chat" selectedImage="chatselected" id="S3a-Tc-2Ur">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                         <color key="badgeColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                     </tabBarItem>
@@ -68,10 +59,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chat" width="22" height="20"/>
-        <image name="chatselected" width="22" height="20"/>
-        <image name="homeselected" width="26" height="22"/>
-        <image name="profileselected" width="21" height="18"/>
-        <image name="signout" width="25" height="26"/>
+        <image name="adminconsole" width="23" height="23"/>
+        <image name="chat" width="19" height="16"/>
+        <image name="chatselected" width="19" height="16"/>
+        <image name="profileselected" width="20" height="18"/>
     </resources>
 </document>

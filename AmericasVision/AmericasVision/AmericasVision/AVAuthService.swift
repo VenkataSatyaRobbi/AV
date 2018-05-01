@@ -52,7 +52,7 @@
             let AVDBref = Database.database().reference()
             let AVDBuserref = AVDBref.child("users")
             let AVDBnewuserref = AVDBuserref.child(uid)
-            AVDBnewuserref.setValue(["FirstName": firstname, "LastName": lastname, "Phone": phone, "Email": email, "ProfileImageURL": profileImageUrl ])
+            AVDBnewuserref.setValue(["FirstName": firstname, "LastName": lastname, "Phone": phone, "Email": email, "ProfileImageURL": profileImageUrl, "UserId": uid ])
             onSuccess()
         }
         
