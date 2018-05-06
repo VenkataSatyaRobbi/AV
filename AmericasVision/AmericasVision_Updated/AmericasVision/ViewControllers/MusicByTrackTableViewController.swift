@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MusicByTrackTableViewController: UITableViewController {
+class MusicByTrackTableViewController: UITableViewController{
     @IBOutlet weak var MusicByTrackHomeButton: UIBarButtonItem!
     
     @IBOutlet weak var MusicByTrackAdminButton: UIBarButtonItem!

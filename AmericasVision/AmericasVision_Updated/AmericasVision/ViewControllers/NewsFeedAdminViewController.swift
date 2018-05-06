@@ -1,4 +1,4 @@
-//
+////
 //  NewsFeedAdminViewController.swift
 //  AmericasVision
 //
@@ -107,7 +107,16 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
     }
     
     @IBAction func BackButtonAdminTouchUpInside(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+      // self.dismiss(animated: true, completion: nil)
+      
+        //self.dismiss(animated: true, completion: nil)
+            if let nav = self.navigationController {
+                nav.dismiss(animated: true)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        
+        
         
     }
     

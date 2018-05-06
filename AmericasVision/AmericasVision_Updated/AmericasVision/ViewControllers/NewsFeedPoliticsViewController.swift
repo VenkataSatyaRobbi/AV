@@ -110,7 +110,7 @@ extension NewsFeedPoliticsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let item = NewsFeedPoliticsCollectionView.dequeueReusableCell(withReuseIdentifier: "PostCollectionViewCell", for: indexPath) as! PostCollectionViewCell
-        
+        item.PostCollectionViewContent.isScrollEnabled = false;//
         item.PostCollectionViewContent.text  = posts[indexPath.item].caption
         item.PostCollectionViewHeadlines.text = posts[indexPath.item].postTitle
         item.PostCollectionViewLikes.text = "\(posts[indexPath.item].postLikes)"
