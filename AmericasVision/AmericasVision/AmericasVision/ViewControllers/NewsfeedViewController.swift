@@ -18,7 +18,7 @@ class NewsfeedViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     let PickerViewCategoryTab = UIPickerView()
     
-    let postCategories = ["Category1","Category2","Category3","Categroy4"]
+    let postCategories = ["Category1","Category2","Category3","Categroya4"]
     
     var posts = [Post]()
     var postCategory = ""
