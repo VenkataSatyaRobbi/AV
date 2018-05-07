@@ -817,7 +817,7 @@
         <!--Sports-->
         <scene sceneID="Lff-No-FjV">
             <objects>
-                <viewController title="Sports" id="RzF-vB-aCJ" customClass="SportsViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Sports" id="RzF-vB-aCJ" customClass="SportsNewsViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IpP-y2-MNT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
