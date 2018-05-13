@@ -16,6 +16,7 @@ class SportsNewsViewController: UIViewController ,UICollectionViewDelegate,UICol
     @IBOutlet weak var homeButton: UIBarButtonItem!
     @IBOutlet weak var SportsNewsCollectionView: UICollectionView!
      @IBOutlet weak var SportsNewsCollectionView1: UICollectionView!
+     @IBOutlet weak var NewsFeedScrollview: UIScrollView!
     var posts = [Post]()
     
 //    let scrollView = UIScrollView(frame: CGRect(x:0, y:0, width:320,height: 300))
@@ -46,6 +47,9 @@ class SportsNewsViewController: UIViewController ,UICollectionViewDelegate,UICol
         SportsNewsCollectionView1.isHidden = false
         SportsNewsCollectionView1.dataSource = self
         
+        NewsFeedScrollview.delegate = self as? UIScrollViewDelegate
+        NewsFeedScrollview .isScrollEnabled = true
+        
         view.backgroundColor = UIColor.white
         if let flowLayout = SportsNewsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .horizontal
@@ -71,7 +75,7 @@ class SportsNewsViewController: UIViewController ,UICollectionViewDelegate,UICol
     }
     
     func loadPosts(){
-        Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Category1").observe(.childAdded) { (snapshot: DataSnapshot) in
+        Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Category3").observe(.childAdded) { (snapshot: DataSnapshot) in
             //print(snapshot.value)
             if let dict = snapshot.value as? [String: Any] {
                 let captionText = dict["caption"] as! String
