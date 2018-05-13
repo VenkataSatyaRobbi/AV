@@ -13,6 +13,8 @@
     
     class AVAuthService{
         
+        static var username = "";
+        
         static func signIn(email: String, password: String, onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessage: String?) -> Void) {
             Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
                 
@@ -54,6 +56,14 @@
             let AVDBnewuserref = AVDBuserref.child(uid)
             AVDBnewuserref.setValue(["FirstName": firstname, "LastName": lastname, "Phone": phone, "Email": email, "ProfileImageURL": profileImageUrl, "UserId": uid ])
             onSuccess()
+        }
+        
+        static func getCurrentUserId() -> String{
+            return Auth.auth().currentUser!.uid
+        }
+
+        static func getCurrentUserName() -> String{
+            return (Auth.auth().currentUser?.displayName)!
         }
         
     }

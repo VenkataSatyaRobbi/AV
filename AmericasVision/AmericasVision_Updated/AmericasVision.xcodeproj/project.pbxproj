@@ -40,6 +40,11 @@
 		D4FA4A0F208822BF00CC425B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA4A0C208822BF00CC425B /* FBSDKCoreKit.framework */; };
 		DC4A12B1209F2BD7007C4755 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */; };
 		DC4A12B520A0E6A2007C4755 /* SportsNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A12B420A0E6A2007C4755 /* SportsNewsViewController.swift */; };
+		DCBEBC3820A786EE00E8EAEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3720A786ED00E8EAEA /* Constants.swift */; };
+		DCBEBC3A20A7871900E8EAEA /* ChatContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */; };
+		DCBEBC3C20A78BF200E8EAEA /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */; };
+		DCBEBC4120A78FCC00E8EAEA /* DBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC4020A78FCC00E8EAEA /* DBProvider.swift */; };
+		DCBEBC4320A83D1A00E8EAEA /* MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC4220A83D1A00E8EAEA /* MessageHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +88,11 @@
 		D4FA4A0C208822BF00CC425B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		DC4A12B420A0E6A2007C4755 /* SportsNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsNewsViewController.swift; sourceTree = "<group>"; };
+		DCBEBC3720A786ED00E8EAEA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContactsViewController.swift; sourceTree = "<group>"; };
+		DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
+		DCBEBC4020A78FCC00E8EAEA /* DBProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBProvider.swift; sourceTree = "<group>"; };
+		DCBEBC4220A83D1A00E8EAEA /* MessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +151,7 @@
 		D46390F9207036F300C4E3DA /* AmericasVision */ = {
 			isa = PBXGroup;
 			children = (
+				DCBEBC3D20A78F8900E8EAEA /* Database */,
 				D4FA4A002082FBE000CC425B /* Model */,
 				D4761EAD207193E90065ACD7 /* GoogleService-Info.plist */,
 				D4639106207036F300C4E3DA /* Info.plist */,
@@ -175,6 +186,7 @@
 			children = (
 				D4FA49EF207AF45500CC425B /* ProfileMenuTableViewCell.swift */,
 				D4FA49ED207AF0EC00CC425B /* ProfileMenuViewController.swift */,
+				DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */,
 				D463910E207037CB00C4E3DA /* SignInViewController.swift */,
 				D4639110207041D400C4E3DA /* SignUpViewController.swift */,
 				D4FA49FE2082AD9F00CC425B /* NewsFeedAdminViewController.swift */,
@@ -197,9 +209,20 @@
 		D4FA4A002082FBE000CC425B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DCBEBC3720A786ED00E8EAEA /* Constants.swift */,
+				DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */,
 				D4FA4A012082FBF100CC425B /* Post.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DCBEBC3D20A78F8900E8EAEA /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				DCBEBC4020A78FCC00E8EAEA /* DBProvider.swift */,
+				DCBEBC4220A83D1A00E8EAEA /* MessageHandler.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,7 +237,6 @@
 				D46390F4207036F300C4E3DA /* Frameworks */,
 				D46390F5207036F300C4E3DA /* Resources */,
 				2D62644F6656779241E573C1 /* [CP] Embed Pods Frameworks */,
-				D67AFD83EB0E24791179FF69 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -302,6 +324,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-AmericasVision/Pods-AmericasVision-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -309,27 +333,14 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AmericasVision/Pods-AmericasVision-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D67AFD83EB0E24791179FF69 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AmericasVision/Pods-AmericasVision-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -339,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCBEBC3820A786EE00E8EAEA /* Constants.swift in Sources */,
 				D4FA4A082086D86700CC425B /* CurrentUserInfo.swift in Sources */,
 				D408D2F0209E8844008DD80A /* MusicByAlbumTableViewController.swift in Sources */,
 				D4FA49F0207AF45500CC425B /* ProfileMenuTableViewCell.swift in Sources */,
@@ -360,9 +372,13 @@
 				D4FA49EE207AF0EC00CC425B /* ProfileMenuViewController.swift in Sources */,
 				D408D2E8209E8178008DD80A /* NewsFeedPoliticsViewController.swift in Sources */,
 				D408D2EE209E8831008DD80A /* MusicByTrackTableViewController.swift in Sources */,
+				DCBEBC4320A83D1A00E8EAEA /* MessageHandler.swift in Sources */,
 				D408D2E6209E71E3008DD80A /* VotesCollectionViewController.swift in Sources */,
 				D4FA49F4207C6EA200CC425B /* PropertyConfig.swift in Sources */,
+				DCBEBC4120A78FCC00E8EAEA /* DBProvider.swift in Sources */,
+				DCBEBC3A20A7871900E8EAEA /* ChatContactsViewController.swift in Sources */,
 				D408D2EC209E8638008DD80A /* ChatPublicTableTableViewController.swift in Sources */,
+				DCBEBC3C20A78BF200E8EAEA /* Contacts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

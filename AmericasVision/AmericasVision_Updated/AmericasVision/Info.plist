@@ -43,27 +43,27 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>fb377490636101003</string>
-            </array>
-        </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>377490636101003</string>
-    <key>FacebookDisplayName</key>
-    <string>AmericasVision</string>
-    
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>fbapi</string>
-        <string>fb-messenger-share-api</string>
-        <string>fbauth2</string>
-        <string>fbshareextension</string>
-    </array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Need to access your Photos and Videos</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb377490636101003</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>377490636101003</string>
+	<key>FacebookDisplayName</key>
+	<string>AmericasVision</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 </dict>
 </plist>
