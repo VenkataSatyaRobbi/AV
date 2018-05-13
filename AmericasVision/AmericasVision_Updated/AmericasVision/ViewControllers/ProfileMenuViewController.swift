@@ -71,6 +71,7 @@ class ProfileMenuViewController: UIViewController, UITableViewDelegate, UITableV
         let ProfileMenuCell = tableView.dequeueReusableCell(withIdentifier: "ProfileMenuTableViewCell") as! ProfileMenuTableViewCell
         ProfileMenuCell.ProfileMenuImage.image = ProfileMenuImagesArray[indexPath.row]
         ProfileMenuCell.ProfileMenuOptionName.text = ProfileMenuOptionsArray[indexPath.row]
+        ProfileMenuCell.ProfileMenuOptionName.font = UIFont.systemFont(ofSize: 14)
         
         return ProfileMenuCell
     }
