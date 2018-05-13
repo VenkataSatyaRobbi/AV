@@ -18,6 +18,7 @@
 		D408D2EE209E8831008DD80A /* MusicByTrackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2ED209E8831008DD80A /* MusicByTrackTableViewController.swift */; };
 		D408D2F0209E8844008DD80A /* MusicByAlbumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2EF209E8844008DD80A /* MusicByAlbumTableViewController.swift */; };
 		D408D2F2209E903D008DD80A /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2F1209E903D008DD80A /* MyProfileViewController.swift */; };
+		D461894B20A7BA7A0020F293 /* NewsFeedEntertainmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D461894A20A7BA7A0020F293 /* NewsFeedEntertainmentViewController.swift */; };
 		D46390FB207036F300C4E3DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46390FA207036F300C4E3DA /* AppDelegate.swift */; };
 		D4639102207036F300C4E3DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4639101207036F300C4E3DA /* Assets.xcassets */; };
 		D4639105207036F300C4E3DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4639103207036F300C4E3DA /* LaunchScreen.storyboard */; };
@@ -56,6 +57,7 @@
 		D408D2ED209E8831008DD80A /* MusicByTrackTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicByTrackTableViewController.swift; sourceTree = "<group>"; };
 		D408D2EF209E8844008DD80A /* MusicByAlbumTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicByAlbumTableViewController.swift; sourceTree = "<group>"; };
 		D408D2F1209E903D008DD80A /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		D461894A20A7BA7A0020F293 /* NewsFeedEntertainmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedEntertainmentViewController.swift; sourceTree = "<group>"; };
 		D46390F7207036F300C4E3DA /* AmericasVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmericasVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46390FA207036F300C4E3DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4639101207036F300C4E3DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				D408D2EF209E8844008DD80A /* MusicByAlbumTableViewController.swift */,
 				D408D2F1209E903D008DD80A /* MyProfileViewController.swift */,
 				DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */,
+				D461894A20A7BA7A0020F293 /* NewsFeedEntertainmentViewController.swift */,
 				DC4A12B420A0E6A2007C4755 /* SportsNewsViewController.swift */,
 			);
 			path = ViewControllers;
@@ -345,6 +348,7 @@
 				D4FA49FF2082AD9F00CC425B /* NewsFeedAdminViewController.swift in Sources */,
 				D408D2F2209E903D008DD80A /* MyProfileViewController.swift in Sources */,
 				D4639111207041D400C4E3DA /* SignUpViewController.swift in Sources */,
+				D461894B20A7BA7A0020F293 /* NewsFeedEntertainmentViewController.swift in Sources */,
 				D4FA49DE207994C300CC425B /* SWRevealViewController.m in Sources */,
 				D4FA49F2207C5B3C00CC425B /* AVAuthService.swift in Sources */,
 				DC4A12B520A0E6A2007C4755 /* SportsNewsViewController.swift in Sources */,
