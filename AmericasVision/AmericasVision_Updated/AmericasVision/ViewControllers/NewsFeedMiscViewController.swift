@@ -23,9 +23,10 @@ class NewsFeedMiscViewController: UIViewController {
         // Do any additional setup after loading the view.
         NewsFeedMiscTableView.isHidden = false
         NewsFeedMiscTableView.dataSource = self
-        
+        NewsFeedMiscTableView.delegate = self
         view.backgroundColor = UIColor.white
-        
+        NewsFeedMiscTableView.rowHeight = UITableViewAutomaticDimension
+        NewsFeedMiscTableView.estimatedRowHeight = 80
         sideMenus()
         loadPosts()
     }
@@ -67,10 +68,14 @@ class NewsFeedMiscViewController: UIViewController {
     }
 }
 
-extension NewsFeedMiscViewController: UITableViewDataSource {
+extension NewsFeedMiscViewController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
+    }
+    
+    func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
+        return 84
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
