@@ -15,8 +15,10 @@ class Post{
     var postLikes: NSNumber
     var postDislikes: NSNumber
     var postComments: NSNumber
+    var postID: String
+    var userid: String
     
-    init(captionText: String, photoUrlString: String, postCategoryString: String, postTitleString: String, postLikesInt: NSNumber, postDislikesInt: NSNumber, postCommentsInt: NSNumber){
+    init(captionText: String, photoUrlString: String, postCategoryString: String, postTitleString: String, postLikesInt: NSNumber, postDislikesInt: NSNumber, postCommentsInt: NSNumber, postIDString: String, useridString: String){
         caption = captionText
         photoUrl = photoUrlString
         postCategory = postCategoryString
@@ -24,6 +26,8 @@ class Post{
         postLikes = postLikesInt
         postDislikes = postDislikesInt
         postComments = postCommentsInt
+        postID = postIDString
+        userid = useridString
     }
     
 }

@@ -18,6 +18,8 @@
 		D408D2EE209E8831008DD80A /* MusicByTrackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2ED209E8831008DD80A /* MusicByTrackTableViewController.swift */; };
 		D408D2F0209E8844008DD80A /* MusicByAlbumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2EF209E8844008DD80A /* MusicByAlbumTableViewController.swift */; };
 		D408D2F2209E903D008DD80A /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2F1209E903D008DD80A /* MyProfileViewController.swift */; };
+		D43E5D3420A8F0B2000F0307 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43E5D3320A8F0B2000F0307 /* PostTableViewCell.swift */; };
+		D43E5D3620A8F143000F0307 /* NewsFeedMiscViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43E5D3520A8F143000F0307 /* NewsFeedMiscViewController.swift */; };
 		D461894B20A7BA7A0020F293 /* NewsFeedEntertainmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D461894A20A7BA7A0020F293 /* NewsFeedEntertainmentViewController.swift */; };
 		D46390FB207036F300C4E3DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46390FA207036F300C4E3DA /* AppDelegate.swift */; };
 		D4639102207036F300C4E3DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4639101207036F300C4E3DA /* Assets.xcassets */; };
@@ -62,6 +64,8 @@
 		D408D2ED209E8831008DD80A /* MusicByTrackTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicByTrackTableViewController.swift; sourceTree = "<group>"; };
 		D408D2EF209E8844008DD80A /* MusicByAlbumTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicByAlbumTableViewController.swift; sourceTree = "<group>"; };
 		D408D2F1209E903D008DD80A /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		D43E5D3320A8F0B2000F0307 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		D43E5D3520A8F143000F0307 /* NewsFeedMiscViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedMiscViewController.swift; sourceTree = "<group>"; };
 		D461894A20A7BA7A0020F293 /* NewsFeedEntertainmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedEntertainmentViewController.swift; sourceTree = "<group>"; };
 		D46390F7207036F300C4E3DA /* AmericasVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmericasVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46390FA207036F300C4E3DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -186,25 +190,27 @@
 		D4FA49FD207D947D00CC425B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D4FA49EF207AF45500CC425B /* ProfileMenuTableViewCell.swift */,
-				D4FA49ED207AF0EC00CC425B /* ProfileMenuViewController.swift */,
 				DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */,
-				D463910E207037CB00C4E3DA /* SignInViewController.swift */,
-				D4639110207041D400C4E3DA /* SignUpViewController.swift */,
-				D4FA49FE2082AD9F00CC425B /* NewsFeedAdminViewController.swift */,
-				D408D2DD2095E5BB008DD80A /* PostCollectionViewCell.swift */,
-				D408D2E1209E425B008DD80A /* MusicTableViewCell.swift */,
-				D408D2E3209E706F008DD80A /* MarketPlaceCollectionViewController.swift */,
-				D408D2E5209E71E3008DD80A /* VotesCollectionViewController.swift */,
-				D408D2E7209E8178008DD80A /* NewsFeedPoliticsViewController.swift */,
 				D408D2E9209E8622008DD80A /* ChatPrivateViewController.swift */,
 				D408D2EB209E8638008DD80A /* ChatPublicTableTableViewController.swift */,
-				D408D2ED209E8831008DD80A /* MusicByTrackTableViewController.swift */,
+				D408D2E3209E706F008DD80A /* MarketPlaceCollectionViewController.swift */,
 				D408D2EF209E8844008DD80A /* MusicByAlbumTableViewController.swift */,
-				D408D2F1209E903D008DD80A /* MyProfileViewController.swift */,
+				D408D2ED209E8831008DD80A /* MusicByTrackTableViewController.swift */,
+				D408D2E1209E425B008DD80A /* MusicTableViewCell.swift */,
 				DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */,
+				D408D2F1209E903D008DD80A /* MyProfileViewController.swift */,
+				D4FA49FE2082AD9F00CC425B /* NewsFeedAdminViewController.swift */,
 				D461894A20A7BA7A0020F293 /* NewsFeedEntertainmentViewController.swift */,
+				D43E5D3520A8F143000F0307 /* NewsFeedMiscViewController.swift */,
+				D408D2E7209E8178008DD80A /* NewsFeedPoliticsViewController.swift */,
+				D408D2DD2095E5BB008DD80A /* PostCollectionViewCell.swift */,
+				D43E5D3320A8F0B2000F0307 /* PostTableViewCell.swift */,
+				D4FA49EF207AF45500CC425B /* ProfileMenuTableViewCell.swift */,
+				D4FA49ED207AF0EC00CC425B /* ProfileMenuViewController.swift */,
+				D463910E207037CB00C4E3DA /* SignInViewController.swift */,
+				D4639110207041D400C4E3DA /* SignUpViewController.swift */,
 				DC4A12B420A0E6A2007C4755 /* SportsNewsViewController.swift */,
+				D408D2E5209E71E3008DD80A /* VotesCollectionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -355,6 +361,7 @@
 			files = (
 				DCBEBC3820A786EE00E8EAEA /* Constants.swift in Sources */,
 				D4FA4A082086D86700CC425B /* CurrentUserInfo.swift in Sources */,
+				D43E5D3420A8F0B2000F0307 /* PostTableViewCell.swift in Sources */,
 				D408D2F0209E8844008DD80A /* MusicByAlbumTableViewController.swift in Sources */,
 				D4FA49F0207AF45500CC425B /* ProfileMenuTableViewCell.swift in Sources */,
 				D4FA49FF2082AD9F00CC425B /* NewsFeedAdminViewController.swift in Sources */,
@@ -366,6 +373,7 @@
 				DC4A12B520A0E6A2007C4755 /* SportsNewsViewController.swift in Sources */,
 				D463910F207037CB00C4E3DA /* SignInViewController.swift in Sources */,
 				D408D2E2209E425B008DD80A /* MusicTableViewCell.swift in Sources */,
+				D43E5D3620A8F143000F0307 /* NewsFeedMiscViewController.swift in Sources */,
 				D408D2EA209E8622008DD80A /* ChatPrivateViewController.swift in Sources */,
 				D4FA4A022082FBF100CC425B /* Post.swift in Sources */,
 				D4FA49F8207D0D7D00CC425B /* ProgressHUD.m in Sources */,

@@ -568,7 +568,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZwF-jy-UgM">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="likes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZwF-jy-UgM">
                                                     <rect key="frame" x="18" y="204" width="36.5" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -583,14 +583,14 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wnd-nh-HgY">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="dislikes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wnd-nh-HgY">
                                                     <rect key="frame" x="104.5" y="204" width="36.5" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N6T-zm-pRN">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="comments" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N6T-zm-pRN">
                                                     <rect key="frame" x="191" y="204" width="36.5" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -600,25 +600,25 @@
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OII-WI-ogt">
                                                     <rect key="frame" x="232.5" y="204" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="chat"/>
+                                                    <state key="normal" title="Post Comments Button" image="chat"/>
                                                     <connections>
-                                                        <action selector="NewsFeedPoliticsCommentsButton_Clicked:" destination="Yss-mP-mYo" eventType="touchUpInside" id="gd5-9Y-KSu"/>
+                                                        <action selector="postCollectionViewCommentsButtonClicked:" destination="L1I-KC-Pjg" eventType="touchUpInside" id="smL-j9-Uj2"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PTg-kb-63r">
                                                     <rect key="frame" x="146" y="204" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="dislike"/>
+                                                    <state key="normal" title="Post Dislike Button" image="dislike"/>
                                                     <connections>
-                                                        <action selector="NewsFeedPoliticsDislikeButton_Clicked:" destination="Yss-mP-mYo" eventType="touchUpInside" id="8K0-qe-xUR"/>
+                                                        <action selector="postCollectionViewDislikeButtonClicked:" destination="L1I-KC-Pjg" eventType="touchUpInside" id="sqL-Qc-Oql"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BH0-xu-DtF">
                                                     <rect key="frame" x="59.5" y="204" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="like"/>
+                                                    <state key="normal" title="Post Like Button" image="like"/>
                                                     <connections>
-                                                        <action selector="NewsFeedPoliticsLikeButton_Clicked:" destination="Yss-mP-mYo" eventType="touchUpInside" id="vZI-rE-uy6"/>
+                                                        <action selector="postCollectionViewLikeButtonClicked:" destination="L1I-KC-Pjg" eventType="touchUpInside" id="Aet-Ck-5OL"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="COo-Cr-ua7">
@@ -665,7 +665,7 @@
         <scene sceneID="GhC-oo-aGy">
             <objects>
                 <navigationController title="Politics Navbar" automaticallyAdjustsScrollViewInsets="NO" id="LBY-kI-9aL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="politics" landscapeImage="politics" largeContentSizeImage="politics" selectedImage="politicsselected" id="qXR-HG-MhJ"/>
+                    <tabBarItem key="tabBarItem" title="Politics" image="politics" landscapeImage="politics" largeContentSizeImage="politics" selectedImage="politicsselected" id="qXR-HG-MhJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tP9-nN-9Wg">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -727,7 +727,7 @@
                                                     <rect key="frame" x="11" y="110" width="353" height="93"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -741,17 +741,23 @@
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wc1-Fc-4p7">
                                                     <rect key="frame" x="65" y="208" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="like"/>
+                                                    <state key="normal" title="Post Like Button" image="like"/>
+                                                    <connections>
+                                                        <action selector="postCollectionViewLikeButtonClicked:" destination="Zbw-iw-4iy" eventType="touchUpInside" id="xGk-7X-Kt3"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fpa-po-l9l">
                                                     <rect key="frame" x="157" y="208" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="dislike"/>
+                                                    <state key="normal" title="Post Dislike Button" image="dislike"/>
+                                                    <connections>
+                                                        <action selector="postCollectionViewDislikeButtonClicked:" destination="Zbw-iw-4iy" eventType="touchUpInside" id="cSb-qe-9x7"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="f1G-0A-5Vv">
                                                     <rect key="frame" x="255" y="208" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="chat"/>
+                                                    <state key="normal" title="Post Comments Button" image="chat"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DKC-0w-vMU">
                                                     <rect key="frame" x="113" y="217" width="42" height="21"/>
@@ -943,7 +949,7 @@
         <scene sceneID="h8M-My-6Uc">
             <objects>
                 <navigationController title="Entertainment Navbar" automaticallyAdjustsScrollViewInsets="NO" id="fcJ-Ek-Pcn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="entertainment" landscapeImage="entertainment" largeContentSizeImage="entertainment" selectedImage="entertainmentselected" id="39s-n1-nbn"/>
+                    <tabBarItem key="tabBarItem" title="Entertainment" image="entertainment" landscapeImage="entertainment" largeContentSizeImage="entertainment" selectedImage="entertainmentselected" id="39s-n1-nbn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="owm-7X-Ek9">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -966,8 +972,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="Qdp-MR-D2j">
+                                <rect key="frame" x="0.0" y="65" width="375" height="553"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="WEj-bR-yfJ">
-                                <rect key="frame" x="0.0" y="363" width="375" height="251"/>
+                                <rect key="frame" x="0.0" y="248" width="375" height="370"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Oj3-Zf-kqa">
@@ -1033,25 +1043,22 @@
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jdc-EQ-Lc7">
                                                     <rect key="frame" x="249" y="204" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="chat"/>
-                                                    <connections>
-                                                        <action selector="NewsFeedPoliticsCommentsButton_Clicked:" destination="Yss-mP-mYo" eventType="touchUpInside" id="qJE-4c-KT8"/>
-                                                    </connections>
+                                                    <state key="normal" title="Post Comments Button" image="chat"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fMk-GK-xV2">
                                                     <rect key="frame" x="162" y="204" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="dislike"/>
+                                                    <state key="normal" title="Post Dislike Button" image="dislike"/>
                                                     <connections>
-                                                        <action selector="NewsFeedPoliticsDislikeButton_Clicked:" destination="Yss-mP-mYo" eventType="touchUpInside" id="w5e-Ff-Avm"/>
+                                                        <action selector="postCollectionViewDislikeButtonClicked:" destination="dGR-Ya-MYH" eventType="touchUpInside" id="Qua-S1-J1N"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cn4-pB-CbN">
                                                     <rect key="frame" x="76" y="204" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="like"/>
+                                                    <state key="normal" title="Post Like Button" image="like"/>
                                                     <connections>
-                                                        <action selector="NewsFeedPoliticsLikeButton_Clicked:" destination="Yss-mP-mYo" eventType="touchUpInside" id="ois-rf-q3K"/>
+                                                        <action selector="postCollectionViewLikeButtonClicked:" destination="dGR-Ya-MYH" eventType="touchUpInside" id="EHu-rZ-vmx"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1068,115 +1075,50 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Latest News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dAc-Ik-ljZ">
-                                <rect key="frame" x="16" y="65" width="251" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Highlights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dAc-Ik-ljZ">
+                                <rect key="frame" x="16" y="65" width="343" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="AfN-Rj-ovz">
-                                <rect key="frame" x="0.0" y="113" width="375" height="242"/>
+                                <rect key="frame" x="0.0" y="97" width="375" height="152"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Aas-lU-8UB">
-                                    <size key="itemSize" width="379" height="254"/>
+                                    <size key="itemSize" width="375" height="147"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <scrollView key="backgroundView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="T9K-MO-0qE">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="242"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                </scrollView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="PostCollectionViewCell" id="OAK-Fc-TJV" customClass="PostCollectionViewCell" customModule="AmericasVision" customModuleProvider="target">
-                                        <rect key="frame" x="-2" y="0.0" width="379" height="254"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="147"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="379" height="254"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="147"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="Kv2-bd-b64">
-                                                    <rect key="frame" x="238" y="20" width="120" height="82"/>
+                                                    <rect key="frame" x="8" y="9" width="359" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="justified" id="d2A-Jt-2VV">
-                                                    <rect key="frame" x="16" y="106" width="348" height="90"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="justified" id="6XZ-w3-IWd">
-                                                    <rect key="frame" x="23" y="18" width="211" height="80"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="6XZ-w3-IWd">
+                                                    <rect key="frame" x="20" y="91" width="335" height="46"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </string>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8FQ-jb-Nmo">
-                                                    <rect key="frame" x="319" y="213" width="53" height="32"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                    <state key="normal" title="Share it"/>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZP8-Dk-07I">
-                                                    <rect key="frame" x="34" y="204" width="36.5" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" misplaced="YES" text="label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fgj-VK-xXg">
-                                                    <rect key="frame" x="121" y="204" width="36.5" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" misplaced="YES" text="label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cb8-aJ-9m7">
-                                                    <rect key="frame" x="207" y="204" width="36.5" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3em-oL-0N9">
-                                                    <rect key="frame" x="249" y="204" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="chat"/>
-                                                    <connections>
-                                                        <action selector="NewsFeedPoliticsCommentsButton_Clicked:" destination="Yss-mP-mYo" eventType="touchUpInside" id="zpj-Yb-HRQ"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="752" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="G8L-Cp-z3R">
-                                                    <rect key="frame" x="162" y="204" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="dislike"/>
-                                                    <connections>
-                                                        <action selector="NewsFeedPoliticsDislikeButton_Clicked:" destination="Yss-mP-mYo" eventType="touchUpInside" id="YID-NR-hce"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="58O-rr-hre">
-                                                    <rect key="frame" x="76" y="204" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="like"/>
-                                                    <connections>
-                                                        <action selector="NewsFeedPoliticsLikeButton_Clicked:" destination="Yss-mP-mYo" eventType="touchUpInside" id="mCx-l3-9km"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="PostCollectionViewComments" destination="Cb8-aJ-9m7" id="FdJ-gg-Ybd"/>
-                                            <outlet property="PostCollectionViewContent" destination="d2A-Jt-2VV" id="XR8-7U-dMT"/>
-                                            <outlet property="PostCollectionViewDislikes" destination="Fgj-VK-xXg" id="vtU-F9-Ta0"/>
                                             <outlet property="PostCollectionViewHeadlines" destination="6XZ-w3-IWd" id="8gE-8X-F6s"/>
                                             <outlet property="PostCollectionViewImage" destination="Kv2-bd-b64" id="PJR-q4-7iA"/>
-                                            <outlet property="PostCollectionViewLikes" destination="ZP8-Dk-07I" id="kN1-aa-jvM"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1193,7 +1135,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="NewsFeedScrollview" destination="T9K-MO-0qE" id="50I-YL-HNv"/>
                         <outlet property="SportsNewsCollectionView" destination="AfN-Rj-ovz" id="NXR-39-GTJ"/>
                         <outlet property="SportsNewsCollectionView1" destination="WEj-bR-yfJ" id="RFJ-qr-NPM"/>
                         <outlet property="homeButton" destination="qVL-S2-gNu" id="CCH-6l-vaR"/>
@@ -1207,7 +1148,7 @@
         <scene sceneID="iBw-UO-7gX">
             <objects>
                 <navigationController title="Sports Navbar" automaticallyAdjustsScrollViewInsets="NO" id="5EI-ge-heT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="sports" landscapeImage="sports" largeContentSizeImage="sports" selectedImage="sportsselected" id="Wsu-Cz-gUs"/>
+                    <tabBarItem key="tabBarItem" title="Sports" image="sports" landscapeImage="sports" largeContentSizeImage="sports" selectedImage="sportsselected" id="Wsu-Cz-gUs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oQW-T3-VrZ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1225,10 +1166,46 @@
         <!--Misc-->
         <scene sceneID="iPH-9u-Ocu">
             <objects>
-                <viewController title="Misc" id="f84-3Z-WBo" sceneMemberID="viewController">
+                <viewController title="Misc" id="f84-3Z-WBo" customClass="NewsFeedMiscViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rPr-QQ-tdO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oqL-dH-VGd">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostTableViewCell" rowHeight="84" id="epl-pt-148" customClass="PostTableViewCell" customModule="AmericasVision" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="84"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="epl-pt-148" id="vhg-kP-mt1">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="Pxa-gC-7O3">
+                                                    <rect key="frame" x="8" y="3" width="107" height="77"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" id="Gsi-2u-qUN">
+                                                    <rect key="frame" x="123" y="3" width="245" height="77"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="PostTableViewHeadlines" destination="Gsi-2u-qUN" id="Rlv-Lr-EQG"/>
+                                            <outlet property="PostTableViewImage" destination="Pxa-gC-7O3" id="X4J-TH-JeH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" title="AV News" id="KXc-7Q-vwh">
@@ -1239,16 +1216,20 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="NewsFeedMiscHomeButton" destination="Des-Vi-obg" id="Dgh-mE-emq"/>
+                        <outlet property="NewsFeedMiscTableView" destination="oqL-dH-VGd" id="ttf-ES-K1o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Su-B1-sy4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3033.75" y="1033.8499999999999"/>
+            <point key="canvasLocation" x="3033.5" y="1033.5"/>
         </scene>
         <!--Misc Navbar-->
         <scene sceneID="f2P-Tl-0vb">
             <objects>
                 <navigationController title="Misc Navbar" automaticallyAdjustsScrollViewInsets="NO" id="YEn-Zv-9dy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="zYM-Te-hkG"/>
+                    <tabBarItem key="tabBarItem" title="Misc" id="zYM-Te-hkG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oPO-pQ-PvW">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

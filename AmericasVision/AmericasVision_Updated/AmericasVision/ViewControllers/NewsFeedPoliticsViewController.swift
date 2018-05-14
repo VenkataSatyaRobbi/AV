@@ -31,27 +31,28 @@ class NewsFeedPoliticsViewController: UIViewController {
         loadPosts()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        sideMenus()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        sideMenus()
+//    }
     
     
-    let AVPostRef = Database.database().reference().child("posts")
-    var postID: String!
-    @IBAction func NewsFeedPoliticsLikeButton_Clicked(_ sender: Any) {
-        AVPostRef.child(self.postID).observeSingleEvent(of: .value) { (snapshot) in
-            if let likes = snapshot.value as? [String : AnyObject] {
-                // to do code here
-            }
-        }
-        
-    }
     
-    @IBAction func NewsFeedPoliticsDislikeButton_Clicked(_ sender: Any) {
-    }
-    
-    @IBAction func NewsFeedPoliticsCommentsButton_Clicked(_ sender: Any) {
-    }
+//    var postID: String!
+//    @IBAction func NewsFeedPoliticsLikeButton_Clicked(_ sender: Any) {
+//        let AVPostRef = Database.database().reference().child("posts").childByAutoId()
+//        print("post ref ID....\(AVPostRef)")
+//        AVPostRef.child(self.postID).observeSingleEvent(of: .value) { (snapshot) in
+//            if let likes = snapshot.value as? [String : AnyObject] {
+//                // to do code here
+//            }
+//        }
+//    }
+//
+//    @IBAction func NewsFeedPoliticsDislikeButton_Clicked(_ sender: Any) {
+//    }
+//
+//    @IBAction func NewsFeedPoliticsCommentsButton_Clicked(_ sender: Any) {
+//    }
     
 
     func loadPosts(){
@@ -65,7 +66,9 @@ class NewsFeedPoliticsViewController: UIViewController {
                 let postLikesInt = dict["likes"] as! NSNumber
                 let postDislikesInt = dict["dislikes"] as! NSNumber
                 let postCommentsInt = dict["comments"] as! NSNumber
-                let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt)
+                let postIDString = dict["postID"] as! String
+                let useridString = dict["userid"] as! String
+                let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt,postIDString: postIDString, useridString: useridString)
                 self.posts.append(post)
                 //print("loading posts..")
                 //print(self.posts)
@@ -98,12 +101,14 @@ extension NewsFeedPoliticsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let item = NewsFeedPoliticsCollectionView.dequeueReusableCell(withReuseIdentifier: "PostCollectionViewCell", for: indexPath) as! PostCollectionViewCell
-        item.PostCollectionViewContent.isScrollEnabled = false;//
+        item.PostCollectionViewContent.isScrollEnabled = false
         item.PostCollectionViewContent.text  = posts[indexPath.item].caption
         item.PostCollectionViewHeadlines.text = posts[indexPath.item].postTitle
         item.PostCollectionViewLikes.text = "\(posts[indexPath.item].postLikes)"
         item.PostCollectionViewDislikes.text = "\(posts[indexPath.item].postDislikes)"
         item.PostCollectionViewComments.text = "\(posts[indexPath.item].postComments)"
+        item.postID = self.posts[indexPath.item].postID
+        //print("postid for the item...\(self.posts[indexPath.item].postID)")
         
         let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
         AVPostStorageRef.downloadURL { (url, error) in

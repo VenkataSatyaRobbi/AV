@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseStorage
 import FirebaseDatabase
+import FirebaseAuth
 
 class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -20,6 +21,7 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet weak var PhotoAdmin: UIImageView!
     var PostSelectedPhoto: UIImage?
     var selectedPostCategory: String?
+    //let postID = UUID().uuidString
     
     let PostCategory = ["Select Category","Category1","Category2","Category3","Category4"]
     
@@ -130,7 +132,7 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
         let AVDBpostsref = AVDBref.child("posts")
         let newPostId = AVDBpostsref.childByAutoId().key
         let AVDBnewpostref = AVDBpostsref.child(newPostId)
-        AVDBnewpostref.setValue(["photoUrl": photoUrl, "title": PostTitle.text!, "caption": PhotoCaptionAdmin.text!, "category": selectedPostCategory ?? "Category4", "likes": 0, "dislikes": 0, "comments": 0], withCompletionBlock: {
+        AVDBnewpostref.setValue(["photoUrl": photoUrl, "title": PostTitle.text!, "caption": PhotoCaptionAdmin.text!, "category": selectedPostCategory ?? "Category4", "userid": (Auth.auth().currentUser?.uid)!, "postID": newPostId, "likes": 0, "dislikes": 0, "comments": 0], withCompletionBlock: {
             (error, ref) in
             if error != nil{
                 ProgressHUD.showError(error!.localizedDescription)
