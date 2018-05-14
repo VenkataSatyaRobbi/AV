@@ -25,7 +25,7 @@ class SignInViewController: UIViewController {
         emailField.tintColor = UIColor.white
         emailField.attributedPlaceholder = NSAttributedString(string: emailField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 1)])
         let bottomLayerEmail = CALayer()
-        bottomLayerEmail.frame = CGRect(x: 0, y: 44, width: self.view.frame.size.width - 40 , height: 1)
+        bottomLayerEmail.frame = CGRect(x: 0, y: 65, width: self.view.frame.size.width - 40 , height: 1)
         bottomLayerEmail.backgroundColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1).cgColor
         emailField.layer.addSublayer(bottomLayerEmail)
         
@@ -33,9 +33,15 @@ class SignInViewController: UIViewController {
         passwordField.tintColor = UIColor.white
         passwordField.attributedPlaceholder = NSAttributedString(string: passwordField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 1)])
         let bottomLayerPassword = CALayer()
-        bottomLayerPassword.frame = CGRect(x: 0, y: 44, width: self.view.frame.size.width - 40 , height: 1)
+        bottomLayerPassword.frame = CGRect(x: 0, y: 40, width: self.view.frame.size.width - 40 , height: 1)
         bottomLayerPassword.backgroundColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1).cgColor
         passwordField.layer.addSublayer(bottomLayerPassword)
+        
+        signInButton.layer.cornerRadius = 5.0
+        signInButton.clipsToBounds = true
+        
+        SignInwFBButton.layer.cornerRadius = 5.0
+        SignInwFBButton.clipsToBounds = true
         
         signInButton.isEnabled = false
         checkTextField()

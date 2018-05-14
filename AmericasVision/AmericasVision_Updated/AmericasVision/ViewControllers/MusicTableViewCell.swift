@@ -10,11 +10,20 @@ import UIKit
 
 class MusicTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var MusicTableImage: UIImageView!
+    @IBOutlet weak var MusicTableHeadlines: UITextView!
+    @IBOutlet weak var MusicTablebg: UIView!
+    @IBOutlet weak var MusicScrollview: UIScrollView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        MusicTableImage.layer.cornerRadius = 5.0
+        MusicTableImage.clipsToBounds = true
+        MusicTablebg.layer.cornerRadius = 5.0
+        MusicTablebg.clipsToBounds = true
+        
     }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
