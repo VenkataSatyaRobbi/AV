@@ -33,7 +33,7 @@ class SignInViewController: UIViewController {
         passwordField.tintColor = UIColor.white
         passwordField.attributedPlaceholder = NSAttributedString(string: passwordField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 1)])
         let bottomLayerPassword = CALayer()
-        bottomLayerPassword.frame = CGRect(x: 0, y: 40, width: self.view.frame.size.width - 40 , height: 1)
+        bottomLayerPassword.frame = CGRect(x: 0, y: 30, width: self.view.frame.size.width - 40 , height: 1)
         bottomLayerPassword.backgroundColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1).cgColor
         passwordField.layer.addSublayer(bottomLayerPassword)
         

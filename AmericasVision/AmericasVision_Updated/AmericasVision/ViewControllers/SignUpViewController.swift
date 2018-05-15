@@ -83,6 +83,8 @@ class SignUpViewController: UIViewController {
         let profilePhotoTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.selectProfileImage))
         ProfilePlaceHolderImage.addGestureRecognizer(profilePhotoTapGesture)
         ProfilePlaceHolderImage.isUserInteractionEnabled = true
+        SignUpButton.layer.cornerRadius = 5.0
+        SignUpButton.clipsToBounds = true
         
         SignUpButton.isEnabled = false
         checkTextField()

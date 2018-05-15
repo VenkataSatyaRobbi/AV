@@ -22,7 +22,8 @@ class MusicTableViewCell: UITableViewCell {
         MusicTableImage.clipsToBounds = true
         MusicTablebg.layer.cornerRadius = 5.0
         MusicTablebg.clipsToBounds = true
-        
+         self.MusicScrollview.contentSize.height = 1.0
+        MusicScrollview.isScrollEnabled = true
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
