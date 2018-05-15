@@ -19,6 +19,14 @@ class PostCollectionViewCell: UICollectionViewCell {
     
     var postID: String!
     
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        PostCollectionViewImage.layer.cornerRadius = 5.0
+        PostCollectionViewImage.clipsToBounds = true
+    }
+    
     @IBAction func postCollectionViewLikeButtonClicked(_ sender: Any) {
         Database.database().reference().child("posts").child(self.postID).child("likes").runTransactionBlock({
             (currentData: MutableData!) in

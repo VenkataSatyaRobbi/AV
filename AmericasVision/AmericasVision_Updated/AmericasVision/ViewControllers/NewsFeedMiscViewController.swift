@@ -30,11 +30,6 @@ class NewsFeedMiscViewController: UIViewController {
         sideMenus()
         loadPosts()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func sideMenus(){
         if revealViewController() != nil {
@@ -47,7 +42,6 @@ class NewsFeedMiscViewController: UIViewController {
 
     func loadPosts(){
         Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Category4").observe(.childAdded) { (snapshot: DataSnapshot) in
-            //print(snapshot.value)
             if let dict = snapshot.value as? [String: Any] {
                 let captionText = dict["caption"] as! String
                 let photoUrlString = dict["photoUrl"] as! String
@@ -60,8 +54,6 @@ class NewsFeedMiscViewController: UIViewController {
                 let useridString = dict["userid"] as! String
                 let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt,postIDString: postIDString, useridString: useridString)
                 self.posts.append(post)
-                //print("loading posts..")
-                //print(self.posts)
                 self.NewsFeedMiscTableView.reloadData()
             }
         }
@@ -80,9 +72,10 @@ extension NewsFeedMiscViewController: UITableViewDataSource,UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-        let row = NewsFeedMiscTableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
+        let newsRow = NewsFeedMiscTableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
 
-        row.PostTableViewHeadlines.text = posts[indexPath.item].postTitle
+        newsRow.PostTableViewHeadlines.text = posts[indexPath.item].postTitle
+        newsRow.PostTableViewHeadlines.isScrollEnabled = false
 
         let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
         AVPostStorageRef.downloadURL { (url, error) in
@@ -98,11 +91,10 @@ extension NewsFeedMiscViewController: UITableViewDataSource,UITableViewDelegate 
                 guard let imageData = UIImage(data: data!) else { return }
                 DispatchQueue.main.async {
                     print(imageData)
-                    row.PostTableViewImage.image = imageData
+                    newsRow.PostTableViewImage.image = imageData
                 }
-                
             }).resume()
         }
-        return row
+        return newsRow
         }
 }

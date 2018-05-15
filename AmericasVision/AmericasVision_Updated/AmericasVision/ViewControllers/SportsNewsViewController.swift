@@ -180,6 +180,10 @@ class SportsNewsViewController: UIViewController ,UICollectionViewDelegate,UICol
         if collectionView == self.SportsNewsCollectionView {
             let item = SportsNewsCollectionView.dequeueReusableCell(withReuseIdentifier: "PostCollectionViewCell", for: indexPath) as! PostCollectionViewCell
             
+            item.layer.borderColor = UIColor(red: 48/255, green: 106/255, blue: 148/255, alpha: 1).cgColor
+            item.layer.borderWidth = 1
+            
+            item.PostCollectionViewHeadlines.isScrollEnabled = false
             //        item.PostCollectionViewContent.isScrollEnabled = false;
             //        item.PostCollectionViewContent.text  = posts[indexPath.item].caption
             item.PostCollectionViewHeadlines.text = posts[indexPath.item].postTitle
@@ -209,7 +213,11 @@ class SportsNewsViewController: UIViewController ,UICollectionViewDelegate,UICol
         else {
             let item1 = SportsNewsCollectionView1.dequeueReusableCell(withReuseIdentifier: "PostCollectionViewCell", for: indexPath) as! PostCollectionViewCell
             
+//            item1.layer.borderColor = UIColor(red: 48/255, green: 106/255, blue: 148/255, alpha: 1).cgColor
+//            item1.layer.borderWidth = 1
+            
             item1.PostCollectionViewContent.isScrollEnabled = false
+            item1.PostCollectionViewHeadlines.isScrollEnabled = false
             item1.PostCollectionViewContent.text  = posts[indexPath.item].caption
             item1.PostCollectionViewHeadlines.text = posts[indexPath.item].postTitle
             item1.PostCollectionViewLikes.text = "\(posts[indexPath.item].postLikes)"
