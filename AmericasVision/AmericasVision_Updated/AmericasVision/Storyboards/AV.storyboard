@@ -279,10 +279,10 @@
                                                     <rect key="frame" x="15" y="6" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ydj-ew-fjt">
-                                                    <rect key="frame" x="65" y="11" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ydj-ew-fjt">
+                                                    <rect key="frame" x="65" y="11" width="159" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -316,7 +316,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVg-da-H5w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-679.375" y="-1740.8699999999999"/>
+            <point key="canvasLocation" x="-679.5" y="-1741.5"/>
         </scene>
         <!--Votes-->
         <scene sceneID="iJl-SH-fOA">
@@ -721,7 +721,7 @@
                                                 </button>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.85020268910571695" green="0.90564576503127547" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <connections>
                                             <outlet property="PostCollectionViewComments" destination="N6T-zm-pRN" id="CNJ-Ni-Ww3"/>
                                             <outlet property="PostCollectionViewContent" destination="FLn-Bu-qdQ" id="Wh2-Vs-BMa"/>
@@ -881,7 +881,7 @@
                                                         </button>
                                                     </subviews>
                                                 </view>
-                                                <color key="backgroundColor" red="0.85020268909999996" green="0.90564576500000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <connections>
                                                     <outlet property="PostCollectionViewComments" destination="yAu-dg-Rkr" id="eAI-kX-FJh"/>
                                                     <outlet property="PostCollectionViewContent" destination="1Gu-NU-EFn" id="hwJ-kE-9hH"/>
@@ -1094,8 +1094,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="WEj-bR-yfJ">
-                                <rect key="frame" x="0.0" y="244" width="375" height="374"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <rect key="frame" x="0.0" y="276" width="375" height="344"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="Oj3-Zf-kqa">
                                     <size key="itemSize" width="375" height="213"/>
@@ -1188,7 +1188,7 @@
                                                 </button>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.85020268909999996" green="0.90564576500000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <connections>
                                             <outlet property="PostCollectionViewComments" destination="iUB-bb-yPG" id="QKF-YU-SeT"/>
                                             <outlet property="PostCollectionViewContent" destination="XGy-YK-XmB" id="Zax-U7-42y"/>
@@ -1656,7 +1656,7 @@
         <image name="photo" width="23" height="18"/>
         <image name="politics" width="23" height="23"/>
         <image name="politicsselected" width="23" height="23"/>
-        <image name="portrait" width="750" height="1334"/>
+        <image name="portrait" width="640" height="1136"/>
         <image name="profilephotoplaceholder" width="396" height="355"/>
         <image name="public" width="25" height="22"/>
         <image name="publicselected" width="21" height="18"/>
@@ -1665,7 +1665,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7ZG-5w-bDR"/>
-        <segue reference="uSu-Wk-DPX"/>
+        <segue reference="vhs-nr-zxy"/>
         <segue reference="PJU-NC-kYU"/>
     </inferredMetricsTieBreakers>
 </document>
