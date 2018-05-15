@@ -18,6 +18,12 @@ class NewsFeedPoliticsViewController: UIViewController {
     
     var posts = [Post]()
     
+//    var selectedIndexPath: NSIndexPath! {
+//        didSet{
+//            self.NewsFeedPoliticsCollectionView.reloadData()
+//        }
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -92,16 +98,42 @@ class NewsFeedPoliticsViewController: UIViewController {
     }
 }
 
-extension NewsFeedPoliticsViewController: UICollectionViewDataSource {
+extension NewsFeedPoliticsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 230)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let item = NewsFeedPoliticsCollectionView.dequeueReusableCell(withReuseIdentifier: "PostCollectionViewCell", for: indexPath) as! PostCollectionViewCell
+        
+//        var borderColor: UIColor = UIColor.blue
+//        var borderWidth: CGFloat = 0
+        
+//        if indexPath == selectedIndexPath as IndexPath{
+//            borderColor = UIColor.brown
+//            borderWidth = 1 //or whatever you please
+//        }else{
+//            borderColor = UIColor.clear
+//            borderWidth = 0
+//        }
+        
+//        item.layer.borderColor = UIColor(red: 48/255, green: 106/255, blue: 148/255, alpha: 1).cgColor
+//        item.layer.borderWidth = 1
+        
         item.PostCollectionViewContent.isScrollEnabled = false
+        item.PostCollectionViewHeadlines.isScrollEnabled = false
         item.PostCollectionViewContent.text  = posts[indexPath.item].caption
         item.PostCollectionViewHeadlines.text = posts[indexPath.item].postTitle
         item.PostCollectionViewLikes.text = "\(posts[indexPath.item].postLikes)"

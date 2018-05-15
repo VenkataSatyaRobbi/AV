@@ -11,35 +11,45 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class NewsFeedEntertainmentViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDataSource {
+class NewsFeedEntertainmentViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var NewsFeedEntertainmentHomeButton: UIBarButtonItem!
     @IBOutlet weak var NewsFeedEntertainmentCollectionView: UICollectionView!
     @IBOutlet weak var NewsFeedScrollview: UIScrollView!
     @IBOutlet var label: UILabel!
     
+    @IBOutlet weak var NewsFeedPageContainerView: UIView!
+    
     var posts = [Post]()
     var latestNewsPosts = [Post]()
     
-    // let scrollView = UIScrollView(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.width,height: 300))
+    //let scrollView = UIScrollView(frame: CGRect(x:0, y:0, width:UIScreen.main.bounds.width,height:245 ))
+    var scrollView: UIScrollView! = nil
+    //let scrollView = UIScrollView(frame: CGRect(x:0,y: 10, width:UIScreen.main.bounds.width, height:300))
     
-    let scrollView = UIScrollView(frame: CGRect(x:0,y: 10, width:UIScreen.main.bounds.width, height:300))
-    
-    var frame: CGRect = CGRect(x:0, y:0, width:0, height:0)
-    var pageControl : UIPageControl = UIPageControl(frame: CGRect(x:50,y: 300, width:200, height:50))
+    var frame: CGRect = CGRect(x:0, y:0, width:0 , height:0)
+    var pageControl: UIPageControl! = nil
+    //var pageControl : UIPageControl = UIPageControl(frame: CGRect(x:50,y: 300, width:200, height:50))
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scrollView = UIScrollView(frame: CGRect(x:0, y:27+20+(self.navigationController?.navigationBar.frame.height)!, width:UIScreen.main.bounds.width, height:self.NewsFeedPageContainerView.frame.height ))
+        pageControl = UIPageControl(frame: CGRect(x:self.NewsFeedPageContainerView.bounds.maxX/2 - 100, y: self.NewsFeedPageContainerView.frame.height - 30, width:200, height:30))
+        //pageControl = UIPageControl(frame: CGRect(x:50,y: 300, width:200, height:50))
         
         configurePageControl()
         view.backgroundColor = UIColor.white
         NewsFeedEntertainmentCollectionView.isHidden = false
         NewsFeedEntertainmentCollectionView.dataSource = self
         
+        print("collection view width...\(NewsFeedEntertainmentCollectionView.frame.width)")
+        print("UIScreen width...\(UIScreen.main.bounds.width)")
+        
         view.backgroundColor = UIColor.white
         
-        NewsFeedScrollview.delegate = self as? UIScrollViewDelegate
-        NewsFeedScrollview .isScrollEnabled = true
+        scrollView.delegate = self as? UIScrollViewDelegate
+        scrollView .isScrollEnabled = true
         
         sideMenus()
         loadLatestNewsPosts()
@@ -137,7 +147,6 @@ class NewsFeedEntertainmentViewController: UIViewController, UIScrollViewDelegat
     }
     
     
-    
     func setImagesInPageView() {
         //print("inside setImagesForPageView")
         for index in 0..<latestNewsPosts.count {
@@ -168,16 +177,20 @@ class NewsFeedEntertainmentViewController: UIViewController, UIScrollViewDelegat
                         self.frame.size = self.scrollView.frame.size
                         let subView = UIImageView(frame: self.frame)
                         subView.image = imageData
+                        subView.contentMode = UIViewContentMode.scaleToFill
                         self.scrollView.addSubview(subView)
                         
+                        self.NewsFeedPageContainerView.addSubview(self.scrollView)
                         
-                        let titleHeader = UILabel()
-                        titleHeader.text = "Latest News"
-                        let subView1 = UILabel(frame: self.frame)
-                        //
-                        subView1.text = titleHeader.text
-                        subView1.textColor = UIColor.white
-                        self.scrollView.addSubview(subView1)
+                        self.NewsFeedPageContainerView.bringSubview(toFront: self.scrollView)
+                        self.scrollView.bringSubview(toFront: subView)
+                        
+//                        let titleHeader = UILabel()
+//                        titleHeader.text = "Latest News"
+//                        let subView1 = UILabel(frame: self.frame)
+//                        subView1.text = titleHeader.text
+//                        subView1.textColor = UIColor.white
+//                        self.scrollView.addSubview(subView1)
                         
                         let title = UILabel()
                         title.text = "title of the latest news shown the below image with contant"
@@ -186,13 +199,15 @@ class NewsFeedEntertainmentViewController: UIViewController, UIScrollViewDelegat
                         subViewtitle.text = title.text
                         subViewtitle.textColor = UIColor.white
                         self.scrollView.addSubview(subViewtitle)
-                        
+                        self.NewsFeedPageContainerView.addSubview(self.scrollView)
                         // }
                     }
                 }).resume()
             }
         }
-        self.scrollView.contentSize = CGSize(width:self.scrollView.frame.size.width * 4 , height: self.scrollView.frame.size.height)
+        //let latestNewsCount: CGFloat = CGFloat(self.latestNewsPosts.count)
+        
+        self.scrollView.contentSize = CGSize(width:self.scrollView.frame.size.width * 6, height: self.scrollView.frame.size.height)
         
         self.pageControl.addTarget(self, action: #selector(self.changePage(sender:)), for: UIControlEvents.valueChanged)
     }
@@ -200,7 +215,7 @@ class NewsFeedEntertainmentViewController: UIViewController, UIScrollViewDelegat
     
     func configurePageControl() {
         // The total number of pages that are available is based on how many available colors we have.
-        self.pageControl.numberOfPages = 8
+        self.pageControl.numberOfPages = 6
         self.pageControl.currentPage = 0
         self.pageControl.tintColor = UIColor.red
         self.pageControl.pageIndicatorTintColor = UIColor.black
@@ -214,8 +229,11 @@ class NewsFeedEntertainmentViewController: UIViewController, UIScrollViewDelegat
         subViewtitle.text = title.text
         subViewtitle.textColor = UIColor.white
         self.pageControl.addSubview(subViewtitle)
+        self.pageControl.backgroundColor = .clear
         
-        self.view.addSubview(pageControl)
+        self.NewsFeedPageContainerView.addSubview(pageControl)
+        self.NewsFeedPageContainerView.bringSubview(toFront: pageControl)
+        
     }
     
     // MARK : TO CHANGE WHILE CLICKING ON PAGE CONTROL
@@ -241,32 +259,29 @@ class NewsFeedEntertainmentViewController: UIViewController, UIScrollViewDelegat
         
     }
     
-    //    override func viewWillAppear(_ animated: Bool) {
-    //        sideMenus()
-    //    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //    private func numberOfSections(in tableView: UITableView) -> Int {
-    //        // #warning Incomplete implementation, return the number of sections
-    //        return 0
-    //    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 230)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let item = NewsFeedEntertainmentCollectionView.dequeueReusableCell(withReuseIdentifier: "PostCollectionViewCell", for: indexPath) as! PostCollectionViewCell
+        
+//        item.layer.borderColor = UIColor(red: 48/255, green: 106/255, blue: 148/255, alpha: 1).cgColor
+//        item.layer.borderWidth = 1
+        
         item.PostCollectionViewContent.isScrollEnabled = false
+        item.PostCollectionViewHeadlines.isScrollEnabled = false
         item.PostCollectionViewContent.text  = posts[indexPath.item].caption
         item.PostCollectionViewHeadlines.text = posts[indexPath.item].postTitle
         item.PostCollectionViewLikes.text = "\(posts[indexPath.item].postLikes)"
