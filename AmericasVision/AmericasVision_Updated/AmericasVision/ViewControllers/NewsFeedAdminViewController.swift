@@ -19,6 +19,9 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet weak var CancelAdminButton: UIBarButtonItem!
     @IBOutlet weak var PostTitle: UITextField!
     @IBOutlet weak var PhotoAdmin: UIImageView!
+    @IBOutlet weak var NewsLocationAdmin: UITextField!
+    @IBOutlet weak var NewsContentAdmin: UITextView!
+    @IBOutlet weak var PhotoCourtesyAdmin: UITextView!
     var PostSelectedPhoto: UIImage?
     var selectedPostCategory: String?
     //let postID = UUID().uuidString
@@ -31,6 +34,20 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
         PhotoAdmin.addGestureRecognizer(PostTapGesture)
         PhotoAdmin.isUserInteractionEnabled = true
         // Do any additional setup after loading the view.
+        
+        
+        print(convertTimestamp(serverTimestamp: 1526426690527))
+
+    }
+    
+    func convertTimestamp(serverTimestamp: Double) -> String {
+        let timestampInSec = serverTimestamp / 1000
+        let date = NSDate(timeIntervalSince1970: timestampInSec)
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .medium
+        
+        return formatter.string(from: date as Date)
     }
     
     @IBAction func CancelPostTouchUpInside(_ sender: UIBarButtonItem) {
@@ -132,7 +149,7 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
         let AVDBpostsref = AVDBref.child("posts")
         let newPostId = AVDBpostsref.childByAutoId().key
         let AVDBnewpostref = AVDBpostsref.child(newPostId)
-        AVDBnewpostref.setValue(["photoUrl": photoUrl, "title": PostTitle.text!, "caption": PhotoCaptionAdmin.text!, "category": selectedPostCategory ?? "Category4", "userid": (Auth.auth().currentUser?.uid)!, "postID": newPostId, "likes": 0, "dislikes": 0, "comments": 0], withCompletionBlock: {
+        AVDBnewpostref.setValue(["photoUrl": photoUrl, "title": PostTitle.text!, "caption": PhotoCaptionAdmin.text!, "category": selectedPostCategory ?? "Category4", "userid": (Auth.auth().currentUser?.uid)!, "postID": newPostId, "likes": 0, "dislikes": 0, "comments": 0, "timestamp": ServerValue.timestamp(), "photoCourtesy": PhotoCourtesyAdmin.text, "newsLocation": NewsLocationAdmin.text!, "newsContent": NewsContentAdmin.text!], withCompletionBlock: {
             (error, ref) in
             if error != nil{
                 ProgressHUD.showError(error!.localizedDescription)

@@ -27,6 +27,7 @@
 		D463910D2070377100C4E3DA /* AV.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D463910C2070377100C4E3DA /* AV.storyboard */; };
 		D463910F207037CB00C4E3DA /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D463910E207037CB00C4E3DA /* SignInViewController.swift */; };
 		D4639111207041D400C4E3DA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4639110207041D400C4E3DA /* SignUpViewController.swift */; };
+		D465157F20ABA8B30075A59C /* NewsDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D465157E20ABA8B30075A59C /* NewsDetailedViewController.swift */; };
 		D4761EAE207193E90065ACD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4761EAD207193E90065ACD7 /* GoogleService-Info.plist */; };
 		D4FA49DE207994C300CC425B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FA49DD207994C300CC425B /* SWRevealViewController.m */; };
 		D4FA49EE207AF0EC00CC425B /* ProfileMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA49ED207AF0EC00CC425B /* ProfileMenuViewController.swift */; };
@@ -75,6 +76,7 @@
 		D463910C2070377100C4E3DA /* AV.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AV.storyboard; sourceTree = "<group>"; };
 		D463910E207037CB00C4E3DA /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		D4639110207041D400C4E3DA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		D465157E20ABA8B30075A59C /* NewsDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailedViewController.swift; sourceTree = "<group>"; };
 		D4761EAD207193E90065ACD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4FA49DB207994C200CC425B /* AmericasVision-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AmericasVision-Bridging-Header.h"; sourceTree = "<group>"; };
 		D4FA49DC207994C300CC425B /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				D4639110207041D400C4E3DA /* SignUpViewController.swift */,
 				DC4A12B420A0E6A2007C4755 /* SportsNewsViewController.swift */,
 				D408D2E5209E71E3008DD80A /* VotesCollectionViewController.swift */,
+				D465157E20ABA8B30075A59C /* NewsDetailedViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				D43E5D3620A8F143000F0307 /* NewsFeedMiscViewController.swift in Sources */,
 				D408D2EA209E8622008DD80A /* ChatPrivateViewController.swift in Sources */,
 				D4FA4A022082FBF100CC425B /* Post.swift in Sources */,
+				D465157F20ABA8B30075A59C /* NewsDetailedViewController.swift in Sources */,
 				D4FA49F8207D0D7D00CC425B /* ProgressHUD.m in Sources */,
 				D408D2DE2095E5BB008DD80A /* PostCollectionViewCell.swift in Sources */,
 				D408D2E4209E706F008DD80A /* MarketPlaceCollectionViewController.swift in Sources */,

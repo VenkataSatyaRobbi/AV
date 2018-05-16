@@ -108,7 +108,11 @@ class NewsFeedEntertainmentViewController: UIViewController, UIScrollViewDelegat
                 let postCommentsInt = dict["comments"] as! NSNumber
                 let postIDString = dict["postID"] as! String
                 let useridString = dict["userid"] as! String
-                let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt, postIDString: postIDString, useridString: useridString)
+                let timestamp = dict["timestamp"] as! Double
+                let photoCourtesyString = dict["photoCourtesy"] as! String
+                let newsContentString = dict["newsContent"] as! String
+                let newsLocationString = dict["newsLocation"] as! String
+                let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt, postIDString: postIDString, useridString: useridString, timeStampDouble: timestamp, imageCourtesyString: photoCourtesyString, newsLocationString: newsLocationString, newsContentString: newsContentString)
                 self.posts.append(post)
                 print("loading posts..\(self.posts.count)")
                 print(self.posts)
@@ -133,7 +137,11 @@ class NewsFeedEntertainmentViewController: UIViewController, UIScrollViewDelegat
                 let postCommentsInt = dict["comments"] as! NSNumber
                 let postIDString = dict["postID"] as! String
                 let useridString = dict["userid"] as! String
-                let latestNewsPost = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt, postIDString: postIDString, useridString: useridString)
+                let timestamp = dict["timestamp"] as! Double
+                let photoCourtesyString = dict["photoCourtesy"] as! String
+                let newsContentString = dict["newsContent"] as! String
+                let newsLocationString = dict["newsLocation"] as! String
+                let latestNewsPost = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt, postIDString: postIDString, useridString: useridString, timeStampDouble: timestamp, imageCourtesyString: photoCourtesyString, newsLocationString: newsLocationString, newsContentString: newsContentString)
                 self.latestNewsPosts.append(latestNewsPost)
                 print("loading latest news posts..\(self.latestNewsPosts.count)")
                 print(self.latestNewsPosts)
@@ -280,13 +288,14 @@ class NewsFeedEntertainmentViewController: UIViewController, UIScrollViewDelegat
 //        item.layer.borderColor = UIColor(red: 48/255, green: 106/255, blue: 148/255, alpha: 1).cgColor
 //        item.layer.borderWidth = 1
         
-        item.PostCollectionViewContent.isScrollEnabled = false
+        item.PostCollectionViewCaption.isScrollEnabled = false
         item.PostCollectionViewHeadlines.isScrollEnabled = false
-        item.PostCollectionViewContent.text  = posts[indexPath.item].caption
+        item.PostCollectionViewCaption.text  = posts[indexPath.item].caption
         item.PostCollectionViewHeadlines.text = posts[indexPath.item].postTitle
-        item.PostCollectionViewLikes.text = "\(posts[indexPath.item].postLikes)"
-        item.PostCollectionViewDislikes.text = "\(posts[indexPath.item].postDislikes)"
-        item.PostCollectionViewComments.text = "\(posts[indexPath.item].postComments)"
+//        item.PostCollectionViewLikes.text = "\(posts[indexPath.item].postLikes)"
+//        item.PostCollectionViewDislikes.text = "\(posts[indexPath.item].postDislikes)"
+//        item.PostCollectionViewComments.text = "\(posts[indexPath.item].postComments)"
+        item.postID = self.posts[indexPath.item].postID
         
         let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
         AVPostStorageRef.downloadURL { (url, error) in

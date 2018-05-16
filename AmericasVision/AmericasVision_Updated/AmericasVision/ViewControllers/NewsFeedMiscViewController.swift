@@ -52,7 +52,11 @@ class NewsFeedMiscViewController: UIViewController {
                 let postCommentsInt = dict["comments"] as! NSNumber
                 let postIDString = dict["postID"] as! String
                 let useridString = dict["userid"] as! String
-                let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt,postIDString: postIDString, useridString: useridString)
+                let timestamp = dict["timestamp"] as! Double
+                let photoCourtesyString = dict["photoCourtesy"] as! String
+                let newsContentString = dict["newsContent"] as! String
+                let newsLocationString = dict["newsLocation"] as! String
+                let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt,postIDString: postIDString, useridString: useridString, timeStampDouble: timestamp, imageCourtesyString: photoCourtesyString, newsLocationString: newsLocationString, newsContentString: newsContentString)
                 self.posts.append(post)
                 self.NewsFeedMiscTableView.reloadData()
             }
@@ -74,8 +78,10 @@ extension NewsFeedMiscViewController: UITableViewDataSource,UITableViewDelegate 
     
         let newsRow = NewsFeedMiscTableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
 
-        newsRow.PostTableViewHeadlines.text = posts[indexPath.item].postTitle
+        newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
         newsRow.PostTableViewHeadlines.isScrollEnabled = false
+        newsRow.postID = self.posts[indexPath.row].postID
+        
 
         let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
         AVPostStorageRef.downloadURL { (url, error) in
