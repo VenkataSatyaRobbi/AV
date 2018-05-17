@@ -88,7 +88,11 @@ class SportsNewsViewController: UIViewController ,UICollectionViewDelegate,UICol
                 let postCommentsInt = dict["comments"] as! NSNumber
                 let postIDString = dict["postID"] as! String
                 let useridString = dict["userid"] as! String
-                let highlightPost = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt, postIDString: postIDString, useridString: useridString)
+                let timestamp = dict["timestamp"] as! Double
+                let photoCourtesyString = dict["photoCourtesy"] as! String
+                let newsContentString = dict["newsContent"] as! String
+                let newsLocationString = dict["newsLocation"] as! String
+                let highlightPost = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt, postIDString: postIDString, useridString: useridString, timeStampDouble: timestamp, imageCourtesyString: photoCourtesyString, newsLocationString: newsLocationString, newsContentString: newsContentString)
                 self.highlightPosts.append(highlightPost)
                 //print("loading posts..")
                 //print(self.posts)
@@ -110,7 +114,11 @@ class SportsNewsViewController: UIViewController ,UICollectionViewDelegate,UICol
                 let postCommentsInt = dict["comments"] as! NSNumber
                 let postIDString = dict["postID"] as! String
                 let useridString = dict["userid"] as! String
-                let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt, postIDString: postIDString, useridString: useridString)
+                let timestamp = dict["timestamp"] as! Double
+                let photoCourtesyString = dict["photoCourtesy"] as! String
+                let newsContentString = dict["newsContent"] as! String
+                let newsLocationString = dict["newsLocation"] as! String
+                let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt, postIDString: postIDString, useridString: useridString, timeStampDouble: timestamp, imageCourtesyString: photoCourtesyString, newsLocationString: newsLocationString, newsContentString: newsContentString)
                 self.posts.append(post)
                 //print("loading posts..")
                 //print(self.posts)
@@ -180,16 +188,17 @@ class SportsNewsViewController: UIViewController ,UICollectionViewDelegate,UICol
         if collectionView == self.SportsNewsCollectionView {
             let item = SportsNewsCollectionView.dequeueReusableCell(withReuseIdentifier: "PostCollectionViewCell", for: indexPath) as! PostCollectionViewCell
             
-            item.layer.borderColor = UIColor(red: 48/255, green: 106/255, blue: 148/255, alpha: 1).cgColor
-            item.layer.borderWidth = 1
+//            item.layer.borderColor = UIColor(red: 48/255, green: 106/255, blue: 148/255, alpha: 1).cgColor
+//            item.layer.borderWidth = 1
             
             item.PostCollectionViewHeadlines.isScrollEnabled = false
-            //        item.PostCollectionViewContent.isScrollEnabled = false;
-            //        item.PostCollectionViewContent.text  = posts[indexPath.item].caption
+            //        item.PostCollectionViewCaption.isScrollEnabled = false;
+            //        item.PostCollectionViewCaption.text  = posts[indexPath.item].caption
             item.PostCollectionViewHeadlines.text = posts[indexPath.item].postTitle
             //        item.PostCollectionViewLikes.text = "\(posts[indexPath.item].postLikes)"
             //        item.PostCollectionViewDislikes.text = "\(posts[indexPath.item].postDislikes)"
             //        item.PostCollectionViewComments.text = "\(posts[indexPath.item].postComments)"
+            item.postID = self.highlightPosts[indexPath.item].postID
             
             AVPostStorageRef.downloadURL { (url, error) in
                 if error != nil{
@@ -216,14 +225,15 @@ class SportsNewsViewController: UIViewController ,UICollectionViewDelegate,UICol
 //            item1.layer.borderColor = UIColor(red: 48/255, green: 106/255, blue: 148/255, alpha: 1).cgColor
 //            item1.layer.borderWidth = 1
             
-            item1.PostCollectionViewContent.isScrollEnabled = false
+            item1.PostCollectionViewCaption.isScrollEnabled = false
             item1.PostCollectionViewHeadlines.isScrollEnabled = false
-            item1.PostCollectionViewContent.text  = posts[indexPath.item].caption
+            item1.PostCollectionViewCaption.text  = posts[indexPath.item].caption
             item1.PostCollectionViewHeadlines.text = posts[indexPath.item].postTitle
-            item1.PostCollectionViewLikes.text = "\(posts[indexPath.item].postLikes)"
-            item1.PostCollectionViewDislikes.text = "\(posts[indexPath.item].postDislikes)"
-            item1.PostCollectionViewComments.text = "\(posts[indexPath.item].postComments)"
-        
+//            item1.PostCollectionViewLikes.text = "\(posts[indexPath.item].postLikes)"
+//            item1.PostCollectionViewDislikes.text = "\(posts[indexPath.item].postDislikes)"
+//            item1.PostCollectionViewComments.text = "\(posts[indexPath.item].postComments)"
+            item1.postID = self.posts[indexPath.item].postID
+            
             AVPostStorageRef.downloadURL { (url, error) in
                 if error != nil{
                     print(error?.localizedDescription as Any)

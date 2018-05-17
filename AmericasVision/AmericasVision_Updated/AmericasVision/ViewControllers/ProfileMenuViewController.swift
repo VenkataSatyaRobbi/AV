@@ -72,8 +72,12 @@ class ProfileMenuViewController: UIViewController, UITableViewDelegate, UITableV
         ProfileMenuCell.ProfileMenuImage.image = ProfileMenuImagesArray[indexPath.row]
         ProfileMenuCell.ProfileMenuOptionName.text = ProfileMenuOptionsArray[indexPath.row]
         ProfileMenuCell.ProfileMenuOptionName.font = UIFont.systemFont(ofSize: 14)
-        
+
         return ProfileMenuCell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

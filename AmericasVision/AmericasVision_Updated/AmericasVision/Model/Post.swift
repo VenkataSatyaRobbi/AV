@@ -17,8 +17,12 @@ class Post{
     var postComments: NSNumber
     var postID: String
     var userid: String
+    var timestamp: Double
+    var imageCourtesy: String
+    var newsLocation: String
+    var newsContent: String
     
-    init(captionText: String, photoUrlString: String, postCategoryString: String, postTitleString: String, postLikesInt: NSNumber, postDislikesInt: NSNumber, postCommentsInt: NSNumber, postIDString: String, useridString: String){
+    init(captionText: String, photoUrlString: String, postCategoryString: String, postTitleString: String, postLikesInt: NSNumber, postDislikesInt: NSNumber, postCommentsInt: NSNumber, postIDString: String, useridString: String, timeStampDouble: Double, imageCourtesyString: String, newsLocationString: String, newsContentString: String){
         caption = captionText
         photoUrl = photoUrlString
         postCategory = postCategoryString
@@ -28,6 +32,10 @@ class Post{
         postComments = postCommentsInt
         postID = postIDString
         userid = useridString
+        timestamp = timeStampDouble
+        imageCourtesy = imageCourtesyString
+        newsLocation = newsLocationString
+        newsContent = newsContentString
     }
     
 }

@@ -15,6 +15,8 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var PostTableViewbg: UIView!
     @IBOutlet weak var PostTablebutton: UIButton!
   
+    var postID: String!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
