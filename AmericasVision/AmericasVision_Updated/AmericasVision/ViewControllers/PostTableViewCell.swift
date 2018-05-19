@@ -24,9 +24,9 @@ class PostTableViewCell: UITableViewCell {
         PostTableViewImage.clipsToBounds = true
         PostTableViewHeadlines.layer.cornerRadius = 5.0
         PostTableViewHeadlines.clipsToBounds = true
-        PostTableViewbg.layer.cornerRadius = 10.0
-        PostTableViewbg.clipsToBounds = true
-        PostTablebutton.layer.cornerRadius = 5.0
-        PostTablebutton.clipsToBounds = true
+        //PostTableViewbg.layer.cornerRadius = 10.0
+       // PostTableViewbg.clipsToBounds = true
+       // PostTablebutton.layer.cornerRadius = 5.0
+       // PostTablebutton.clipsToBounds = true
     }
 }
