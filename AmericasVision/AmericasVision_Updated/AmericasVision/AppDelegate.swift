@@ -23,10 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = UIColor(displayP3Red: 70/255, green: 146/255, blue: 250/255, alpha: 1)
         UITabBar.appearance().barTintColor = UIColor.white
         //UINavigationBar.appearance().barTintColor = UIColor(red: 51/255, green: 90/255, blue: 149/255, alpha: 1)
-        UINavigationBar.appearance().barTintColor = UIColor(red: 48/255, green: 106/255, blue: 148/255, alpha: 1)
-        UINavigationBar.appearance().tintColor = UIColor.white
-        application.statusBarStyle = .lightContent
+        UINavigationBar.appearance().barTintColor = UIColor(red: 0/255, green: 180/255, blue: 210/255, alpha: 1)
         
+       
+        UINavigationBar.appearance().tintColor = UIColor.white
+        
+      //  application.statusBarStyle = .lightContent
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
         FirebaseApp.configure()
         //FBSDKLoginButton.classForCoder()

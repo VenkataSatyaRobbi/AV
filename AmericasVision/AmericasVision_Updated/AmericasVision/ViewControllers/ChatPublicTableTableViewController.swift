@@ -29,7 +29,6 @@ class ChatPublicTableTableViewController: UITableViewController {
     }
     
     func sideMenus(){
-        
         if revealViewController() != nil {
             ChatPublicHomeButton.target = revealViewController()
             ChatPublicHomeButton.action = #selector(SWRevealViewController.revealToggle(_:))
@@ -40,13 +39,9 @@ class ChatPublicTableTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 0
     }
 

@@ -92,11 +92,11 @@ class SignInViewController: UIViewController {
     
     @objc func textFieldDidChange(){
         guard let emailValue = emailField.text, !emailValue.isEmpty, let passwordValue = passwordField.text, !passwordValue.isEmpty else {
-            signInButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
+           // signInButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
             signInButton.isEnabled = false
             return
         }
-        signInButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+       // signInButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         signInButton.isEnabled = true
     }
     

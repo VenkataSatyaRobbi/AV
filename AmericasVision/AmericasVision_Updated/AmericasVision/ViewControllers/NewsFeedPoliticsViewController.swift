@@ -32,7 +32,7 @@ class NewsFeedPoliticsViewController: UIViewController {
         NewsFeedPoliticsCollectionView.dataSource = self
         
         view.backgroundColor = UIColor.white
-        
+  
         sideMenus()
         loadPosts()
     }
