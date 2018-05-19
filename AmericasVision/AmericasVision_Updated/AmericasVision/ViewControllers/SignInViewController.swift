@@ -17,7 +17,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     
     @IBOutlet weak var SignInwFBButton: FBSDKLoginButton!
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +42,8 @@ class SignInViewController: UIViewController {
         
         SignInwFBButton.layer.cornerRadius = 5.0
         SignInwFBButton.clipsToBounds = true
-        
+       SignInwFBButton.titleLabel?.font =  UIFont(name: "HelveticaNeue-regular", size: 18)
+      
         signInButton.isEnabled = false
         checkTextField()
         
