@@ -673,7 +673,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <navigationItem key="navigationItem" title="AV News" id="PhE-bk-ePI">
+                    <navigationItem key="navigationItem" title="Politics News" id="PhE-bk-ePI">
                         <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="ebh-gJ-FE2"/>
                         <barButtonItem key="rightBarButtonItem" title="Admin" image="adminconsole" landscapeImage="adminconsole" largeContentSizeImage="adminconsole" id="KI6-pF-doI">
                             <connections>
@@ -797,7 +797,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SlideCollectionViewCell" id="USX-Nk-dck" customClass="SlideCollectionViewCell" customModule="AmericasVision" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="1" width="142" height="110"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="142" height="110"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="142" height="110"/>
@@ -897,7 +897,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <navigationItem key="navigationItem" title="AV News" id="pRJ-Lk-tUN">
+                    <navigationItem key="navigationItem" title="Entertainment News" id="pRJ-Lk-tUN">
                         <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="0EF-On-ZHL"/>
                         <barButtonItem key="rightBarButtonItem" title="Admin" image="adminconsole" landscapeImage="adminconsole" largeContentSizeImage="adminconsole" id="Unh-03-9xk">
                             <connections>
@@ -946,7 +946,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="SlideCollectionViewCell" id="E9M-Mr-6SA" customClass="SlideCollectionViewCell" customModule="AmericasVision" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="1" width="142" height="110"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="142" height="110"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="142" height="110"/>
@@ -1046,7 +1046,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <navigationItem key="navigationItem" id="6LD-Nj-IXx">
+                    <navigationItem key="navigationItem" title="Sports News" id="6LD-Nj-IXx">
                         <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="v8D-Jy-RVA"/>
                         <barButtonItem key="rightBarButtonItem" title="Admin" image="adminconsole" landscapeImage="adminconsole" largeContentSizeImage="adminconsole" id="pGn-ta-gKt"/>
                     </navigationItem>
@@ -1285,7 +1285,7 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="AV News" id="KXc-7Q-vwh">
+                    <navigationItem key="navigationItem" title="Miscellaneous News" id="KXc-7Q-vwh">
                         <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="Des-Vi-obg"/>
                         <barButtonItem key="rightBarButtonItem" title="Admin" image="adminconsole" landscapeImage="adminconsole" largeContentSizeImage="adminconsole" id="tX2-lx-lg0">
                             <connections>
@@ -1647,7 +1647,7 @@
         <image name="sportsselected" width="19" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mvl-b6-vqv"/>
+        <segue reference="AdX-wD-48h"/>
         <segue reference="vhs-nr-zxy"/>
         <segue reference="hcy-jX-dv6"/>
     </inferredMetricsTieBreakers>
