@@ -79,6 +79,7 @@ class MusicByAlbumTableViewController: UITableViewController {
         
         if row == 0 {
              let cell = tableView.dequeueReusableCell(withIdentifier: "MusicTableViewCell", for: indexPath) as! MusicTableViewCell
+            
             return cell
         }else{
         let cell = tableView.dequeueReusableCell(withIdentifier: "MusicTableViewCell1", for: indexPath) as! MusicTableViewCell
@@ -88,3 +89,4 @@ class MusicByAlbumTableViewController: UITableViewController {
     }
     
 }
+

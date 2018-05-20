@@ -20,7 +20,6 @@
 		D408D2F2209E903D008DD80A /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2F1209E903D008DD80A /* MyProfileViewController.swift */; };
 		D43E5D3420A8F0B2000F0307 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43E5D3320A8F0B2000F0307 /* PostTableViewCell.swift */; };
 		D43E5D3620A8F143000F0307 /* NewsFeedMiscViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43E5D3520A8F143000F0307 /* NewsFeedMiscViewController.swift */; };
-		D461894B20A7BA7A0020F293 /* NewsFeedEntertainmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D461894A20A7BA7A0020F293 /* NewsFeedEntertainmentViewController.swift */; };
 		D46390FB207036F300C4E3DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46390FA207036F300C4E3DA /* AppDelegate.swift */; };
 		D4639102207036F300C4E3DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4639101207036F300C4E3DA /* Assets.xcassets */; };
 		D4639105207036F300C4E3DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4639103207036F300C4E3DA /* LaunchScreen.storyboard */; };
@@ -43,12 +42,15 @@
 		D4FA4A0E208822BF00CC425B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA4A0B208822BF00CC425B /* Bolts.framework */; };
 		D4FA4A0F208822BF00CC425B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA4A0C208822BF00CC425B /* FBSDKCoreKit.framework */; };
 		DC4A12B1209F2BD7007C4755 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */; };
-		DC4A12B520A0E6A2007C4755 /* SportsNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A12B420A0E6A2007C4755 /* SportsNewsViewController.swift */; };
+		DC953E9E20B1BCB700B7BB46 /* NewsFeedEntertainmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC953E9D20B1BCB700B7BB46 /* NewsFeedEntertainmentViewController.swift */; };
 		DCBEBC3820A786EE00E8EAEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3720A786ED00E8EAEA /* Constants.swift */; };
 		DCBEBC3A20A7871900E8EAEA /* ChatContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */; };
 		DCBEBC3C20A78BF200E8EAEA /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */; };
 		DCBEBC4120A78FCC00E8EAEA /* DBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC4020A78FCC00E8EAEA /* DBProvider.swift */; };
 		DCBEBC4320A83D1A00E8EAEA /* MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC4220A83D1A00E8EAEA /* MessageHandler.swift */; };
+		DCF8AB2820B1137C0064FF72 /* SlideCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF8AB2720B1137C0064FF72 /* SlideCollectionViewCell.swift */; };
+		DCF8AB2D20B1505F0064FF72 /* FeedsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF8AB2C20B1505F0064FF72 /* FeedsTableViewCell.swift */; };
+		DCF8AB2F20B1527E0064FF72 /* SportsNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF8AB2E20B1527E0064FF72 /* SportsNewsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +69,6 @@
 		D408D2F1209E903D008DD80A /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		D43E5D3320A8F0B2000F0307 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		D43E5D3520A8F143000F0307 /* NewsFeedMiscViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedMiscViewController.swift; sourceTree = "<group>"; };
-		D461894A20A7BA7A0020F293 /* NewsFeedEntertainmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedEntertainmentViewController.swift; sourceTree = "<group>"; };
 		D46390F7207036F300C4E3DA /* AmericasVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmericasVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46390FA207036F300C4E3DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4639101207036F300C4E3DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -95,12 +96,15 @@
 		D4FA4A0B208822BF00CC425B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		D4FA4A0C208822BF00CC425B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
-		DC4A12B420A0E6A2007C4755 /* SportsNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsNewsViewController.swift; sourceTree = "<group>"; };
+		DC953E9D20B1BCB700B7BB46 /* NewsFeedEntertainmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsFeedEntertainmentViewController.swift; path = "../../../../../../../Downloads/AV-AVUpdated/AmericasVision/AmericasVision_Updated/AmericasVision/ViewControllers/NewsFeedEntertainmentViewController.swift"; sourceTree = "<group>"; };
 		DCBEBC3720A786ED00E8EAEA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContactsViewController.swift; sourceTree = "<group>"; };
 		DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		DCBEBC4020A78FCC00E8EAEA /* DBProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBProvider.swift; sourceTree = "<group>"; };
 		DCBEBC4220A83D1A00E8EAEA /* MessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHandler.swift; sourceTree = "<group>"; };
+		DCF8AB2720B1137C0064FF72 /* SlideCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideCollectionViewCell.swift; sourceTree = "<group>"; };
+		DCF8AB2C20B1505F0064FF72 /* FeedsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsTableViewCell.swift; sourceTree = "<group>"; };
+		DCF8AB2E20B1527E0064FF72 /* SportsNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsNewsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +196,7 @@
 		D4FA49FD207D947D00CC425B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DCF8AB2C20B1505F0064FF72 /* FeedsTableViewCell.swift */,
 				DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */,
 				D408D2E9209E8622008DD80A /* ChatPrivateViewController.swift */,
 				D408D2EB209E8638008DD80A /* ChatPublicTableTableViewController.swift */,
@@ -199,10 +204,10 @@
 				D408D2EF209E8844008DD80A /* MusicByAlbumTableViewController.swift */,
 				D408D2ED209E8831008DD80A /* MusicByTrackTableViewController.swift */,
 				D408D2E1209E425B008DD80A /* MusicTableViewCell.swift */,
+				DC953E9D20B1BCB700B7BB46 /* NewsFeedEntertainmentViewController.swift */,
 				DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */,
 				D408D2F1209E903D008DD80A /* MyProfileViewController.swift */,
 				D4FA49FE2082AD9F00CC425B /* NewsFeedAdminViewController.swift */,
-				D461894A20A7BA7A0020F293 /* NewsFeedEntertainmentViewController.swift */,
 				D43E5D3520A8F143000F0307 /* NewsFeedMiscViewController.swift */,
 				D408D2E7209E8178008DD80A /* NewsFeedPoliticsViewController.swift */,
 				D408D2DD2095E5BB008DD80A /* PostCollectionViewCell.swift */,
@@ -211,9 +216,10 @@
 				D4FA49ED207AF0EC00CC425B /* ProfileMenuViewController.swift */,
 				D463910E207037CB00C4E3DA /* SignInViewController.swift */,
 				D4639110207041D400C4E3DA /* SignUpViewController.swift */,
-				DC4A12B420A0E6A2007C4755 /* SportsNewsViewController.swift */,
 				D408D2E5209E71E3008DD80A /* VotesCollectionViewController.swift */,
 				D465157E20ABA8B30075A59C /* NewsDetailedViewController.swift */,
+				DCF8AB2720B1137C0064FF72 /* SlideCollectionViewCell.swift */,
+				DCF8AB2E20B1527E0064FF72 /* SportsNewsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -370,10 +376,8 @@
 				D4FA49FF2082AD9F00CC425B /* NewsFeedAdminViewController.swift in Sources */,
 				D408D2F2209E903D008DD80A /* MyProfileViewController.swift in Sources */,
 				D4639111207041D400C4E3DA /* SignUpViewController.swift in Sources */,
-				D461894B20A7BA7A0020F293 /* NewsFeedEntertainmentViewController.swift in Sources */,
 				D4FA49DE207994C300CC425B /* SWRevealViewController.m in Sources */,
 				D4FA49F2207C5B3C00CC425B /* AVAuthService.swift in Sources */,
-				DC4A12B520A0E6A2007C4755 /* SportsNewsViewController.swift in Sources */,
 				D463910F207037CB00C4E3DA /* SignInViewController.swift in Sources */,
 				D408D2E2209E425B008DD80A /* MusicTableViewCell.swift in Sources */,
 				D43E5D3620A8F143000F0307 /* NewsFeedMiscViewController.swift in Sources */,
@@ -383,16 +387,20 @@
 				D4FA49F8207D0D7D00CC425B /* ProgressHUD.m in Sources */,
 				D408D2DE2095E5BB008DD80A /* PostCollectionViewCell.swift in Sources */,
 				D408D2E4209E706F008DD80A /* MarketPlaceCollectionViewController.swift in Sources */,
+				DCF8AB2F20B1527E0064FF72 /* SportsNewsViewController.swift in Sources */,
 				D46390FB207036F300C4E3DA /* AppDelegate.swift in Sources */,
 				DC4A12B1209F2BD7007C4755 /* MusicViewController.swift in Sources */,
 				D4FA49EE207AF0EC00CC425B /* ProfileMenuViewController.swift in Sources */,
+				DCF8AB2D20B1505F0064FF72 /* FeedsTableViewCell.swift in Sources */,
 				D408D2E8209E8178008DD80A /* NewsFeedPoliticsViewController.swift in Sources */,
+				DC953E9E20B1BCB700B7BB46 /* NewsFeedEntertainmentViewController.swift in Sources */,
 				D408D2EE209E8831008DD80A /* MusicByTrackTableViewController.swift in Sources */,
 				DCBEBC4320A83D1A00E8EAEA /* MessageHandler.swift in Sources */,
 				D408D2E6209E71E3008DD80A /* VotesCollectionViewController.swift in Sources */,
 				D4FA49F4207C6EA200CC425B /* PropertyConfig.swift in Sources */,
 				DCBEBC4120A78FCC00E8EAEA /* DBProvider.swift in Sources */,
 				DCBEBC3A20A7871900E8EAEA /* ChatContactsViewController.swift in Sources */,
+				DCF8AB2820B1137C0064FF72 /* SlideCollectionViewCell.swift in Sources */,
 				D408D2EC209E8638008DD80A /* ChatPublicTableTableViewController.swift in Sources */,
 				DCBEBC3C20A78BF200E8EAEA /* Contacts.swift in Sources */,
 			);

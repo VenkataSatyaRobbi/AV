@@ -1,8 +1,8 @@
 //
-//  SportsViewController.swift
+//  SportsNewsViewController.swift
 //  AmericasVision
 //
-//  Created by Mohan Dola on 08/05/18.
+//  Created by Mohan Dola on 20/05/18.
 //  Copyright © 2018 zeroGravity. All rights reserved.
 //
 
@@ -10,100 +10,33 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
-
-class SportsNewsViewController: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource{
+class SportsNewsViewController: UIViewController {
     
     @IBOutlet weak var homeButton: UIBarButtonItem!
-    @IBOutlet weak var SportsNewsCollectionView: UICollectionView!
-    @IBOutlet weak var SportsNewsCollectionView1: UICollectionView!
-    // @IBOutlet weak var NewsFeedScrollview: UIScrollView!
-    var highlightPosts = [Post]()
+    
+    @IBOutlet weak var sportstableview: UITableView!
+   
     var posts = [Post]()
-    
-    //    let scrollView = UIScrollView(frame: CGRect(x:0, y:0, width:320,height: 300))
-    //    var colors:[UIColor] = [UIColor.red, UIColor.blue, UIColor.green, UIColor.yellow]
-    //    var frame: CGRect = CGRect(x:0, y:0, width:0, height:0)
-    //    var pageControl : UIPageControl = UIPageControl(frame: CGRect(x:50,y: 300, width:200, height:50))
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        configurePageControl()
-        //        scrollView.delegate = self as? UIScrollViewDelegate
-        //        scrollView.isPagingEnabled = true
-        //        self.view.addSubview(scrollView)
-        //        for index in 0..<4 {
-        //            frame.origin.x = self.scrollView.frame.size.width * CGFloat(index)
-        //            frame.size = self.scrollView.frame.size
-        //            let subView = UIView(frame: frame)
-        //            subView.backgroundColor = colors[index]
-        //            self.scrollView .addSubview(subView)
-        //        }
-        //        self.scrollView.contentSize = CGSize(width:self.scrollView.frame.size.width * 4,height: self.scrollView.frame.size.height)
-        //        pageControl.addTarget(self, action: #selector(self.changePage(sender:)), for: UIControlEvents.valueChanged)
+        sportstableview.dataSource = self
+        sportstableview.delegate = self
         view.backgroundColor = UIColor.white
-        
-        SportsNewsCollectionView.isHidden = false
-        SportsNewsCollectionView.dataSource = self
-        
-        SportsNewsCollectionView1.isHidden = false
-        SportsNewsCollectionView1.dataSource = self
-        
-        //        NewsFeedScrollview.delegate = self as? UIScrollViewDelegate
-        //        NewsFeedScrollview .isScrollEnabled = true
-        
-        view.backgroundColor = UIColor.white
-        if let flowLayoutHighlights = SportsNewsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayoutHighlights.scrollDirection = .horizontal
-        }
-        
-        if let flowLayoutPosts = SportsNewsCollectionView1.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayoutPosts.scrollDirection = .vertical
-        }
-        
         sideMenus()
-        loadHighlightPosts()
         loadPosts()
     }
     
-//    let AVPostRef = Database.database().reference().child("posts")
-//    var postID: String!
-//    @IBAction func NewsFeedSportsLikeButton_Clicked(_ sender: Any) {
-//        AVPostRef.child(self.postID).observeSingleEvent(of: .value) { (snapshot) in
-//            if let likes = snapshot.value as? [String : AnyObject] {
-//                // to do code here
-//            }
-//        }
-//    }
-    
-    func loadHighlightPosts(){
-        Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Category3").queryLimited(toLast: 2).observe(.childAdded) { (snapshot: DataSnapshot) in
-            //print(snapshot.value)
-            if let dict = snapshot.value as? [String: Any] {
-                let captionText = dict["caption"] as! String
-                let photoUrlString = dict["photoUrl"] as! String
-                let postCategoryString = dict["category"] as! String
-                let postTitleString = dict["title"] as! String
-                let postLikesInt = dict["likes"] as! NSNumber
-                let postDislikesInt = dict["dislikes"] as! NSNumber
-                let postCommentsInt = dict["comments"] as! NSNumber
-                let postIDString = dict["postID"] as! String
-                let useridString = dict["userid"] as! String
-                let timestamp = dict["timestamp"] as! Double
-                let photoCourtesyString = dict["photoCourtesy"] as! String
-                let newsContentString = dict["newsContent"] as! String
-                let newsLocationString = dict["newsLocation"] as! String
-                let highlightPost = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt, postIDString: postIDString, useridString: useridString, timeStampDouble: timestamp, imageCourtesyString: photoCourtesyString, newsLocationString: newsLocationString, newsContentString: newsContentString)
-                self.highlightPosts.append(highlightPost)
-                //print("loading posts..")
-                //print(self.posts)
-                self.SportsNewsCollectionView.reloadData()
-            }
+    func sideMenus(){
+        if revealViewController() != nil {
+            homeButton.target = revealViewController()
+            homeButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            revealViewController().rearViewRevealWidth = 260
+            view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
     }
-    
     func loadPosts(){
         Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Category3").observe(.childAdded) { (snapshot: DataSnapshot) in
-            //print(snapshot.value)
             if let dict = snapshot.value as? [String: Any] {
                 let captionText = dict["caption"] as! String
                 let photoUrlString = dict["photoUrl"] as! String
@@ -120,139 +53,118 @@ class SportsNewsViewController: UIViewController ,UICollectionViewDelegate,UICol
                 let newsLocationString = dict["newsLocation"] as! String
                 let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt, postIDString: postIDString, useridString: useridString, timeStampDouble: timestamp, imageCourtesyString: photoCourtesyString, newsLocationString: newsLocationString, newsContentString: newsContentString)
                 self.posts.append(post)
-                //print("loading posts..")
-                //print(self.posts)
-                //self.SportsNewsCollectionView.reloadData()
-                self.SportsNewsCollectionView1.reloadData()
+                print("loading posts..\(self.posts.count)")
+                self.sportstableview.reloadData()
+                //                if (self.posts.count > 4){
+                //                    self.setImagesInPageView()
+                //                }
             }
         }
+        
     }
-    
-    
-    
-    //    func configurePageControl() {
-    //        // The total number of pages that are available is based on how many available colors we have.
-    //        self.pageControl.numberOfPages = colors.count
-    //        self.pageControl.currentPage = 0
-    //        self.pageControl.tintColor = UIColor.red
-    //        self.pageControl.pageIndicatorTintColor = UIColor.black
-    //        self.pageControl.currentPageIndicatorTintColor = UIColor.green
-    //        self.view.addSubview(pageControl)
-    //    }
-    
-    // MARK : TO CHANGE WHILE CLICKING ON PAGE CONTROL
-    //    @objc func changePage(sender: AnyObject) -> () {
-    //        let x = CGFloat(pageControl.currentPage) * scrollView.frame.size.width
-    //        scrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
-    //    }
-    //
-    //    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-    //        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
-    //        pageControl.currentPage = Int(pageNumber)
-    //    }
-    
-    func sideMenus(){
-        if revealViewController() != nil {
-            homeButton.target = revealViewController()
-            homeButton.action = #selector(SWRevealViewController.revealToggle(_:))
-            revealViewController().rearViewRevealWidth = 260
-            view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
-    }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        sideMenus()
-//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //    func numberOfSections(in tableView: UITableView) -> Int {
-    //        // #warning Incomplete implementation, return the number of sections
-    //        return 0
-    //    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == self.SportsNewsCollectionView {
-            return highlightPosts.count
-        }
-        else {return posts.count}
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
-        
-        if collectionView == self.SportsNewsCollectionView {
-            let item = SportsNewsCollectionView.dequeueReusableCell(withReuseIdentifier: "PostCollectionViewCell", for: indexPath) as! PostCollectionViewCell
-            
-//            item.layer.borderColor = UIColor(red: 48/255, green: 106/255, blue: 148/255, alpha: 1).cgColor
-//            item.layer.borderWidth = 1
-            
-            item.PostCollectionViewHeadlines.isScrollEnabled = false
-            //        item.PostCollectionViewCaption.isScrollEnabled = false;
-            //        item.PostCollectionViewCaption.text  = posts[indexPath.item].caption
-            item.PostCollectionViewHeadlines.text = posts[indexPath.item].postTitle
-            //        item.PostCollectionViewLikes.text = "\(posts[indexPath.item].postLikes)"
-            //        item.PostCollectionViewDislikes.text = "\(posts[indexPath.item].postDislikes)"
-            //        item.PostCollectionViewComments.text = "\(posts[indexPath.item].postComments)"
-            item.postID = self.highlightPosts[indexPath.item].postID
-            
-            AVPostStorageRef.downloadURL { (url, error) in
-                if error != nil{
-                    print(error?.localizedDescription as Any)
-                    return
-                }
-                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                    if error != nil {
-                        print(error?.localizedDescription as Any)
-                        return
-                    }
-                    guard let imageData = UIImage(data: data!) else { return }
-                    DispatchQueue.main.async {
-                        print(imageData)
-                        item.PostCollectionViewImage.image = imageData
-                    }
-                }).resume()
-            }
-            return item
-        }
-        else {
-            let item1 = SportsNewsCollectionView1.dequeueReusableCell(withReuseIdentifier: "PostCollectionViewCell", for: indexPath) as! PostCollectionViewCell
-            
-//            item1.layer.borderColor = UIColor(red: 48/255, green: 106/255, blue: 148/255, alpha: 1).cgColor
-//            item1.layer.borderWidth = 1
-            
-            item1.PostCollectionViewCaption.isScrollEnabled = false
-            item1.PostCollectionViewHeadlines.isScrollEnabled = false
-            item1.PostCollectionViewCaption.text  = posts[indexPath.item].caption
-            item1.PostCollectionViewHeadlines.text = posts[indexPath.item].postTitle
-//            item1.PostCollectionViewLikes.text = "\(posts[indexPath.item].postLikes)"
-//            item1.PostCollectionViewDislikes.text = "\(posts[indexPath.item].postDislikes)"
-//            item1.PostCollectionViewComments.text = "\(posts[indexPath.item].postComments)"
-            item1.postID = self.posts[indexPath.item].postID
-            
-            AVPostStorageRef.downloadURL { (url, error) in
-                if error != nil{
-                    print(error?.localizedDescription as Any)
-                    return
-                }
-                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                    if error != nil {
-                        print(error?.localizedDescription as Any)
-                        return
-                    }
-                    guard let imageData = UIImage(data: data!) else { return }
-                    DispatchQueue.main.async {
-                        print(imageData)
-                        item1.PostCollectionViewImage.image = imageData
-                    }
-                    
-                }).resume()
-            }
-            return item1
-        }
     }
 }
+
+extension SportsNewsViewController:UITableViewDataSource,UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return posts.count
+    }
+    
+    func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
+       let row = indexPath.row
+        if row == 0 {
+           return 165
+        }else{
+            return 200
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = indexPath.row
+        if row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FeedsTableViewCell", for: indexPath) as? FeedsTableViewCell
+            cell?.registerCollectoinView(datasource: self)
+            return cell!
+        }else{
+            let newsRow = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
+            
+           
+            
+             newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
+             newsRow.PostCollectionViewCaption.text = posts[indexPath.row].caption
+            newsRow.PostTableViewHeadlines.isScrollEnabled = false
+            newsRow.postID = self.posts[indexPath.row].postID
+            
+            
+            let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
+            AVPostStorageRef.downloadURL { (url, error) in
+                if error != nil{
+                    print(error?.localizedDescription as Any)
+                    return
+                }
+                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                    if error != nil {
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                    guard let imageData = UIImage(data: data!) else { return }
+                    DispatchQueue.main.async {
+                        print(imageData)
+                        newsRow.PostTableViewImage.image = imageData
+                    }
+                }).resume()
+            }
+            return newsRow
+        }
+        
+    }
+}
+    
+extension SportsNewsViewController:UICollectionViewDataSource,UICollectionViewDelegate{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+   
+          //  return 2
+        return 4
+    }
+   
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let row = indexPath.row
+        //if row < 2{
+            if row < 4{
+             print("fun the loading posts..\(self.posts.count)")
+           let newsRow = collectionView.dequeueReusableCell(withReuseIdentifier:"SlideCollectionViewCell", for: indexPath) as! SlideCollectionViewCell
+                newsRow.headlines.text = posts[indexPath.row].postTitle
+                let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
+                AVPostStorageRef.downloadURL { (url, error) in
+                    if error != nil{
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                    URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                        if error != nil {
+                            print(error?.localizedDescription as Any)
+                            return
+                        }
+                        guard let imageData = UIImage(data: data!) else { return }
+                        DispatchQueue.main.async {
+                            print(imageData)
+                            newsRow.cellImage.image = imageData
+                        }
+                    }).resume()
+                }
+                return newsRow
+        }else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"SlideCollectionViewCell", for: indexPath) as! SlideCollectionViewCell
+            return cell
+        }
+        
+    }
+}
+

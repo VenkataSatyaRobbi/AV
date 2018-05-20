@@ -14,7 +14,8 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var PostTableViewHeadlines: UITextView!
     @IBOutlet weak var PostTableViewbg: UIView!
     @IBOutlet weak var PostTablebutton: UIButton!
-  
+    @IBOutlet weak var collectionView: UICollectionView!
+   @IBOutlet weak var PostCollectionViewCaption: UITextView!
     var postID: String!
     
     override func awakeFromNib() {
@@ -24,9 +25,16 @@ class PostTableViewCell: UITableViewCell {
         PostTableViewImage.clipsToBounds = true
         PostTableViewHeadlines.layer.cornerRadius = 5.0
         PostTableViewHeadlines.clipsToBounds = true
-        //PostTableViewbg.layer.cornerRadius = 10.0
-       // PostTableViewbg.clipsToBounds = true
+     // PostCollectionViewCaption.layer.cornerRadius = 5.0
+     // PostCollectionViewCaption.clipsToBounds = true
+     //    PostCollectionViewCaption.isScrollEnabled = false
        // PostTablebutton.layer.cornerRadius = 5.0
        // PostTablebutton.clipsToBounds = true
     }
+    
+   func registerCollectoinView<DataSource:UICollectionViewDataSource>(datasource:DataSource){
+        self.collectionView.dataSource = datasource
+    }
+    
+   
 }
