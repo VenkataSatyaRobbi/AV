@@ -14,53 +14,28 @@ import FirebaseStorage
 class NewsFeedPoliticsViewController: UIViewController {
 
     @IBOutlet weak var NewsFeedPoliticsHomeButton: UIBarButtonItem!
-    @IBOutlet weak var NewsFeedPoliticsCollectionView: UICollectionView!
+     @IBOutlet weak var politicsTableView: UITableView!
     
     var posts = [Post]()
     
-//    var selectedIndexPath: NSIndexPath! {
-//        didSet{
-//            self.NewsFeedPoliticsCollectionView.reloadData()
-//        }
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        NewsFeedPoliticsCollectionView.isHidden = false
-        NewsFeedPoliticsCollectionView.dataSource = self
-        
+        politicsTableView.dataSource = self
+        politicsTableView.delegate = self
         view.backgroundColor = UIColor.white
-  
         sideMenus()
         loadPosts()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        sideMenus()
-//    }
-    
-    
-    
-//    var postID: String!
-//    @IBAction func NewsFeedPoliticsLikeButton_Clicked(_ sender: Any) {
-//        let AVPostRef = Database.database().reference().child("posts").childByAutoId()
-//        print("post ref ID....\(AVPostRef)")
-//        AVPostRef.child(self.postID).observeSingleEvent(of: .value) { (snapshot) in
-//            if let likes = snapshot.value as? [String : AnyObject] {
-//                // to do code here
-//            }
-//        }
-//    }
-//
-//    @IBAction func NewsFeedPoliticsDislikeButton_Clicked(_ sender: Any) {
-//    }
-//
-//    @IBAction func NewsFeedPoliticsCommentsButton_Clicked(_ sender: Any) {
-//    }
-    
-
+    func sideMenus(){
+        if revealViewController() != nil {
+            NewsFeedPoliticsHomeButton.target = revealViewController()
+            NewsFeedPoliticsHomeButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            revealViewController().rearViewRevealWidth = 260
+            view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+    }
+  
     func loadPosts(){
         Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Category1").observe(.childAdded) { (snapshot: DataSnapshot) in
             //print(snapshot.value)
@@ -82,91 +57,78 @@ class NewsFeedPoliticsViewController: UIViewController {
                 self.posts.append(post)
                 //print("loading posts..")
                 //print(self.posts)
-                self.NewsFeedPoliticsCollectionView.reloadData()
+                self.politicsTableView.reloadData()
             }
         }
     }
-    
-    func sideMenus(){
-        if revealViewController() != nil {
-            NewsFeedPoliticsHomeButton.target = revealViewController()
-            NewsFeedPoliticsHomeButton.action = #selector(SWRevealViewController.revealToggle(_:))
-            revealViewController().rearViewRevealWidth = 260
-            view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
-    }
-    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    /*
+     //    override func viewWillAppear(_ animated: Bool) {
+     //        sideMenus()
+     //    }
+     //    var postID: String!
+     //    @IBAction func NewsFeedPoliticsLikeButton_Clicked(_ sender: Any) {
+     //        let AVPostRef = Database.database().reference().child("posts").childByAutoId()
+     //        print("post ref ID....\(AVPostRef)")
+     //        AVPostRef.child(self.postID).observeSingleEvent(of: .value) { (snapshot) in
+     //            if let likes = snapshot.value as? [String : AnyObject] {
+     //                // to do code here
+     //            }
+     //        }
+     //    }
+     //
+     //    @IBAction func NewsFeedPoliticsDislikeButton_Clicked(_ sender: Any) {
+     //    }
+     //
+     //    @IBAction func NewsFeedPoliticsCommentsButton_Clicked(_ sender: Any) {
+     //    }
+     
+     */
+    
 }
 
-extension NewsFeedPoliticsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension NewsFeedPoliticsViewController:UITableViewDataSource,UITableViewDelegate{
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 230)
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1.0
+    func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
+            return 200
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let item = NewsFeedPoliticsCollectionView.dequeueReusableCell(withReuseIdentifier: "PostCollectionViewCell", for: indexPath) as! PostCollectionViewCell
+        let newsRow = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
         
-//        var borderColor: UIColor = UIColor.blue
-//        var borderWidth: CGFloat = 0
+            newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
+            newsRow.PostCollectionViewCaption.text = posts[indexPath.row].caption
+            newsRow.PostTableViewHeadlines.isScrollEnabled = false
+            newsRow.PostCollectionViewCaption.isScrollEnabled = false
+            newsRow.postID = self.posts[indexPath.row].postID
         
-//        if indexPath == selectedIndexPath as IndexPath{
-//            borderColor = UIColor.brown
-//            borderWidth = 1 //or whatever you please
-//        }else{
-//            borderColor = UIColor.clear
-//            borderWidth = 0
-//        }
-        
-//        item.layer.borderColor = UIColor(red: 48/255, green: 106/255, blue: 148/255, alpha: 1).cgColor
-//        item.layer.borderWidth = 1
-        
-        item.PostCollectionViewCaption.isScrollEnabled = false
-        item.PostCollectionViewHeadlines.isScrollEnabled = false
-        item.PostCollectionViewCaption.text  = posts[indexPath.item].caption
-        item.PostCollectionViewHeadlines.text = posts[indexPath.item].postTitle
-//        item.PostCollectionViewLikes.text = "\(posts[indexPath.item].postLikes)"
-//        item.PostCollectionViewDislikes.text = "\(posts[indexPath.item].postDislikes)"
-//        item.PostCollectionViewComments.text = "\(posts[indexPath.item].postComments)"
-        item.postID = self.posts[indexPath.item].postID
-        //print("postid for the item...\(self.posts[indexPath.item].postID)")
-        
-        let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
-        AVPostStorageRef.downloadURL { (url, error) in
-            if error != nil{
-                print(error?.localizedDescription as Any)
-                return
-            }
-            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                if error != nil {
+            let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
+            AVPostStorageRef.downloadURL { (url, error) in
+                if error != nil{
                     print(error?.localizedDescription as Any)
                     return
                 }
-                guard let imageData = UIImage(data: data!) else { return }
-                DispatchQueue.main.async {
-                    print(imageData)
-                    item.PostCollectionViewImage.image = imageData
-                }
-                
-            }).resume()
-            
-        }
-        return item
-    }
+                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                    if error != nil {
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                    guard let imageData = UIImage(data: data!) else { return }
+                    DispatchQueue.main.async {
+                        print(imageData)
+                        newsRow.PostTableViewImage.image = imageData
+                    }
+                }).resume()
+            }
+            return newsRow
+        }        
 }
-

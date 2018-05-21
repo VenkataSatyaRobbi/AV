@@ -37,9 +37,42 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
         
         
         print(convertTimestamp(serverTimestamp: 1526426690527))
+        
+        alinmennts()
+       
 
     }
-    
+     func alinmennts(){
+        PhotoCaptionAdmin.layer.cornerRadius = 8
+        PhotoCaptionAdmin.clipsToBounds = true
+        PhotoCaptionAdmin.layer.borderWidth = 0.5
+        
+        PostAdminButton.layer.cornerRadius = 8
+        PostAdminButton.clipsToBounds = true
+        
+        PhotoCourtesyAdmin.layer.cornerRadius = 8
+        PhotoCourtesyAdmin.clipsToBounds = true
+        PhotoCourtesyAdmin.layer.borderWidth = 0.5
+        
+        NewsContentAdmin.layer.cornerRadius = 8
+        NewsContentAdmin.clipsToBounds = true
+        NewsContentAdmin.layer.borderWidth = 0.5
+        
+        NewsLocationAdmin.layer.cornerRadius = 8
+        NewsLocationAdmin.clipsToBounds = true
+        NewsLocationAdmin.layer.borderWidth = 0.5
+        
+        PostTitle.layer.cornerRadius = 8
+        PostTitle.clipsToBounds = true
+        PostTitle.layer.borderWidth = 0.5
+
+        PostCategoryAdminPickerView.layer.cornerRadius = 8
+        PostCategoryAdminPickerView.clipsToBounds = true
+        PostCategoryAdminPickerView.layer.borderWidth = 0.8
+        
+        
+    }
+        
     func convertTimestamp(serverTimestamp: Double) -> String {
         let timestampInSec = serverTimestamp / 1000
         let date = NSDate(timeIntervalSince1970: timestampInSec)
@@ -177,12 +210,15 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedPostCategory = PostCategory[row]
+        
+        
     }
+   
     
 //    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
 //        let categoryData = PostCategory[row]
-//        //let myCategory = NSAttributedString(string: categoryData, attributes: [NSFontAttributeName:UIFont(name: "Avenir Next", size: 12.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
-//        let myCategory = NSAttributedString(string: categoryData, attributes: [NSAttributedStringKey.foregroundColor: UIColor.blue, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)] as [NSAttributedStringKey : Any]?)
+//        let myCategory = NSAttributedString(string: categoryData, attributes: [NSFontAttributeName:UIFont(name: "Avenir Next", size: 12.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
+//       let myCategory = NSAttributedString(string: categoryData, attributes: [NSAttributedStringKey.foregroundColor: UIColor.blue, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)] as [NSAttributedStringKey : Any]?)
 //return myCategory
 //    }
     

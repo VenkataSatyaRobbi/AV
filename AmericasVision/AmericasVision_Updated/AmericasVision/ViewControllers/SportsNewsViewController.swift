@@ -93,13 +93,11 @@ extension SportsNewsViewController:UITableViewDataSource,UITableViewDelegate{
         }else{
             let newsRow = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
             
-           
-            
-             newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
-             newsRow.PostCollectionViewCaption.text = posts[indexPath.row].caption
+            newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
+            newsRow.PostCollectionViewCaption.text = posts[indexPath.row].caption
             newsRow.PostTableViewHeadlines.isScrollEnabled = false
+            newsRow.PostCollectionViewCaption.isScrollEnabled = false
             newsRow.postID = self.posts[indexPath.row].postID
-            
             
             let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
             AVPostStorageRef.downloadURL { (url, error) in

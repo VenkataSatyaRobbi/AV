@@ -14,26 +14,12 @@ class MusicByAlbumTableViewController: UITableViewController {
     @IBOutlet weak var MusicByAlbumHomeButton: UIBarButtonItem!
     @IBOutlet weak var MusicByAlbumAdminButton: UIBarButtonItem!
     
-  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        
-   
-        
-       
-        
-       
         sideMenus()
     }
     
-    
-   
-    
     func sideMenus(){
-        
         if revealViewController() != nil {
             MusicByAlbumHomeButton.target = revealViewController()
             MusicByAlbumHomeButton.action = #selector(SWRevealViewController.revealToggle(_:))
@@ -48,22 +34,8 @@ class MusicByAlbumTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
- /*   override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 3
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
-    }
-    */
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
@@ -73,10 +45,7 @@ class MusicByAlbumTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let row = indexPath.row
-        
-        
         if row == 0 {
              let cell = tableView.dequeueReusableCell(withIdentifier: "MusicTableViewCell", for: indexPath) as! MusicTableViewCell
             
