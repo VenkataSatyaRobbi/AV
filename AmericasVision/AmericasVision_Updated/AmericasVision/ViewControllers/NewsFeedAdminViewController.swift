@@ -15,7 +15,8 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
     
     @IBOutlet weak var PhotoCaptionAdmin: UITextView!
     @IBOutlet weak var PostAdminButton: UIButton!
-    @IBOutlet weak var PostCategoryAdminPickerView: UIPickerView!
+    //@IBOutlet weak var PostCategoryAdminPickerView: UIPickerView!
+    @IBOutlet weak var PostCategoryText: UITextField!
     @IBOutlet weak var CancelAdminButton: UIBarButtonItem!
     @IBOutlet weak var PostTitle: UITextField!
     @IBOutlet weak var PhotoAdmin: UIImageView!
@@ -38,11 +39,20 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
         
         print(convertTimestamp(serverTimestamp: 1526426690527))
         
-        alinmennts()
-       
+        alignments()
 
     }
-     func alinmennts(){
+    
+    @IBAction func PostCategoryTextTouched(_ sender: Any) {
+        let PostCategoryPickerView: UIPickerView = UIPickerView()
+        PostCategoryPickerView.delegate = self
+        PostCategoryText.inputView = PostCategoryPickerView
+     
+    }
+
+
+    
+     func alignments(){
         PhotoCaptionAdmin.layer.cornerRadius = 8
         PhotoCaptionAdmin.clipsToBounds = true
         PhotoCaptionAdmin.layer.borderWidth = 0.5
@@ -66,9 +76,9 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
         PostTitle.clipsToBounds = true
         PostTitle.layer.borderWidth = 0.5
 
-        PostCategoryAdminPickerView.layer.cornerRadius = 8
-        PostCategoryAdminPickerView.clipsToBounds = true
-        PostCategoryAdminPickerView.layer.borderWidth = 0.8
+        PostCategoryText.layer.cornerRadius = 8
+        PostCategoryText.clipsToBounds = true
+        PostCategoryText.layer.borderWidth = 0.8
         
         
     }
@@ -210,8 +220,7 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedPostCategory = PostCategory[row]
-        
-        
+        PostCategoryText.text = PostCategory[row]
     }
    
     
