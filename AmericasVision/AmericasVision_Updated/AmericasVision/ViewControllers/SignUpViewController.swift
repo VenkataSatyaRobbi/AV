@@ -15,6 +15,7 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var FirstNameField: UITextField!
     @IBOutlet weak var LastNameField: UITextField!
+    @IBOutlet weak var DateofBirthField: UITextField!
     @IBOutlet weak var PhoneField: UITextField!
     @IBOutlet weak var EmailField: UITextField!
     @IBOutlet weak var PasswordField: UITextField!
@@ -24,6 +25,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var PasswordsMatchLabel: UILabel!
     @IBOutlet weak var PasswordsDonotMatchLabel: UILabel!
     var ProfileSelectedImage: UIImage?
+    var DateNow: Date = Date(timeIntervalSinceNow: 0)
+    var YearsFromBirth: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +47,14 @@ class SignUpViewController: UIViewController {
         bottomLayerLastName.frame = CGRect(x: 0, y: 29, width: self.view.frame.size.width - 40 , height: 1)
         bottomLayerLastName.backgroundColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1).cgColor
         LastNameField.layer.addSublayer(bottomLayerLastName)
+        
+        DateofBirthField.backgroundColor = UIColor.clear
+        DateofBirthField.tintColor = UIColor.white
+        DateofBirthField.attributedPlaceholder = NSAttributedString(string: DateofBirthField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.9)])
+        let bottomLayerDateofBirth = CALayer()
+        bottomLayerDateofBirth.frame = CGRect(x: 0, y: 29, width: self.view.frame.size.width - 40 , height: 1)
+        bottomLayerDateofBirth.backgroundColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1).cgColor
+        DateofBirthField.layer.addSublayer(bottomLayerLastName)
         
         PhoneField.backgroundColor = UIColor.clear
         PhoneField.tintColor = UIColor.white
@@ -87,13 +98,52 @@ class SignUpViewController: UIViewController {
         SignUpButton.clipsToBounds = true
         
         SignUpButton.isEnabled = false
+        
+        print("date now...\(DateNow)")
         checkTextField()
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func DateofBirthFieldTouched(_ sender: Any) {
+        let dateofBirthPickerView: UIDatePicker = UIDatePicker()
+        dateofBirthPickerView.datePickerMode = UIDatePickerMode.date
+        DateofBirthField.inputView = dateofBirthPickerView
+        dateofBirthPickerView.addTarget(self, action: #selector(self.datePickerFromValueChanged), for: UIControlEvents.valueChanged)
+    }
+    
+
+    @objc func datePickerFromValueChanged(sender:UIDatePicker) {
+        let dateofBirthDateFormatter = DateFormatter()
+        dateofBirthDateFormatter.dateFormat = "dd-MM-yyyy"
+        dateofBirthDateFormatter.dateStyle = .medium
+        DateofBirthField.text = dateofBirthDateFormatter.string(from: sender.date)
+        let DateofBirthDate = dateofBirthDateFormatter.date(from: DateofBirthField.text!)
+        
+        //let currentDateFormatter = DateFormatter()
+        //currentDateFormatter.dateFormat = "dd-MM-yyyy"
+        //var currentDate = currentDateFormatter.date(from: DateNow)
+        let dateComponentsFormatter = DateComponentsFormatter()
+        dateComponentsFormatter.allowedUnits = [NSCalendar.Unit.minute,NSCalendar.Unit.hour,NSCalendar.Unit.day]
+        
+        let interval =  DateNow.timeIntervalSince(DateofBirthDate!)
+        print("interval...\(interval)")
+        let DateDiff = dateComponentsFormatter.string(from: interval)!
+        print("difference..\(DateDiff)")
+        
+        if (DateDiff.contains("d")){
+            let day = DateDiff.substring(to: (DateDiff.range(of: "d")?.lowerBound)!)
+            
+            YearsFromBirth  = Int(day)!/365
+            
+            print("Years From Birth ...\(YearsFromBirth)")
+        }
+        
     }
     
     func checkTextField(){
         FirstNameField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
         LastNameField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
+        DateofBirthField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
         PhoneField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
         EmailField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
         PasswordField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
@@ -101,7 +151,7 @@ class SignUpViewController: UIViewController {
     }
     
     @objc func textFieldDidChange(){
-        guard let FirstNameValue = FirstNameField.text, !FirstNameValue.isEmpty, let LastNameValue = LastNameField.text, !LastNameValue.isEmpty, let PhoneValue = PhoneField.text, !PhoneValue.isEmpty, let EmailValue = EmailField.text, !EmailValue.isEmpty, let PasswordValue = PasswordField.text, !PasswordValue.isEmpty, let ConfirmPasswordValue = ConfirmPasswordField.text, !ConfirmPasswordValue.isEmpty else {
+        guard let FirstNameValue = FirstNameField.text, !FirstNameValue.isEmpty, let LastNameValue = LastNameField.text, !LastNameValue.isEmpty, let DateofBirthValue = DateofBirthField.text, !DateofBirthValue.isEmpty, let PhoneValue = PhoneField.text, !PhoneValue.isEmpty, let EmailValue = EmailField.text, !EmailValue.isEmpty, let PasswordValue = PasswordField.text, !PasswordValue.isEmpty, let ConfirmPasswordValue = ConfirmPasswordField.text, !ConfirmPasswordValue.isEmpty else {
             PasswordsDonotMatchLabel.isHidden = true
             PasswordsMatchLabel.isHidden = true
             SignUpButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
@@ -141,17 +191,23 @@ class SignUpViewController: UIViewController {
     @IBAction func SignUpClickTouchUpInside(_ sender: UIButton) {
         view.endEditing(true)
         ProgressHUD.show("Registering..", interaction: false)
-        if let ProfilePlaceHolderImg = self.ProfileSelectedImage, let imageData = UIImageJPEGRepresentation(ProfilePlaceHolderImg, 0.1) {
-            AVAuthService.signUp(firstname: FirstNameField.text!, lastname: LastNameField.text!, phone: PhoneField.text!, email: EmailField.text!, password: PasswordField.text!, confirmpassword: ConfirmPasswordField.text!, imagedata: imageData, onSuccess: {
-                ProgressHUD.showSuccess("Welcome")
-                self.performSegue(withIdentifier: "showTabBarHomePageFromSignUp", sender: nil)
-            }, onError: {
-                (errorString) in
-                ProgressHUD.showError(errorString!)
-            })
-        }else {
-            ProgressHUD.showError("Profile photo cannot be blank")
+        if(YearsFromBirth >= 18){
+            if let ProfilePlaceHolderImg = self.ProfileSelectedImage, let imageData = UIImageJPEGRepresentation(ProfilePlaceHolderImg, 0.1) {
+                AVAuthService.signUp(firstname: FirstNameField.text!, lastname: LastNameField.text!, phone: PhoneField.text!, email: EmailField.text!, password: PasswordField.text!, confirmpassword: ConfirmPasswordField.text!, imagedata: imageData, onSuccess: {
+                    ProgressHUD.showSuccess("Welcome")
+                    self.performSegue(withIdentifier: "showTabBarHomePageFromSignUp", sender: nil)
+                }, onError: {
+                    (errorString) in
+                    ProgressHUD.showError(errorString!)
+                })
+            }else {
+                ProgressHUD.showError("Profile photo cannot be blank")
             }
+        }
+        else{
+            ProgressHUD.showError("Ah! You are not old enough to get registered")
+        }
+
     }
 }
 
