@@ -151,7 +151,7 @@ class SignUpViewController: UIViewController {
     }
     
     @objc func textFieldDidChange(){
-        guard let FirstNameValue = FirstNameField.text, !FirstNameValue.isEmpty, let LastNameValue = LastNameField.text, !LastNameValue.isEmpty, let DateofBirthValue = DateofBirthField.text, !DateofBirthValue.isEmpty, let PhoneValue = PhoneField.text, !PhoneValue.isEmpty, let EmailValue = EmailField.text, !EmailValue.isEmpty, let PasswordValue = PasswordField.text, !PasswordValue.isEmpty, let ConfirmPasswordValue = ConfirmPasswordField.text, !ConfirmPasswordValue.isEmpty else {
+        guard let FirstNameValue = FirstNameField.text, !FirstNameValue.isEmpty, let LastNameValue = LastNameField.text, !LastNameValue.isEmpty, let DateofBirthValue = DateofBirthField.text, !DateofBirthValue.isEmpty, let PhoneValue = PhoneField.text, !PhoneValue.isEmpty, let EmailValue = EmailField.text, !EmailValue.isEmpty, let PasswordValue = PasswordField.text, !PasswordValue.isEmpty, let ConfirmPasswordValue = ConfirmPasswordField.text,!ConfirmPasswordValue.isEmpty,!(DateofBirthField.text?.isEmpty)! else {
             PasswordsDonotMatchLabel.isHidden = true
             PasswordsMatchLabel.isHidden = true
             SignUpButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
