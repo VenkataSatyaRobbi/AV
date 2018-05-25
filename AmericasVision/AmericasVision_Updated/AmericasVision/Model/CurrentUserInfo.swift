@@ -8,11 +8,14 @@
 
 import UIKit
 
-class CurrentUserInfo: NSObject {
+class CurrentUserInfo:NSObject{
     var Email: String!
     var FirstName: String!
     var LastName: String!
     var Phone: String!
     var ProfileImageURL: String!
+    var dob:String!
     var userid: String!
+    
+   
 }

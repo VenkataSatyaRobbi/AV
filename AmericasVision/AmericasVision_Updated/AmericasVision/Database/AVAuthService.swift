@@ -11,9 +11,12 @@
     import FirebaseStorage
     import FirebaseDatabase
     
+   
+    
+    
     class AVAuthService{
         
-        static var username = "";
+        
         
         static func signIn(email: String, password: String, onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessage: String?) -> Void) {
             Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
@@ -22,11 +25,56 @@
                     onError(error!.localizedDescription)
                     return
                 }
-                onSuccess()
+               saveProfileInfoToUserDefaults()
+               onSuccess()
+                
                 
             })
+            
         }
         
+        static func saveProfileInfoToUserDefaults(){
+            let user:UserInfo = UserInfo.init(_firstName:"", _lastName: "", _email:"", _dob: "", _phone:"", _userid: "", _image: UIImage.init(named: "profile")!)
+            if Auth.auth().currentUser != nil {
+                
+                let AVDBref = Database.database().reference()
+                let AVDBuserref = AVDBref.child("users")
+                AVDBuserref.child((Auth.auth().currentUser?.uid)!).observe(.value) { (snapshot) in
+                    user.firstName = (snapshot.value as! NSDictionary)["FirstName"] as? String
+                    user.lastName = (snapshot.value as! NSDictionary)["LastName"] as? String
+                    user.email = (snapshot.value as! NSDictionary)["Email"] as? String
+                    user.userid = (snapshot.value as! NSDictionary)["UserId"] as? String
+                    user.dob = "25-5-18"
+                    user.phone = (snapshot.value as! NSDictionary)["Phone"] as? String
+                    
+                }
+                
+                let AVStorageRef = Storage.storage().reference(forURL: PropertyConfig.FIRSTORAGE_ROOT_REF).child("profileImage").child((Auth.auth().currentUser?.uid)!)
+                AVStorageRef.downloadURL{
+                    (url, error) in
+                    if error != nil{
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                    URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                        if error != nil {
+                            print(error?.localizedDescription as Any)
+                            return
+                        }
+                        guard let imageData  = UIImage(data: data!) else { return }
+                        DispatchQueue.main.async {
+                            user.profileImage = imageData
+                            NSKeyedArchiver.archivedData(withRootObject: user)
+                            UserDefaults.standard.setLoginUserInfo(userInfo: user)
+                            
+                        }
+                    }).resume()
+                }
+            }
+//            let userInfo = UserInfo.init(_firstName: user.firstName!, _lastName: user.lastName!, _email:user.email!, _dob: user.dob!, _phone: user.phone!, _userid:user.userid!, _image:user.profileImage)
+            
+            
+        }
         
         static func signUp(firstname: String, lastname: String, phone: String, email: String, password: String, confirmpassword: String, imagedata: Data, onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessage: String?) -> Void) {
             Auth.auth().createUser(withEmail: email, password: password, completion: { (user: User?, error: Error?) in

@@ -43,6 +43,8 @@
 		D4FA4A0F208822BF00CC425B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA4A0C208822BF00CC425B /* FBSDKCoreKit.framework */; };
 		DC4A12B1209F2BD7007C4755 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */; };
 		DC953E9E20B1BCB700B7BB46 /* NewsFeedEntertainmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC953E9D20B1BCB700B7BB46 /* NewsFeedEntertainmentViewController.swift */; };
+		DC953EA020B498A000B7BB46 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC953E9F20B498A000B7BB46 /* UserDefaultsHelper.swift */; };
+		DC953EA220B4A3F600B7BB46 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC953EA120B4A3F600B7BB46 /* UserInfo.swift */; };
 		DCBEBC3820A786EE00E8EAEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3720A786ED00E8EAEA /* Constants.swift */; };
 		DCBEBC3A20A7871900E8EAEA /* ChatContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */; };
 		DCBEBC3C20A78BF200E8EAEA /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */; };
@@ -97,6 +99,8 @@
 		D4FA4A0C208822BF00CC425B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		DC953E9D20B1BCB700B7BB46 /* NewsFeedEntertainmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsFeedEntertainmentViewController.swift; path = "../../../../../../../Downloads/AV-AVUpdated/AmericasVision/AmericasVision_Updated/AmericasVision/ViewControllers/NewsFeedEntertainmentViewController.swift"; sourceTree = "<group>"; };
+		DC953E9F20B498A000B7BB46 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		DC953EA120B4A3F600B7BB46 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		DCBEBC3720A786ED00E8EAEA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContactsViewController.swift; sourceTree = "<group>"; };
 		DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
@@ -173,9 +177,7 @@
 				D4FA49F5207D0D7C00CC425B /* ProgressHUD.m */,
 				D46390FA207036F300C4E3DA /* AppDelegate.swift */,
 				D4FA49DB207994C200CC425B /* AmericasVision-Bridging-Header.h */,
-				D4FA49F1207C5B3C00CC425B /* AVAuthService.swift */,
 				D4FA49F3207C6EA200CC425B /* PropertyConfig.swift */,
-				D4FA4A072086D86700CC425B /* CurrentUserInfo.swift */,
 				D4FA49F6207D0D7C00CC425B /* ProgressHUD.bundle */,
 				D4639101207036F300C4E3DA /* Assets.xcassets */,
 				D4FA49FC207D943700CC425B /* Storyboards */,
@@ -227,9 +229,12 @@
 		D4FA4A002082FBE000CC425B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D4FA4A072086D86700CC425B /* CurrentUserInfo.swift */,
 				DCBEBC3720A786ED00E8EAEA /* Constants.swift */,
 				DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */,
 				D4FA4A012082FBF100CC425B /* Post.swift */,
+				DC953E9F20B498A000B7BB46 /* UserDefaultsHelper.swift */,
+				DC953EA120B4A3F600B7BB46 /* UserInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -237,6 +242,7 @@
 		DCBEBC3D20A78F8900E8EAEA /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				D4FA49F1207C5B3C00CC425B /* AVAuthService.swift */,
 				DCBEBC4020A78FCC00E8EAEA /* DBProvider.swift */,
 				DCBEBC4220A83D1A00E8EAEA /* MessageHandler.swift */,
 			);
@@ -393,11 +399,13 @@
 				D4FA49EE207AF0EC00CC425B /* ProfileMenuViewController.swift in Sources */,
 				DCF8AB2D20B1505F0064FF72 /* FeedsTableViewCell.swift in Sources */,
 				D408D2E8209E8178008DD80A /* NewsFeedPoliticsViewController.swift in Sources */,
+				DC953EA020B498A000B7BB46 /* UserDefaultsHelper.swift in Sources */,
 				DC953E9E20B1BCB700B7BB46 /* NewsFeedEntertainmentViewController.swift in Sources */,
 				D408D2EE209E8831008DD80A /* MusicByTrackTableViewController.swift in Sources */,
 				DCBEBC4320A83D1A00E8EAEA /* MessageHandler.swift in Sources */,
 				D408D2E6209E71E3008DD80A /* VotesCollectionViewController.swift in Sources */,
 				D4FA49F4207C6EA200CC425B /* PropertyConfig.swift in Sources */,
+				DC953EA220B4A3F600B7BB46 /* UserInfo.swift in Sources */,
 				DCBEBC4120A78FCC00E8EAEA /* DBProvider.swift in Sources */,
 				DCBEBC3A20A7871900E8EAEA /* ChatContactsViewController.swift in Sources */,
 				DCF8AB2820B1137C0064FF72 /* SlideCollectionViewCell.swift in Sources */,

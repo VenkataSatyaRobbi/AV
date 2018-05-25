@@ -105,7 +105,7 @@ class SignInViewController: UIViewController {
         view.endEditing(true)
         ProgressHUD.show("Signing in..", interaction: false)
         AVAuthService.signIn(email: emailField.text!, password: passwordField.text!, onSuccess: {
-            ProgressHUD.showSuccess("Welcome")
+            ProgressHUD.showSuccess("Welcome") 
             self.performSegue(withIdentifier: "showTabBarHomePageFromSignIn", sender: nil)
         }, onError: { error in
             ProgressHUD.showError(error!)
@@ -113,8 +113,6 @@ class SignInViewController: UIViewController {
         })
         
     }
-    
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

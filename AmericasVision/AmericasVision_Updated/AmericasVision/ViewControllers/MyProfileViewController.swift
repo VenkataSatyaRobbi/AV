@@ -11,43 +11,60 @@ import UIKit
 class MyProfileViewController: UIViewController {
 
     @IBOutlet weak var MyProfileHomeButton: UIBarButtonItem!
-     @IBOutlet weak var bgview: UIView!
+    @IBOutlet weak var bgview: UIView!
     @IBOutlet weak var bgview1: UIView!
-     @IBOutlet weak var bgview2: UIView!
-     @IBOutlet weak var profileimg: UIImageView!
-        @IBOutlet weak var btnsubmit: UIButton!
+    @IBOutlet weak var bgview2: UIView!
+    @IBOutlet weak var profileimg: UIImageView!
+    @IBOutlet weak var btnsubmit: UIButton!
+    
+    @IBOutlet weak var textUserName: UITextField!
+    @IBOutlet weak var textEmail: UITextField!
+    @IBOutlet weak var textDOB: UITextField!
+    @IBOutlet weak var textPwd: UITextField!
+    @IBOutlet weak var textConfirmPwd: UITextField!
+    
+    var userInfo:UserInfo!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-         let myColor : UIColor = UIColor(red: 0/255, green: 180/255, blue: 210/255, alpha: 1)
+        view.backgroundColor = UIColor.white
+        alignment()
+        populateUserinfo()
+        sideMenus()
+    }
+    
+    func populateUserinfo(){
+        userInfo = UserDefaults.standard.getLoginUserInfo()
+        textUserName.text = userInfo.firstName
+        textEmail.text = userInfo.email
+        textDOB.text = userInfo.dob
+        profileimg.image = userInfo.profileImage
+        
+    }
+    
+    func alignment(){
+        let myColor : UIColor = UIColor(red: 0/255, green: 180/255, blue: 210/255, alpha: 1)
         bgview.layer.cornerRadius = 6
         bgview.clipsToBounds = true
-        bgview.layer.borderWidth = 0.5
+       // bgview.layer.borderWidth = 0.5
         bgview.layer.borderColor = myColor.cgColor
         
         bgview1.layer.cornerRadius = 2
         bgview1.clipsToBounds = true
         
-        btnsubmit.layer.cornerRadius = 5
-        btnsubmit.clipsToBounds = true
+       // btnsubmit.layer.cornerRadius = 5
+       // btnsubmit.clipsToBounds = true
         
         bgview2.layer.cornerRadius = 2
         bgview2.clipsToBounds = true
         
-        
-        //bgview.layer.borderColor = myColor.cgColor
-        
-        profileimg.layer.cornerRadius = 50
+        profileimg.layer.cornerRadius = 40
         profileimg.clipsToBounds = true
-        profileimg.layer.borderWidth = 0.5
+        //profileimg.layer.borderWidth = 0.5
         profileimg.layer.borderColor = myColor.cgColor
-        // Do any additional setup after loading the view.
-        view.backgroundColor = UIColor.white
-        
-        sideMenus()
     }
     
     func sideMenus(){
-        
         if revealViewController() != nil {
             MyProfileHomeButton.target = revealViewController()
             MyProfileHomeButton.action = #selector(SWRevealViewController.revealToggle(_:))
@@ -62,18 +79,10 @@ class MyProfileViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func updateProfile(_ sender: Any) {
+        DBProvider.instance.updateProfileInfo(userInfo: userInfo)
     }
-    */
-
+    
 }

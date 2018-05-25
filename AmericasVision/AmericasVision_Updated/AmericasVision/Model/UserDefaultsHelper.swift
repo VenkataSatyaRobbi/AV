@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+extension UserDefaults{
+    
+    func setLoginUserInfo(userInfo:UserInfo){
+        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: userInfo)
+        set(encodedData, forKey:Constants.LOGINUSERINFO)
+        synchronize()
+    }
+    
+    func getLoginUserInfo() -> UserInfo {
+        let item = object(forKey: Constants.LOGINUSERINFO) as! Data
+        return NSKeyedUnarchiver.unarchiveObject(with: item) as! UserInfo
+        
+    }
+    
+}

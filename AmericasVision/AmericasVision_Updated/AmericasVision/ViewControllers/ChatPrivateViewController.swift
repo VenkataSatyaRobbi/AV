@@ -29,7 +29,7 @@ class ChatPrivateViewController: JSQMessagesViewController,MessageReceivedDelega
         MessageHandler.Instance.delegate = self
         view.backgroundColor = UIColor.white
         self.senderId = AVAuthService.getCurrentUserId()
-        self.senderDisplayName = AVAuthService.username
+       // self.senderDisplayName = AVAuthService.username
         MessageHandler.Instance.observeMessages()
     }
 
