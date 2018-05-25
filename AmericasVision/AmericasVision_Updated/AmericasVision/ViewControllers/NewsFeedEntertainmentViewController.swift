@@ -1,8 +1,8 @@
 //
-//  SportsNewsViewController.swift
+//  NewsFeedEntertainmentViewController.swift
 //  AmericasVision
 //
-//  Created by Mohan Dola on 20/05/18.
+//  Created by Venkata Satya R Robbi on 5/6/18.
 //  Copyright © 2018 zeroGravity. All rights reserved.
 //
 
@@ -10,18 +10,20 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
-class SportsNewsViewController: UIViewController {
-    
-    @IBOutlet weak var homeButton: UIBarButtonItem!
-    
-    @IBOutlet weak var sportstableview: UITableView!
-   
-    var posts = [Post]()
 
+class NewsFeedEntertainmentViewController: UIViewController{
+    
+    @IBOutlet weak var NewsFeedEntertainmentHomeButton: UIBarButtonItem!
+    @IBOutlet var label: UILabel!
+    
+    @IBOutlet weak var entertainmentTableview: UITableView!
+    
+    var posts = [Post]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        sportstableview.dataSource = self
-        sportstableview.delegate = self
+        entertainmentTableview.dataSource = self
+        entertainmentTableview.delegate = self
         view.backgroundColor = UIColor.white
         sideMenus()
         loadPosts()
@@ -29,14 +31,16 @@ class SportsNewsViewController: UIViewController {
     
     func sideMenus(){
         if revealViewController() != nil {
-            homeButton.target = revealViewController()
-            homeButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            NewsFeedEntertainmentHomeButton.target = revealViewController()
+            NewsFeedEntertainmentHomeButton.action = #selector(SWRevealViewController.revealToggle(_:))
             revealViewController().rearViewRevealWidth = 260
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
     }
+    
+   
     func loadPosts(){
-        Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Category3").observe(.childAdded) { (snapshot: DataSnapshot) in
+        Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Category2").observe(.childAdded) { (snapshot: DataSnapshot) in
             if let dict = snapshot.value as? [String: Any] {
                 let captionText = dict["caption"] as! String
                 let photoUrlString = dict["photoUrl"] as! String
@@ -54,7 +58,7 @@ class SportsNewsViewController: UIViewController {
                 let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt, postIDString: postIDString, useridString: useridString, timeStampDouble: timestamp, imageCourtesyString: photoCourtesyString, newsLocationString: newsLocationString, newsContentString: newsContentString)
                 self.posts.append(post)
                 print("loading posts..\(self.posts.count)")
-                self.sportstableview.reloadData()
+                self.entertainmentTableview.reloadData()
                 //                if (self.posts.count > 4){
                 //                    self.setImagesInPageView()
                 //                }
@@ -63,12 +67,15 @@ class SportsNewsViewController: UIViewController {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
+    
 }
 
-extension SportsNewsViewController:UITableViewDataSource,UITableViewDelegate{
+
+extension NewsFeedEntertainmentViewController:UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -76,9 +83,9 @@ extension SportsNewsViewController:UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
-       let row = indexPath.row
+        let row = indexPath.row
         if row == 0 {
-           return 165
+            return 165
         }else{
             return 200
         }
@@ -122,42 +129,40 @@ extension SportsNewsViewController:UITableViewDataSource,UITableViewDelegate{
         
     }
 }
-    
-extension SportsNewsViewController:UICollectionViewDataSource,UICollectionViewDelegate{
+
+extension NewsFeedEntertainmentViewController:UICollectionViewDataSource,UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-   
-          //  return 2
-        return 4
+        //  return 2
+        return 1
     }
-   
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let row = indexPath.row
         //if row < 2{
-            if row < 4{
-             print("fun the loading posts..\(self.posts.count)")
-           let newsRow = collectionView.dequeueReusableCell(withReuseIdentifier:"SlideCollectionViewCell", for: indexPath) as! SlideCollectionViewCell
-                newsRow.headlines.text = posts[indexPath.row].postTitle
-                let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
-                AVPostStorageRef.downloadURL { (url, error) in
-                    if error != nil{
+        if row < 1{
+            print("fun the loading posts..\(self.posts.count)")
+            let newsRow = collectionView.dequeueReusableCell(withReuseIdentifier:"SlideCollectionViewCell", for: indexPath) as! SlideCollectionViewCell
+            newsRow.headlines.text = posts[indexPath.row].postTitle
+            let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
+            AVPostStorageRef.downloadURL { (url, error) in
+                if error != nil{
+                    print(error?.localizedDescription as Any)
+                    return
+                }
+                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                    if error != nil {
                         print(error?.localizedDescription as Any)
                         return
                     }
-                    URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                        if error != nil {
-                            print(error?.localizedDescription as Any)
-                            return
-                        }
-                        guard let imageData = UIImage(data: data!) else { return }
-                        DispatchQueue.main.async {
-                            print(imageData)
-                            newsRow.cellImage.image = imageData
-                        }
-                    }).resume()
-                }
-                return newsRow
+                    guard let imageData = UIImage(data: data!) else { return }
+                    DispatchQueue.main.async {
+                        print(imageData)
+                        newsRow.cellImage.image = imageData
+                    }
+                }).resume()
+            }
+            return newsRow
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"SlideCollectionViewCell", for: indexPath) as! SlideCollectionViewCell
             return cell
@@ -165,4 +170,5 @@ extension SportsNewsViewController:UICollectionViewDataSource,UICollectionViewDe
         
     }
 }
+
 

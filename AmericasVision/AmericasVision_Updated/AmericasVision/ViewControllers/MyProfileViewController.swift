@@ -9,7 +9,7 @@
 import UIKit
 
 class MyProfileViewController: UIViewController {
-
+    
     @IBOutlet weak var MyProfileHomeButton: UIBarButtonItem!
     @IBOutlet weak var bgview: UIView!
     @IBOutlet weak var bgview1: UIView!
@@ -44,21 +44,21 @@ class MyProfileViewController: UIViewController {
     
     func alignment(){
         let myColor : UIColor = UIColor(red: 0/255, green: 180/255, blue: 210/255, alpha: 1)
-        bgview.layer.cornerRadius = 6
-        bgview.clipsToBounds = true
-       // bgview.layer.borderWidth = 0.5
-        bgview.layer.borderColor = myColor.cgColor
+       // bgview.layer.cornerRadius = 6
+        //bgview.clipsToBounds = true
+        // bgview.layer.borderWidth = 0.5
+        //bgview.layer.borderColor = myColor.cgColor
         
         bgview1.layer.cornerRadius = 2
         bgview1.clipsToBounds = true
-        
-       // btnsubmit.layer.cornerRadius = 5
-       // btnsubmit.clipsToBounds = true
+       //
+        // btnsubmit.layer.cornerRadius = 5
+        // btnsubmit.clipsToBounds = true
         
         bgview2.layer.cornerRadius = 2
         bgview2.clipsToBounds = true
         
-        profileimg.layer.cornerRadius = 40
+        profileimg.layer.cornerRadius = 45
         profileimg.clipsToBounds = true
         //profileimg.layer.borderWidth = 0.5
         profileimg.layer.borderColor = myColor.cgColor
@@ -76,7 +76,7 @@ class MyProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         sideMenus()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

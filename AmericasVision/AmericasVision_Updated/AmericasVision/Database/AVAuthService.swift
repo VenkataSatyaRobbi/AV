@@ -11,7 +11,7 @@
     import FirebaseStorage
     import FirebaseDatabase
     
-   
+    
     
     
     class AVAuthService{
@@ -25,8 +25,8 @@
                     onError(error!.localizedDescription)
                     return
                 }
-               saveProfileInfoToUserDefaults()
-               onSuccess()
+                saveProfileInfoToUserDefaults()
+                onSuccess()
                 
                 
             })
@@ -71,7 +71,7 @@
                     }).resume()
                 }
             }
-//            let userInfo = UserInfo.init(_firstName: user.firstName!, _lastName: user.lastName!, _email:user.email!, _dob: user.dob!, _phone: user.phone!, _userid:user.userid!, _image:user.profileImage)
+            //            let userInfo = UserInfo.init(_firstName: user.firstName!, _lastName: user.lastName!, _email:user.email!, _dob: user.dob!, _phone: user.phone!, _userid:user.userid!, _image:user.profileImage)
             
             
         }
@@ -109,7 +109,7 @@
         static func getCurrentUserId() -> String{
             return Auth.auth().currentUser!.uid
         }
-
+        
         static func getCurrentUserName() -> String{
             return (Auth.auth().currentUser?.displayName)!
         }

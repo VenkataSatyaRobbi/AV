@@ -81,14 +81,13 @@ class DBProvider {
         let imageData = UIImageJPEGRepresentation(userInfo.profileImage, 0.1)
         let AVStorageRef = Storage.storage().reference(forURL: PropertyConfig.FIRSTORAGE_ROOT_REF).child("profileImage").child(userId!)
         AVStorageRef.putData(imageData!, metadata: nil, completion: { (metadata, error) in
-        if error != nil{
-            return
-        }
-        let profileImageURL = metadata?.downloadURL()?.absoluteString
-        let AVDBnewuserref = self.userRef.child(userId!)
+            if error != nil{
+                return
+            }
+            let profileImageURL = metadata?.downloadURL()?.absoluteString
+            let AVDBnewuserref = self.userRef.child(userId!)
             AVDBnewuserref.setValue(["FirstName": userInfo.firstName, "LastName": userInfo.lastName, "Phone": userInfo.phone, "Email": userInfo.email, "ProfileImageURL": profileImageURL, "UserId": userInfo.userid ])
         })
-    }
+    }    
     
-
 }

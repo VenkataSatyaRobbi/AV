@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -922,7 +921,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="NewsFeedEntertainmentHomeButton" destination="0EF-On-ZHL" id="3gl-65-NRT"/>
-                        <outlet property="sportstableview" destination="NUe-1K-1r0" id="ocU-tu-aab"/>
+                        <outlet property="entertainmentTableview" destination="NUe-1K-1r0" id="WPm-Lv-nLI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2a-lm-kne" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1193,58 +1192,60 @@
                     <view key="view" contentMode="scaleToFill" id="EB3-nu-3Ge">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<<<<<<< HEAD
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" id="HPL-s2-omg">
-                                <rect key="frame" x="12" y="77" width="350" height="583"/>
+                            <view contentMode="scaleToFill" misplaced="YES" id="xA1-5Y-Tcz">
+                                <rect key="frame" x="12" y="72" width="350" height="583"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="profile" id="VhK-Fe-5TJ">
-                                        <rect key="frame" x="134" y="51" width="80" height="80"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="profile" id="yvv-11-gJ8">
+                                        <rect key="frame" x="125" y="42" width="90" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Name" textAlignment="natural" minimumFontSize="17" id="xPm-uV-NOz">
-                                        <rect key="frame" x="8" y="181" width="334" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Name" textAlignment="natural" minimumFontSize="17" id="udq-aB-pvL">
+                                        <rect key="frame" x="8" y="177" width="334" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Rmy-p8-rtD" id="zem-VX-Tiq"/>
+                                        </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" id="Lhj-v0-BKL">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" id="Ba7-yh-Ja8">
                                         <rect key="frame" x="8" y="231" width="334" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="DOB" textAlignment="natural" minimumFontSize="17" id="Naf-Ui-d7n">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="DOB" textAlignment="natural" minimumFontSize="17" id="c83-Ry-21D">
                                         <rect key="frame" x="8" y="288" width="334" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" id="37n-Em-j5C">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" id="MeI-lb-QdE">
                                         <rect key="frame" x="8" y="344" width="334" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" id="l7A-hC-g6Q">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" id="BM5-wb-XUF">
                                         <rect key="frame" x="8" y="396" width="334" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <view contentMode="scaleToFill" misplaced="YES" id="E7J-bc-qav">
+                                    <view contentMode="scaleToFill" id="bgd-Jt-rhs">
                                         <rect key="frame" x="4" y="137" width="342" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="User Profile Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Fd-Ar-1bK">
-                                                <rect key="frame" x="87" y="6" width="168" height="18"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Profile Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Op-rO-glf">
+                                                <rect key="frame" x="114" y="6" width="115" height="18"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1252,13 +1253,13 @@
                                         </subviews>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" id="YXE-i0-YkV">
-                                        <rect key="frame" x="3" y="3" width="343" height="30"/>
+                                    <view contentMode="scaleToFill" id="lOZ-Z7-hiJ">
+                                        <rect key="frame" x="3" y="4" width="343" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Profile Picture" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b8m-BI-J96">
-                                                <rect key="frame" x="87" y="6" width="170" height="18"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Picture" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mhd-EM-yfy">
+                                                <rect key="frame" x="122" y="6" width="100" height="18"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1266,41 +1267,41 @@
                                         </subviews>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PgG-hV-mfi">
-                                        <rect key="frame" x="2" y="218" width="346" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7s1-2n-GyY">
+                                        <rect key="frame" x="4" y="216" width="342" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MH4-zo-0tj">
-                                        <rect key="frame" x="2" y="275" width="346" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="76S-MS-exw">
+                                        <rect key="frame" x="3" y="269" width="342" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K19-Y1-wnM">
-                                        <rect key="frame" x="2" y="326" width="346" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="31k-QV-lXQ">
+                                        <rect key="frame" x="3" y="324" width="342" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lJ4-9T-ldt">
-                                        <rect key="frame" x="2" y="382" width="346" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n52-Vx-lwa">
+                                        <rect key="frame" x="4" y="382" width="342" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cq2-za-5Ur">
-                                        <rect key="frame" x="2" y="433" width="346" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QmK-fF-pOt">
+                                        <rect key="frame" x="4" y="434" width="342" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -1310,40 +1311,27 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-=======
->>>>>>> 21e03c7a322bda6793d2600d39e8afedd3091674
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" id="DIZ-DL-Vni">
                         <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="R4d-pv-hpZ"/>
-<<<<<<< HEAD
-                        <rightBarButtonItems>
-                            <barButtonItem id="uGt-2W-7ve"/>
-                            <barButtonItem title="Save" landscapeImage="home" largeContentSizeImage="home" id="uJb-WV-fWc"/>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="uGt-2W-7ve"/>
                     </navigationItem>
                     <connections>
                         <outlet property="MyProfileHomeButton" destination="R4d-pv-hpZ" id="gr2-I5-MDe"/>
-                        <outlet property="bgview" destination="HPL-s2-omg" id="CIR-De-ece"/>
-                        <outlet property="bgview1" destination="YXE-i0-YkV" id="Y5s-Dh-IuF"/>
-                        <outlet property="bgview2" destination="E7J-bc-qav" id="ZF3-ev-qkh"/>
-                        <outlet property="profileimg" destination="VhK-Fe-5TJ" id="Vlp-jX-jak"/>
-                        <outlet property="textConfirmPwd" destination="l7A-hC-g6Q" id="LfY-in-vlR"/>
-                        <outlet property="textDOB" destination="Naf-Ui-d7n" id="xa4-T3-7Qb"/>
-                        <outlet property="textEmail" destination="Lhj-v0-BKL" id="3jS-51-boL"/>
-                        <outlet property="textPwd" destination="37n-Em-j5C" id="V8K-72-7VX"/>
-                        <outlet property="textUserName" destination="xPm-uV-NOz" id="GhP-fT-V82"/>
-=======
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="uGt-2W-7ve"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="MyProfileHomeButton" destination="R4d-pv-hpZ" id="gr2-I5-MDe"/>
->>>>>>> 21e03c7a322bda6793d2600d39e8afedd3091674
+                        <outlet property="bgview1" destination="lOZ-Z7-hiJ" id="osP-2Q-ApM"/>
+                        <outlet property="bgview2" destination="bgd-Jt-rhs" id="zeR-lO-LEe"/>
+                        <outlet property="profileimg" destination="yvv-11-gJ8" id="TmZ-AZ-JdA"/>
+                        <outlet property="textConfirmPwd" destination="BM5-wb-XUF" id="mNa-gJ-gQs"/>
+                        <outlet property="textDOB" destination="c83-Ry-21D" id="B5C-0B-tZk"/>
+                        <outlet property="textEmail" destination="Ba7-yh-Ja8" id="CdW-97-Ajs"/>
+                        <outlet property="textPwd" destination="MeI-lb-QdE" id="ofO-SX-ekh"/>
+                        <outlet property="textUserName" destination="udq-aB-pvL" id="x2a-Pr-jJM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="My7-pB-3Mw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1157.5" y="182.31333333333333"/>
+            <point key="canvasLocation" x="1157.5" y="181.5"/>
         </scene>
         <!--Entertainment Navbar-->
         <scene sceneID="h8M-My-6Uc">
@@ -1788,6 +1776,7 @@
         <image name="politics" width="23" height="23"/>
         <image name="politicsselected" width="23" height="23"/>
         <image name="portrait" width="640" height="1136"/>
+        <image name="profile" width="128" height="128"/>
         <image name="profilephotoplaceholder" width="396" height="355"/>
         <image name="public" width="25" height="22"/>
         <image name="publicselected" width="21" height="18"/>

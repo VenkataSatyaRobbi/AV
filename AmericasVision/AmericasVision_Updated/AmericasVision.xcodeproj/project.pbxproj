@@ -41,10 +41,10 @@
 		D4FA4A0D208822BF00CC425B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA4A0A208822BF00CC425B /* FBSDKLoginKit.framework */; };
 		D4FA4A0E208822BF00CC425B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA4A0B208822BF00CC425B /* Bolts.framework */; };
 		D4FA4A0F208822BF00CC425B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA4A0C208822BF00CC425B /* FBSDKCoreKit.framework */; };
+		DC04104C20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC04104B20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift */; };
 		DC4A12B1209F2BD7007C4755 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */; };
-		DC953E9E20B1BCB700B7BB46 /* NewsFeedEntertainmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC953E9D20B1BCB700B7BB46 /* NewsFeedEntertainmentViewController.swift */; };
-		DC953EA020B498A000B7BB46 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC953E9F20B498A000B7BB46 /* UserDefaultsHelper.swift */; };
-		DC953EA220B4A3F600B7BB46 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC953EA120B4A3F600B7BB46 /* UserInfo.swift */; };
+		DC8317AE20B8ABEF00517AE9 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8317AD20B8ABEF00517AE9 /* UserDefaultsHelper.swift */; };
+		DC8317B020B8AC0F00517AE9 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8317AF20B8AC0F00517AE9 /* UserInfo.swift */; };
 		DCBEBC3820A786EE00E8EAEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3720A786ED00E8EAEA /* Constants.swift */; };
 		DCBEBC3A20A7871900E8EAEA /* ChatContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */; };
 		DCBEBC3C20A78BF200E8EAEA /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */; };
@@ -97,10 +97,10 @@
 		D4FA4A0A208822BF00CC425B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		D4FA4A0B208822BF00CC425B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		D4FA4A0C208822BF00CC425B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		DC04104B20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedEntertainmentViewController.swift; sourceTree = "<group>"; };
 		DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
-		DC953E9D20B1BCB700B7BB46 /* NewsFeedEntertainmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsFeedEntertainmentViewController.swift; path = "../../../../../../../Downloads/AV-AVUpdated/AmericasVision/AmericasVision_Updated/AmericasVision/ViewControllers/NewsFeedEntertainmentViewController.swift"; sourceTree = "<group>"; };
-		DC953E9F20B498A000B7BB46 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
-		DC953EA120B4A3F600B7BB46 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		DC8317AD20B8ABEF00517AE9 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		DC8317AF20B8AC0F00517AE9 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		DCBEBC3720A786ED00E8EAEA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContactsViewController.swift; sourceTree = "<group>"; };
 		DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
@@ -167,17 +167,9 @@
 		D46390F9207036F300C4E3DA /* AmericasVision */ = {
 			isa = PBXGroup;
 			children = (
+				DC04104D20B8A7B000085718 /* plugins */,
 				DCBEBC3D20A78F8900E8EAEA /* Database */,
 				D4FA4A002082FBE000CC425B /* Model */,
-				D4761EAD207193E90065ACD7 /* GoogleService-Info.plist */,
-				D4639106207036F300C4E3DA /* Info.plist */,
-				D4FA49DC207994C300CC425B /* SWRevealViewController.h */,
-				D4FA49DD207994C300CC425B /* SWRevealViewController.m */,
-				D4FA49F7207D0D7C00CC425B /* ProgressHUD.h */,
-				D4FA49F5207D0D7C00CC425B /* ProgressHUD.m */,
-				D46390FA207036F300C4E3DA /* AppDelegate.swift */,
-				D4FA49DB207994C200CC425B /* AmericasVision-Bridging-Header.h */,
-				D4FA49F3207C6EA200CC425B /* PropertyConfig.swift */,
 				D4FA49F6207D0D7C00CC425B /* ProgressHUD.bundle */,
 				D4639101207036F300C4E3DA /* Assets.xcassets */,
 				D4FA49FC207D943700CC425B /* Storyboards */,
@@ -206,7 +198,6 @@
 				D408D2EF209E8844008DD80A /* MusicByAlbumTableViewController.swift */,
 				D408D2ED209E8831008DD80A /* MusicByTrackTableViewController.swift */,
 				D408D2E1209E425B008DD80A /* MusicTableViewCell.swift */,
-				DC953E9D20B1BCB700B7BB46 /* NewsFeedEntertainmentViewController.swift */,
 				DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */,
 				D408D2F1209E903D008DD80A /* MyProfileViewController.swift */,
 				D4FA49FE2082AD9F00CC425B /* NewsFeedAdminViewController.swift */,
@@ -222,6 +213,7 @@
 				D465157E20ABA8B30075A59C /* NewsDetailedViewController.swift */,
 				DCF8AB2720B1137C0064FF72 /* SlideCollectionViewCell.swift */,
 				DCF8AB2E20B1527E0064FF72 /* SportsNewsViewController.swift */,
+				DC04104B20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -229,14 +221,30 @@
 		D4FA4A002082FBE000CC425B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DC8317AF20B8AC0F00517AE9 /* UserInfo.swift */,
+				DC8317AD20B8ABEF00517AE9 /* UserDefaultsHelper.swift */,
 				D4FA4A072086D86700CC425B /* CurrentUserInfo.swift */,
 				DCBEBC3720A786ED00E8EAEA /* Constants.swift */,
 				DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */,
 				D4FA4A012082FBF100CC425B /* Post.swift */,
-				DC953E9F20B498A000B7BB46 /* UserDefaultsHelper.swift */,
-				DC953EA120B4A3F600B7BB46 /* UserInfo.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DC04104D20B8A7B000085718 /* plugins */ = {
+			isa = PBXGroup;
+			children = (
+				D4761EAD207193E90065ACD7 /* GoogleService-Info.plist */,
+				D4639106207036F300C4E3DA /* Info.plist */,
+				D4FA49DC207994C300CC425B /* SWRevealViewController.h */,
+				D4FA49DD207994C300CC425B /* SWRevealViewController.m */,
+				D4FA49F7207D0D7C00CC425B /* ProgressHUD.h */,
+				D4FA49F5207D0D7C00CC425B /* ProgressHUD.m */,
+				D46390FA207036F300C4E3DA /* AppDelegate.swift */,
+				D4FA49DB207994C200CC425B /* AmericasVision-Bridging-Header.h */,
+				D4FA49F3207C6EA200CC425B /* PropertyConfig.swift */,
+			);
+			path = plugins;
 			sourceTree = "<group>";
 		};
 		DCBEBC3D20A78F8900E8EAEA /* Database */ = {
@@ -380,6 +388,7 @@
 				D408D2F0209E8844008DD80A /* MusicByAlbumTableViewController.swift in Sources */,
 				D4FA49F0207AF45500CC425B /* ProfileMenuTableViewCell.swift in Sources */,
 				D4FA49FF2082AD9F00CC425B /* NewsFeedAdminViewController.swift in Sources */,
+				DC04104C20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift in Sources */,
 				D408D2F2209E903D008DD80A /* MyProfileViewController.swift in Sources */,
 				D4639111207041D400C4E3DA /* SignUpViewController.swift in Sources */,
 				D4FA49DE207994C300CC425B /* SWRevealViewController.m in Sources */,
@@ -391,6 +400,7 @@
 				D4FA4A022082FBF100CC425B /* Post.swift in Sources */,
 				D465157F20ABA8B30075A59C /* NewsDetailedViewController.swift in Sources */,
 				D4FA49F8207D0D7D00CC425B /* ProgressHUD.m in Sources */,
+				DC8317AE20B8ABEF00517AE9 /* UserDefaultsHelper.swift in Sources */,
 				D408D2DE2095E5BB008DD80A /* PostCollectionViewCell.swift in Sources */,
 				D408D2E4209E706F008DD80A /* MarketPlaceCollectionViewController.swift in Sources */,
 				DCF8AB2F20B1527E0064FF72 /* SportsNewsViewController.swift in Sources */,
@@ -399,13 +409,11 @@
 				D4FA49EE207AF0EC00CC425B /* ProfileMenuViewController.swift in Sources */,
 				DCF8AB2D20B1505F0064FF72 /* FeedsTableViewCell.swift in Sources */,
 				D408D2E8209E8178008DD80A /* NewsFeedPoliticsViewController.swift in Sources */,
-				DC953EA020B498A000B7BB46 /* UserDefaultsHelper.swift in Sources */,
-				DC953E9E20B1BCB700B7BB46 /* NewsFeedEntertainmentViewController.swift in Sources */,
 				D408D2EE209E8831008DD80A /* MusicByTrackTableViewController.swift in Sources */,
 				DCBEBC4320A83D1A00E8EAEA /* MessageHandler.swift in Sources */,
 				D408D2E6209E71E3008DD80A /* VotesCollectionViewController.swift in Sources */,
 				D4FA49F4207C6EA200CC425B /* PropertyConfig.swift in Sources */,
-				DC953EA220B4A3F600B7BB46 /* UserInfo.swift in Sources */,
+				DC8317B020B8AC0F00517AE9 /* UserInfo.swift in Sources */,
 				DCBEBC4120A78FCC00E8EAEA /* DBProvider.swift in Sources */,
 				DCBEBC3A20A7871900E8EAEA /* ChatContactsViewController.swift in Sources */,
 				DCF8AB2820B1137C0064FF72 /* SlideCollectionViewCell.swift in Sources */,
@@ -553,7 +561,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = AmericasVision/Info.plist;
+				INFOPLIST_FILE = AmericasVision/plugins/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -561,7 +569,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeroGravity.AmericasVision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "AmericasVision/AmericasVision-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AmericasVision/plugins/AmericasVision-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -579,7 +587,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = AmericasVision/Info.plist;
+				INFOPLIST_FILE = AmericasVision/plugins/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -587,7 +595,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeroGravity.AmericasVision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "AmericasVision/AmericasVision-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AmericasVision/plugins/AmericasVision-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

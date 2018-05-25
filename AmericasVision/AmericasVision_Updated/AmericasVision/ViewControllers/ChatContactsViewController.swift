@@ -28,12 +28,11 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
         self.contacts = contacts
         for contact in contacts {
             if contact.id == AVAuthService.getCurrentUserId() {
-                //AVAuthService.username = contact.name
+               // AVAuthService.username = contact.name
             }
         }
         contactsTable.reloadData()
     }
-    
     func sideMenus(){
         if revealViewController() != nil {
             ChatPrivateHomeButton.target = revealViewController()
