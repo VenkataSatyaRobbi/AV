@@ -10,10 +10,10 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+
 class SportsNewsViewController: UIViewController {
     
     @IBOutlet weak var homeButton: UIBarButtonItem!
-    
     @IBOutlet weak var sportstableview: UITableView!
    
     var posts = [Post]()
@@ -128,14 +128,14 @@ extension SportsNewsViewController:UICollectionViewDataSource,UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
    
-          //  return 2
-        return 4
+            return 2
+        //return 4
     }
    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let row = indexPath.row
-        //if row < 2{
-            if row < 4{
+        if row < 2{
+            //if row < 4{
              print("fun the loading posts..\(self.posts.count)")
            let newsRow = collectionView.dequeueReusableCell(withReuseIdentifier:"SlideCollectionViewCell", for: indexPath) as! SlideCollectionViewCell
                 newsRow.headlines.text = posts[indexPath.row].postTitle

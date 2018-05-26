@@ -60,12 +60,15 @@ class DBProvider {
         chatContactsRef.observeSingleEvent(of: DataEventType.value){
             (snapShot:DataSnapshot) in
             var contacts = [Contacts]()
+            
             if let myContacts = snapShot.value as? NSDictionary{
                 for(key,value) in myContacts{
                     if let contactData = value as? NSDictionary{
-                        if let email = contactData[Constants.EMAIL] as? String {
+                        if let firstName = contactData[Constants.FIRSTNAME] as? String {
+                            let lastName = contactData[Constants.LASTNAME] as? String
+                            let userName = firstName + " " + lastName!
                             let id = key as! String
-                            let newContact = Contacts(name :email,id:id)
+                            let newContact = Contacts(name :userName,id:id)
                             contacts.append(newContact)
                         }
                     }

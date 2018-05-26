@@ -42,6 +42,7 @@
 		D4FA4A0E208822BF00CC425B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA4A0B208822BF00CC425B /* Bolts.framework */; };
 		D4FA4A0F208822BF00CC425B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA4A0C208822BF00CC425B /* FBSDKCoreKit.framework */; };
 		DC04104C20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC04104B20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift */; };
+		DC33663F20B9BB2F002B8064 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33663E20B9BB2F002B8064 /* ChatTableViewCell.swift */; };
 		DC4A12B1209F2BD7007C4755 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */; };
 		DC8317AE20B8ABEF00517AE9 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8317AD20B8ABEF00517AE9 /* UserDefaultsHelper.swift */; };
 		DC8317B020B8AC0F00517AE9 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8317AF20B8AC0F00517AE9 /* UserInfo.swift */; };
@@ -98,6 +99,7 @@
 		D4FA4A0B208822BF00CC425B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		D4FA4A0C208822BF00CC425B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		DC04104B20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedEntertainmentViewController.swift; sourceTree = "<group>"; };
+		DC33663E20B9BB2F002B8064 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		DC8317AD20B8ABEF00517AE9 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		DC8317AF20B8AC0F00517AE9 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				DCF8AB2720B1137C0064FF72 /* SlideCollectionViewCell.swift */,
 				DCF8AB2E20B1527E0064FF72 /* SportsNewsViewController.swift */,
 				DC04104B20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift */,
+				DC33663E20B9BB2F002B8064 /* ChatTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				D43E5D3420A8F0B2000F0307 /* PostTableViewCell.swift in Sources */,
 				D408D2F0209E8844008DD80A /* MusicByAlbumTableViewController.swift in Sources */,
 				D4FA49F0207AF45500CC425B /* ProfileMenuTableViewCell.swift in Sources */,
+				DC33663F20B9BB2F002B8064 /* ChatTableViewCell.swift in Sources */,
 				D4FA49FF2082AD9F00CC425B /* NewsFeedAdminViewController.swift in Sources */,
 				DC04104C20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift in Sources */,
 				D408D2F2209E903D008DD80A /* MyProfileViewController.swift in Sources */,

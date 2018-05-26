@@ -11,12 +11,9 @@
     import FirebaseStorage
     import FirebaseDatabase
     
-    
-    
-    
     class AVAuthService{
         
-        
+        static var username = "";
         
         static func signIn(email: String, password: String, onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessage: String?) -> Void) {
             Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
@@ -27,10 +24,7 @@
                 }
                 saveProfileInfoToUserDefaults()
                 onSuccess()
-                
-                
             })
-            
         }
         
         static func saveProfileInfoToUserDefaults(){
@@ -71,8 +65,6 @@
                     }).resume()
                 }
             }
-            //            let userInfo = UserInfo.init(_firstName: user.firstName!, _lastName: user.lastName!, _email:user.email!, _dob: user.dob!, _phone: user.phone!, _userid:user.userid!, _image:user.profileImage)
-            
             
         }
         

@@ -28,7 +28,7 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
         self.contacts = contacts
         for contact in contacts {
             if contact.id == AVAuthService.getCurrentUserId() {
-               // AVAuthService.username = contact.name
+               AVAuthService.username = contact.name
             }
         }
         contactsTable.reloadData()
@@ -54,12 +54,15 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath
-        )
-        cell.textLabel?.text = contacts[indexPath.row].name 
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? ChatTableViewCell
+        cell?.ChatTableViewCellUsername?.text = contacts[indexPath.row].name
+        return cell!
     }
     
+    func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
+        return 60
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: CHAT_SEGUE, sender: nil)
     }

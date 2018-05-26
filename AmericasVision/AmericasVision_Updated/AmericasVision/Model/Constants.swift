@@ -23,4 +23,6 @@ class Constants {
     static let DB_MEDIA_MESSAGES = "mediamessages"
     
     static let LOGINUSERINFO = "user_info"
+    static let FIRSTNAME = "FirstName"
+    static let LASTNAME = "LastName"
 }
