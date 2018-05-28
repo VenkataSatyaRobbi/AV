@@ -7,16 +7,26 @@
 //
 
 import UIKit
-
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 class MusicByAlbumTableViewController: UITableViewController {
+    
+    
 
     
     @IBOutlet weak var MusicByAlbumHomeButton: UIBarButtonItem!
     @IBOutlet weak var MusicByAlbumAdminButton: UIBarButtonItem!
+    @IBOutlet weak var musicByAlbumtableview: UITableView!
+    
+     var posts = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.white
         sideMenus()
+        loadPosts()
+       
     }
     
     func sideMenus(){
@@ -27,16 +37,45 @@ class MusicByAlbumTableViewController: UITableViewController {
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
     }
+    func loadPosts(){
+        Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Category3").observe(.childAdded) { (snapshot: DataSnapshot) in
+            if let dict = snapshot.value as? [String: Any] {
+                let captionText = dict["caption"] as! String
+                let photoUrlString = dict["photoUrl"] as! String
+                let postCategoryString = dict["category"] as! String
+                let postTitleString = dict["title"] as! String
+                let postLikesInt = dict["likes"] as! NSNumber
+                let postDislikesInt = dict["dislikes"] as! NSNumber
+                let postCommentsInt = dict["comments"] as! NSNumber
+                let postIDString = dict["postID"] as! String
+                let useridString = dict["userid"] as! String
+                let timestamp = dict["timestamp"] as! Double
+                let photoCourtesyString = dict["photoCourtesy"] as! String
+                let newsContentString = dict["newsContent"] as! String
+                let newsLocationString = dict["newsLocation"] as! String
+                let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt, postIDString: postIDString, useridString: useridString, timeStampDouble: timestamp, imageCourtesyString: photoCourtesyString, newsLocationString: newsLocationString, newsContentString: newsContentString)
+                self.posts.append(post)
+                print("loading posts..\(self.posts.count)")
+                self.musicByAlbumtableview.reloadData()
+                //                if (self.posts.count > 4){
+                //                    self.setImagesInPageView()
+                //                }
+            }
+        }
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         sideMenus()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+   
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  /*  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
     
@@ -47,15 +86,128 @@ class MusicByAlbumTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         if row == 0 {
-             let cell = tableView.dequeueReusableCell(withIdentifier: "MusicTableViewCell", for: indexPath) as! MusicTableViewCell
-            
-            return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FeedsTableViewCell", for: indexPath) as? FeedsTableViewCell
+            cell?.registerCollectoinView(datasource: self)
+            return cell!
         }else{
         let cell = tableView.dequeueReusableCell(withIdentifier: "MusicTableViewCell1", for: indexPath) as! MusicTableViewCell
          
         return cell
         }
+    }*/
+    
+    
+    
+    
+    
+}
+//---------------
+
+
+extension MusicByAlbumTableViewController{
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return posts.count
     }
     
+    override func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
+        let row = indexPath.row
+        if row == 0 {
+            return 165
+        }else{
+            return 300
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = indexPath.row
+        if row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FeedsTableViewCell", for: indexPath) as? FeedsTableViewCell
+            cell?.registerCollectoinView(datasource: self)
+            return cell!
+        }else{
+           
+            /*let newsRow = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
+            
+            newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
+            newsRow.PostCollectionViewCaption.text = posts[indexPath.row].caption
+            newsRow.PostTableViewHeadlines.isScrollEnabled = false
+            newsRow.PostCollectionViewCaption.isScrollEnabled = false
+            newsRow.postID = self.posts[indexPath.row].postID
+            
+            let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
+            AVPostStorageRef.downloadURL { (url, error) in
+                if error != nil{
+                    print(error?.localizedDescription as Any)
+                    return
+                }
+                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                    if error != nil {
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                    guard let imageData = UIImage(data: data!) else { return }
+                    DispatchQueue.main.async {
+                        print(imageData)
+                        newsRow.PostTableViewImage.image = imageData
+                    }
+                }).resume()
+            }
+            return newsRow
+            
+            */
+            
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MusicTableViewCell1", for: indexPath) as! MusicTableViewCell
+            
+            return cell
+        }
+        
+    }
+}
+
+extension MusicByAlbumTableViewController:UICollectionViewDataSource,UICollectionViewDelegate{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        
+        return 2
+        //return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let row = indexPath.row
+        if row < 2{
+            //if row < 4{
+            print("fun the loading posts..\(self.posts.count)")
+            let newsRow = collectionView.dequeueReusableCell(withReuseIdentifier:"SlideCollectionViewCell", for: indexPath) as! SlideCollectionViewCell
+            newsRow.headlines.isHidden = true
+            //newsRow.headlines.text = posts[indexPath.row].postTitle
+            let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
+            AVPostStorageRef.downloadURL { (url, error) in
+                if error != nil{
+                    print(error?.localizedDescription as Any)
+                    return
+                }
+                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                    if error != nil {
+                        print(error?.localizedDescription as Any)
+                        return
+                    }
+                    guard let imageData = UIImage(data: data!) else { return }
+                    DispatchQueue.main.async {
+                        print(imageData)
+                        newsRow.cellImage.image = imageData
+                    }
+                }).resume()
+            }
+            return newsRow
+        }else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"SlideCollectionViewCell", for: indexPath) as! SlideCollectionViewCell
+            return cell
+        }
+        
+    }
 }
 

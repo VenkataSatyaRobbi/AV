@@ -30,6 +30,15 @@ class PostTableViewCell: UITableViewCell {
      //    PostCollectionViewCaption.isScrollEnabled = false
        // PostTablebutton.layer.cornerRadius = 5.0
        // PostTablebutton.clipsToBounds = true
+        
+        
+        PostTableViewbg.backgroundColor = UIColor.white
+        PostTableViewbg.layer.cornerRadius = 5.0
+        PostTableViewbg.layer.masksToBounds = false
+        PostTableViewbg.layer.shadowColor =
+            UIColor.white.withAlphaComponent(0.2).cgColor
+        PostTableViewbg.layer.shadowOffset = CGSize(width: 0, height: 0)
+        PostTableViewbg.layer.shadowOpacity =  0.8
     }
     
    func registerCollectoinView<DataSource:UICollectionViewDataSource>(datasource:DataSource){

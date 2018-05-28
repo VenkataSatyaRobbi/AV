@@ -20,10 +20,22 @@ class MusicTableViewCell: UITableViewCell {
         // Initialization code
        // MusicTableImage.layer.cornerRadius = 5.0
        // MusicTableImage.clipsToBounds = true
-        MusicTablebg.layer.cornerRadius = 5.0
-        MusicTablebg.clipsToBounds = true
+       // MusicTablebg.layer.cornerRadius = 5.0
+       // MusicTablebg.clipsToBounds = true
+        
+        
+//        MusicTablebg.backgroundColor = UIColor.white
+//        MusicTablebg.layer.cornerRadius = 5.0
+//        MusicTablebg.layer.masksToBounds = false
+//        MusicTablebg.layer.shadowColor =
+//            UIColor.white.withAlphaComponent(0.2).cgColor
+//        MusicTablebg.layer.shadowOffset = CGSize(width: 0, height: 0)
+//        MusicTablebg.layer.shadowOpacity =  0.8
+//
+        
+        
       //   self.MusicScrollview.contentSize.height = 1.0
-       MusicScrollview.isScrollEnabled = true
+      
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
