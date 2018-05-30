@@ -20,6 +20,7 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         sideMenus()
+        self.navigationItem.title = "Contacts"
         DBProvider.instance.delegate = self
         DBProvider.instance.getContacts()
     }
@@ -55,7 +56,9 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? ChatTableViewCell
-        cell?.ChatTableViewCellUsername?.text = contacts[indexPath.row].name
+        let contact = contacts[indexPath.row]
+        cell?.ChatTableViewCellUsername?.text = contact.name
+        cell?.ChatTableViewCellImage.loadImageUsingCache(urlStr: contact.profileImageUrl)
         return cell!
     }
     

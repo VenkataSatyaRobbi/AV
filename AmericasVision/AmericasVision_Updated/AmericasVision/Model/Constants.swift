@@ -25,4 +25,5 @@ class Constants {
     static let LOGINUSERINFO = "user_info"
     static let FIRSTNAME = "FirstName"
     static let LASTNAME = "LastName"
+    static let PROFILEIMAGEURL = "ProfileImageURL"
 }

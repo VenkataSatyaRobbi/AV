@@ -66,9 +66,10 @@ class DBProvider {
                     if let contactData = value as? NSDictionary{
                         if let firstName = contactData[Constants.FIRSTNAME] as? String {
                             let lastName = contactData[Constants.LASTNAME] as? String
+                            let url = contactData[Constants.PROFILEIMAGEURL] as? String
                             let userName = firstName + " " + lastName!
                             let id = key as! String
-                            let newContact = Contacts(name :userName,id:id)
+                            let newContact = Contacts(name :userName,id:id,profileImageUrl:url!)
                             contacts.append(newContact)
                         }
                     }

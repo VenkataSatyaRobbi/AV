@@ -12,10 +12,13 @@ class Contacts{
     
     private var _name = ""
     private var  _id = ""
+    private var _profileImageUrl: String = ""
     
-    init(name:String, id:String) {
+    
+    init(name:String, id:String,profileImageUrl:String) {
         _name = name
         _id = id
+        _profileImageUrl = profileImageUrl
     }
     
     var name :String {
@@ -24,6 +27,10 @@ class Contacts{
     
     var id :String {
         return _id;
+    }
+    
+    var profileImageUrl :String {
+        return _profileImageUrl;
     }
     
 }
