@@ -13,6 +13,8 @@ import AVKit
 
 class ChatPrivateViewController: JSQMessagesViewController,MessageReceivedDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
+    var contact:Contacts?
+    
     private var messages = [JSQMessage]()
     
     let picker =  UIImagePickerController();
@@ -28,8 +30,14 @@ class ChatPrivateViewController: JSQMessagesViewController,MessageReceivedDelega
         picker.delegate = self
         MessageHandler.Instance.delegate = self
         view.backgroundColor = UIColor.white
-        self.senderId = AVAuthService.getCurrentUserId()
-        self.senderDisplayName = AVAuthService.username
+        self.senderId = contact?.id
+        self.senderDisplayName = contact?.name
+        self.navigationItem.title = contact?.name
+       
+        let navImage = UIImage(named: "profile")
+        let profileImage = UIImageView(image: navImage)
+        profileImage.loadImageUsingCache(urlStr: (contact?.profileImageUrl)!)
+        self.navigationItem.leftBarButtonItems?.append(UIBarButtonItem(image: profileImage.image, style: UIBarButtonItemStyle.plain, target: nil, action: nil))
         MessageHandler.Instance.observeMessages()
     }
 

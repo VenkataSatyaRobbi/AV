@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource, FetchData{
     
     private let cellID = "chatContactsCell"
@@ -67,7 +68,14 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: CHAT_SEGUE, sender: nil)
+        performSegue(withIdentifier: CHAT_SEGUE, sender: self)
     }
-  
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let index = self.contactsTable.indexPathForSelectedRow
+        let indexNumber = index?.row
+        let vc: ChatPrivateViewController = segue.destination as! ChatPrivateViewController
+        vc.contact = contacts[indexNumber!]
+    }
+    
 }
