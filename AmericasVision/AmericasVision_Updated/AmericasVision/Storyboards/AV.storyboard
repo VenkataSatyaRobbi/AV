@@ -734,7 +734,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Kfb-yh-Sub">
-                                <rect key="frame" x="8" y="64" width="359" height="554"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -1237,10 +1237,11 @@
                     <navigationItem key="navigationItem" id="AiW-hZ-qHy">
                         <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="9vu-50-unO"/>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="ChatPrivateHomeButton" destination="9vu-50-unO" id="rwg-5r-yZh"/>
                         <outlet property="contactsTable" destination="dNt-14-Fyh" id="58x-xc-n2t"/>
-                        <segue destination="Dit-Al-4Rf" kind="push" identifier="chatsegue" id="eaf-JK-wMp"/>
+                        <segue destination="Dit-Al-4Rf" kind="push" identifier="chatsegue" id="NIm-Gp-Kjv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bvj-x5-aXB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1250,7 +1251,7 @@
         <!--chat-->
         <scene sceneID="hc6-4j-C0Z">
             <objects>
-                <viewController title="chat" id="Dit-Al-4Rf" customClass="ChatPrivateViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="chat" hidesBottomBarWhenPushed="YES" id="Dit-Al-4Rf" customClass="ChatPrivateViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t1g-q5-VKo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1263,6 +1264,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backToContacts" destination="I5C-Qs-CMi" id="59p-iw-xbZ"/>
                     </connections>
@@ -1678,7 +1680,7 @@
         <scene sceneID="WQg-nf-TsH">
             <objects>
                 <navigationController title="Private Navbar" automaticallyAdjustsScrollViewInsets="NO" id="mGc-Uj-g1y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="8Uo-RJ-v96"/>
+                    <tabBarItem key="tabBarItem" title="Private Chat" id="8Uo-RJ-v96"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cwz-Bx-HJd">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1697,7 +1699,7 @@
         <scene sceneID="s7W-jG-7T3">
             <objects>
                 <navigationController title="Public Navbar" automaticallyAdjustsScrollViewInsets="NO" id="nyd-dK-9ff" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="public" landscapeImage="public" selectedImage="publicselected" id="gGQ-AL-ldQ"/>
+                    <tabBarItem key="tabBarItem" title="Public Chat" image="public" landscapeImage="public" selectedImage="publicselected" id="gGQ-AL-ldQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mYC-eR-Rfp">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1904,7 +1906,7 @@
         <image name="sportsselected" width="19" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tn6-UM-K1y"/>
+        <segue reference="AdX-wD-48h"/>
         <segue reference="vhs-nr-zxy"/>
         <segue reference="yj6-fy-86n"/>
     </inferredMetricsTieBreakers>

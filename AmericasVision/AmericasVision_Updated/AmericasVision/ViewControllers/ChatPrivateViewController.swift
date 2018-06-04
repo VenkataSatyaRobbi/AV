@@ -33,11 +33,11 @@ class ChatPrivateViewController: JSQMessagesViewController,MessageReceivedDelega
         self.senderId = contact?.id
         self.senderDisplayName = contact?.name
         self.navigationItem.title = contact?.name
-       
-        let navImage = UIImage(named: "profile")
-        let profileImage = UIImageView(image: navImage)
-        profileImage.loadImageUsingCache(urlStr: (contact?.profileImageUrl)!)
-        self.navigationItem.leftBarButtonItems?.append(UIBarButtonItem(image: profileImage.image, style: UIBarButtonItemStyle.plain, target: nil, action: nil))
+         
+       // let navImage = UIImage(named: "profile")
+       // let profileImage = UIImageView(image: navImage)
+       // profileImage.loadImageUsingCache(urlStr: (contact?.profileImageUrl)!)
+       // self.navigationItem.leftBarButtonItems?.append(UIBarButtonItem(image: profileImage.image, style: UIBarButtonItemStyle.plain, target: nil, action: nil))
         MessageHandler.Instance.observeMessages()
     }
 
