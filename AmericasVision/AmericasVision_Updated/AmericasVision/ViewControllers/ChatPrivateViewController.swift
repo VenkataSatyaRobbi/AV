@@ -10,6 +10,7 @@ import UIKit
 import JSQMessagesViewController
 import MobileCoreServices
 import AVKit
+import SDWebImage
 
 class ChatPrivateViewController: JSQMessagesViewController,MessageReceivedDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
@@ -39,6 +40,7 @@ class ChatPrivateViewController: JSQMessagesViewController,MessageReceivedDelega
        // profileImage.loadImageUsingCache(urlStr: (contact?.profileImageUrl)!)
        // self.navigationItem.leftBarButtonItems?.append(UIBarButtonItem(image: profileImage.image, style: UIBarButtonItemStyle.plain, target: nil, action: nil))
         MessageHandler.Instance.observeMessages()
+        MessageHandler.Instance.observeMediaMessages()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -54,7 +56,7 @@ class ChatPrivateViewController: JSQMessagesViewController,MessageReceivedDelega
     }
     
     override func didPressAccessoryButton(_ sender: UIButton!) {
-        let alert = UIAlertController(title: "Media Messages", message: "please select  a media", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Media Messages", message: "please select a media", preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         let photos = UIAlertAction(title: "Photos", style: .default, handler:{ (alert: UIAlertAction) in
             self.chooseMedia(type: kUTTypeImage)
@@ -78,11 +80,14 @@ class ChatPrivateViewController: JSQMessagesViewController,MessageReceivedDelega
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pic = info[UIImagePickerControllerOriginalImage] as? UIImage{
-           let image = JSQPhotoMediaItem(image:pic)
-           self.messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: image))
+            let data = UIImageJPEGRepresentation(pic,0.01)
+            MessageHandler.Instance.sendMedia(image: data, video: nil, senderId: senderId, senderName: senderDisplayName)
+           //let image = JSQPhotoMediaItem(image:pic)
+           //self.messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: image))
         }else if let vid = info[UIImagePickerControllerMediaURL] as? URL{
-            let video = JSQVideoMediaItem(fileURL: vid, isReadyToPlay: true)
-            self.messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: video    ))
+            //let video = JSQVideoMediaItem(fileURL: vid, isReadyToPlay: true)
+            //self.messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: video    ))
+            MessageHandler.Instance.sendMedia(image: nil, video: vid, senderId: senderId, senderName: senderDisplayName)
         }
         self.dismiss(animated: true, completion: nil)
         collectionView.reloadData()
@@ -93,11 +98,44 @@ class ChatPrivateViewController: JSQMessagesViewController,MessageReceivedDelega
         collectionView.reloadData()
     }
     
+    func messageReceived(senderId: String, senderName:String,url: String) {
+        if let mediaUrl = URL(string: url){
+            do{
+                let data = try Data(contentsOf: mediaUrl);
+                if let _ = UIImage(data:data){
+                    let _ = SDWebImageDownloader.shared().downloadImage(with: mediaUrl, options: [], progress: nil, completed: { (image,data,error,finished) in
+                      
+                        DispatchQueue.main.sync(){
+                            let photo = JSQPhotoMediaItem(image:image)
+                            if senderId == self.senderId{
+                               photo?.appliesMediaViewMaskAsOutgoing = true
+                            }else{
+                               photo?.appliesMediaViewMaskAsOutgoing = false
+                            }
+                            self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                            self.collectionView.reloadData()
+                        }
+                    })
+                }else{
+                    print("test")
+                }
+            }catch{
+                print("exceptions")
+            }
+        }
+    }
+    
     //Collection view functions
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-        return bubbleImageFactory?.outgoingMessagesBubbleImage(with: UIColor.blue)
+        let message = messages[indexPath.item]
+        if message.senderId == self.senderId {
+            return bubbleImageFactory?.outgoingMessagesBubbleImage(with: UIColor.blue)
+        }else{
+             return bubbleImageFactory?.incomingMessagesBubbleImage(with: UIColor.blue)
+        }
+        
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {

@@ -56,6 +56,14 @@ class DBProvider {
         return databaseRef.child(Constants.DB_MEDIA_MESSAGES)
     }
     
+    var videoStorageRef: StorageReference {
+        return storageRef.child(Constants.DB_VIDEO_MESSAGES)
+    }
+    
+    var imageStorageRef: StorageReference {
+        return storageRef.child(Constants.DB_IMAGE_MESSAGES)
+    }
+    
     func getContacts(){
         chatContactsRef.observeSingleEvent(of: DataEventType.value){
             (snapShot:DataSnapshot) in
