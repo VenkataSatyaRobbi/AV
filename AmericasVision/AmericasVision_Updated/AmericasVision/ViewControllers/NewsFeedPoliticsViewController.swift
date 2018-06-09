@@ -20,9 +20,10 @@ class NewsFeedPoliticsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        politicsTableView.isHidden = false
         politicsTableView.dataSource = self
         politicsTableView.delegate = self
-        view.backgroundColor = UIColor.white
+        //view.backgroundColor = UIColor.white
         sideMenus()
         loadPosts()
     }
@@ -104,12 +105,14 @@ extension NewsFeedPoliticsViewController:UITableViewDataSource,UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let newsRow = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
-        
+      
             newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
             newsRow.PostCollectionViewCaption.text = posts[indexPath.row].caption
             newsRow.PostTableViewHeadlines.isScrollEnabled = false
             newsRow.PostCollectionViewCaption.isScrollEnabled = false
             newsRow.postID = self.posts[indexPath.row].postID
+        
+     
         
             let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
             AVPostStorageRef.downloadURL { (url, error) in

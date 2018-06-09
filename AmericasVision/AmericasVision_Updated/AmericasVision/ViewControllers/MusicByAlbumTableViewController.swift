@@ -26,6 +26,7 @@ class MusicByAlbumTableViewController: UITableViewController {
         view.backgroundColor = UIColor.white
         sideMenus()
         loadPosts()
+        self.navigationItem.title = "Music By Album"
        
     }
     

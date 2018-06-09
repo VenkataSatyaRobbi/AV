@@ -599,7 +599,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="r6s-JX-omt"/>
                         <barButtonItem key="rightBarButtonItem" title="Add to Store" image="adminconsole" landscapeImage="adminconsole" largeContentSizeImage="adminconsole" id="reb-LH-omv">
                             <connections>
-                                <segue destination="olt-JC-2dN" kind="push" id="Til-vd-r9L"/>
+                                <segue destination="QYm-8g-8yd" kind="push" id="Qs7-wB-hfP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -661,7 +661,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xkq-lr-7iz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1105.5" y="1038.5"/>
+            <point key="canvasLocation" x="-1094" y="1037"/>
         </scene>
         <!--MarketPlace-->
         <scene sceneID="N4X-7M-2k7">
@@ -736,7 +736,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Kfb-yh-Sub">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" semanticContentAttribute="playback" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="3" indentationWidth="0.0" reuseIdentifier="PostTableViewCell" rowHeight="200" id="CDk-fY-hDd" customClass="PostTableViewCell" customModule="AmericasVision" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="200"/>
@@ -745,8 +745,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" id="d9p-uS-k4d">
-                                                    <rect key="frame" x="3" y="0.0" width="373" height="333"/>
+                                                <view contentMode="scaleToFill" misplaced="YES" id="d9p-uS-k4d">
+                                                    <rect key="frame" x="1" y="0.0" width="373" height="189"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
@@ -969,8 +969,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" id="oPT-9D-W2I">
-                                                    <rect key="frame" x="3" y="0.0" width="373" height="334"/>
+                                                <view contentMode="scaleToFill" misplaced="YES" id="oPT-9D-W2I">
+                                                    <rect key="frame" x="3" y="0.0" width="373" height="189"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
@@ -1119,7 +1119,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" misplaced="YES" id="G5X-NO-gu7">
-                                                    <rect key="frame" x="3" y="0.0" width="373" height="334"/>
+                                                    <rect key="frame" x="3" y="0.0" width="373" height="189"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
@@ -1248,6 +1248,23 @@
             </objects>
             <point key="canvasLocation" x="-43.5" y="1033.5"/>
         </scene>
+        <!--Chat Public View Controller-->
+        <scene sceneID="blw-c4-GTj">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="UNZ-iP-s3c" customClass="ChatPublicViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="YPg-EQ-uRx">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Sfq-N5-Yxh">
+                            <connections>
+                                <action selector="goBack:" destination="UNZ-iP-s3c" id="iKS-RJ-lAy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yVX-QD-IMp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="366" y="1036"/>
+        </scene>
         <!--chat-->
         <scene sceneID="hc6-4j-C0Z">
             <objects>
@@ -1272,40 +1289,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="erY-mo-0ze" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-45" y="1848"/>
-        </scene>
-        <!--Public-->
-        <scene sceneID="95C-AQ-prJ">
-            <objects>
-                <tableViewController title="Public" id="1cp-Aj-LjD" customClass="ChatPublicTableTableViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="SnW-bF-pm4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="NMw-vZ-wyZ">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NMw-vZ-wyZ" id="0SV-Q0-9T0">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="1cp-Aj-LjD" id="7B7-61-1kE"/>
-                            <outlet property="delegate" destination="1cp-Aj-LjD" id="M0b-nd-huR"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="3B4-N8-vpu">
-                        <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="KZI-ym-25b"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="ChatPublicHomeButton" destination="KZI-ym-25b" id="bY0-Sg-bkZ"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NMk-3Q-BeC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="687.5" y="1033.8499999999999"/>
         </scene>
         <!--Chat Tabbar-->
         <scene sceneID="xap-BS-6lM">
@@ -1707,7 +1690,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="1cp-Aj-LjD" kind="relationship" relationship="rootViewController" id="COP-f2-L1W"/>
+                        <segue destination="UNZ-iP-s3c" kind="relationship" relationship="rootViewController" id="lAO-Is-re5"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ce6-ie-v5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1882,8 +1865,40 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IZK-cD-BPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationItem id="pd4-VL-aOg">
+                    <barButtonItem key="leftBarButtonItem" title="Back" id="Oli-IM-eL1">
+                        <connections>
+                            <action selector="goBack:" destination="Dit-Al-4Rf" id="Elb-qB-06k"/>
+                        </connections>
+                    </barButtonItem>
+                </navigationItem>
             </objects>
             <point key="canvasLocation" x="1759" y="1957"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pe4-qG-M2B">
+            <objects>
+                <viewController id="QYm-8g-8yd" customClass="ViewController" customModule="FileExplorerExampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cL9-CS-ZJ9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OIV-dc-2iz">
+                                <rect key="frame" x="60" y="110" width="255" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Show Audio OR Video files for upload"/>
+                                <connections>
+                                    <action selector="handleShowFileExplorerButton" destination="QYm-8g-8yd" eventType="touchUpInside" id="rxz-pa-VM2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="heA-X8-lJc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BJD-oN-frs" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1095" y="1860"/>
         </scene>
     </scenes>
     <resources>
@@ -1906,7 +1921,7 @@
         <image name="sportsselected" width="19" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AdX-wD-48h"/>
+        <segue reference="mvl-b6-vqv"/>
         <segue reference="vhs-nr-zxy"/>
         <segue reference="yj6-fy-86n"/>
     </inferredMetricsTieBreakers>

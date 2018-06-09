@@ -46,6 +46,12 @@
 		DC33664120BC6EB0002B8064 /* MusicAlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33664020BC6EB0002B8064 /* MusicAlbumTableViewCell.swift */; };
 		DC33664320BF06C8002B8064 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33664220BF06C8002B8064 /* ImageCache.swift */; };
 		DC33664720C5B092002B8064 /* MusicAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33664620C5B092002B8064 /* MusicAdminViewController.swift */; };
+		DC46B8D620C7104400188EC9 /* ChatPublicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46B8D520C7104400188EC9 /* ChatPublicViewController.swift */; };
+		DC46B8E320C93C8800188EC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46B8E220C93C8800188EC9 /* ViewController.swift */; };
+		DC46B8F020CB911600188EC9 /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = DC46B8EC20CB911500188EC9 /* video.mp4 */; };
+		DC46B8F120CB911600188EC9 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC46B8ED20CB911600188EC9 /* image.jpg */; };
+		DC46B8F220CB911600188EC9 /* audio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC46B8EE20CB911600188EC9 /* audio.mp3 */; };
+		DC46B8F320CB911600188EC9 /* pdf.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DC46B8EF20CB911600188EC9 /* pdf.pdf */; };
 		DC4A12B1209F2BD7007C4755 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */; };
 		DC8317AE20B8ABEF00517AE9 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8317AD20B8ABEF00517AE9 /* UserDefaultsHelper.swift */; };
 		DC8317B020B8AC0F00517AE9 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8317AF20B8AC0F00517AE9 /* UserInfo.swift */; };
@@ -106,6 +112,12 @@
 		DC33664020BC6EB0002B8064 /* MusicAlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAlbumTableViewCell.swift; sourceTree = "<group>"; };
 		DC33664220BF06C8002B8064 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		DC33664620C5B092002B8064 /* MusicAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAdminViewController.swift; sourceTree = "<group>"; };
+		DC46B8D520C7104400188EC9 /* ChatPublicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPublicViewController.swift; sourceTree = "<group>"; };
+		DC46B8E220C93C8800188EC9 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DC46B8EC20CB911500188EC9 /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
+		DC46B8ED20CB911600188EC9 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
+		DC46B8EE20CB911600188EC9 /* audio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = audio.mp3; sourceTree = "<group>"; };
+		DC46B8EF20CB911600188EC9 /* pdf.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf.pdf; sourceTree = "<group>"; };
 		DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		DC8317AD20B8ABEF00517AE9 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		DC8317AF20B8AC0F00517AE9 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -180,6 +192,10 @@
 				D4FA4A002082FBE000CC425B /* Model */,
 				D4FA49F6207D0D7C00CC425B /* ProgressHUD.bundle */,
 				D4639101207036F300C4E3DA /* Assets.xcassets */,
+				DC46B8EE20CB911600188EC9 /* audio.mp3 */,
+				DC46B8ED20CB911600188EC9 /* image.jpg */,
+				DC46B8EF20CB911600188EC9 /* pdf.pdf */,
+				DC46B8EC20CB911500188EC9 /* video.mp4 */,
 				D4FA49FC207D943700CC425B /* Storyboards */,
 				D4FA49FD207D947D00CC425B /* ViewControllers */,
 			);
@@ -198,6 +214,7 @@
 		D4FA49FD207D947D00CC425B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DC46B8D720C930F900188EC9 /* New Group */,
 				DCF8AB2C20B1505F0064FF72 /* FeedsTableViewCell.swift */,
 				DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */,
 				D408D2E9209E8622008DD80A /* ChatPrivateViewController.swift */,
@@ -225,6 +242,7 @@
 				DC33663E20B9BB2F002B8064 /* ChatTableViewCell.swift */,
 				DC33664020BC6EB0002B8064 /* MusicAlbumTableViewCell.swift */,
 				DC33664620C5B092002B8064 /* MusicAdminViewController.swift */,
+				DC46B8D520C7104400188EC9 /* ChatPublicViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -256,6 +274,14 @@
 				D4FA49F3207C6EA200CC425B /* PropertyConfig.swift */,
 			);
 			path = plugins;
+			sourceTree = "<group>";
+		};
+		DC46B8D720C930F900188EC9 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				DC46B8E220C93C8800188EC9 /* ViewController.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		DCBEBC3D20A78F8900E8EAEA /* Database */ = {
@@ -331,8 +357,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4761EAE207193E90065ACD7 /* GoogleService-Info.plist in Resources */,
+				DC46B8F220CB911600188EC9 /* audio.mp3 in Resources */,
+				DC46B8F020CB911600188EC9 /* video.mp4 in Resources */,
 				D4639105207036F300C4E3DA /* LaunchScreen.storyboard in Resources */,
 				D463910D2070377100C4E3DA /* AV.storyboard in Resources */,
+				DC46B8F120CB911600188EC9 /* image.jpg in Resources */,
+				DC46B8F320CB911600188EC9 /* pdf.pdf in Resources */,
 				D4639102207036F300C4E3DA /* Assets.xcassets in Resources */,
 				D4FA49F9207D0D7D00CC425B /* ProgressHUD.bundle in Resources */,
 			);
@@ -366,6 +396,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AmericasVision/Pods-AmericasVision-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FileExplorer/FileExplorer.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
@@ -376,6 +407,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FileExplorer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
@@ -399,6 +431,7 @@
 				DCBEBC3820A786EE00E8EAEA /* Constants.swift in Sources */,
 				D4FA4A082086D86700CC425B /* CurrentUserInfo.swift in Sources */,
 				D43E5D3420A8F0B2000F0307 /* PostTableViewCell.swift in Sources */,
+				DC46B8D620C7104400188EC9 /* ChatPublicViewController.swift in Sources */,
 				D408D2F0209E8844008DD80A /* MusicByAlbumTableViewController.swift in Sources */,
 				D4FA49F0207AF45500CC425B /* ProfileMenuTableViewCell.swift in Sources */,
 				DC33663F20B9BB2F002B8064 /* ChatTableViewCell.swift in Sources */,
@@ -422,6 +455,7 @@
 				D408D2E4209E706F008DD80A /* MarketPlaceCollectionViewController.swift in Sources */,
 				DCF8AB2F20B1527E0064FF72 /* SportsNewsViewController.swift in Sources */,
 				D46390FB207036F300C4E3DA /* AppDelegate.swift in Sources */,
+				DC46B8E320C93C8800188EC9 /* ViewController.swift in Sources */,
 				DC4A12B1209F2BD7007C4755 /* MusicViewController.swift in Sources */,
 				D4FA49EE207AF0EC00CC425B /* ProfileMenuViewController.swift in Sources */,
 				DCF8AB2D20B1505F0064FF72 /* FeedsTableViewCell.swift in Sources */,
@@ -581,7 +615,10 @@
 				);
 				INFOPLIST_FILE = AmericasVision/plugins/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeroGravity.AmericasVision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "AmericasVision/plugins/AmericasVision-Bridging-Header.h";
@@ -604,7 +641,10 @@
 				);
 				INFOPLIST_FILE = AmericasVision/plugins/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeroGravity.AmericasVision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "AmericasVision/plugins/AmericasVision-Bridging-Header.h";
