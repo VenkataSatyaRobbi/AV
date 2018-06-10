@@ -26,7 +26,7 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
         DBProvider.instance.getContacts()
     }
     
-    func dataReCeived(contacts: [Contacts]) {
+    func dataReceived(contacts: [Contacts]) {
         self.contacts = contacts
         for contact in contacts {
             if contact.id == AVAuthService.getCurrentUserId() {
@@ -48,9 +48,7 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
         super.didReceiveMemoryWarning()
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return contacts.count
-    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contacts.count
     }

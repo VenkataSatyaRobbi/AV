@@ -11,7 +11,7 @@ import FirebaseDatabase
 import FirebaseStorage
 
 protocol FetchData: class {
-    func dataReCeived(contacts: [Contacts])
+    func dataReceived(contacts: [Contacts])
 }
 
 class DBProvider {
@@ -71,19 +71,21 @@ class DBProvider {
             
             if let myContacts = snapShot.value as? NSDictionary{
                 for(key,value) in myContacts{
-                    if let contactData = value as? NSDictionary{
-                        if let firstName = contactData[Constants.FIRSTNAME] as? String {
-                            let lastName = contactData[Constants.LASTNAME] as? String
-                            let url = contactData[Constants.PROFILEIMAGEURL] as? String
-                            let userName = firstName + " " + lastName!
-                            let id = key as! String
-                            let newContact = Contacts(name :userName,id:id,profileImageUrl:url!)
-                            contacts.append(newContact)
+                    let id = key as! String
+                    if id != AVAuthService.getCurrentUserId() {
+                        if let contactData = value as? NSDictionary{
+                            if let firstName = contactData[Constants.FIRSTNAME] as? String {
+                                let lastName = contactData[Constants.LASTNAME] as? String
+                                let url = contactData[Constants.PROFILEIMAGEURL] as? String
+                                let userName = firstName + " " + lastName!
+                                let newContact = Contacts(name :userName,id:id,profileImageUrl:url!)
+                                contacts.append(newContact)
+                            }
                         }
                     }
                 }
             }
-            self.delegate?.dataReCeived(contacts: contacts)
+            self.delegate?.dataReceived(contacts: contacts)
         }
     }
     
