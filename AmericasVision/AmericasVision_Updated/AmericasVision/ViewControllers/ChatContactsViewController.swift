@@ -28,11 +28,6 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
     
     func dataReceived(contacts: [Contacts]) {
         self.contacts = contacts
-        for contact in contacts {
-            if contact.id == AVAuthService.getCurrentUserId() {
-               AVAuthService.username = contact.name
-            }
-        }
         contactsTable.reloadData()
     }
     func sideMenus(){

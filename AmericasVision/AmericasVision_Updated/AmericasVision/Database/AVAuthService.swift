@@ -13,8 +13,6 @@
     
     class AVAuthService{
         
-        static var username = "";
-        
         static func signIn(email: String, password: String, onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessage: String?) -> Void) {
             Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
                 
@@ -103,7 +101,7 @@
         }
         
         static func getCurrentUserName() -> String{
-            return (Auth.auth().currentUser?.displayName)!
+            return UserDefaults.standard.getLoginUserInfo().firstName! + UserDefaults.standard.getLoginUserInfo().lastName!
         }
         
     }

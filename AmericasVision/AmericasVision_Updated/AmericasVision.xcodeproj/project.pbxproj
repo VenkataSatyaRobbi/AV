@@ -53,6 +53,7 @@
 		DC46B8F220CB911600188EC9 /* audio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC46B8EE20CB911600188EC9 /* audio.mp3 */; };
 		DC46B8F320CB911600188EC9 /* pdf.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DC46B8EF20CB911600188EC9 /* pdf.pdf */; };
 		DC4A12B1209F2BD7007C4755 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */; };
+		DC7F1D9A20CD9E8C005CB41F /* PrivateMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F1D9920CD9E8C005CB41F /* PrivateMessageHandler.swift */; };
 		DC8317AE20B8ABEF00517AE9 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8317AD20B8ABEF00517AE9 /* UserDefaultsHelper.swift */; };
 		DC8317B020B8AC0F00517AE9 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8317AF20B8AC0F00517AE9 /* UserInfo.swift */; };
 		DCBEBC3820A786EE00E8EAEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3720A786ED00E8EAEA /* Constants.swift */; };
@@ -119,6 +120,7 @@
 		DC46B8EE20CB911600188EC9 /* audio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = audio.mp3; sourceTree = "<group>"; };
 		DC46B8EF20CB911600188EC9 /* pdf.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf.pdf; sourceTree = "<group>"; };
 		DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
+		DC7F1D9920CD9E8C005CB41F /* PrivateMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMessageHandler.swift; sourceTree = "<group>"; };
 		DC8317AD20B8ABEF00517AE9 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		DC8317AF20B8AC0F00517AE9 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		DCBEBC3720A786ED00E8EAEA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				DCBEBC4020A78FCC00E8EAEA /* DBProvider.swift */,
 				DCBEBC4220A83D1A00E8EAEA /* MessageHandler.swift */,
 				DC33664220BF06C8002B8064 /* ImageCache.swift */,
+				DC7F1D9920CD9E8C005CB41F /* PrivateMessageHandler.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				D4FA4A082086D86700CC425B /* CurrentUserInfo.swift in Sources */,
 				D43E5D3420A8F0B2000F0307 /* PostTableViewCell.swift in Sources */,
 				DC46B8D620C7104400188EC9 /* ChatPublicViewController.swift in Sources */,
+				DC7F1D9A20CD9E8C005CB41F /* PrivateMessageHandler.swift in Sources */,
 				D408D2F0209E8844008DD80A /* MusicByAlbumTableViewController.swift in Sources */,
 				D4FA49F0207AF45500CC425B /* ProfileMenuTableViewCell.swift in Sources */,
 				DC33663F20B9BB2F002B8064 /* ChatTableViewCell.swift in Sources */,

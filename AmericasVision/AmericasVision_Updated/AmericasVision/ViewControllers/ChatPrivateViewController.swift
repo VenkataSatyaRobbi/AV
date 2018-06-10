@@ -12,7 +12,7 @@ import MobileCoreServices
 import AVKit
 import SDWebImage
 
-class ChatPrivateViewController: JSQMessagesViewController,MessageReceivedDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceivedDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     var contact:Contacts?
     
@@ -29,18 +29,18 @@ class ChatPrivateViewController: JSQMessagesViewController,MessageReceivedDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.delegate = self
-        MessageHandler.Instance.delegate = self
+        PrivateMessageHandler.Instance.delegate = self
         view.backgroundColor = UIColor.white
-        self.senderId = contact?.id
-        self.senderDisplayName = contact?.name
+        self.senderId = AVAuthService.getCurrentUserId()
+        self.senderDisplayName = AVAuthService.getCurrentUserName()
         self.navigationItem.title = contact?.name
          
        // let navImage = UIImage(named: "profile")
        // let profileImage = UIImageView(image: navImage)
        // profileImage.loadImageUsingCache(urlStr: (contact?.profileImageUrl)!)
        // self.navigationItem.leftBarButtonItems?.append(UIBarButtonItem(image: profileImage.image, style: UIBarButtonItemStyle.plain, target: nil, action: nil))
-        MessageHandler.Instance.observeMessages()
-        MessageHandler.Instance.observeMediaMessages()
+        PrivateMessageHandler.Instance.observeMessages()
+        PrivateMessageHandler.Instance.observeMediaMessages()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +51,7 @@ class ChatPrivateViewController: JSQMessagesViewController,MessageReceivedDelega
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        MessageHandler.Instance.sendMessage(senderId: senderId, senderName: senderDisplayName, text: text)
+        PrivateMessageHandler.Instance.sendMessage(senderId: senderId, senderName: senderDisplayName, text: text)
         finishSendingMessage()
     }
     
@@ -81,13 +81,13 @@ class ChatPrivateViewController: JSQMessagesViewController,MessageReceivedDelega
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pic = info[UIImagePickerControllerOriginalImage] as? UIImage{
             let data = UIImageJPEGRepresentation(pic,0.01)
-            MessageHandler.Instance.sendMedia(image: data, video: nil, senderId: senderId, senderName: senderDisplayName)
+            PrivateMessageHandler.Instance.sendMedia(image: data, video: nil, senderId: senderId, senderName: senderDisplayName)
            //let image = JSQPhotoMediaItem(image:pic)
            //self.messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: image))
         }else if let vid = info[UIImagePickerControllerMediaURL] as? URL{
             //let video = JSQVideoMediaItem(fileURL: vid, isReadyToPlay: true)
             //self.messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: video    ))
-            MessageHandler.Instance.sendMedia(image: nil, video: vid, senderId: senderId, senderName: senderDisplayName)
+            PrivateMessageHandler.Instance.sendMedia(image: nil, video: vid, senderId: senderId, senderName: senderDisplayName)
         }
         self.dismiss(animated: true, completion: nil)
         collectionView.reloadData()

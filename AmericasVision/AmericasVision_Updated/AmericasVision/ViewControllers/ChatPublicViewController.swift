@@ -15,8 +15,6 @@ import SDWebImage
 
 class ChatPublicViewController: JSQMessagesViewController,MessageReceivedDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
-    var contact:Contacts?
-    
     private var messages = [JSQMessage]()
     
     let picker =  UIImagePickerController();
@@ -33,15 +31,10 @@ class ChatPublicViewController: JSQMessagesViewController,MessageReceivedDelegat
         picker.delegate = self
         MessageHandler.Instance.delegate = self
         view.backgroundColor = UIColor.white
-        self.senderId = contact?.id
-        self.senderDisplayName = contact?.name
-        self.navigationItem.title = contact?.name
+        self.senderId = AVAuthService.getCurrentUserId()
+        self.senderDisplayName = AVAuthService.getCurrentUserName()
+        self.navigationItem.title = "AV Public Chat"
         
-        
-        // let navImage = UIImage(named: "profile")
-        // let profileImage = UIImageView(image: navImage)
-        // profileImage.loadImageUsingCache(urlStr: (contact?.profileImageUrl)!)
-        // self.navigationItem.leftBarButtonItems?.append(UIBarButtonItem(image: profileImage.image, style: UIBarButtonItemStyle.plain, target: nil, action: nil))
         MessageHandler.Instance.observeMessages()
         MessageHandler.Instance.observeMediaMessages()
     }
@@ -85,11 +78,7 @@ class ChatPublicViewController: JSQMessagesViewController,MessageReceivedDelegat
         if let pic = info[UIImagePickerControllerOriginalImage] as? UIImage{
             let data = UIImageJPEGRepresentation(pic,0.01)
             MessageHandler.Instance.sendMedia(image: data, video: nil, senderId: senderId, senderName: senderDisplayName)
-            //let image = JSQPhotoMediaItem(image:pic)
-            //self.messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: image))
         }else if let vid = info[UIImagePickerControllerMediaURL] as? URL{
-            //let video = JSQVideoMediaItem(fileURL: vid, isReadyToPlay: true)
-            //self.messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: video    ))
             MessageHandler.Instance.sendMedia(image: nil, video: vid, senderId: senderId, senderName: senderDisplayName)
         }
         self.dismiss(animated: true, completion: nil)
@@ -167,6 +156,5 @@ class ChatPublicViewController: JSQMessagesViewController,MessageReceivedDelegat
             self.present(playerController, animated: true, completion: nil)
         }
     }
-    
 
 }
