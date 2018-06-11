@@ -719,6 +719,7 @@
                         <segue destination="fcJ-Ek-Pcn" kind="relationship" relationship="viewControllers" id="P88-mW-Ztn"/>
                         <segue destination="5EI-ge-heT" kind="relationship" relationship="viewControllers" id="pzj-Dn-fob"/>
                         <segue destination="YEn-Zv-9dy" kind="relationship" relationship="viewControllers" id="gDV-aa-T9j"/>
+                        <segue destination="dy0-dk-f9R" kind="relationship" relationship="viewControllers" id="1zn-fF-Zs9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mz5-jY-yzk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -805,16 +806,17 @@
                     <connections>
                         <outlet property="NewsFeedPoliticsHomeButton" destination="ebh-gJ-FE2" id="jp7-GN-iNj"/>
                         <outlet property="politicsTableView" destination="Kfb-yh-Sub" id="CKY-R0-EuJ"/>
+                        <segue destination="ffI-27-dEu" kind="custom" identifier="NewsPoliticsDetailSegue" customClass="SWRevealViewControllerSeguePushController" id="rjL-VN-kGB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oem-ao-rlS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1758.5" y="1036.5"/>
         </scene>
-        <!--View Controller-->
+        <!--News Detail-->
         <scene sceneID="gz0-cE-ues">
             <objects>
-                <viewController id="Bhe-9j-yFj" sceneMemberID="viewController">
+                <viewController title="News Detail" id="Bhe-9j-yFj" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cHO-os-yqo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -864,7 +866,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pGb-Dh-lDW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2193.5" y="1956.5"/>
+            <point key="canvasLocation" x="2417" y="2087"/>
         </scene>
         <!--Politics Navbar-->
         <scene sceneID="GhC-oo-aGy">
@@ -1028,6 +1030,7 @@
                     <connections>
                         <outlet property="NewsFeedEntertainmentHomeButton" destination="0EF-On-ZHL" id="3gl-65-NRT"/>
                         <outlet property="entertainmentTableview" destination="NUe-1K-1r0" id="WPm-Lv-nLI"/>
+                        <segue destination="ffI-27-dEu" kind="custom" identifier="NewsEntertainmentDetailSegue" customClass="SWRevealViewControllerSeguePushController" id="lEG-Cp-78W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2a-lm-kne" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1173,6 +1176,7 @@
                     <connections>
                         <outlet property="homeButton" destination="v8D-Jy-RVA" id="qhv-l6-mP5"/>
                         <outlet property="sportstableview" destination="qd2-Ih-uIo" id="2HA-OY-CEW"/>
+                        <segue destination="ffI-27-dEu" kind="custom" identifier="NewsSportsDetailSegue" customClass="SWRevealViewControllerSeguePushController" id="gwe-3g-rf8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kf7-jM-voW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1560,6 +1564,7 @@
                     <connections>
                         <outlet property="NewsFeedMiscHomeButton" destination="Des-Vi-obg" id="Dgh-mE-emq"/>
                         <outlet property="NewsFeedMiscTableView" destination="oqL-dH-VGd" id="ttf-ES-K1o"/>
+                        <segue destination="ffI-27-dEu" kind="custom" identifier="NewsMiscDetailSegue" customClass="SWRevealViewControllerSeguePushController" id="Y5v-xa-WaV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Su-B1-sy4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1812,7 +1817,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qQc-py-sXz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4022.5" y="1956.5"/>
+            <point key="canvasLocation" x="3991" y="2031"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bS0-K6-xme">
@@ -1830,7 +1835,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QmK-mP-vQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3574.5" y="1956.5"/>
+            <point key="canvasLocation" x="3513" y="2031"/>
         </scene>
         <!--MyProfile Navbar-->
         <scene sceneID="djU-J1-DuR">
@@ -1873,12 +1878,12 @@
                     </barButtonItem>
                 </navigationItem>
             </objects>
-            <point key="canvasLocation" x="1759" y="1957"/>
+            <point key="canvasLocation" x="1947" y="2087"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="pe4-qG-M2B">
             <objects>
-                <viewController id="QYm-8g-8yd" customClass="ViewController" customModule="FileExplorerExampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QYm-8g-8yd" customClass="ViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cL9-CS-ZJ9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1900,6 +1905,89 @@
             </objects>
             <point key="canvasLocation" x="-1095" y="1860"/>
         </scene>
+        <!--Mature-->
+        <scene sceneID="Ufn-TO-uFI">
+            <objects>
+                <viewController title="Mature" id="Qqg-Yd-04o" customClass="NewsFeedMatureViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2lC-TN-hnc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="RNn-RQ-28b">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <collectionViewLayout key="collectionViewLayout" id="X5l-cH-1gv"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" semanticContentAttribute="playback" reuseIdentifier="PostCollectionViewCell" id="cXe-o1-9EO" customClass="PostCollectionViewCell" customModule="AmericasVision" customModuleProvider="target">
+                                        <rect key="frame" x="94" y="0.0" width="187" height="188"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="187" height="188"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Wmt-sk-Yha">
+                                                    <rect key="frame" x="0.0" y="0.0" width="187" height="134"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="67N-EH-abJ">
+                                                    <rect key="frame" x="0.0" y="136" width="187" height="52"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="12"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </view>
+                                        <size key="customSize" width="187" height="188"/>
+                                        <connections>
+                                            <outlet property="PostCollectionViewHeadlines" destination="67N-EH-abJ" id="2ac-Y4-0Mo"/>
+                                            <outlet property="PostCollectionViewImage" destination="Wmt-sk-Yha" id="Rfu-gi-ORB"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Mature Content" id="OgL-4O-TfF">
+                        <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="y5l-os-hJu"/>
+                        <barButtonItem key="rightBarButtonItem" title="Admin" image="adminconsole" landscapeImage="adminconsole" largeContentSizeImage="adminconsole" id="f3S-pb-tL9">
+                            <connections>
+                                <segue destination="rHM-jb-hez" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="4Wt-na-AtQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="NewsFeedMatureCollectionView" destination="RNn-RQ-28b" id="eGh-NA-uvH"/>
+                        <outlet property="NewsFeedMatureHomeButton" destination="y5l-os-hJu" id="sy4-pn-2LA"/>
+                        <segue destination="ffI-27-dEu" kind="custom" identifier="NewsMatureDetailSegue" customClass="SWRevealViewControllerSeguePushController" id="Un5-Tf-YWu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d0F-Oo-wiA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3513" y="1037"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="nHt-8w-1sB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dy0-dk-f9R" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="mature" landscapeImage="mature" largeContentSizeImage="mature" selectedImage="matureselected" id="68X-aD-2PO"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nlR-eE-4WN">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Qqg-Yd-04o" kind="relationship" relationship="rootViewController" id="xiK-hG-vkn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wmg-2v-1u6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3513" y="180"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Unknown" width="216" height="234"/>
@@ -1909,6 +1997,8 @@
         <image name="entertainmentselected" width="20" height="19"/>
         <image name="home" width="22" height="18"/>
         <image name="landscape" width="640" height="1136"/>
+        <image name="mature" width="21" height="22"/>
+        <image name="matureselected" width="21" height="22"/>
         <image name="misc1x" width="17" height="19"/>
         <image name="politics" width="23" height="23"/>
         <image name="politicsselected" width="23" height="23"/>
@@ -1921,7 +2011,8 @@
         <image name="sportsselected" width="19" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mvl-b6-vqv"/>
+        <segue reference="Un5-Tf-YWu"/>
+        <segue reference="4Wt-na-AtQ"/>
         <segue reference="vhs-nr-zxy"/>
         <segue reference="yj6-fy-86n"/>
     </inferredMetricsTieBreakers>
