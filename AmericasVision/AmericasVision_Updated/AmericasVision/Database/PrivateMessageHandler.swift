@@ -21,7 +21,7 @@ import FirebaseDatabase
 import FirebaseStorage
 
 protocol PrivateMessageReceivedDelegate: class {
-    func messageReceived(senderId:String,senderName:String,text:String)
+    func messageReceived(senderId:String,senderName:String,text:String,receiverID:String)
     func messageReceived(senderId:String,senderName:String,url:String)
 }
 
@@ -35,8 +35,9 @@ class PrivateMessageHandler {
         return _instance
     }
     
-    func sendMessage(senderId: String, senderName: String, text:String) {
-        let data :Dictionary<String,Any> = [Constants.SENDERID:senderId,Constants.SENDERNAME: senderName,Constants.TEXT:text]
+    func sendMessage(senderId: String, senderName: String, text:String,receiverId:String,receiverName:String) {
+        let data :Dictionary<String,Any> = [Constants.SENDERID:senderId,Constants.SENDERNAME: senderName,Constants.TEXT:text,Constants.RECEIVERID:receiverId,
+                                            Constants.RECEIVERNAME:receiverName]
         DBProvider.instance.privateMessageRef.childByAutoId().setValue((data))
     }
     
@@ -46,7 +47,8 @@ class PrivateMessageHandler {
                 if let senderId = data[Constants.SENDERID] as? String {
                     if let senderName = data[Constants.SENDERNAME] as? String {
                         if let text = data[Constants.TEXT] as? String {
-                            self.delegate?.messageReceived(senderId: senderId,senderName: senderName ,text: text)
+                            let receiverID = data[Constants.RECEIVERID] as? String
+                            self.delegate?.messageReceived(senderId: senderId,senderName: senderName ,text: text,receiverID:receiverID!)
                         }
                     }
                 }
@@ -68,19 +70,20 @@ class PrivateMessageHandler {
         }
     }
     
-    func sendMediaMessages(senderId: String, senderName: String, url:String){
-        let data :Dictionary<String,Any> = [Constants.SENDERID:senderId,Constants.SENDERNAME: senderName,Constants.URL:url]
+    func sendMediaMessages(senderId: String, senderName: String, url:String,receiverId:String,receiverName:String){
+        let data :Dictionary<String,Any> = [Constants.SENDERID:senderId,Constants.SENDERNAME: senderName,Constants.URL:url,Constants.RECEIVERID:receiverId,
+                                            Constants.RECEIVERNAME:receiverName]
         DBProvider.instance.mediaPrivateMessageRef.childByAutoId().setValue((data))
     }
     
-    func sendMedia(image:Data?,video:URL?, senderId:String, senderName:String){
+    func sendMedia(image:Data?,video:URL?, senderId:String, senderName:String,receiverId:String,receiverName:String){
         if image != nil {
             DBProvider.instance.imageStorageRef.child(senderId + "\(NSUUID().uuidString).jpg").putData(image!, metadata: nil){
                 (metadata:StorageMetadata?,err :Error?) in
                 if err != nil {
                     print("error")
                 }else{
-                    self.sendMediaMessages(senderId: senderId, senderName: senderName, url: String (describing: metadata!.downloadURL()))
+                    self.sendMediaMessages(senderId: senderId, senderName: senderName, url: String (describing: metadata!.downloadURL()),receiverId: receiverId,receiverName: receiverName)
                 }
                 
             }
@@ -90,7 +93,7 @@ class PrivateMessageHandler {
                 if err != nil {
                     print("error")
                 }else{
-                    self.sendMediaMessages(senderId: senderId, senderName: senderName, url: String (describing: metadata!.downloadURL()))
+                    self.sendMediaMessages(senderId: senderId, senderName: senderName, url: String (describing: metadata!.downloadURL()),receiverId: receiverId,receiverName: receiverName)
                 }
             }
         }

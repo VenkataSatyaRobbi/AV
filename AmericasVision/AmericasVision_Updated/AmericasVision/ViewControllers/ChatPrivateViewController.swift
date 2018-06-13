@@ -51,7 +51,9 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        PrivateMessageHandler.Instance.sendMessage(senderId: senderId, senderName: senderDisplayName, text: text)
+        let receiverId = contact?.id
+        let receiverName = contact?.name
+        PrivateMessageHandler.Instance.sendMessage(senderId: senderId, senderName: senderDisplayName, text: text,receiverId:receiverId!,receiverName:receiverName!)
         finishSendingMessage()
     }
     
@@ -79,28 +81,29 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let receiverId = contact?.id
+        let receiverName = contact?.name
         if let pic = info[UIImagePickerControllerOriginalImage] as? UIImage{
             let data = UIImageJPEGRepresentation(pic,0.01)
-            PrivateMessageHandler.Instance.sendMedia(image: data, video: nil, senderId: senderId, senderName: senderDisplayName)
-           //let image = JSQPhotoMediaItem(image:pic)
-           //self.messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: image))
+            PrivateMessageHandler.Instance.sendMedia(image: data, video: nil, senderId: senderId, senderName: senderDisplayName,receiverId:receiverId!,receiverName:receiverName!)
         }else if let vid = info[UIImagePickerControllerMediaURL] as? URL{
-            //let video = JSQVideoMediaItem(fileURL: vid, isReadyToPlay: true)
-            //self.messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, media: video    ))
-            PrivateMessageHandler.Instance.sendMedia(image: nil, video: vid, senderId: senderId, senderName: senderDisplayName)
+            PrivateMessageHandler.Instance.sendMedia(image: nil, video: vid, senderId: senderId, senderName: senderDisplayName,receiverId:receiverId!,receiverName:receiverName!)
         }
         self.dismiss(animated: true, completion: nil)
         collectionView.reloadData()
     }
     
-    func messageReceived(senderId: String, senderName:String,text: String) {
-        messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
+    func messageReceived(senderId: String, senderName:String,text: String,receiverID:String) {
+        if (contact?.id == senderId ) || (AVAuthService.getCurrentUserId() == senderId && contact?.id == receiverID) {
+            messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
+        }
         collectionView.reloadData()
     }
     
     func messageReceived(senderId: String, senderName:String,url: String) {
         if let mediaUrl = URL(string: url){
             do{
+                let id = contact?.id
                 let data = try Data(contentsOf: mediaUrl);
                 if let _ = UIImage(data:data){
                     let _ = SDWebImageDownloader.shared().downloadImage(with: mediaUrl, options: [], progress: nil, completed: { (image,data,error,finished) in
@@ -112,7 +115,9 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
                             }else{
                                photo?.appliesMediaViewMaskAsOutgoing = false
                             }
-                            self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                            if id == senderId {
+                                self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                            }
                             self.collectionView.reloadData()
                         }
                     })

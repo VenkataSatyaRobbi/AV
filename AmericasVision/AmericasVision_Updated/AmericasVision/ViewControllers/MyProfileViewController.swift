@@ -31,6 +31,8 @@ class MyProfileViewController: UIViewController {
         alignment()
         populateUserinfo()
         sideMenus()
+        textUserName .isEnabled = false
+        textEmail .isEnabled = false
     }
     
     func populateUserinfo(){
@@ -44,19 +46,8 @@ class MyProfileViewController: UIViewController {
     
     func alignment(){
         let myColor : UIColor = UIColor(red: 0/255, green: 180/255, blue: 210/255, alpha: 1)
-       // bgview.layer.cornerRadius = 6
-        //bgview.clipsToBounds = true
-        // bgview.layer.borderWidth = 0.5
-        //bgview.layer.borderColor = myColor.cgColor
-        
         bgview1.layer.cornerRadius = 2
         bgview1.clipsToBounds = true
-       //
-        // btnsubmit.layer.cornerRadius = 5
-        // btnsubmit.clipsToBounds = true
-        
-        bgview2.layer.cornerRadius = 2
-        bgview2.clipsToBounds = true
         
         profileimg.layer.cornerRadius = 45
         profileimg.clipsToBounds = true
