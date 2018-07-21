@@ -23,89 +23,140 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+
+
+
 import UIKit
 import FileExplorer
 import FirebaseStorage
 import FirebaseDatabase
 import FirebaseAuth
-
-class ViewController: UIViewController {
-  
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
+    var imagePickerController: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.title = "Music Admin"
+        
+        imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        
+        self.navigationItem.backBarButtonItem?.action = nil
     }
-
-    @IBAction
-    func handleShowFileExplorerButton() {
-        let vc = FileExplorerViewController()
-         
-        vc.delegate = self
-        self.present(vc, animated: true, completion: nil)
-    }
-}
-
-extension ViewController: FileExplorerViewControllerDelegate {
     
-    public func fileExplorerViewController(_ controller: FileExplorerViewController, didChooseURLs urls: [URL]) {
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func chooseImage(sender: AnyObject) {
+        //self.present(imagePickerController, animated: true, completion: nil)
         
-        var message = ""
+        let alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        //        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default)
+        //        {
+        //            UIAlertAction in
+        //            self.openCamera()
+        //        }
+        let gallaryAction = UIAlertAction(title: "Gallary", style: UIAlertActionStyle.default)
+        {
+            UIAlertAction in
+            self.openGallery()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
+        {
+            UIAlertAction in
+        }
         
-        for url in urls {
-            message += "\(url.lastPathComponent)"
-           
-            print("Here's the file URL: ", url)
-            
-            // Where we'll store the video:
-            
-            //            if message == "video.mov"{
-            //              storageReference = Storage.storage().reference().child("video.mov")
-            //            }else{
-            //                storageReference = Storage.storage().reference().child("audio.mp3")
-            //            }
-            let storageReference = Storage.storage().reference().child("audio.mp3")
-            
-            // Start the video or audio storage process
-            storageReference.putFile(from: url as URL, metadata: nil, completion: { (metadata, error) in
-                if error == nil {
-                    print("Successful video upload")
-                    
-                    self.uploadAudiosalert()
-                    
-                } else {
-                    print(error?.localizedDescription)
-                }
-            })//
-            
-            
-            if url != urls.last {
-                message += "\n"
+        // Add the actions
+        imagePickerController.delegate = self
+        // alert.addAction(cameraAction)
+        alert.addAction(gallaryAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func upload(sender: AnyObject) {
+        if let image = self.imageView.image {
+        
+            ProgressHUD.show("Uploading..", interaction: false)
+            if let postPlaceHolderPhoto = self.imageView.image, let imageData = UIImageJPEGRepresentation(postPlaceHolderPhoto, 0.1) {
+                let photoIdString = NSUUID().uuidString
+                print(photoIdString)
+                let AVStorageRef = Storage.storage().reference(forURL: PropertyConfig.FIRSTORAGE_ROOT_REF).child("musicalbum").child(photoIdString)
+                AVStorageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
+                    if error != nil{
+                        ProgressHUD.showError(error!.localizedDescription)
+                        return
+                    }
+                    let postPhotoUrl = metadata?.downloadURL()?.absoluteString
+                    self.saveDatatoDatabase(photoUrl: postPhotoUrl!)
+                })
+            }else {
+                ProgressHUD.showError("Photo cannot be blank")
+                //print("Profile photo cannot be blank")
             }
-        }
-        
-        
-        
-        let alertController = UIAlertController(title: "Choosen files", message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-        func uploadAudiosalert(){
-           
-            let alert = UIAlertController(title: "Music Files", message: "Successful uploaded.", preferredStyle: UIAlertControllerStyle.alert)
             
-            // add an action (button)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             
-            // show the alert
-            self.present(alert, animated: true, completion: nil)
-             dismiss(animated: true, completion: nil)
+            let alertWarning = UIAlertView(title:"Warning", message: "You don't have access on Firebase", delegate:nil, cancelButtonTitle:"OK", otherButtonTitles:"Cancel")
+            alertWarning.show()
             
         }
-    
-    public func fileExplorerViewControllerDidFinish(_ controller: FileExplorerViewController) {
-        
     }
+    func saveDatatoDatabase(photoUrl: String){
+        let AVDBref = Database.database().reference()
+        let AVDBpostsref = AVDBref.child("musicalbum")
+        let newPostId = AVDBpostsref.childByAutoId().key
+        let AVDBnewpostref = AVDBpostsref.child(newPostId)
+        AVDBnewpostref.setValue((Auth.auth().currentUser?.uid)!, andPriority: ServerValue.timestamp(), withCompletionBlock: {
+            (error, ref) in
+            if error != nil{
+                ProgressHUD.showError(error!.localizedDescription)
+                return
+            }
+            ProgressHUD.showSuccess("Done")
+            
+            self.imageView.image = UIImage(named: "audio")
+            
+            self.dismiss(animated: true, completion: nil)
+        })
+    }
+    
+    //MARK: - UIImagePickerControllerDelegate Methods -
+    
+    func openCamera(){
+        // alert.dismiss(animated: true, completion: nil)
+        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+            imagePickerController.sourceType = .camera
+            self.present(imagePickerController, animated: true, completion: nil)
+        } else {
+            let alertWarning = UIAlertView(title:"Warning", message: "You don't have camera", delegate:nil, cancelButtonTitle:"OK", otherButtonTitles:"")
+            alertWarning.show()
+        }
+    }
+    func openGallery(){
+        // alert.dismiss(animated: true, completion: nil)
+        imagePickerController.sourceType = .photoLibrary
+        self.present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        // pickImageCallback?(image)
+        self.imageView.image = image
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func imagePickerController(_ picker: UIImagePickerController, pickedImage: UIImage?) {
+    }
+    
 }

@@ -177,9 +177,7 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
             } else {
                 self.dismiss(animated: true, completion: nil)
             }
-        
-        
-        
+       
     }
     
     override func didReceiveMemoryWarning() {

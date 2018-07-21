@@ -237,7 +237,7 @@
                     </view>
                     <connections>
                         <segue destination="lwY-e8-OY2" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="Fxh-gw-YIm"/>
-                        <segue destination="uct-0f-f13" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="uSu-Wk-DPX"/>
+                        <segue destination="p6n-yT-Imy" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="UiU-gu-JPd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3he-vJ-Bj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1267,7 +1267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yVX-QD-IMp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="366" y="1036"/>
+            <point key="canvasLocation" x="688" y="1072"/>
         </scene>
         <!--chat-->
         <scene sceneID="hc6-4j-C0Z">
@@ -1351,6 +1351,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="DateofBirthFieldTouched:" destination="Rmy-p8-rtD" eventType="editingDidEnd" id="C9L-LV-fvA"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" id="MeI-lb-QdE">
                                         <rect key="frame" x="8" y="344" width="334" height="30"/>
@@ -1442,7 +1445,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="DIZ-DL-Vni">
                         <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="R4d-pv-hpZ"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="uGt-2W-7ve"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="uGt-2W-7ve">
+                            <connections>
+                                <action selector="updateProfile:" destination="Rmy-p8-rtD" id="H6V-dH-ESn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="MyProfileHomeButton" destination="R4d-pv-hpZ" id="gr2-I5-MDe"/>
@@ -1450,7 +1457,7 @@
                         <outlet property="bgview2" destination="bgd-Jt-rhs" id="zeR-lO-LEe"/>
                         <outlet property="profileimg" destination="yvv-11-gJ8" id="TmZ-AZ-JdA"/>
                         <outlet property="textConfirmPwd" destination="BM5-wb-XUF" id="mNa-gJ-gQs"/>
-                        <outlet property="textDOB" destination="c83-Ry-21D" id="B5C-0B-tZk"/>
+                        <outlet property="textDOB" destination="c83-Ry-21D" id="DZl-dl-IrE"/>
                         <outlet property="textEmail" destination="Ba7-yh-Ja8" id="CdW-97-Ajs"/>
                         <outlet property="textPwd" destination="MeI-lb-QdE" id="ofO-SX-ekh"/>
                         <outlet property="textUserName" destination="udq-aB-pvL" id="x2a-Pr-jJM"/>
@@ -1888,22 +1895,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OIV-dc-2iz">
-                                <rect key="frame" x="60" y="110" width="255" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Show Audio OR Video files for upload"/>
-                                <connections>
-                                    <action selector="handleShowFileExplorerButton" destination="QYm-8g-8yd" eventType="touchUpInside" id="rxz-pa-VM2"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" misplaced="YES" id="ExD-LN-Bfi">
+                                <rect key="frame" x="0.0" y="105" width="375" height="562"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="x1q-ZY-6Eb">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="292"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="heA-X8-lJc"/>
+                    <navigationItem key="navigationItem" id="0ku-tN-UUA">
+                        <barButtonItem key="leftBarButtonItem" title="Choose" id="410-Jh-DY0">
+                            <connections>
+                                <action selector="chooseImageWithSender:" destination="QYm-8g-8yd" id="aWC-vF-nSR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Upload" id="UfH-xC-WxQ">
+                            <connections>
+                                <action selector="uploadWithSender:" destination="QYm-8g-8yd" id="35V-P3-4W9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="x1q-ZY-6Eb" id="zLv-HL-Hdj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BJD-oN-frs" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1095" y="1860"/>
+            <point key="canvasLocation" x="-1095.5" y="1859.5"/>
         </scene>
         <!--Mature-->
         <scene sceneID="Ufn-TO-uFI">
@@ -2013,7 +2037,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Un5-Tf-YWu"/>
         <segue reference="4Wt-na-AtQ"/>
-        <segue reference="vhs-nr-zxy"/>
+        <segue reference="UiU-gu-JPd"/>
         <segue reference="yj6-fy-86n"/>
     </inferredMetricsTieBreakers>
 </document>
