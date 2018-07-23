@@ -338,7 +338,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jf5-vl-myp">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jf5-vl-myp" customClass="voteCell">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -357,11 +357,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="VotesHomeButton" destination="o2J-LI-MMl" id="MZm-QC-tar"/>
+                        <outlet property="collectionView" destination="90t-lh-aOk" id="Hs8-4D-A1b"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dlR-bT-niD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-494.375" y="182.31333333333333"/>
+            <point key="canvasLocation" x="-494.5" y="181.5"/>
         </scene>
         <!--Music Tabbar-->
         <scene sceneID="O2D-vr-3uQ">

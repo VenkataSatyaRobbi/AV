@@ -8,22 +8,33 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "voteCell"
 
 class VotesCollectionViewController: UICollectionViewController {
 
     @IBOutlet weak var VotesHomeButton: UIBarButtonItem!
+    private let count = 2
+    
+    let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    
+    var collectionData = ["23","24"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
+     
+      // let flagImageView = UIImageView(frame:  CGRect(x:10, y: -30, width: 395 , height: 300
+      // ))
+       
+        
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        let cellwidth = Int(self.view.frame.width - 30)/count
+        let cellHeight = Int(self.view.frame.height - 380)/count
+        layout.itemSize = CGSize(width: cellwidth, height: cellHeight)
+       
+        self.collectionView?.collectionViewLayout = layout
+       //  Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
-        // Do any additional setup after loading the view.
-        view.backgroundColor = UIColor.white
         sideMenus()
     }
     
@@ -42,69 +53,69 @@ class VotesCollectionViewController: UICollectionViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+       return 1
     }
-
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        cell.backgroundColor = UIColor.black
+      /*
+         
+         let bgImage = UIImageView();
+         bgImage.image = UIImage(named: "flag");
+         bgImage.contentMode = .scaleToFill
+         self.collectionView?.backgroundView = bgImage
+         
+         */
+        self.collectionView?.backgroundColor = UIColor.groupTableViewBackground
+       
+
+        let imgView = UIImageView(frame:  CGRect(x: 0, y: 0, width: layout.itemSize.width , height: layout.itemSize.height))
+        imgView.contentMode = .scaleAspectFit
+        imgView.image = UIImage(named: "image.jpg")
+        imgView.clipsToBounds = true
+        
+        var dynamicLabel: UILabel = UILabel()
+        dynamicLabel = UILabel(frame:  CGRect(x:3, y:2, width:185, height:35))
+        //dynamicLabel.backgroundColor = UIColor.white
+        dynamicLabel.textColor = UIColor.white
+         dynamicLabel.layer.cornerRadius = 10
+        dynamicLabel.textAlignment = NSTextAlignment.center
+        dynamicLabel.text = "Democrat Party "
+        imgView.addSubview(dynamicLabel)
+        
+        
+        var dynamicLabel1: UILabel = UILabel()
+        dynamicLabel1 = UILabel(frame:  CGRect(x:4, y:140, width:190, height:35))
+        //dynamicLabel1.backgroundColor = UIColor.white
+        dynamicLabel1.textColor = UIColor.white
+        dynamicLabel1.layer.cornerRadius = 10
+        dynamicLabel1.textAlignment = NSTextAlignment.center
+        dynamicLabel1.text = "Candidate name "
+        
+        imgView.addSubview(dynamicLabel1)
+        
+        let imgView1 = UIImageView(frame:  CGRect(x: 0, y:38, width: 100, height:100))
+        imgView1.contentMode = .scaleAspectFit
+        imgView1.layer.cornerRadius = 50.0
+        imgView1.clipsToBounds = true
+        imgView1.image = UIImage(named: "profile")
+        imgView.addSubview(imgView1)
+        
+        cell.layer.cornerRadius = 10
+        cell.contentView.addSubview(imgView)
+        
+        
     
-        // Configure the cell
-    
+       
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
-    }
-    */
-
 }
