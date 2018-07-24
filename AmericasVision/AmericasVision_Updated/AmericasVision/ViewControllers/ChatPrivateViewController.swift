@@ -118,7 +118,7 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
                             if id == senderId {
                                 self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
                             }
-                            self.collectionView.reloadData()
+                           // self.collectionView.reloadData()
                         }
                     })
                 }else{

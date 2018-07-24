@@ -104,4 +104,27 @@
             return UserDefaults.standard.getLoginUserInfo().firstName! + UserDefaults.standard.getLoginUserInfo().lastName!
         }
         
+        static func updateUserProfile(phone: String, dob:String,email: String, password: String, confirmpassword: String, imagedata: Data, onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessage: String?) -> Void) {
+            Auth.auth().sendPasswordReset(withEmail: email, completion: {(error) in
+                if error != nil{
+                    print(error!.localizedDescription)
+                    return
+                }
+                let userId = Auth.auth().currentUser?.uid
+                let storageRef = DBProvider.instance.storageRef.child("profileImage").child(userId!)
+                storageRef.putData(imagedata, metadata: nil, completion: { (metadata, error) in
+                    if error != nil{
+                        return
+                    }
+                    let profileImageURL = metadata?.downloadURL()?.absoluteString
+                    DBProvider.instance.databaseRef.child(userId!).child("Phone").setValue(phone)
+                    DBProvider.instance.databaseRef.child(userId!).child("DOB").setValue(dob)
+                    DBProvider.instance.databaseRef.child(userId!).child("ProfileImageURL").setValue(profileImageURL)
+                    onSuccess()
+                })
+                
+            })
+            
+        }
+        
     }

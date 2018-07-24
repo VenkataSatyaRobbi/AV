@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 
 class NewsDetailedViewController: UIViewController {
 
@@ -21,7 +24,10 @@ class NewsDetailedViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func Back_ToNewsFeed(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -24,6 +24,8 @@ class MyProfileViewController: UIViewController {
     @IBOutlet weak var textConfirmPwd: UITextField!
     
     var userInfo:UserInfo!
+    var DateNow: Date = Date(timeIntervalSinceNow: 0)
+    var YearsFromBirth: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,8 @@ class MyProfileViewController: UIViewController {
         sideMenus()
         textUserName .isEnabled = false
         textEmail .isEnabled = false
+        textPwd.isSecureTextEntry = true
+        textConfirmPwd.isSecureTextEntry = true
     }
     
     func populateUserinfo(){
@@ -48,7 +52,6 @@ class MyProfileViewController: UIViewController {
         let myColor : UIColor = UIColor(red: 0/255, green: 180/255, blue: 210/255, alpha: 1)
         bgview1.layer.cornerRadius = 2
         bgview1.clipsToBounds = true
-        
         profileimg.layer.cornerRadius = 45
         profileimg.clipsToBounds = true
         //profileimg.layer.borderWidth = 0.5
@@ -72,8 +75,71 @@ class MyProfileViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func DateofBirthFieldTouched(_ sender: Any) {
+        let dateofBirthPickerView: UIDatePicker = UIDatePicker()
+        dateofBirthPickerView.maximumDate = Date()
+        dateofBirthPickerView.datePickerMode = UIDatePickerMode.date
+        textDOB.inputView = dateofBirthPickerView
+        dateofBirthPickerView.addTarget(self, action: #selector(self.datePickerFromValueChanged), for: UIControlEvents.valueChanged)
+    }
+    
+    @objc func datePickerFromValueChanged(sender:UIDatePicker) {
+        let dateofBirthDateFormatter = DateFormatter()
+        dateofBirthDateFormatter.dateFormat = "dd-MM-yyyy"
+        dateofBirthDateFormatter.dateStyle = .medium
+        textDOB.text = dateofBirthDateFormatter.string(from: sender.date)
+        let DateofBirthDate = dateofBirthDateFormatter.date(from: textDOB.text!)
+        let dateComponentsFormatter = DateComponentsFormatter()
+        dateComponentsFormatter.allowedUnits = [NSCalendar.Unit.minute,NSCalendar.Unit.hour,NSCalendar.Unit.day]
+        
+        let interval =  DateNow.timeIntervalSince(DateofBirthDate!)
+        print("interval...\(interval)")
+        let DateDiff = dateComponentsFormatter.string(from: interval)!
+        print("difference..\(DateDiff)")
+        
+        if (DateDiff.contains("d")){
+            let day = DateDiff.substring(to: (DateDiff.range(of: "d")?.lowerBound)!)
+            YearsFromBirth  = Int( day.replacingOccurrences(of: ",", with: ""))!/365
+            print("Years From Birth ...\(YearsFromBirth)")
+        }
+        textDOB.resignFirstResponder()
+    }
+    
     @IBAction func updateProfile(_ sender: Any) {
-        DBProvider.instance.updateProfileInfo(userInfo: userInfo)
+        if(YearsFromBirth <= 18){
+            let errorAlert = UIAlertController(title: "Errors",
+                                               message: "Your Age must be more then 18 years", preferredStyle: .alert)
+            errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(errorAlert, animated: true, completion: nil)
+        }else if (textPwd.text?.isEmpty)! || (textConfirmPwd.text?.isEmpty)! {
+            let resetEmailSentAlert = UIAlertController(title: "Errors", message: "Please enter Passoword and Confirm Password", preferredStyle: .alert)
+            resetEmailSentAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(resetEmailSentAlert, animated: true, completion: nil)
+            
+        }else if textPwd.text != textConfirmPwd.text {
+           
+            let errorAlert = UIAlertController(title: "Errors",
+                                               message: "Confirm password mismatch", preferredStyle: .alert)
+            errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(errorAlert, animated: true, completion: nil)
+        }
+        else{
+            updateProfile()
+        }
+    }
+    
+    func updateProfile(){
+        let imageData = UIImageJPEGRepresentation(userInfo.profileImage, 0.1)
+        AVAuthService.updateUserProfile(phone: userInfo.phone!, dob: textDOB.text!, email: userInfo.email!, password: textPwd.text!, confirmpassword: textConfirmPwd.text!, imagedata: imageData!, onSuccess: {
+            let successAlert = UIAlertController(title: "Success",
+                                               message: "Profile updated succesfully.", preferredStyle: .alert)
+            successAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(successAlert, animated: true, completion: nil)
+            
+        }, onError: {
+            (errorString) in
+            print(errorString!)
+        })
     }
     
 }

@@ -95,7 +95,7 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
     
     @IBAction func CancelPostTouchUpInside(_ sender: UIBarButtonItem) {
         self.PhotoCaptionAdmin.text = ""
-        self.PhotoAdmin.image = UIImage(named: "video")
+        self.PhotoAdmin.image = UIImage(named: "camera")
         self.PostSelectedPhoto = nil
         self.selectedPostCategory = nil
         self.PostTitle.text = ""
@@ -168,7 +168,7 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
         }
     }
     
-    @IBAction func BackButtonAdminTouchUpInside(_ sender: Any) {
+  /*  @IBAction func BackButtonAdminTouchUpInside(_ sender: Any) {
       // self.dismiss(animated: true, completion: nil)
       
         //self.dismiss(animated: true, completion: nil)
@@ -180,7 +180,7 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
         
         
         
-    }
+    }*/
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

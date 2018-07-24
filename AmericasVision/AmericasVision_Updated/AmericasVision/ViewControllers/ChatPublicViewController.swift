@@ -9,11 +9,13 @@
 import UIKit
 import JSQMessagesViewController
 import MobileCoreServices
+import FirebaseDatabase
+import FirebaseStorage
 import AVKit
 import SDWebImage
 
 
-class ChatPublicViewController: JSQMessagesViewController,MessageReceivedDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class ChatPublicViewController: JSQMessagesViewController,PublicMessageReceivedDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     private var messages = [JSQMessage]()
     
@@ -29,14 +31,14 @@ class ChatPublicViewController: JSQMessagesViewController,MessageReceivedDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.delegate = self
-        MessageHandler.Instance.delegate = self
+        PublicMessageHandler.Instance.delegate = self
         view.backgroundColor = UIColor.white
         self.senderId = AVAuthService.getCurrentUserId()
         self.senderDisplayName = AVAuthService.getCurrentUserName()
         self.navigationItem.title = "AV Public Chat"
         
-        MessageHandler.Instance.observeMessages()
-        MessageHandler.Instance.observeMediaMessages()
+        PublicMessageHandler.Instance.observeMessages()
+        PublicMessageHandler.Instance.observeMediaMessages()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +49,7 @@ class ChatPublicViewController: JSQMessagesViewController,MessageReceivedDelegat
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        MessageHandler.Instance.sendMessage(senderId: senderId, senderName: senderDisplayName, text: text)
+        PublicMessageHandler.Instance.sendMessage(senderId: senderId, senderName: senderDisplayName, text: text)
         finishSendingMessage()
     }
     
@@ -77,9 +79,9 @@ class ChatPublicViewController: JSQMessagesViewController,MessageReceivedDelegat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pic = info[UIImagePickerControllerOriginalImage] as? UIImage{
             let data = UIImageJPEGRepresentation(pic,0.01)
-            MessageHandler.Instance.sendMedia(image: data, video: nil, senderId: senderId, senderName: senderDisplayName)
+            PublicMessageHandler.Instance.sendMedia(image: data, video: nil, senderId: senderId, senderName: senderDisplayName)
         }else if let vid = info[UIImagePickerControllerMediaURL] as? URL{
-            MessageHandler.Instance.sendMedia(image: nil, video: vid, senderId: senderId, senderName: senderDisplayName)
+            PublicMessageHandler.Instance.sendMedia(image: nil, video: vid, senderId: senderId, senderName: senderDisplayName)
         }
         self.dismiss(animated: true, completion: nil)
         collectionView.reloadData()
@@ -105,7 +107,7 @@ class ChatPublicViewController: JSQMessagesViewController,MessageReceivedDelegat
                                 photo?.appliesMediaViewMaskAsOutgoing = false
                             }
                             self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
-                            self.collectionView.reloadData()
+                           // self.collectionView.reloadData()
                         }
                     })
                 }else{
@@ -118,7 +120,7 @@ class ChatPublicViewController: JSQMessagesViewController,MessageReceivedDelegat
     }
     
     //Collection view functions
-    
+
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         let message = messages[indexPath.item]
@@ -131,9 +133,28 @@ class ChatPublicViewController: JSQMessagesViewController,MessageReceivedDelegat
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
-        return JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "profilephotoplaceholder"), diameter: 30)
+       
+        let  placeHolderImage = UIImage(named: "profile")
+        let avatarImage = JSQMessagesAvatarImageFactory.avatarImage(with: placeHolderImage, diameter: 30)
+        let message = messages[indexPath.item]
+        avatarImage?.avatarImage = SDImageCache.shared().imageFromDiskCache(forKey: message.senderId)
+        
+        if let messageId = message.senderId {
+            DBProvider.instance.userRef.child(messageId).observe(.value, with: { (snapshot: DataSnapshot) in
+                if let profileImageUrl = (snapshot.value as AnyObject!)!["ProfileImageURL"] as! String! {
+                    let mediaUrl = URL(string: profileImageUrl)!
+                    let _ = SDWebImageDownloader.shared().downloadImage(with: mediaUrl , options: [], progress: nil, completed: {(image,data,error,finished) in
+                            SDWebImageManager.shared().imageCache?.store(image, forKey: message.senderId)
+                            DispatchQueue.main.async {
+                                avatarImage!.avatarImage = image
+                            }
+                        })
+                    }
+                })
+            }
+        return avatarImage
     }
-    
+   
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
