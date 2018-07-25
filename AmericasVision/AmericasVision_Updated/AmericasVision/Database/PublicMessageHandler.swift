@@ -1,11 +1,10 @@
 //
-//  MessageHandler.swift
+//  PublicMessageHandler.swift
 //  AmericasVision
 //
-//  Created by Mohan Dola on 13/05/18.
+//  Created by Mohan Dola on 21/07/18.
 //  Copyright © 2018 zeroGravity. All rights reserved.
 //
-
 import Foundation
 import FirebaseDatabase
 import FirebaseStorage
@@ -26,7 +25,8 @@ class PublicMessageHandler {
     }
     
     func sendMessage(senderId: String, senderName: String, text:String) {
-        let data :Dictionary<String,Any> = [Constants.SENDERID:senderId,Constants.SENDERNAME: senderName,Constants.TEXT:text]
+        let timestamp = NSDate().timeIntervalSince1970
+        let data :Dictionary<String,Any> = [Constants.SENDERID:senderId,Constants.SENDERNAME: senderName,Constants.TEXT:text,Constants.DB_TIMESTAMP:timestamp]
         DBProvider.instance.messageRef.childByAutoId().setValue((data))
     }
     
@@ -59,7 +59,8 @@ class PublicMessageHandler {
     }
     
     func sendMediaMessages(senderId: String, senderName: String, url:String){
-        let data :Dictionary<String,Any> = [Constants.SENDERID:senderId,Constants.SENDERNAME: senderName,Constants.URL:url]
+        let timestamp = NSDate().timeIntervalSince1970
+        let data :Dictionary<String,Any> = [Constants.SENDERID:senderId,Constants.SENDERNAME: senderName,Constants.URL:url,Constants.DB_TIMESTAMP:timestamp]
         DBProvider.instance.mediaMessageRef.childByAutoId().setValue((data))
     }
     
@@ -68,7 +69,7 @@ class PublicMessageHandler {
             DBProvider.instance.imageStorageRef.child(senderId + "\(NSUUID().uuidString).jpg").putData(image!, metadata: nil){
                 (metadata:StorageMetadata?,err :Error?) in
                 if err != nil {
-                   print("error")
+                    print("error")
                 }else{
                     self.sendMediaMessages(senderId: senderId, senderName: senderName, url: String (describing: metadata!.downloadURL()))
                 }
@@ -80,7 +81,7 @@ class PublicMessageHandler {
                 if err != nil {
                     print("error")
                 }else{
-                   self.sendMediaMessages(senderId: senderId, senderName: senderName, url: String (describing: metadata!.downloadURL()))
+                    self.sendMediaMessages(senderId: senderId, senderName: senderName, url: String (describing: metadata!.downloadURL()))
                 }
             }
         }

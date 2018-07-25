@@ -16,8 +16,6 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var PostTablebutton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
    @IBOutlet weak var PostCollectionViewCaption: UITextView!
-    @IBOutlet weak var PostTableViewCaption: UILabel!
-    
     var postID: String!
     
     override func awakeFromNib() {

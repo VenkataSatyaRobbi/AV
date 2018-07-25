@@ -81,13 +81,10 @@
                     }
                     let profileImageURL = metadata?.downloadURL()?.absoluteString
                     self.setAVUserInformation(profileImageUrl: profileImageURL!, firstname: firstname, lastname: lastname, phone: phone, email: email, uid: AVDBuserid!, onSuccess: onSuccess)
-                    
-                    
                 })
-                
             })
-            
         }
+        
         static func setAVUserInformation(profileImageUrl: String, firstname: String, lastname: String, phone: String, email: String, uid: String, onSuccess: @escaping () -> Void){
             let AVDBref = Database.database().reference()
             let AVDBuserref = AVDBref.child("users")

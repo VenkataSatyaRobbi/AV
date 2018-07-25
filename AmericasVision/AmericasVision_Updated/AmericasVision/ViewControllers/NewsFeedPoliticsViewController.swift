@@ -26,8 +26,6 @@ class NewsFeedPoliticsViewController: UIViewController {
         //view.backgroundColor = UIColor.white
         sideMenus()
         loadPosts()
-//        politicsTableView.rowHeight = UITableViewAutomaticDimension
-//        politicsTableView.estimatedRowHeight = 200
     }
     
     func sideMenus(){
@@ -101,7 +99,7 @@ extension NewsFeedPoliticsViewController:UITableViewDataSource,UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
-        return 200
+            return 200
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -110,7 +108,6 @@ extension NewsFeedPoliticsViewController:UITableViewDataSource,UITableViewDelega
       
             newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
             newsRow.PostCollectionViewCaption.text = posts[indexPath.row].caption
-            //newsRow.PostTableViewCaption.text = posts[indexPath.row].caption
             newsRow.PostTableViewHeadlines.isScrollEnabled = false
             newsRow.PostCollectionViewCaption.isScrollEnabled = false
             newsRow.postID = self.posts[indexPath.row].postID

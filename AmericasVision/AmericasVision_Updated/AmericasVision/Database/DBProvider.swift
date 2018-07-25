@@ -31,7 +31,7 @@ class DBProvider {
     }
     
     var storageRef : StorageReference {
-        return Storage.storage().reference(forURL: "gs://americasvision-89130.appspot.com")
+        return Storage.storage().reference(forURL: "gs://americasvision-fc7ba.appspot.com")
     }
     //End: End of all Firebase access references
     
