@@ -11,7 +11,6 @@ import Charts
 
 private let reuseIdentifier = "voteCell"
 
-
 class VoteCell: UICollectionViewCell{
     
     let header: UILabel = {
@@ -38,14 +37,12 @@ class VoteCell: UICollectionViewCell{
         return headerView
     }()
    
-    
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "image.jpg")
         imageView.layer.cornerRadius = 30
         imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        
         return imageView
     }()
     
@@ -53,14 +50,14 @@ class VoteCell: UICollectionViewCell{
         let partyflagView = UIImageView()
         partyflagView.image = UIImage(named: "democrat")
         partyflagView.translatesAutoresizingMaskIntoConstraints = false
-       
         return partyflagView
     }()
+    
     let footer: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.white
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.text = "Trump               Votes 46"
+        label.text = "Trump     Votes 46"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -75,23 +72,16 @@ class VoteCell: UICollectionViewCell{
         viewfooter.addSubview(footer)
         addSubview(viewfooter)
         
-        
-       
-        
         headerView.leftAnchor.constraint(equalTo: leftAnchor, constant:0).isActive = true
         headerView.topAnchor.constraint(equalTo: topAnchor, constant:0).isActive = true
         headerView.heightAnchor.constraint(equalToConstant:36).isActive = true
         headerView.widthAnchor.constraint(equalToConstant:self.frame.width).isActive = true
-        
-       
         
         header.leftAnchor.constraint(equalTo: leftAnchor, constant:0).isActive = true
         header.topAnchor.constraint(equalTo: topAnchor, constant:0).isActive = true
         header.heightAnchor.constraint(equalToConstant:36).isActive = true
         header.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
 
-        
-        
         imageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 3).isActive = true
         imageView.topAnchor.constraint(equalTo: topAnchor, constant: 60).isActive = true
         imageView.heightAnchor.constraint(equalToConstant:60).isActive = true
@@ -218,21 +208,7 @@ class VotesCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        
-        
-      //  cell.backgroundColor = UIColor.groupTableViewBackground
-      
-//        cell.backgroundColor = UIColor.brown
-//        if indexPath.row == 1 {
-//
-//
-//
-//        }
-        
-//
-
-       
-        
+        //cell.backgroundColor = UIColor.white
         return cell
         
     }
