@@ -11,6 +11,123 @@ import Charts
 
 private let reuseIdentifier = "voteCell"
 
+
+class VoteCell: UICollectionViewCell{
+    
+    let header: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.white
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.text = "Democratic Party"
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let viewfooter: UIView = {
+        let viewfooter = UIView()
+        viewfooter.backgroundColor = UIColor.black
+        viewfooter.translatesAutoresizingMaskIntoConstraints = false
+        return viewfooter
+    }()
+    
+    let headerView: UIView = {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.black
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        return headerView
+    }()
+   
+    
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "image.jpg")
+        imageView.layer.cornerRadius = 30
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
+    
+    let partyflagView: UIImageView = {
+        let partyflagView = UIImageView()
+        partyflagView.image = UIImage(named: "democrat")
+        partyflagView.translatesAutoresizingMaskIntoConstraints = false
+       
+        return partyflagView
+    }()
+    let footer: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.white
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.text = "Trump               Votes 46"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = UIColor.white
+        headerView.addSubview(header)
+        addSubview(headerView)
+        addSubview(imageView)
+        addSubview(partyflagView)
+        viewfooter.addSubview(footer)
+        addSubview(viewfooter)
+        
+        
+       
+        
+        headerView.leftAnchor.constraint(equalTo: leftAnchor, constant:0).isActive = true
+        headerView.topAnchor.constraint(equalTo: topAnchor, constant:0).isActive = true
+        headerView.heightAnchor.constraint(equalToConstant:36).isActive = true
+        headerView.widthAnchor.constraint(equalToConstant:self.frame.width).isActive = true
+        
+       
+        
+        header.leftAnchor.constraint(equalTo: leftAnchor, constant:0).isActive = true
+        header.topAnchor.constraint(equalTo: topAnchor, constant:0).isActive = true
+        header.heightAnchor.constraint(equalToConstant:36).isActive = true
+        header.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
+
+        
+        
+        imageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 3).isActive = true
+        imageView.topAnchor.constraint(equalTo: topAnchor, constant: 60).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant:60).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        
+        partyflagView.rightAnchor.constraint(equalTo: rightAnchor, constant:-3).isActive = true
+        partyflagView.topAnchor.constraint(equalTo: topAnchor, constant: 60).isActive = true
+        partyflagView.heightAnchor.constraint(equalToConstant:60).isActive = true
+        partyflagView.widthAnchor.constraint(equalToConstant:70).isActive = true
+        
+        
+        viewfooter.leftAnchor.constraint(equalTo: leftAnchor, constant: 0).isActive = true
+        viewfooter.topAnchor.constraint(equalTo: topAnchor, constant: 140).isActive = true
+        viewfooter.heightAnchor.constraint(equalToConstant:36).isActive = true
+        viewfooter.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
+        
+        footer.leftAnchor.constraint(equalTo: leftAnchor, constant: 0).isActive = true
+        footer.topAnchor.constraint(equalTo: topAnchor, constant: 140).isActive = true
+        footer.heightAnchor.constraint(equalToConstant:36).isActive = true
+        footer.widthAnchor.constraint(equalToConstant:self.frame.width).isActive = true
+
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init code vote cell")
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    
+}
+
 class VotesCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var VotesHomeButton: UIBarButtonItem!
@@ -26,18 +143,16 @@ class VotesCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // let flagImageView = UIImageView(frame:  CGRect(x:10, y: -30, width: 395 , height: 300
-        // ))
-        
+        self.collectionView?.backgroundColor = UIColor.groupTableViewBackground
         
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
         let cellwidth = Int(self.view.frame.width - 30)/count
         let cellHeight = Int(self.view.frame.height - 380)/count
         layout.itemSize = CGSize(width: cellwidth, height: cellHeight)
-        
+
         self.collectionView?.collectionViewLayout = layout
         //  Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(VoteCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         lineChart()
         sideMenus()
     }
@@ -103,149 +218,20 @@ class VotesCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        cell.backgroundColor = UIColor.white
+        
+        
+      //  cell.backgroundColor = UIColor.groupTableViewBackground
+      
+//        cell.backgroundColor = UIColor.brown
+//        if indexPath.row == 1 {
+//
+//
+//
+//        }
+        
+//
+
        
-        switch  indexPath.item {
-        case 0:
-            //   let imgView = UIImageView(frame:  CGRect(x: 0, y: 0, width: layout.itemSize.width , height: layout.itemSize.height))
-            let imgView = UIImageView(frame:  CGRect(x:90, y:28, width: 100, height:100))
-            imgView.contentMode = .scaleAspectFit
-            imgView.image = UIImage(named: "democrat")
-            imgView.clipsToBounds = true
-            imgView.layer.cornerRadius = 10
-            
-            var dynamicLabel: UILabel = UILabel()
-            dynamicLabel = UILabel(frame:  CGRect(x:1, y:0, width:185, height:35))
-            dynamicLabel.textColor = UIColor.gray
-            dynamicLabel.layer.cornerRadius = 10
-            dynamicLabel.textAlignment = NSTextAlignment.center
-            dynamicLabel.text = "Democratic Party"
-            // imgView.addSubview(dynamicLabel)
-            cell.contentView.addSubview(dynamicLabel)
-            
-            
-            var dynamicLabel1: UILabel = UILabel()
-            dynamicLabel1 = UILabel(frame:  CGRect(x:5, y:140, width:100, height:35))
-            //dynamicLabel1.backgroundColor = UIColor.white
-            dynamicLabel1.textColor = UIColor.white
-            dynamicLabel1.layer.cornerRadius = 10
-            dynamicLabel1.textAlignment = NSTextAlignment.left
-            dynamicLabel1.text = "Party"
-            cell.contentView.addSubview(dynamicLabel1)
-            
-            var dynamicLabel2: UILabel = UILabel()
-            dynamicLabel2 = UILabel(frame:  CGRect(x:90, y:140, width:100, height:35))
-            dynamicLabel2.textColor = UIColor.white
-            dynamicLabel2.layer.cornerRadius = 10
-            dynamicLabel2.textAlignment = NSTextAlignment.left
-            dynamicLabel2.text = "Votes"
-            cell.contentView.addSubview(dynamicLabel2)
-            
-            // imgView.addSubview(dynamicLabel1)
-            
-            let imgView1 = UIImageView(frame:  CGRect(x: 2, y:20, width: 80, height:100))
-            imgView1.contentMode = .scaleAspectFit
-            imgView1.layer.cornerRadius = 10.0
-            imgView1.clipsToBounds = true
-            imgView1.image = UIImage(named: "profile")
-            //imgView.addSubview(imgView1)
-            cell.contentView.addSubview(imgView1)
-            cell.layer.cornerRadius = 10
-            cell.contentView.addSubview(imgView)
-        case 1:
-            // let imgView = UIImageView(frame:  CGRect(x: 0, y: 0, width: layout.itemSize.width , height: layout.itemSize.height))
-            
-            let imgView = UIImageView(frame:  CGRect(x:90, y:28, width: 100, height:100))
-            imgView.contentMode = .scaleAspectFit
-            imgView.image = UIImage(named: "democrat")
-            imgView.clipsToBounds = true
-            imgView.layer.cornerRadius = 10
-            
-            
-            var dynamicLabel: UILabel = UILabel()
-            dynamicLabel = UILabel(frame:  CGRect(x:1, y:0, width:185, height:35))
-            //dynamicLabel.backgroundColor = UIColor.white
-            dynamicLabel.textColor = UIColor.gray
-            dynamicLabel.layer.cornerRadius = 10
-            dynamicLabel.textAlignment = NSTextAlignment.center
-            dynamicLabel.text = "Republican Party"
-            //imgView.addSubview(dynamicLabel)
-            cell.contentView.addSubview(dynamicLabel)
-            
-            
-            var dynamicLabel1: UILabel = UILabel()
-            dynamicLabel1 = UILabel(frame:  CGRect(x:5, y:140, width:100, height:35))
-            //dynamicLabel1.backgroundColor = UIColor.white
-            dynamicLabel1.textColor = UIColor.white
-            dynamicLabel1.layer.cornerRadius = 10
-            dynamicLabel1.textAlignment = NSTextAlignment.left
-            dynamicLabel1.text = "Repblican"
-            cell.contentView.addSubview(dynamicLabel1)
-            
-            var dynamicLabel2: UILabel = UILabel()
-            dynamicLabel2 = UILabel(frame:  CGRect(x:90, y:140, width:100, height:35))
-            dynamicLabel2.textColor = UIColor.white
-            dynamicLabel2.layer.cornerRadius = 10
-            dynamicLabel2.textAlignment = NSTextAlignment.left
-            dynamicLabel2.text = "Votes"
-            cell.contentView.addSubview(dynamicLabel2)
-            
-            
-            
-            let imgView1 = UIImageView(frame:  CGRect(x: 2, y:20, width: 80, height:100))
-            imgView1.contentMode = .scaleAspectFit
-            imgView1.layer.cornerRadius = 10.0
-            imgView1.clipsToBounds = true
-            imgView1.image = UIImage(named: "profile")
-            cell.contentView.addSubview(imgView1)
-            //imgView.addSubview(imgView1)
-            
-            cell.layer.cornerRadius = 10
-            cell.contentView.addSubview(imgView)
-        default:
-            cell.contentView.addSubview(UIImageView(image: UIImage(named: "lanscape")))
-        }
-        
-        
-        
-        self.collectionView?.backgroundColor = UIColor.groupTableViewBackground
-        
-        
-        //      let imgView = UIImageView(frame:  CGRect(x: 0, y: 0, width: layout.itemSize.width , height: layout.itemSize.height))
-        //      imgView.contentMode = .scaleAspectFit
-        //      imgView.image = UIImage(named: "image.jpg")
-        //      imgView.clipsToBounds = true
-        //
-        //      var dynamicLabel: UILabel = UILabel()
-        //      dynamicLabel = UILabel(frame:  CGRect(x:3, y:2, width:185, height:35))
-        //      //dynamicLabel.backgroundColor = UIColor.white
-        //      dynamicLabel.textColor = UIColor.white
-        //       dynamicLabel.layer.cornerRadius = 10
-        //      dynamicLabel.textAlignment = NSTextAlignment.center
-        //      dynamicLabel.text = "Democrat Party "
-        //      imgView.addSubview(dynamicLabel)
-        //
-        //
-        //      var dynamicLabel1: UILabel = UILabel()
-        //      dynamicLabel1 = UILabel(frame:  CGRect(x:4, y:140, width:190, height:35))
-        //      //dynamicLabel1.backgroundColor = UIColor.white
-        //      dynamicLabel1.textColor = UIColor.white
-        //      dynamicLabel1.layer.cornerRadius = 10
-        //      dynamicLabel1.textAlignment = NSTextAlignment.center
-        //      dynamicLabel1.text = "Candidate name "
-        //
-        //      imgView.addSubview(dynamicLabel1)
-        //
-        //      let imgView1 = UIImageView(frame:  CGRect(x: 0, y:38, width: 100, height:100))
-        //      imgView1.contentMode = .scaleAspectFit
-        //      imgView1.layer.cornerRadius = 50.0
-        //      imgView1.clipsToBounds = true
-        //      imgView1.image = UIImage(named: "profile")
-        //      imgView.addSubview(imgView1)
-        //
-        //      cell.layer.cornerRadius = 10
-        //      cell.contentView.addSubview(imgView)
-        
         
         return cell
         
