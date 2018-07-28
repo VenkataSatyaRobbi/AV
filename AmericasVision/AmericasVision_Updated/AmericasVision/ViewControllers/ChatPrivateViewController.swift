@@ -23,6 +23,7 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
     @IBOutlet weak var backToContacts: UIBarButtonItem!
     
     @IBAction func goBack(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
     
