@@ -42,6 +42,8 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
        // self.navigationItem.leftBarButtonItems?.append(UIBarButtonItem(image: profileImage.image, style: UIBarButtonItemStyle.plain, target: nil, action: nil))
         PrivateMessageHandler.Instance.observeMessages()
         PrivateMessageHandler.Instance.observeMediaMessages()
+        self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero;
+        self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero;
     }
 
     override func viewWillAppear(_ animated: Bool) {
