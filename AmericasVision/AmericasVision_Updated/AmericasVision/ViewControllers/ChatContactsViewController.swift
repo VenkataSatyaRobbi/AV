@@ -64,8 +64,6 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
         performSegue(withIdentifier: CHAT_SEGUE, sender: self)
     }
     
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let index = self.contactsTable.indexPathForSelectedRow
         let indexNumber = index?.row

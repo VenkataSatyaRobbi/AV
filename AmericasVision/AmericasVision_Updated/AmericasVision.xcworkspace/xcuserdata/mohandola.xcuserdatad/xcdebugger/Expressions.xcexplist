@@ -30,6 +30,9 @@
          contextName = "MyProfileViewController.updateProfile(_:):MyProfileViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "MyProfileViewController.updateProfile():MyProfileViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in closure #1 in static AVAuthService.updateUserProfile(phone:dob:email:password:confirmpassword:imagedata:onSuccess:onError:):AVAuthService.swift">
          <PersistentStrings>
             <PersistentString
@@ -38,7 +41,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MyProfileViewController.updateProfile():MyProfileViewController.swift">
+         contextName = "NewsFeedPoliticsViewController.tableView(_:didSelectRowAt:):NewsFeedPoliticsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "posts[indexPath.row].caption">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "ChatPublicViewController.collectionView(_:messageBubbleImageDataForItemAt:):ChatPublicViewController.swift">

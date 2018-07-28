@@ -128,6 +128,20 @@ extension NewsFeedEntertainmentViewController:UITableViewDataSource,UITableViewD
         }
         
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
+        let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "NewsDetailedViewController") as! NewsDetailedViewController
+        
+        destinationViewController.getPhotoCourtesy = posts[indexPath.row].imageCourtesy
+        destinationViewController.getContent = posts[indexPath.row].newsContent
+        destinationViewController.getCaption = posts[indexPath.row].caption as! String
+        destinationViewController.getPhotoURL = posts[indexPath.row].photoUrl
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
+        
+        let rowDataPostID = posts[indexPath.row].postID
+        print("rowdata ID value: \(rowDataPostID)")
+    }
 }
 
 extension NewsFeedEntertainmentViewController:UICollectionViewDataSource,UICollectionViewDelegate{
@@ -168,6 +182,20 @@ extension NewsFeedEntertainmentViewController:UICollectionViewDataSource,UIColle
             return cell
         }
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
+        let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "NewsDetailedViewController") as! NewsDetailedViewController
+        
+        destinationViewController.getPhotoCourtesy = posts[indexPath.row].imageCourtesy
+        destinationViewController.getContent = posts[indexPath.row].newsContent
+        destinationViewController.getCaption = posts[indexPath.row].caption as! String
+        destinationViewController.getPhotoURL = posts[indexPath.row].photoUrl
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
+        
+        let rowDataPostID = posts[indexPath.row].postID
+        print("rowdata ID value: \(rowDataPostID)")
     }
 }
 

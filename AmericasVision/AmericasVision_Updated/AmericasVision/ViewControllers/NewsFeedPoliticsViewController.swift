@@ -105,7 +105,8 @@ extension NewsFeedPoliticsViewController:UITableViewDataSource,UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let newsRow = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
-      
+        newsRow.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+       
             newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
             newsRow.PostCollectionViewCaption.text = posts[indexPath.row].caption
             newsRow.PostTableViewHeadlines.isScrollEnabled = false
@@ -142,6 +143,7 @@ extension NewsFeedPoliticsViewController:UITableViewDataSource,UITableViewDelega
         
         destinationViewController.getPhotoCourtesy = posts[indexPath.row].imageCourtesy
         destinationViewController.getContent = posts[indexPath.row].newsContent
+        destinationViewController.getCaption = posts[indexPath.row].caption as! String
         destinationViewController.getPhotoURL = posts[indexPath.row].photoUrl
         self.navigationController?.pushViewController(destinationViewController, animated: true)
         

@@ -23,6 +23,7 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
     @IBOutlet weak var backToContacts: UIBarButtonItem!
     
     @IBAction func goBack(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
     
@@ -41,6 +42,8 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
        // self.navigationItem.leftBarButtonItems?.append(UIBarButtonItem(image: profileImage.image, style: UIBarButtonItemStyle.plain, target: nil, action: nil))
         PrivateMessageHandler.Instance.observeMessages()
         PrivateMessageHandler.Instance.observeMediaMessages()
+        self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero;
+        self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero;
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -136,15 +139,15 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         let message = messages[indexPath.item]
         if message.senderId == self.senderId {
-            return bubbleImageFactory?.outgoingMessagesBubbleImage(with: UIColor.blue)
+            return bubbleImageFactory?.outgoingMessagesBubbleImage(with: UIColor(red:0.79, green:0.91, blue:0.96, alpha:1.0))
         }else{
-             return bubbleImageFactory?.incomingMessagesBubbleImage(with: UIColor.blue)
+             return bubbleImageFactory?.incomingMessagesBubbleImage(with: UIColor(red:0.89, green:0.91, blue:0.91, alpha:1.0))
         }
         
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
-        return JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "profilephotoplaceholder"), diameter: 30)
+        return nil
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -153,6 +156,7 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
+        cell.textView.textColor = UIColor(red:0.20, green:0.23, blue:0.23, alpha:1.0)
         return cell
     }
     
