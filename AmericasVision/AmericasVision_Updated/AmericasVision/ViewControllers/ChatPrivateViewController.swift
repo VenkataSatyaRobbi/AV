@@ -136,15 +136,15 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         let message = messages[indexPath.item]
         if message.senderId == self.senderId {
-            return bubbleImageFactory?.outgoingMessagesBubbleImage(with: UIColor.blue)
+            return bubbleImageFactory?.outgoingMessagesBubbleImage(with: UIColor(red:0.79, green:0.91, blue:0.96, alpha:1.0))
         }else{
-             return bubbleImageFactory?.incomingMessagesBubbleImage(with: UIColor.blue)
+             return bubbleImageFactory?.incomingMessagesBubbleImage(with: UIColor(red:0.89, green:0.91, blue:0.91, alpha:1.0))
         }
         
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
-        return JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "profilephotoplaceholder"), diameter: 30)
+        return nil
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -153,6 +153,7 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
+        cell.textView.textColor = UIColor(red:0.20, green:0.23, blue:0.23, alpha:1.0)
         return cell
     }
     

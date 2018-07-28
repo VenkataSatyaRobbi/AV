@@ -32,13 +32,14 @@ class ChatPublicViewController: JSQMessagesViewController,PublicMessageReceivedD
         super.viewDidLoad()
         picker.delegate = self
         PublicMessageHandler.Instance.delegate = self
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.groupTableViewBackground
         self.senderId = AVAuthService.getCurrentUserId()
         self.senderDisplayName = AVAuthService.getCurrentUserName()
         self.navigationItem.title = "AV Public Chat"
         
         PublicMessageHandler.Instance.observeMessages()
         PublicMessageHandler.Instance.observeMediaMessages()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -125,9 +126,9 @@ class ChatPublicViewController: JSQMessagesViewController,PublicMessageReceivedD
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         let message = messages[indexPath.item]
         if message.senderId == self.senderId {
-            return bubbleImageFactory?.outgoingMessagesBubbleImage(with: UIColor.blue)
+            return bubbleImageFactory?.outgoingMessagesBubbleImage(with: UIColor(red:0.79, green:0.91, blue:0.96, alpha:1.0))
         }else{
-            return bubbleImageFactory?.incomingMessagesBubbleImage(with: UIColor.blue)
+            return bubbleImageFactory?.incomingMessagesBubbleImage(with: UIColor(red:0.89, green:0.91, blue:0.91, alpha:1.0))
         }
         
     }
@@ -135,7 +136,9 @@ class ChatPublicViewController: JSQMessagesViewController,PublicMessageReceivedD
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
        
         let  placeHolderImage = UIImage(named: "profile")
+        
         let avatarImage = JSQMessagesAvatarImageFactory.avatarImage(with: placeHolderImage, diameter: 30)
+        
         let message = messages[indexPath.item]
         avatarImage?.avatarImage = SDImageCache.shared().imageFromDiskCache(forKey: message.senderId)
         
@@ -147,11 +150,13 @@ class ChatPublicViewController: JSQMessagesViewController,PublicMessageReceivedD
                             SDWebImageManager.shared().imageCache?.store(image, forKey: message.senderId)
                             DispatchQueue.main.async {
                                 avatarImage!.avatarImage = image
+                                
                             }
                         })
                     }
                 })
             }
+        
         return avatarImage
     }
    
@@ -161,6 +166,10 @@ class ChatPublicViewController: JSQMessagesViewController,PublicMessageReceivedD
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
+        cell.avatarImageView.layer.cornerRadius = (cell.avatarImageView.frame.size.width-4)/2
+        NSLog("imsize", cell.avatarImageView.frame.size.width)
+        cell.avatarImageView.clipsToBounds = true
+        cell.textView.textColor = UIColor(red:0.20, green:0.23, blue:0.23, alpha:1.0)
         return cell
     }
     
