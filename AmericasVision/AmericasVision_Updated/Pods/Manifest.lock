@@ -1,5 +1,7 @@
 PODS:
-  - FileExplorer (1.0.4)
+  - Charts (3.1.1):
+    - Charts/Core (= 3.1.1)
+  - Charts/Core (3.1.1)
   - Firebase/Auth (4.11.0):
     - Firebase/Core
     - FirebaseAuth (= 4.5.0)
@@ -58,7 +60,7 @@ PODS:
   - SDWebImage/Core (4.3.3)
 
 DEPENDENCIES:
-  - FileExplorer
+  - Charts
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -68,7 +70,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - FileExplorer
+    - Charts
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -85,7 +87,7 @@ SPEC REPOS:
     - SDWebImage
 
 SPEC CHECKSUMS:
-  FileExplorer: 1f7fbfa839ac391f0fb57b07eb289daa7c090a31
+  Charts: 90a4d61da0f6e06684c591e3bcab11940fe61736
   Firebase: cc13dfab1038c8b45d7903e01fc690451d6d0b24
   FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
   FirebaseAuth: 147bf340a0706b44ca1753d6b41ebafd9687cfe6
@@ -101,6 +103,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
 
-PODFILE CHECKSUM: 6ed4f95c0c2536cc69804da645f84213748bc979
+PODFILE CHECKSUM: 8fcc588595dd19480ee9cb1750430543fa1e6a06
 
 COCOAPODS: 1.5.0

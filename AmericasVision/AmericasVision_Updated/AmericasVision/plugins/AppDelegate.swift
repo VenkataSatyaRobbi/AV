@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
-import FileExplorer
+//import FileExplorer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,48 +36,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //FBSDKLoginButton.classForCoder()
         
         
-       uploadMusicAlbum()
+       //uploadMusicAlbum()
         
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
-    func uploadMusicAlbum()
-    {
-        let directoryURL = URL.documentDirectory
-        
-        let audioURL = Bundle.main.url(forResource: "audio", withExtension: "mp3")!
-        let videoURL = Bundle.main.url(forResource: "video", withExtension: "mp4")!
-        let pdfURL = Bundle.main.url(forResource: "pdf", withExtension: "pdf")!
-        let image = UIImage(named: "image.jpg")!
-        let imageData = UIImagePNGRepresentation(image)!
-        
-        
-        let firstDirectoryURL = directoryURL.appendingPathComponent("Directory")
-        try? FileManager.default.createDirectory(at: firstDirectoryURL, withIntermediateDirectories: true, attributes: [FileAttributeKey: Any]())
-        
-        let items = [
-            (audioURL, "audio.mp3"),
-            (videoURL, "video.mp4"),
-            (pdfURL, "pdf.pdf")
-        ]
-        for (url, filename) in items {
-            let destinationURL = firstDirectoryURL.appendingPathComponent(filename)
-            try? FileManager.default.copyItem(at: url, to: destinationURL)
-        }
-        
-        let imageURL = firstDirectoryURL.appendingPathComponent("image.png")
-        try? imageData.write(to: imageURL)
-        
-        let subdirectoryURL = firstDirectoryURL.appendingPathComponent("Empty Directory")
-        try? FileManager.default.createDirectory(at: subdirectoryURL, withIntermediateDirectories: true, attributes: [FileAttributeKey: Any]())
-        
-        let secondDirectoryURL = directoryURL.appendingPathComponent("Empty Directory")
-        try? FileManager.default.createDirectory(at: secondDirectoryURL, withIntermediateDirectories: true, attributes: [FileAttributeKey: Any]())
-        
-        
-        
-    }
+//    func uploadMusicAlbum()
+//    {
+//        let directoryURL = URL.documentDirectory
+//        
+//        let audioURL = Bundle.main.url(forResource: "audio", withExtension: "mp3")!
+//        let videoURL = Bundle.main.url(forResource: "video", withExtension: "mp4")!
+//        let pdfURL = Bundle.main.url(forResource: "pdf", withExtension: "pdf")!
+//        let image = UIImage(named: "image.jpg")!
+//        let imageData = UIImagePNGRepresentation(image)!
+//        
+//        
+//        let firstDirectoryURL = directoryURL.appendingPathComponent("Directory")
+//        try? FileManager.default.createDirectory(at: firstDirectoryURL, withIntermediateDirectories: true, attributes: [FileAttributeKey: Any]())
+//        
+//        let items = [
+//            (audioURL, "audio.mp3"),
+//            (videoURL, "video.mp4"),
+//            (pdfURL, "pdf.pdf")
+//        ]
+//        for (url, filename) in items {
+//            let destinationURL = firstDirectoryURL.appendingPathComponent(filename)
+//            try? FileManager.default.copyItem(at: url, to: destinationURL)
+//        }
+//        
+//        let imageURL = firstDirectoryURL.appendingPathComponent("image.png")
+//        try? imageData.write(to: imageURL)
+//        
+//        let subdirectoryURL = firstDirectoryURL.appendingPathComponent("Empty Directory")
+//        try? FileManager.default.createDirectory(at: subdirectoryURL, withIntermediateDirectories: true, attributes: [FileAttributeKey: Any]())
+//        
+//        let secondDirectoryURL = directoryURL.appendingPathComponent("Empty Directory")
+//        try? FileManager.default.createDirectory(at: secondDirectoryURL, withIntermediateDirectories: true, attributes: [FileAttributeKey: Any]())
+//        
+//        
+//        
+//    }
     
     private func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool{
         return FBSDKApplicationDelegate.sharedInstance().application(application, open: url as URL?, sourceApplication: sourceApplication, annotation: annotation)

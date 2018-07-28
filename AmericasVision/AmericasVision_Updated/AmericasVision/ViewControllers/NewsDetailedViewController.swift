@@ -13,9 +13,37 @@ import FirebaseStorage
 
 class NewsDetailedViewController: UIViewController {
 
+    var getPhotoCourtesy = String()
+    var getContent = String()
+    var getPhotoURL = String()
+    
+    @IBOutlet weak var NewsDetailedVCNewsContent: UILabel!
+    @IBOutlet weak var NewsDetailedVCImage: UIImageView!
+    @IBOutlet weak var NewsDetailedVCImageCourtesy: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        NewsDetailedVCNewsContent.text! = getContent
+        NewsDetailedVCImageCourtesy.text! = getPhotoCourtesy
+        
+        let NewsDetailAVPostStorageRef = Storage.storage().reference(forURL: getPhotoURL)
+        NewsDetailAVPostStorageRef.downloadURL { (url, error) in
+            if error != nil{
+                print(error?.localizedDescription as Any)
+                return
+            }
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                if error != nil {
+                    print(error?.localizedDescription as Any)
+                    return
+                }
+                guard let imageData = UIImage(data: data!) else { return }
+                DispatchQueue.main.async {
+                    print(imageData)
+                    self.NewsDetailedVCImage.image = imageData
+                }
+            }).resume()
+        }
         // Do any additional setup after loading the view.
     }
 

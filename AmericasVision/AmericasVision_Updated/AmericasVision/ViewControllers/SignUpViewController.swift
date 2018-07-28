@@ -34,7 +34,8 @@ class SignUpViewController: UIViewController {
         PasswordsMatchLabel.isHidden = true
         FirstNameField.backgroundColor = UIColor.clear
         FirstNameField.tintColor = UIColor.white
-        FirstNameField.attributedPlaceholder = NSAttributedString(string: FirstNameField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.9)])
+        
+        FirstNameField.attributedPlaceholder = NSAttributedString(string: FirstNameField.placeholder!, attributes: [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor(white: 1.0, alpha: 0.9)])
         let bottomLayerFirstName = CALayer()
         bottomLayerFirstName.frame = CGRect(x: 0, y: 29, width: self.view.frame.size.width - 40 , height: 1)
         bottomLayerFirstName.backgroundColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1).cgColor
@@ -42,7 +43,7 @@ class SignUpViewController: UIViewController {
         
         LastNameField.backgroundColor = UIColor.clear
         LastNameField.tintColor = UIColor.white
-        LastNameField.attributedPlaceholder = NSAttributedString(string: LastNameField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.9)])
+        LastNameField.attributedPlaceholder = NSAttributedString(string: LastNameField.placeholder!, attributes: [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor(white: 1.0, alpha: 0.9)])
         let bottomLayerLastName = CALayer()
         bottomLayerLastName.frame = CGRect(x: 0, y: 29, width: self.view.frame.size.width - 40 , height: 1)
         bottomLayerLastName.backgroundColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1).cgColor
@@ -50,7 +51,7 @@ class SignUpViewController: UIViewController {
         
         DateofBirthField.backgroundColor = UIColor.clear
         DateofBirthField.tintColor = UIColor.white
-        DateofBirthField.attributedPlaceholder = NSAttributedString(string: DateofBirthField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.9)])
+        DateofBirthField.attributedPlaceholder = NSAttributedString(string: DateofBirthField.placeholder!, attributes: [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor(white: 1.0, alpha: 0.9)])
         let bottomLayerDateofBirth = CALayer()
         bottomLayerDateofBirth.frame = CGRect(x: 0, y: 29, width: self.view.frame.size.width - 40 , height: 1)
         bottomLayerDateofBirth.backgroundColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1).cgColor
@@ -58,7 +59,7 @@ class SignUpViewController: UIViewController {
         
         PhoneField.backgroundColor = UIColor.clear
         PhoneField.tintColor = UIColor.white
-        PhoneField.attributedPlaceholder = NSAttributedString(string: PhoneField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.9)])
+        PhoneField.attributedPlaceholder = NSAttributedString(string: PhoneField.placeholder!, attributes: [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor(white: 1.0, alpha: 0.9)])
         let bottomLayerPhone = CALayer()
         bottomLayerPhone.frame = CGRect(x: 0, y: 29, width: self.view.frame.size.width - 40 , height: 1)
         bottomLayerPhone.backgroundColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1).cgColor
@@ -66,7 +67,7 @@ class SignUpViewController: UIViewController {
         
         EmailField.backgroundColor = UIColor.clear
         EmailField.tintColor = UIColor.white
-        EmailField.attributedPlaceholder = NSAttributedString(string: EmailField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.9)])
+        EmailField.attributedPlaceholder = NSAttributedString(string: EmailField.placeholder!, attributes: [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor(white: 1.0, alpha: 0.9)])
         let bottomLayerEmail = CALayer()
         bottomLayerEmail.frame = CGRect(x: 0, y: 29, width: self.view.frame.size.width - 40 , height: 1)
         bottomLayerEmail.backgroundColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1).cgColor
@@ -74,7 +75,7 @@ class SignUpViewController: UIViewController {
         
         PasswordField.backgroundColor = UIColor.clear
         PasswordField.tintColor = UIColor.white
-        PasswordField.attributedPlaceholder = NSAttributedString(string: PasswordField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.9)])
+        PasswordField.attributedPlaceholder = NSAttributedString(string: PasswordField.placeholder!, attributes: [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor(white: 1.0, alpha: 0.9)])
         let bottomLayerPassword = CALayer()
         bottomLayerPassword.frame = CGRect(x: 0, y: 29, width: self.view.frame.size.width - 40 , height: 1)
         bottomLayerPassword.backgroundColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1).cgColor
@@ -82,7 +83,7 @@ class SignUpViewController: UIViewController {
         
         ConfirmPasswordField.backgroundColor = UIColor.clear
         ConfirmPasswordField.tintColor = UIColor.white
-        ConfirmPasswordField.attributedPlaceholder = NSAttributedString(string: ConfirmPasswordField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.9)])
+        ConfirmPasswordField.attributedPlaceholder = NSAttributedString(string: ConfirmPasswordField.placeholder!, attributes: [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor(white: 1.0, alpha: 0.9)])
         let bottomLayerConfirmPassword = CALayer()
         bottomLayerConfirmPassword.frame = CGRect(x: 0, y: 29, width: self.view.frame.size.width - 40 , height: 1)
         bottomLayerConfirmPassword.backgroundColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1).cgColor

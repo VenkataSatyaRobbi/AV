@@ -137,6 +137,14 @@ extension NewsFeedPoliticsViewController:UITableViewDataSource,UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
+        let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "NewsDetailedViewController") as! NewsDetailedViewController
+        
+        destinationViewController.getPhotoCourtesy = posts[indexPath.row].imageCourtesy
+        destinationViewController.getContent = posts[indexPath.row].newsContent
+        destinationViewController.getPhotoURL = posts[indexPath.row].photoUrl
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
+        
         let rowDataPostID = posts[indexPath.row].postID
         print("rowdata ID value: \(rowDataPostID)")
         
