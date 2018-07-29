@@ -108,8 +108,8 @@ class NewsDetailedViewController: UIViewController {
     
     func updateCountInPost(){
         let ref = DBProvider.instance.newsFeedRef.child(postId)
-        ref.updateChildValues(["likes": likesCount.text!])
-        ref.updateChildValues(["dislikes": dislikesCount.text!])
+        ref.updateChildValues(["likes": likes])
+        ref.updateChildValues(["dislikes": dislikes])
     }
     
     override func viewDidLoad() {
@@ -149,18 +149,27 @@ class NewsDetailedViewController: UIViewController {
     }
     
     func checkCurrentUserComments(){
-        DBProvider.instance.newsFeedRef.child(postId).child("usercomments").child("userId").queryEqual(toValue: AVAuthService.getCurrentUserId()).observeSingleEvent(of: DataEventType.value){
-            (snapshot: DataSnapshot) in
-            if let dict = snapshot.value as? [String: Any] {
-                let type = dict["type"] as! String
-                if type == "Like" {
-                    self.likeToggle = true
-                }else{
-                    self.likeToggle = false
+        DBProvider.instance.newsFeedRef.child(postId).child("usercomments").observeSingleEvent(of: DataEventType.value){
+            (snapShot:DataSnapshot) in
+            var comments = [NSDictionary]()
+            
+            if let mycomments = snapShot.value as? NSDictionary{
+                for(key,value) in mycomments{
+                    if let commentDic = value as? NSDictionary{
+                        if AVAuthService.getCurrentUserId() == commentDic["userId"] as? String {
+                            comments.append(commentDic)
+                            let type = commentDic["type"] as? String
+                            if type == "Like" {
+                                self.likeToggle = true
+                            }else{
+                                self.likeToggle = false
+                            }
+                            self.toggleLikeDislike()
+                        }
+                    }
                 }
             }
         }
-        toggleLikeDislike()
     }
 
     override func didReceiveMemoryWarning() {

@@ -22,6 +22,17 @@
          contextName = "MyProfileViewController.updateProfile(_:):MyProfileViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "NewsDetailedViewController.checkCurrentUserComments():NewsDetailedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = " postRef.child(&quot;usercomments&quot;).ref.child(&quot;userId&quot;)">
+            </PersistentString>
+            <PersistentString
+               value = "postRef.child(&quot;usercomments&quot;).ref.child(&quot;userId&quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in MessageHandler.observeMessages():MessageHandler.swift">
          <PersistentStrings>
             <PersistentString
@@ -63,7 +74,7 @@
          contextName = "closure #1 in NewsDetailedViewController.checkCurrentUserComments():NewsDetailedViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "dict[&quot;type&quot;]">
+               value = "snapshot.value">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
