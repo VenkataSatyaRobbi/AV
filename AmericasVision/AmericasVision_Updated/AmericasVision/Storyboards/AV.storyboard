@@ -1196,7 +1196,7 @@
         <!--Private-->
         <scene sceneID="nqB-at-Xxk">
             <objects>
-                <viewController title="Private" id="92d-b6-uij" customClass="ChatContactsViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatContactsViewController" title="Private" id="92d-b6-uij" customClass="ChatContactsViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dNt-14-Fyh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1269,7 +1269,7 @@
                     <navigationItem key="navigationItem" id="YPg-EQ-uRx">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="Sfq-N5-Yxh">
                             <connections>
-                                <action selector="goBack:" destination="UNZ-iP-s3c" id="iKS-RJ-lAy"/>
+                                <action selector="goBack:" destination="UNZ-iP-s3c" id="Wni-Xu-N7Y"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1307,7 +1307,7 @@
         <!--Chat Tabbar-->
         <scene sceneID="xap-BS-6lM">
             <objects>
-                <tabBarController title="Chat Tabbar" id="fTh-Os-Wjg" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="AVmessageTabVC" title="Chat Tabbar" id="fTh-Os-Wjg" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cck-oM-6Fd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1685,7 +1685,7 @@
         <!--Private Navbar-->
         <scene sceneID="WQg-nf-TsH">
             <objects>
-                <navigationController title="Private Navbar" automaticallyAdjustsScrollViewInsets="NO" id="mGc-Uj-g1y" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="contactsNavigationVC" title="Private Navbar" automaticallyAdjustsScrollViewInsets="NO" id="mGc-Uj-g1y" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Private Chat" id="8Uo-RJ-v96"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cwz-Bx-HJd">
