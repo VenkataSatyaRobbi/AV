@@ -82,6 +82,14 @@
          contextName = "MyProfileViewController.updateProfile():MyProfileViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "MyProfileViewController.populateUserinfo():MyProfileViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "textDOB.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ChatPrivateViewController.goBack(_:):ChatPrivateViewController.swift">
       </ContextState>
    </ContextStates>
