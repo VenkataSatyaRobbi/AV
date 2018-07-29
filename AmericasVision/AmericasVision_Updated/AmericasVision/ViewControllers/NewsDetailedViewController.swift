@@ -59,6 +59,7 @@ class NewsDetailedViewController: UIViewController {
             self.likes = value
             self.likesCount.text = value.stringValue
             self.toggleLikeDislike()
+            self.updateCountInPost()
         })
         
     }
@@ -90,6 +91,7 @@ class NewsDetailedViewController: UIViewController {
             self.dislikes = value
             self.dislikesCount.text = value.stringValue
             self.toggleLikeDislike()
+            self.updateCountInPost()
         })
         
     }
@@ -102,6 +104,12 @@ class NewsDetailedViewController: UIViewController {
             likeButton.isEnabled = true
             dislikeButton.isEnabled = false
         }
+    }
+    
+    func updateCountInPost(){
+        let ref = DBProvider.instance.newsFeedRef.child(postId)
+        ref.updateChildValues(["likes": likesCount.text!])
+        ref.updateChildValues(["dislikes": dislikesCount.text!])
     }
     
     override func viewDidLoad() {
@@ -138,7 +146,6 @@ class NewsDetailedViewController: UIViewController {
             }).resume()
         }
         checkCurrentUserComments()
-        // Do any additional setup after loading the view.
     }
     
     func checkCurrentUserComments(){
