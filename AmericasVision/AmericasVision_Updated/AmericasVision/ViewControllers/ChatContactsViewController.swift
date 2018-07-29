@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource, FetchData{
     
     private let cellID = "chatContactsCell"
@@ -30,6 +29,7 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
         self.contacts = contacts
         contactsTable.reloadData()
     }
+    
     func sideMenus(){
         if revealViewController() != nil {
             ChatPrivateHomeButton.target = revealViewController()

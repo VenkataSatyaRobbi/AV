@@ -42,6 +42,7 @@
 		D4FA4A0E208822BF00CC425B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA4A0B208822BF00CC425B /* Bolts.framework */; };
 		D4FA4A0F208822BF00CC425B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA4A0C208822BF00CC425B /* FBSDKCoreKit.framework */; };
 		DC04104C20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC04104B20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift */; };
+		DC04CDE0210D9AC600E70B6B /* CommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC04CDDF210D9AC600E70B6B /* CommonUtils.swift */; };
 		DC33663F20B9BB2F002B8064 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33663E20B9BB2F002B8064 /* ChatTableViewCell.swift */; };
 		DC33664120BC6EB0002B8064 /* MusicAlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33664020BC6EB0002B8064 /* MusicAlbumTableViewCell.swift */; };
 		DC33664320BF06C8002B8064 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33664220BF06C8002B8064 /* ImageCache.swift */; };
@@ -124,6 +125,7 @@
 		D4FA4A0B208822BF00CC425B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		D4FA4A0C208822BF00CC425B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		DC04104B20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedEntertainmentViewController.swift; sourceTree = "<group>"; };
+		DC04CDDF210D9AC600E70B6B /* CommonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtils.swift; sourceTree = "<group>"; };
 		DC33663E20B9BB2F002B8064 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		DC33664020BC6EB0002B8064 /* MusicAlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAlbumTableViewCell.swift; sourceTree = "<group>"; };
 		DC33664220BF06C8002B8064 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				DCBEBC3720A786ED00E8EAEA /* Constants.swift */,
 				DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */,
 				D4FA4A012082FBF100CC425B /* Post.swift */,
+				DC04CDDF210D9AC600E70B6B /* CommonUtils.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				D408D2E8209E8178008DD80A /* NewsFeedPoliticsViewController.swift in Sources */,
 				D408D2EE209E8831008DD80A /* MusicByTrackTableViewController.swift in Sources */,
 				D408D2E6209E71E3008DD80A /* VotesCollectionViewController.swift in Sources */,
+				DC04CDE0210D9AC600E70B6B /* CommonUtils.swift in Sources */,
 				DC33664720C5B092002B8064 /* MusicAdminViewController.swift in Sources */,
 				D4FA49F4207C6EA200CC425B /* PropertyConfig.swift in Sources */,
 				DC8317B020B8AC0F00517AE9 /* UserInfo.swift in Sources */,
@@ -645,7 +649,10 @@
 				);
 				INFOPLIST_FILE = AmericasVision/plugins/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeroGravity.AmericasVision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "AmericasVision/plugins/AmericasVision-Bridging-Header.h";
@@ -668,7 +675,10 @@
 				);
 				INFOPLIST_FILE = AmericasVision/plugins/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zeroGravity.AmericasVision;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "AmericasVision/plugins/AmericasVision-Bridging-Header.h";

@@ -831,17 +831,25 @@
                                         <rect key="frame" x="-1" y="-2" width="375" height="158"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lPN-kE-JPq" userLabel="LikeButton">
+                                        <rect key="frame" x="322" y="177" width="23" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="dislike"/>
+                                        <connections>
+                                            <action selector="dislikeAction:" destination="Bhe-9j-yFj" eventType="touchUpInside" id="IQJ-th-hvh"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Content" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ipw-YE-Eue">
-                                        <rect key="frame" x="2" y="229" width="369" height="40"/>
+                                        <rect key="frame" x="2" y="199" width="369" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Caption" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sje-8D-oUx">
-                                        <rect key="frame" x="2" y="177" width="369" height="40"/>
+                                        <rect key="frame" x="2" y="178" width="191" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -850,6 +858,28 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="14"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8Bd-kE-XUh" userLabel="DislikeButton">
+                                        <rect key="frame" x="258" y="177" width="23" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="like"/>
+                                        <connections>
+                                            <action selector="likesAction:" destination="Bhe-9j-yFj" eventType="touchUpInside" id="JBk-Jr-aoQ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rBN-zI-x8q" userLabel="Like Count">
+                                        <rect key="frame" x="291" y="178" width="21" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D9n-R1-UND" userLabel="Dislike Count">
+                                        <rect key="frame" x="350" y="177" width="21" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -867,6 +897,10 @@
                         <outlet property="NewsDetailedVCImageCaption" destination="Sje-8D-oUx" id="Q3U-rL-tdG"/>
                         <outlet property="NewsDetailedVCImageCourtesy" destination="ZaP-Sm-G3l" id="j7p-yS-exZ"/>
                         <outlet property="NewsDetailedVCNewsContent" destination="ipw-YE-Eue" id="Wka-M4-dM7"/>
+                        <outlet property="dislikeButton" destination="lPN-kE-JPq" id="FiZ-xh-2SD"/>
+                        <outlet property="dislikesCount" destination="D9n-R1-UND" id="7hh-Ic-0mJ"/>
+                        <outlet property="likeButton" destination="8Bd-kE-XUh" id="vXh-KL-AYV"/>
+                        <outlet property="likesCount" destination="rBN-zI-x8q" id="bGi-ws-URl"/>
                         <outlet property="scrollView" destination="Kzd-bh-cje" id="Wm1-0S-b5U"/>
                     </connections>
                 </viewController>
@@ -1220,7 +1254,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w6H-el-Ngx">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w6H-el-Ngx">
                                             <rect key="frame" x="79" y="33" width="218" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
@@ -1991,10 +2025,12 @@
         <image name="Unknown" width="216" height="234"/>
         <image name="adminconsole" width="23" height="23"/>
         <image name="camera" width="128" height="128"/>
+        <image name="dislike" width="23" height="23"/>
         <image name="entertainment" width="20" height="19"/>
         <image name="entertainmentselected" width="20" height="19"/>
         <image name="home" width="22" height="18"/>
         <image name="landscape" width="640" height="1136"/>
+        <image name="like" width="23" height="23"/>
         <image name="mature" width="21" height="22"/>
         <image name="matureselected" width="21" height="22"/>
         <image name="misc1x" width="17" height="19"/>

@@ -33,14 +33,6 @@
          contextName = "MyProfileViewController.updateProfile():MyProfileViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "closure #1 in closure #1 in static AVAuthService.updateUserProfile(phone:dob:email:password:confirmpassword:imagedata:onSuccess:onError:):AVAuthService.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "DBProvider.instance.databaseRef.child(userId!).child(&quot;Phone&quot;)">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "NewsFeedPoliticsViewController.tableView(_:didSelectRowAt:):NewsFeedPoliticsViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -49,7 +41,26 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in closure #1 in static AVAuthService.updateUserProfile(phone:dob:email:password:confirmpassword:imagedata:onSuccess:onError:):AVAuthService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "DBProvider.instance.databaseRef.child(userId!).child(&quot;Phone&quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ChatPublicViewController.collectionView(_:messageBubbleImageDataForItemAt:):ChatPublicViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ChatPrivateViewController.goBack(_:):ChatPrivateViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static CommonUtils.convertFromTimestamp(seconds:):CommonUtils.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dateFormatter.string(from: date)">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

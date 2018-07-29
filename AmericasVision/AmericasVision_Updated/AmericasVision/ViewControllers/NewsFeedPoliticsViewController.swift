@@ -14,7 +14,7 @@ import FirebaseStorage
 class NewsFeedPoliticsViewController: UIViewController {
 
     @IBOutlet weak var NewsFeedPoliticsHomeButton: UIBarButtonItem!
-     @IBOutlet weak var politicsTableView: UITableView!
+    @IBOutlet weak var politicsTableView: UITableView!
     
     var posts = [Post]()
     
@@ -105,7 +105,7 @@ extension NewsFeedPoliticsViewController:UITableViewDataSource,UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let newsRow = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
-        newsRow.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+            newsRow.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
        
             newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
             newsRow.PostCollectionViewCaption.text = posts[indexPath.row].caption
@@ -143,8 +143,13 @@ extension NewsFeedPoliticsViewController:UITableViewDataSource,UITableViewDelega
         
         destinationViewController.getPhotoCourtesy = posts[indexPath.row].imageCourtesy
         destinationViewController.getContent = posts[indexPath.row].newsContent
-        destinationViewController.getCaption = posts[indexPath.row].caption as! String
+        let postDate = CommonUtils.convertFromTimestamp(seconds: posts[indexPath.row].timestamp)
+        destinationViewController.getLocation = "Location " + posts[indexPath.row].newsLocation + ". Posted on " + postDate
+        destinationViewController.likes = posts[indexPath.row].postLikes
+        destinationViewController.dislikes = posts[indexPath.row].postDislikes
+        destinationViewController.postId = posts[indexPath.row].postID
         destinationViewController.getPhotoURL = posts[indexPath.row].photoUrl
+        
         self.navigationController?.pushViewController(destinationViewController, animated: true)
         
         let rowDataPostID = posts[indexPath.row].postID

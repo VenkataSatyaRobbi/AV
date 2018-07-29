@@ -99,7 +99,7 @@ extension NewsFeedEntertainmentViewController:UITableViewDataSource,UITableViewD
             return cell!
         }else{
             let newsRow = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
-            
+            newsRow.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
             newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
             newsRow.PostCollectionViewCaption.text = posts[indexPath.row].caption
             newsRow.PostTableViewHeadlines.isScrollEnabled = false
@@ -135,7 +135,11 @@ extension NewsFeedEntertainmentViewController:UITableViewDataSource,UITableViewD
         
         destinationViewController.getPhotoCourtesy = posts[indexPath.row].imageCourtesy
         destinationViewController.getContent = posts[indexPath.row].newsContent
-        destinationViewController.getCaption = posts[indexPath.row].caption as! String
+        let postDate = CommonUtils.convertFromTimestamp(seconds: posts[indexPath.row].timestamp)
+        destinationViewController.getLocation = "Location " + posts[indexPath.row].newsLocation + ". Posted on " + postDate
+        destinationViewController.likes = posts[indexPath.row].postLikes
+        destinationViewController.dislikes = posts[indexPath.row].postDislikes
+        destinationViewController.postId = posts[indexPath.row].postID
         destinationViewController.getPhotoURL = posts[indexPath.row].photoUrl
         self.navigationController?.pushViewController(destinationViewController, animated: true)
         
@@ -190,7 +194,8 @@ extension NewsFeedEntertainmentViewController:UICollectionViewDataSource,UIColle
         
         destinationViewController.getPhotoCourtesy = posts[indexPath.row].imageCourtesy
         destinationViewController.getContent = posts[indexPath.row].newsContent
-        destinationViewController.getCaption = posts[indexPath.row].caption as! String
+        let postDate = CommonUtils.convertFromTimestamp(seconds: posts[indexPath.row].timestamp)
+        destinationViewController.getLocation = posts[indexPath.row].newsLocation + postDate
         destinationViewController.getPhotoURL = posts[indexPath.row].photoUrl
         self.navigationController?.pushViewController(destinationViewController, animated: true)
         

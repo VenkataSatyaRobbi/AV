@@ -77,7 +77,7 @@ extension NewsFeedMiscViewController: UITableViewDataSource,UITableViewDelegate 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
         let newsRow = NewsFeedMiscTableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
-
+        newsRow.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
         newsRow.PostTableViewHeadlines.isScrollEnabled = false
         newsRow.postID = self.posts[indexPath.row].postID
@@ -110,7 +110,11 @@ extension NewsFeedMiscViewController: UITableViewDataSource,UITableViewDelegate 
         
         destinationViewController.getPhotoCourtesy = posts[indexPath.row].imageCourtesy
         destinationViewController.getContent = posts[indexPath.row].newsContent
-        destinationViewController.getCaption = posts[indexPath.row].caption as! String
+        let postDate = CommonUtils.convertFromTimestamp(seconds: posts[indexPath.row].timestamp)
+        destinationViewController.getLocation = "Location " + posts[indexPath.row].newsLocation + ". Posted on " + postDate
+        destinationViewController.likes = posts[indexPath.row].postLikes
+        destinationViewController.dislikes = posts[indexPath.row].postDislikes
+        destinationViewController.postId = posts[indexPath.row].postID
         destinationViewController.getPhotoURL = posts[indexPath.row].photoUrl
         self.navigationController?.pushViewController(destinationViewController, animated: true)
         
