@@ -37,7 +37,7 @@ class NewsFeedMatureViewController: UIViewController {
     }
     
     func loadPosts(){
-        Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Category3").observe(.childAdded) { (snapshot: DataSnapshot) in
+        Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Mature").observe(.childAdded) { (snapshot: DataSnapshot) in
             //print(snapshot.value)
             if let dict = snapshot.value as? [String: Any] {
                 let captionText = dict["caption"] as! String

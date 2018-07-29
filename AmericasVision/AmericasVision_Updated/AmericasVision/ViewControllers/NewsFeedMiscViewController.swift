@@ -41,7 +41,7 @@ class NewsFeedMiscViewController: UIViewController {
     }
 
     func loadPosts(){
-        Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Category4").observe(.childAdded) { (snapshot: DataSnapshot) in
+        Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Misc").observe(.childAdded) { (snapshot: DataSnapshot) in
             if let dict = snapshot.value as? [String: Any] {
                 let captionText = dict["caption"] as! String
                 let photoUrlString = dict["photoUrl"] as! String

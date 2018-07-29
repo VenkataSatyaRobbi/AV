@@ -27,7 +27,7 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
     var selectedPostCategory: String?
     //let postID = UUID().uuidString
     
-    let PostCategory = ["Select Category","Category1","Category2","Category3","Category4"]
+    let PostCategory = ["Select Category","Politics","Entertainment","Sports","Mature","Misc"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -192,7 +192,7 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
         let AVDBpostsref = AVDBref.child("posts")
         let newPostId = AVDBpostsref.childByAutoId().key
         let AVDBnewpostref = AVDBpostsref.child(newPostId)
-        AVDBnewpostref.setValue(["photoUrl": photoUrl, "title": PostTitle.text!, "caption": PhotoCaptionAdmin.text!, "category": selectedPostCategory ?? "Category4", "userid": (Auth.auth().currentUser?.uid)!, "postID": newPostId, "likes": 0, "dislikes": 0, "comments": 0, "timestamp": ServerValue.timestamp(), "photoCourtesy": PhotoCourtesyAdmin.text, "newsLocation": NewsLocationAdmin.text!, "newsContent": NewsContentAdmin.text!], withCompletionBlock: {
+        AVDBnewpostref.setValue(["photoUrl": photoUrl, "title": PostTitle.text!, "caption": PhotoCaptionAdmin.text!, "category": selectedPostCategory ?? "Misc", "userid": (Auth.auth().currentUser?.uid)!, "postID": newPostId, "likes": 0, "dislikes": 0, "comments": 0, "timestamp": ServerValue.timestamp(), "photoCourtesy": PhotoCourtesyAdmin.text, "newsLocation": NewsLocationAdmin.text!, "newsContent": NewsContentAdmin.text!], withCompletionBlock: {
             (error, ref) in
             if error != nil{
                 ProgressHUD.showError(error!.localizedDescription)
