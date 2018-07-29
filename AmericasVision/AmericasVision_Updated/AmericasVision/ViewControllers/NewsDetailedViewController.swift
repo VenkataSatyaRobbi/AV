@@ -21,6 +21,7 @@ class NewsDetailedViewController: UIViewController {
     var dislikes = NSNumber()
     var postId = String()
     var likeToggle: Bool = false
+    var commentKey = String()
     
     @IBOutlet weak var dislikesCount: UILabel!
     @IBOutlet weak var likesCount: UILabel!
@@ -35,16 +36,13 @@ class NewsDetailedViewController: UIViewController {
     @IBAction func likesAction(_ sender: Any) {
         print("likes")
         let postRef = DBProvider.instance.newsFeedRef.child(postId)
-        if(likeToggle){
+        if(self.dislikes.intValue > 0){
             let dislikecount = self.dislikes.intValue - 1
             let value = dislikecount as NSNumber
             self.dislikes = value
             self.dislikesCount.text = value.stringValue
             NSLog("remove user dislike comments and add like comment section")
-            postRef.child("userId").queryEqual(toValue: AVAuthService.getCurrentUserId()).observe(.childRemoved){
-                (snapshot: DataSnapshot) in
-                    snapshot.ref.removeValue()
-            }
+            DBProvider.instance.newsFeedRef.child(postId).child("usercomments").child(commentKey).removeValue()
         }
         let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
         commentsRef.setValue(["type": "Like", "userId": AVAuthService.getCurrentUserId(),
@@ -68,15 +66,13 @@ class NewsDetailedViewController: UIViewController {
         print("dislikes")
         let postRef = DBProvider.instance.newsFeedRef.child(postId)
         let userId = AVAuthService.getCurrentUserId()
-        if(likeToggle){
+        if(self.likes.intValue > 0){
             let likecount = self.likes.intValue - 1
             let value = likecount as NSNumber
             self.likes = value
             self.likesCount.text = value.stringValue
             NSLog("remove user like comments and add dislike comment section")
-            postRef.child("userId").queryEqual(toValue: userId).observe(.childRemoved) { (snapshot: DataSnapshot) in
-                snapshot.ref.removeValue()
-            }
+            DBProvider.instance.newsFeedRef.child(postId).child("usercomments").child(commentKey).removeValue()
         }
         let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
         commentsRef.setValue(["type": "Dislike", "userId": userId ,
@@ -157,6 +153,7 @@ class NewsDetailedViewController: UIViewController {
                 for(key,value) in mycomments{
                     if let commentDic = value as? NSDictionary{
                         if AVAuthService.getCurrentUserId() == commentDic["userId"] as? String {
+                            self.commentKey = (key as? String)!
                             comments.append(commentDic)
                             let type = commentDic["type"] as? String
                             if type == "Like" {
