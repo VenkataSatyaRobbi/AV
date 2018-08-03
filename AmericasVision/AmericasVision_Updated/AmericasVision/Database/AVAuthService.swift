@@ -36,7 +36,7 @@
                     user.lastName = (snapshot.value as! NSDictionary)["LastName"] as? String
                     user.email = (snapshot.value as! NSDictionary)["Email"] as? String
                     user.userid = (snapshot.value as! NSDictionary)["UserId"] as? String
-                    user.dob = "25-5-18"
+                    user.dob = (snapshot.value as! NSDictionary)["DOB"] as? String
                     user.phone = (snapshot.value as! NSDictionary)["Phone"] as? String
                     
                 }
@@ -114,9 +114,11 @@
                         return
                     }
                     let profileImageURL = metadata?.downloadURL()?.absoluteString
-                    DBProvider.instance.databaseRef.child(userId!).child("Phone").setValue(phone)
-                    DBProvider.instance.databaseRef.child(userId!).child("DOB").setValue(dob)
-                    DBProvider.instance.databaseRef.child(userId!).child("ProfileImageURL").setValue(profileImageURL)
+                    let ref = DBProvider.instance.userRef.child(userId!)
+                    ref.updateChildValues(["Phone":phone])
+                    ref.updateChildValues(["DOB":dob])
+                    ref.updateChildValues(["Email":email])
+                    ref.updateChildValues(["ProfileImageURL":profileImageURL])
                     onSuccess()
                 })
                 

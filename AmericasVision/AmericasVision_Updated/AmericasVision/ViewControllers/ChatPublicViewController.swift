@@ -24,8 +24,9 @@ class ChatPublicViewController: JSQMessagesViewController,PublicMessageReceivedD
     @IBOutlet weak var backToContacts: UIBarButtonItem!
     
     @IBAction func goBack(_ sender: Any) {
-        //dismiss(animated: true, completion: nil)
-         self.dismiss(animated: true)
+        let storyBoard : UIStoryboard = UIStoryboard(name: "AV", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "AVmessageTabVC") as! UITabBarController
+        self.present(nextViewController, animated:true, completion:nil)
     }
     
     override func viewDidLoad() {
