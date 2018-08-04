@@ -152,7 +152,7 @@ class NewsFeedMatureCollectionViewController: UICollectionViewController {
         dateFormatter2.dateFormat = "EEEE, MMM dd, yyyy. HH':'mm"
         let currentDateString: String = dateFormatter2.string(from: postDateDate!)
         print("Current date is \(currentDateString)")
-        destinationViewController.getLocationandTimestamp = posts[indexPath.row].newsLocation + ", Posted: " + currentDateString
+        destinationViewController.getLocationandTimestamp = posts[indexPath.row].newsLocation + " - " + currentDateString
 
         destinationViewController.likes = posts[indexPath.row].postLikes
         destinationViewController.dislikes = posts[indexPath.row].postDislikes

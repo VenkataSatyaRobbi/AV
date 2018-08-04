@@ -84,7 +84,7 @@ extension NewsFeedPoliticsViewController:UITableViewDataSource,UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let newsRow = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
-            newsRow.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+            //newsRow.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         
        
             newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
@@ -122,8 +122,6 @@ extension NewsFeedPoliticsViewController:UITableViewDataSource,UITableViewDelega
         let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
         let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "NewsDetailedViewController") as! NewsDetailedViewController
         
-
-        
         destinationViewController.getPhotoCourtesy = posts[indexPath.row].imageCourtesy
         destinationViewController.getContent = posts[indexPath.row].newsContent
         let postDate = CommonUtils.convertFromTimestamp(seconds: posts[indexPath.row].timestamp)
@@ -135,7 +133,7 @@ extension NewsFeedPoliticsViewController:UITableViewDataSource,UITableViewDelega
         dateFormatter2.dateFormat = "EEEE, MMM dd, yyyy. HH':'mm"
         let currentDateString: String = dateFormatter2.string(from: postDateDate!)
         print("Current date is \(currentDateString)")
-        destinationViewController.getLocationandTimestamp = posts[indexPath.row].newsLocation + ", Posted: " + currentDateString
+        destinationViewController.getLocationandTimestamp = posts[indexPath.row].newsLocation + " - " + currentDateString
         
         destinationViewController.likes = posts[indexPath.row].postLikes
         destinationViewController.dislikes = posts[indexPath.row].postDislikes

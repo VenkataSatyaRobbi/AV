@@ -99,7 +99,7 @@ extension NewsFeedEntertainmentViewController:UITableViewDataSource,UITableViewD
             return cell!
         }else{
             let newsRow = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
-            newsRow.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+            //newsRow.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
             newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
             newsRow.PostCollectionViewCaption.text = posts[indexPath.row].caption
             newsRow.PostTableViewHeadlines.isScrollEnabled = false
@@ -144,7 +144,7 @@ extension NewsFeedEntertainmentViewController:UITableViewDataSource,UITableViewD
         dateFormatter2.dateFormat = "EEEE, MMM dd, yyyy. HH':'mm"
         let currentDateString: String = dateFormatter2.string(from: postDateDate!)
         print("Current date is \(currentDateString)")
-        destinationViewController.getLocationandTimestamp = posts[indexPath.row].newsLocation + ", Posted: " + currentDateString
+        destinationViewController.getLocationandTimestamp = posts[indexPath.row].newsLocation + " - " + currentDateString
 
         destinationViewController.likes = posts[indexPath.row].postLikes
         destinationViewController.dislikes = posts[indexPath.row].postDislikes

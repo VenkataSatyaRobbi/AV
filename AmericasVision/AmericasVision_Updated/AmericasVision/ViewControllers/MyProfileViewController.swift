@@ -50,8 +50,8 @@ class MyProfileViewController: UIViewController {
     
     func alignment(){
         let myColor : UIColor = UIColor(red: 0/255, green: 180/255, blue: 210/255, alpha: 1)
-        bgview1.layer.cornerRadius = 2
-        bgview1.clipsToBounds = true
+        //bgview1.layer.cornerRadius = 2
+        //bgview1.clipsToBounds = true
         profileimg.layer.cornerRadius = 45
         profileimg.clipsToBounds = true
         //profileimg.layer.borderWidth = 0.5
