@@ -35,6 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         //FBSDKLoginButton.classForCoder()
         
+     
+       
+        
         
        //uploadMusicAlbum()
         

@@ -17,9 +17,10 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     
     @IBOutlet weak var SignInwFBButton: FBSDKLoginButton!
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         emailField.backgroundColor = UIColor.clear
         emailField.tintColor = UIColor.white
@@ -42,8 +43,8 @@ class SignInViewController: UIViewController {
         
         SignInwFBButton.layer.cornerRadius = 5.0
         SignInwFBButton.clipsToBounds = true
-       SignInwFBButton.titleLabel?.font =  UIFont(name: "HelveticaNeue-regular", size: 18)
-      
+        SignInwFBButton.titleLabel?.font =  UIFont(name: "HelveticaNeue-regular", size: 18)
+        
         signInButton.isEnabled = false
         checkTextField()
         
@@ -63,28 +64,28 @@ class SignInViewController: UIViewController {
         view.endEditing(true)
     }
     
-   /* func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        if  error != nil{
-            print(error.localizedDescription)
-            return
-        }
-        if (result.token) != nil{
-            let token:FBSDKAccessToken = result.token
-            print(FBSDKAccessToken.current().tokenString)
-            
-            let loggedInPage = self.storyboard?.instantiateViewController(withIdentifier: "AVtabBarcontroller") as! UITabBarController
-            
-            /*let loggedInPageView = UINavigationController(rootViewController: loggedInPage)
-            
-            let appdelegate = UIApplication.shared.delegate as! AppDelegate
-            appdelegate.window?.rootViewController = loggedInPageView*/
-        }
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        
-    }
-    */
+    /* func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+     if  error != nil{
+     print(error.localizedDescription)
+     return
+     }
+     if (result.token) != nil{
+     let token:FBSDKAccessToken = result.token
+     print(FBSDKAccessToken.current().tokenString)
+     
+     let loggedInPage = self.storyboard?.instantiateViewController(withIdentifier: "AVtabBarcontroller") as! UITabBarController
+     
+     /*let loggedInPageView = UINavigationController(rootViewController: loggedInPage)
+     
+     let appdelegate = UIApplication.shared.delegate as! AppDelegate
+     appdelegate.window?.rootViewController = loggedInPageView*/
+     }
+     }
+     
+     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+     
+     }
+     */
     func checkTextField(){
         emailField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
         passwordField.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
@@ -92,32 +93,42 @@ class SignInViewController: UIViewController {
     
     @objc func textFieldDidChange(){
         guard let emailValue = emailField.text, !emailValue.isEmpty, let passwordValue = passwordField.text, !passwordValue.isEmpty else {
-           // signInButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
+            // signInButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
             signInButton.isEnabled = false
             return
         }
-       // signInButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        // signInButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         signInButton.isEnabled = true
     }
     
-    
-    @IBAction func SignInClickTouchUpInside(_ sender: Any) {
-        view.endEditing(true)
-        ProgressHUD.show("Signing in..", interaction: false)
-        AVAuthService.signIn(email: emailField.text!, password: passwordField.text!, onSuccess: {
-            ProgressHUD.showSuccess("Welcome")
-            self.performSegue(withIdentifier: "showTabBarHomePageFromSignIn", sender: nil)
-        }, onError: { error in
-            ProgressHUD.showError(error!)
-            //print(error!)
-        })
-        
-    }
-    
 
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+   @IBAction func SignInClickTouchUpInside(_ sender: Any) {
+       view.endEditing(true)
+       ProgressHUD.show("Signing in..", interaction: false)
+       AVAuthService.signIn(email: emailField.text!, password: passwordField.text!, onSuccess: {
+           ProgressHUD.showSuccess("Welcome")
+           self.performSegue(withIdentifier: "showTabBarHomePageFromSignIn", sender: nil)
+       }, onError: { error in
+           ProgressHUD.showError(error!)
+           //print(error!)
+       })
+
+   }
+//    @IBAction func SignInClickTouchUpInside(_ sender: Any) {
+//        
+//        
+//        guard emailField.text != "", passwordField.text != "" else {return}
+//        
+//        if Auth.auth().currentUser != nil {
+//            AVAuthService.signIn(email: emailField.text!, password: passwordField.text!, onSuccess: {
+//                ProgressHUD.showSuccess("Welcome")
+//                self.performSegue(withIdentifier: "showTabBarHomePageFromSignIn", sender: nil)
+//            }, onError: { error in
+//                ProgressHUD.showError(error!)
+//                //print(error!)
+//            })
+//            
+//        }
+//        
+//    }
 }

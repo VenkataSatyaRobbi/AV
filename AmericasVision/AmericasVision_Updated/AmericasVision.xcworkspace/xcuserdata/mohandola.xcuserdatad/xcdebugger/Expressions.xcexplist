@@ -11,6 +11,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in VotesCollectionViewController.viewDidLoad():VotesCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dict[&quot;Question&quot;] as! String">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "DBProvider.getProfileImage(senderId:):DBProvider.swift">
          <PersistentStrings>
             <PersistentString
@@ -86,6 +94,25 @@
          <PersistentStrings>
             <PersistentString
                value = "textDOB.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VoteAdminViewController.publishAction(_:):VoteAdminViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "QuestionsView.text">
+            </PersistentString>
+            <PersistentString
+               value = "optionOne.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VotesCollectionViewController.collectionView(_:cellForItemAt:):VotesCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "op">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

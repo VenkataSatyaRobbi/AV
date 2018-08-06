@@ -52,6 +52,10 @@ class DBProvider {
         return databaseRef.child(Constants.DB_MESSAGES)
     }
     
+    var opinionRef: DatabaseReference {
+        return databaseRef.child(Constants.DB_OPINION)
+    }
+    
     var privateMessageRef: DatabaseReference {
         return databaseRef.child(Constants.DB_PRIVATE_MESSAGES)
     }
@@ -110,6 +114,9 @@ class DBProvider {
             let AVDBnewuserref = self.userRef.child(userId!)
             AVDBnewuserref.setValue(["FirstName": userInfo.firstName, "LastName": userInfo.lastName, "Phone": userInfo.phone, "Email": userInfo.email, "ProfileImageURL": profileImageURL, "UserId": userInfo.userid ])
         })
-    }    
+    }
+    
+    
+   
     
 }

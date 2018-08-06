@@ -33,4 +33,5 @@ class Constants {
     static let DB_IMAGE_MESSAGES = "imageMessages"
     static let RECEIVERID = "receiverId"
     static let RECEIVERNAME = "receiverName"
+    static let DB_OPINION = "opinion"
 }

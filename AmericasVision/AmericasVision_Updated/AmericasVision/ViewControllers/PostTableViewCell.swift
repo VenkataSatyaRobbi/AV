@@ -38,7 +38,12 @@ class PostTableViewCell: UITableViewCell {
         PostTableViewbg.layer.shadowColor =
             UIColor.white.withAlphaComponent(0.2).cgColor
         PostTableViewbg.layer.shadowOffset = CGSize(width: 0, height: 0)
-        PostTableViewbg.layer.shadowOpacity =  0.8
+        PostTableViewbg.layer.shadowOpacity =  1
+        
+        
+      
+        
+        
     }
     
    func registerCollectoinView<DataSource:UICollectionViewDataSource>(datasource:DataSource){

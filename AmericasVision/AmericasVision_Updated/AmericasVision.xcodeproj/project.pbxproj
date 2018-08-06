@@ -59,6 +59,9 @@
 		DC7F1D9A20CD9E8C005CB41F /* PrivateMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F1D9920CD9E8C005CB41F /* PrivateMessageHandler.swift */; };
 		DC8317AE20B8ABEF00517AE9 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8317AD20B8ABEF00517AE9 /* UserDefaultsHelper.swift */; };
 		DC8317B020B8AC0F00517AE9 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8317AF20B8AC0F00517AE9 /* UserInfo.swift */; };
+		DC8C89FA2112233700AE8E92 /* VoteAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C89F92112233600AE8E92 /* VoteAdminViewController.swift */; };
+		DC8C89FC21122DE900AE8E92 /* Opinion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C89FB21122DE900AE8E92 /* Opinion.swift */; };
+		DC8C89FE21135C6300AE8E92 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C89FD21135C6300AE8E92 /* RadioButton.swift */; };
 		DCBEBC3820A786EE00E8EAEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3720A786ED00E8EAEA /* Constants.swift */; };
 		DCBEBC3A20A7871900E8EAEA /* ChatContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */; };
 		DCBEBC3C20A78BF200E8EAEA /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */; };
@@ -144,6 +147,9 @@
 		DC7F1D9920CD9E8C005CB41F /* PrivateMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMessageHandler.swift; sourceTree = "<group>"; };
 		DC8317AD20B8ABEF00517AE9 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		DC8317AF20B8AC0F00517AE9 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		DC8C89F92112233600AE8E92 /* VoteAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteAdminViewController.swift; sourceTree = "<group>"; };
+		DC8C89FB21122DE900AE8E92 /* Opinion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opinion.swift; sourceTree = "<group>"; };
+		DC8C89FD21135C6300AE8E92 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		DCBEBC3720A786ED00E8EAEA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContactsViewController.swift; sourceTree = "<group>"; };
 		DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
@@ -271,6 +277,7 @@
 				DCF8AB2720B1137C0064FF72 /* SlideCollectionViewCell.swift */,
 				DCF8AB2E20B1527E0064FF72 /* SportsNewsViewController.swift */,
 				D408D2E5209E71E3008DD80A /* VotesCollectionViewController.swift */,
+				DC8C89F92112233600AE8E92 /* VoteAdminViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -285,6 +292,7 @@
 				DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */,
 				D4FA4A012082FBF100CC425B /* Post.swift */,
 				DC04CDDF210D9AC600E70B6B /* CommonUtils.swift */,
+				DC8C89FB21122DE900AE8E92 /* Opinion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -301,6 +309,7 @@
 				D46390FA207036F300C4E3DA /* AppDelegate.swift */,
 				D4FA49DB207994C200CC425B /* AmericasVision-Bridging-Header.h */,
 				D4FA49F3207C6EA200CC425B /* PropertyConfig.swift */,
+				DC8C89FD21135C6300AE8E92 /* RadioButton.swift */,
 			);
 			path = plugins;
 			sourceTree = "<group>";
@@ -460,6 +469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCBEBC3820A786EE00E8EAEA /* Constants.swift in Sources */,
+				DC8C89FE21135C6300AE8E92 /* RadioButton.swift in Sources */,
 				D4FA4A082086D86700CC425B /* CurrentUserInfo.swift in Sources */,
 				D43E5D3420A8F0B2000F0307 /* PostTableViewCell.swift in Sources */,
 				DC46B8D620C7104400188EC9 /* ChatPublicViewController.swift in Sources */,
@@ -479,6 +489,7 @@
 				D463910F207037CB00C4E3DA /* SignInViewController.swift in Sources */,
 				D408D2E2209E425B008DD80A /* MusicTableViewCell.swift in Sources */,
 				DCC76A9521036B88003FC4FC /* PublicMessageHandler.swift in Sources */,
+				DC8C89FC21122DE900AE8E92 /* Opinion.swift in Sources */,
 				D43E5D3620A8F143000F0307 /* NewsFeedMiscViewController.swift in Sources */,
 				D408D2EA209E8622008DD80A /* ChatPrivateViewController.swift in Sources */,
 				D4FA4A022082FBF100CC425B /* Post.swift in Sources */,
@@ -493,6 +504,7 @@
 				DC46B8E320C93C8800188EC9 /* ViewController.swift in Sources */,
 				DC4A12B1209F2BD7007C4755 /* MusicViewController.swift in Sources */,
 				D4FA49EE207AF0EC00CC425B /* ProfileMenuViewController.swift in Sources */,
+				DC8C89FA2112233700AE8E92 /* VoteAdminViewController.swift in Sources */,
 				DCF8AB2D20B1505F0064FF72 /* FeedsTableViewCell.swift in Sources */,
 				D408D2E8209E8178008DD80A /* NewsFeedPoliticsViewController.swift in Sources */,
 				D408D2EE209E8831008DD80A /* MusicByTrackTableViewController.swift in Sources */,
