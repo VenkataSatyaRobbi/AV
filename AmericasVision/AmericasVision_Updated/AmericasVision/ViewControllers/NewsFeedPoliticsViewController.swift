@@ -18,6 +18,7 @@ class NewsFeedPoliticsViewController: UIViewController {
     
     var posts = [Post]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         politicsTableView.isHidden = false
@@ -67,28 +68,6 @@ class NewsFeedPoliticsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    /*
-     //    override func viewWillAppear(_ animated: Bool) {
-     //        sideMenus()
-     //    }
-     //    var postID: String!
-     //    @IBAction func NewsFeedPoliticsLikeButton_Clicked(_ sender: Any) {
-     //        let AVPostRef = Database.database().reference().child("posts").childByAutoId()
-     //        print("post ref ID....\(AVPostRef)")
-     //        AVPostRef.child(self.postID).observeSingleEvent(of: .value) { (snapshot) in
-     //            if let likes = snapshot.value as? [String : AnyObject] {
-     //                // to do code here
-     //            }
-     //        }
-     //    }
-     //
-     //    @IBAction func NewsFeedPoliticsDislikeButton_Clicked(_ sender: Any) {
-     //    }
-     //
-     //    @IBAction func NewsFeedPoliticsCommentsButton_Clicked(_ sender: Any) {
-     //    }
-     
-     */
     
 }
 
@@ -105,7 +84,8 @@ extension NewsFeedPoliticsViewController:UITableViewDataSource,UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let newsRow = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
-            newsRow.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+            //newsRow.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        
        
             newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
             newsRow.PostCollectionViewCaption.text = posts[indexPath.row].caption
@@ -138,17 +118,28 @@ extension NewsFeedPoliticsViewController:UITableViewDataSource,UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        
         let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
         let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "NewsDetailedViewController") as! NewsDetailedViewController
         
         destinationViewController.getPhotoCourtesy = posts[indexPath.row].imageCourtesy
         destinationViewController.getContent = posts[indexPath.row].newsContent
         let postDate = CommonUtils.convertFromTimestamp(seconds: posts[indexPath.row].timestamp)
-        destinationViewController.getLocation = "Location " + posts[indexPath.row].newsLocation + ". Posted on " + postDate
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let postDateDate = dateFormatter.date(from: postDate)
+        
+        let dateFormatter2 = DateFormatter()
+        dateFormatter2.dateFormat = "EEEE, MMM dd, yyyy. HH':'mm"
+        let currentDateString: String = dateFormatter2.string(from: postDateDate!)
+        print("Current date is \(currentDateString)")
+        destinationViewController.getLocationandTimestamp = posts[indexPath.row].newsLocation + " - " + currentDateString
+        
         destinationViewController.likes = posts[indexPath.row].postLikes
         destinationViewController.dislikes = posts[indexPath.row].postDislikes
         destinationViewController.postId = posts[indexPath.row].postID
         destinationViewController.getPhotoURL = posts[indexPath.row].photoUrl
+        destinationViewController.getPostedBy = posts[indexPath.row].userid
         
         self.navigationController?.pushViewController(destinationViewController, animated: true)
         

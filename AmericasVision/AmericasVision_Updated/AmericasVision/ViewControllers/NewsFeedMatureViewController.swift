@@ -122,11 +122,21 @@ extension NewsFeedMatureViewController: UICollectionViewDelegate, UICollectionVi
         destinationViewController.getPhotoCourtesy = posts[indexPath.row].imageCourtesy
         destinationViewController.getContent = posts[indexPath.row].newsContent
         let postDate = CommonUtils.convertFromTimestamp(seconds: posts[indexPath.row].timestamp)
-        destinationViewController.getLocation = "Location " + posts[indexPath.row].newsLocation + ". Posted on " + postDate
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let postDateDate = dateFormatter.date(from: postDate)
+        
+        let dateFormatter2 = DateFormatter()        
+        dateFormatter2.dateFormat = "EEEE, MMM dd, yyyy. HH':'mm"
+        let currentDateString: String = dateFormatter2.string(from: postDateDate!)
+        print("Current date is \(currentDateString)")
+        destinationViewController.getLocationandTimestamp = posts[indexPath.row].newsLocation + ", Posted: " + currentDateString
+
         destinationViewController.likes = posts[indexPath.row].postLikes
         destinationViewController.dislikes = posts[indexPath.row].postDislikes
         destinationViewController.postId = posts[indexPath.row].postID
         destinationViewController.getPhotoURL = posts[indexPath.row].photoUrl
+        destinationViewController.getPostedBy = posts[indexPath.row].userid
         self.navigationController?.pushViewController(destinationViewController, animated: true)
         
         let rowDataPostID = posts[indexPath.row].postID

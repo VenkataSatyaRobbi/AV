@@ -15,14 +15,17 @@ class NewsDetailedViewController: UIViewController {
 
     var getPhotoCourtesy = String()
     var getContent = String()
-    var getLocation = String()
+    var getLocationandTimestamp = String()
     var getPhotoURL = String()
     var likes = NSNumber()
     var dislikes = NSNumber()
     var postId = String()
     var likeToggle: Bool = false
     var commentKey = String()
+    var getPostedBy = String()
+    var username = String()
     
+    @IBOutlet weak var postedBy: UILabel!
     @IBOutlet weak var dislikesCount: UILabel!
     @IBOutlet weak var likesCount: UILabel!
     @IBOutlet weak var NewsDetailedVCNewsContent: UILabel!
@@ -115,10 +118,20 @@ class NewsDetailedViewController: UIViewController {
         NewsDetailedVCNewsContent .sizeToFit()
         NewsDetailedVCImageCourtesy.text! = getPhotoCourtesy
         NewsDetailedVCImageCaption.numberOfLines = 0;
-        NewsDetailedVCImageCaption.text! = getLocation
+        NewsDetailedVCImageCaption.text! = getLocationandTimestamp
         NewsDetailedVCImageCaption .sizeToFit()
         likesCount.text = likes.stringValue
         dislikesCount.text = dislikes.stringValue
+        print("getposted by:\(getPostedBy)")
+        let AVDBref = Database.database().reference()
+        let AVDBuserref = AVDBref.child("users")
+        AVDBuserref.child(getPostedBy).observe(.value) { (snapshot) in
+            let userFirstName = (snapshot.value as! NSDictionary)["FirstName"] as? String
+            let userLastName = (snapshot.value as! NSDictionary)["LastName"] as? String
+            self.postedBy.text = userFirstName! + ", " + userLastName!
+
+        }        
+        
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height:self.view.frame.size.height+500)
         scrollView.isScrollEnabled = true
         self.navigationItem.title = "Details"
