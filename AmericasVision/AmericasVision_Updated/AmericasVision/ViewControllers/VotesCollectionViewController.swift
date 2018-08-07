@@ -19,7 +19,7 @@ class VoteCell: UICollectionViewCell{
         let label = UILabel()
         label.textColor = UIColor.black
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.text = "Opinion poll"
+        label.text = "Opinion"
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -284,7 +284,7 @@ class VotesCollectionViewController: UICollectionViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.title = "Opinion Poll"
         self.collectionView?.backgroundColor = UIColor.groupTableViewBackground
       
         layout.sectionInset = UIEdgeInsets(top: 10, left: 5, bottom: 5, right: 5)
