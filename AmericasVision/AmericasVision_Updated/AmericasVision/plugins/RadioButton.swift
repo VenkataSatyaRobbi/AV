@@ -14,7 +14,7 @@ class RadioButton: UIButton {
     var alternateButton:Array<RadioButton>?
     
     override func awakeFromNib() {
-        self.layer.cornerRadius = 5
+        self.layer.cornerRadius = 10
         self.layer.borderWidth = 2.0
         self.layer.masksToBounds = true
     }
