@@ -29,11 +29,11 @@ class VoteCell: UICollectionViewCell{
     }()
     
     let opinionButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: UIButtonType.system)
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor.red
         button.setTitle("Save", for: .normal)
-        button.addTarget(self, action: #selector(handlePollButton), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(handlePollButton(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -129,9 +129,10 @@ class VoteCell: UICollectionViewCell{
         
         super.init(frame: frame)
         backgroundColor = UIColor.white
-        headerView.addSubview(header)
-        headerView.addSubview(opinionButton)
+        
+        self.headerView.addSubview(header)
         self.addSubview(headerView)
+        self.addSubview(opinionButton)
         self.addSubview(question)
         self.addSubview(option1Radio)
         self.addSubview(optionOne)
@@ -141,20 +142,23 @@ class VoteCell: UICollectionViewCell{
         self.addSubview(OptionThree)
         viewfooter.addSubview(footer)
         self.addSubview(viewfooter)
+        
+        opinionButton.topAnchor.constraint(equalTo: topAnchor, constant:6).isActive = true
+        opinionButton.rightAnchor.constraint(equalTo: rightAnchor, constant:-10).isActive = true
+        opinionButton.heightAnchor.constraint(equalToConstant:20).isActive = true
+        opinionButton.widthAnchor.constraint(equalToConstant:self.frame.width/6).isActive = true
        
         headerView.leftAnchor.constraint(equalTo: leftAnchor, constant:0).isActive = true
         headerView.topAnchor.constraint(equalTo: topAnchor, constant:0).isActive = true
         headerView.heightAnchor.constraint(equalToConstant:32).isActive = true
         headerView.widthAnchor.constraint(equalToConstant:self.frame.width).isActive = true
+        
         header.leftAnchor.constraint(equalTo: leftAnchor, constant:5).isActive = true
         header.topAnchor.constraint(equalTo: topAnchor, constant:0).isActive = true
         header.heightAnchor.constraint(equalToConstant:32).isActive = true
         header.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
         
-        opinionButton.topAnchor.constraint(equalTo: topAnchor, constant:0).isActive = true
-        opinionButton.rightAnchor.constraint(equalTo: rightAnchor, constant:-15).isActive = true
-        opinionButton.heightAnchor.constraint(equalToConstant:32).isActive = true
-        
+       
         question.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
         question.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
         question.heightAnchor.constraint(equalToConstant:94).isActive = true
@@ -211,7 +215,7 @@ class VoteCell: UICollectionViewCell{
      
     }
     
-    @IBAction func handlePollButton(_ sender: Any) {
+    @IBAction func handlePollButton(_ sender: UIButton) {
         var selectedOption = ""
         if option1Radio.isSelected {
             selectedOption = optionOne.text!
