@@ -249,7 +249,12 @@ class VoteCell: UICollectionViewCell{
     }
     
     func setupPieChart() {
-        pieChart.setExtraOffsets (left: -15.0, top: 120.0, right:-15.0, bottom: 0.0)
+        pieChart.setExtraOffsets (left: -15.0, top: 80.0, right:-15.0, bottom: 0.0)
+        pieChart.legend.enabled  = true
+        pieChart.drawHoleEnabled = true
+        pieChart.chartDescription?.text = "AV Users Opinion Dashboard"
+        pieChart.chartDescription?.textColor = UIColor.lightGray
+        pieChart.chartDescription?.font = NSUIFont.boldSystemFont(ofSize: 12)
         addSubview(pieChart)
         pieChart.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
         pieChart.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
