@@ -36,8 +36,9 @@ class PrivateMessageHandler {
     }
     
     func sendMessage(senderId: String, senderName: String, text:String,receiverId:String,receiverName:String) {
+        let timestamp = NSDate().timeIntervalSince1970
         let data :Dictionary<String,Any> = [Constants.SENDERID:senderId,Constants.SENDERNAME: senderName,Constants.TEXT:text,Constants.RECEIVERID:receiverId,
-                                            Constants.RECEIVERNAME:receiverName]
+                                            Constants.RECEIVERNAME:receiverName,Constants.DB_TIMESTAMP:timestamp]
         DBProvider.instance.privateMessageRef.childByAutoId().setValue((data))
     }
     
@@ -71,8 +72,9 @@ class PrivateMessageHandler {
     }
     
     func sendMediaMessages(senderId: String, senderName: String, url:String,receiverId:String,receiverName:String){
+        let timestamp = NSDate().timeIntervalSince1970
         let data :Dictionary<String,Any> = [Constants.SENDERID:senderId,Constants.SENDERNAME: senderName,Constants.URL:url,Constants.RECEIVERID:receiverId,
-                                            Constants.RECEIVERNAME:receiverName]
+                                            Constants.RECEIVERNAME:receiverName,Constants.DB_TIMESTAMP:timestamp]
         DBProvider.instance.mediaPrivateMessageRef.childByAutoId().setValue((data))
     }
     

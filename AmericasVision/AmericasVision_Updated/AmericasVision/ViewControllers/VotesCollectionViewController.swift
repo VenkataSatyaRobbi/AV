@@ -13,7 +13,10 @@ import FirebaseDatabase
 private let reuseIdentifier = "voteCell"
 
 class VoteCell: UICollectionViewCell{
-  
+   
+    var opinionId:String = ""
+    var surveyData = [String:NSNumber]()
+    var totalCount:Double = 0
     
     let header: UILabel = {
         let label = UILabel()
@@ -29,7 +32,7 @@ class VoteCell: UICollectionViewCell{
         let button = UIButton()
         button.backgroundColor = UIColor.red
         button.setTitle("Save", for: .normal)
-        button.addTarget(self, action:"buttonAction", for: .touchUpInside)
+        button.addTarget(self, action: #selector(handlePollButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -122,8 +125,6 @@ class VoteCell: UICollectionViewCell{
         return p
     }()
     
-    let surveyData = ["Any":1]
-   
     override init(frame: CGRect) {
         
         super.init(frame: frame)
@@ -140,8 +141,7 @@ class VoteCell: UICollectionViewCell{
         self.addSubview(OptionThree)
         viewfooter.addSubview(footer)
         self.addSubview(viewfooter)
-        pieChartSetup()
-    
+       
         headerView.leftAnchor.constraint(equalTo: leftAnchor, constant:0).isActive = true
         headerView.topAnchor.constraint(equalTo: topAnchor, constant:0).isActive = true
         headerView.heightAnchor.constraint(equalToConstant:32).isActive = true
@@ -211,11 +211,22 @@ class VoteCell: UICollectionViewCell{
      
     }
     
-    func buttonAction(sender: UIButton!) {
-        let selectedOption = "Option1"
+    @IBAction func handlePollButton(_ sender: Any) {
+        var selectedOption = ""
+        if option1Radio.isSelected {
+            selectedOption = optionOne.text!
+            option1Radio.unselectAlternateButtons()
+        }else if option2Radio.isSelected {
+            selectedOption = optionTwo.text!
+            option2Radio.unselectAlternateButtons()
+        }else{
+            selectedOption = OptionThree.text!
+            option3Radio.unselectAlternateButtons()
+        }
+        
         let userId = AVAuthService.getCurrentUserId()
         let userOpinionRef = DBProvider.instance.opinionRef
-        let userRef =  userOpinionRef.child("users").child(userOpinionRef.childByAutoId().key)
+        let userRef =  userOpinionRef.child(opinionId).child("voteusers").child(userId)
         userRef.setValue(["SelectedOption": selectedOption, "userId": userId ], withCompletionBlock:{(error, ref) in
             if error != nil{
                 ProgressHUD.showError(error!.localizedDescription)
@@ -230,6 +241,7 @@ class VoteCell: UICollectionViewCell{
     func pieChartSetup(){
         setupPieChart()
         fillChart()
+        
     }
     
     func setupPieChart() {
@@ -244,10 +256,12 @@ class VoteCell: UICollectionViewCell{
     func fillChart() {
         var dataEntries = [PieChartDataEntry]()
         for (key, val) in surveyData {
-            let percent = Double(val) / 100.0
+            let percent = Double(val.doubleValue * 100 / totalCount)
             let entry = PieChartDataEntry(value: percent, label: key)
             dataEntries.append(entry)
         }
+        print("ola")
+        print(dataEntries)
         let chartDataSet = PieChartDataSet(values: dataEntries, label: "opp")
         chartDataSet.colors = ChartColorTemplates.material()
         chartDataSet.sliceSpace = 2
@@ -293,6 +307,7 @@ class VotesCollectionViewController: UICollectionViewController{
         layout.itemSize = CGSize(width: cellwidth, height: cellHeight)
         
         fetchFirstOpinion()
+        
         self.collectionView?.collectionViewLayout = layout
         //  Register cell classes
         collectionView!.register(VoteCell.self, forCellWithReuseIdentifier: "cell")
@@ -306,6 +321,7 @@ class VotesCollectionViewController: UICollectionViewController{
             //queryOrdered(byChild: "Date").observe(.childAdded)
         { (snapshot: DataSnapshot) in
             if let dict = snapshot.value as? [String: Any] {
+                let id = snapshot.key as String
                 let question = dict["Question"] as! String
                 let option1 = dict["Option1"] as! String
                 let option2 = dict["Option2"] as! String
@@ -314,11 +330,27 @@ class VotesCollectionViewController: UICollectionViewController{
                 let count2 = dict["Count2"] as! NSNumber
                 let count3 = dict["Count3"] as! NSNumber
                 //let publishDate = dict["Date"] as! Date
-                let data = Opinion.init(question: question, option1: option1, option2: option2, option3: option3, publishDate: Date(),count1: count1,count2: count2,count3: count3)
+                let data = Opinion.init(id:id,question: question, option1: option1, option2: option2, option3: option3, publishDate: Date(),count1: count1,count2: count2,count3: count3)
                 self.opinion.append(data)
                 self.collectionView?.reloadData()
             }
             
+        }
+    }
+    
+    func isUserVoted(id:String){
+        DBProvider.instance.opinionRef.child(id).child("voteusers").child(AVAuthService.getCurrentUserId())
+            .queryLimited(toFirst: 1).observe(.childAdded)
+            { (snapshot: DataSnapshot) in
+                if let dict = snapshot.value as? [String: Any] {
+                    let selectedOption = dict["SelectedOption"] as! String
+                    self.opinion.forEach({ (op) in
+                        if op.id == id {
+                            op.selectedOption = selectedOption
+                        }
+                    })
+                }
+                
         }
     }
     
@@ -348,6 +380,7 @@ class VotesCollectionViewController: UICollectionViewController{
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let id = opinion[indexPath.row].id
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! VoteCell
         
         cell.question.text = opinion[indexPath.row].question
@@ -355,11 +388,18 @@ class VotesCollectionViewController: UICollectionViewController{
         cell.optionTwo.text = opinion[indexPath.row].option2
         cell.OptionThree.text = opinion[indexPath.row].option3
         
-        
+        isUserVoted(id: id)
+        cell.surveyData.updateValue(opinion[indexPath.row].count1, forKey: opinion[indexPath.row].option1)
+        cell.surveyData.updateValue(opinion[indexPath.row].count2, forKey: opinion[indexPath.row].option2)
+        cell.surveyData.updateValue(opinion[indexPath.row].count3, forKey: opinion[indexPath.row].option3)
+        cell.totalCount = opinion[indexPath.row].count1.doubleValue + opinion[indexPath.row].count2.doubleValue + opinion[indexPath.row].count3.doubleValue
+        cell.pieChartSetup()
         let option1Count = opinion[indexPath.row].option1 + "  :  " + opinion[indexPath.row].count1.stringValue
         let option2Count = opinion[indexPath.row].option2 + "  :  " + opinion[indexPath.row].count2.stringValue
         let option3Count = opinion[indexPath.row].option3 + "  :  " + opinion[indexPath.row].count3.stringValue
         cell.footer.text = option1Count + "\t" + option2Count + "\t" + option3Count
         return cell
     }
+    
+    
 }
