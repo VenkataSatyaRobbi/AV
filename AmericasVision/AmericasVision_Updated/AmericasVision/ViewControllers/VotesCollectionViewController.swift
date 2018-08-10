@@ -33,7 +33,6 @@ class VoteCell: UICollectionViewCell{
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor.red
         button.setTitle("Save", for: .normal)
-        button.addTarget(self, action: #selector(handlePollButton(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -56,7 +55,6 @@ class VoteCell: UICollectionViewCell{
         label.textColor = UIColor.black
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
-        
         return label
     }()
     
@@ -87,7 +85,7 @@ class VoteCell: UICollectionViewCell{
     
     let footer: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.white
+        label.textColor = UIColor.darkGray
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -215,37 +213,9 @@ class VoteCell: UICollectionViewCell{
      
     }
     
-    @IBAction func handlePollButton(_ sender: UIButton) {
-        var selectedOption = ""
-        if option1Radio.isSelected {
-            selectedOption = optionOne.text!
-            option1Radio.unselectAlternateButtons()
-        }else if option2Radio.isSelected {
-            selectedOption = optionTwo.text!
-            option2Radio.unselectAlternateButtons()
-        }else{
-            selectedOption = OptionThree.text!
-            option3Radio.unselectAlternateButtons()
-        }
-        
-        let userId = AVAuthService.getCurrentUserId()
-        let userOpinionRef = DBProvider.instance.opinionRef
-        let userRef =  userOpinionRef.child(opinionId).child("voteusers").child(userId)
-        userRef.setValue(["SelectedOption": selectedOption, "userId": userId ], withCompletionBlock:{(error, ref) in
-            if error != nil{
-                ProgressHUD.showError(error!.localizedDescription)
-                return
-            }
-            self.option1Radio.isEnabled = false
-            self.option2Radio.isEnabled = false
-            self.option3Radio.isEnabled = false
-        })
-    }
-    
-    func pieChartSetup(){
+   func pieChartSetup(){
         setupPieChart()
         fillChart()
-        
     }
     
     func setupPieChart() {
@@ -269,8 +239,6 @@ class VoteCell: UICollectionViewCell{
             let entry = PieChartDataEntry(value: percent, label: key)
             dataEntries.append(entry)
         }
-        print("ola")
-        print(dataEntries)
         let chartDataSet = PieChartDataSet(values: dataEntries, label: "opp")
         chartDataSet.colors = ChartColorTemplates.material()
         chartDataSet.sliceSpace = 2
@@ -290,9 +258,6 @@ class VoteCell: UICollectionViewCell{
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        option1Radio.isSelected = true
-        option2Radio.isSelected = false
-        option3Radio.isSelected = false
     }
     
 }
@@ -347,19 +312,12 @@ class VotesCollectionViewController: UICollectionViewController{
         }
     }
     
-    func isUserVoted(id:String){
+    func isUserVoted(id:String,index:Int){
         DBProvider.instance.opinionRef.child(id).child("voteusers").child(AVAuthService.getCurrentUserId())
-            .queryLimited(toFirst: 1).observe(.childAdded)
-            { (snapshot: DataSnapshot) in
-                if let dict = snapshot.value as? [String: Any] {
-                    let selectedOption = dict["SelectedOption"] as! String
-                    self.opinion.forEach({ (op) in
-                        if op.id == id {
-                            op.selectedOption = selectedOption
-                        }
-                    })
-                }
-                
+            .observe(DataEventType.childAdded){(snapshot:DataSnapshot) in
+            if let data = snapshot.value as? String {
+                    self.opinion[index].selectedOption = data
+             }
         }
     }
     
@@ -391,13 +349,29 @@ class VotesCollectionViewController: UICollectionViewController{
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let id = opinion[indexPath.row].id
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! VoteCell
-        
+        cell.opinionId = id
         cell.question.text = opinion[indexPath.row].question
         cell.optionOne.text = opinion[indexPath.row].option1
         cell.optionTwo.text = opinion[indexPath.row].option2
         cell.OptionThree.text = opinion[indexPath.row].option3
         
-        isUserVoted(id: id)
+        isUserVoted(id: id,index: indexPath.row)
+        
+        if opinion[indexPath.row].selectedOption == opinion[indexPath.row].option1 {
+            cell.option1Radio.isSelected = true
+        }else if opinion[indexPath.row].selectedOption == opinion[indexPath.row].option2 {
+            cell.option2Radio.isSelected = true
+        }else if opinion[indexPath.row].selectedOption == opinion[indexPath.row].option3 {
+            cell.option3Radio.isSelected = true
+        }
+        
+        if opinion[indexPath.row].selectedOption != "" {
+           cell.option1Radio.isEnabled = false
+           cell.option2Radio.isEnabled = false
+           cell.option3Radio.isEnabled = false
+           cell.opinionButton.isHidden = true
+        }
+        
         cell.surveyData.updateValue(opinion[indexPath.row].count1, forKey: opinion[indexPath.row].option1)
         cell.surveyData.updateValue(opinion[indexPath.row].count2, forKey: opinion[indexPath.row].option2)
         cell.surveyData.updateValue(opinion[indexPath.row].count3, forKey: opinion[indexPath.row].option3)
@@ -407,8 +381,40 @@ class VotesCollectionViewController: UICollectionViewController{
         let option2Count = opinion[indexPath.row].option2 + "  :  " + opinion[indexPath.row].count2.stringValue
         let option3Count = opinion[indexPath.row].option3 + "  :  " + opinion[indexPath.row].count3.stringValue
         cell.footer.text = option1Count + "\t" + option2Count + "\t" + option3Count
+        
+        cell.opinionButton.tag = indexPath.item
+        cell.opinionButton.addTarget(self,action: #selector(self.handlePollButton(_:)),for: .touchUpInside)
         return cell
     }
     
+    @IBAction func handlePollButton(_ sender: UIButton) {
+        let indexPath = IndexPath.init(item: sender.tag, section: 0)
+        let cell = collectionView?.cellForItem(at: indexPath) as! VoteCell
+        var selectedOption = ""
+        if cell.option1Radio.isSelected {
+            selectedOption = cell.optionOne.text!
+            cell.option1Radio.unselectAlternateButtons()
+        }else if cell.option2Radio.isSelected {
+            selectedOption = cell.optionTwo.text!
+            cell.option2Radio.unselectAlternateButtons()
+        }else{
+            selectedOption = cell.OptionThree.text!
+            cell.option3Radio.unselectAlternateButtons()
+        }
+        
+        let userId = AVAuthService.getCurrentUserId()
+        let userOpinionRef = DBProvider.instance.opinionRef
+        let userRef =  userOpinionRef.child(cell.opinionId).child("voteusers").child(userId)
+        userRef.setValue(["SelectedOption": selectedOption], withCompletionBlock:{(error, ref) in
+            if error != nil{
+                ProgressHUD.showError(error!.localizedDescription)
+                return
+            }
+            cell.option1Radio.isEnabled = false
+            cell.option2Radio.isEnabled = false
+            cell.option3Radio.isEnabled = false
+        })
+        collectionView?.reloadData()
+    }
     
 }
