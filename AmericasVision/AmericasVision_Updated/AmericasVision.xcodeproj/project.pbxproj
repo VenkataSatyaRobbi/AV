@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C61304E56792B8B800622D3B /* Pods_AmericasVision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812CD0268CBC06E0044E0603 /* Pods_AmericasVision.framework */; };
-		D408D2DE2095E5BB008DD80A /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2DD2095E5BB008DD80A /* PostCollectionViewCell.swift */; };
 		D408D2E2209E425B008DD80A /* MusicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2E1209E425B008DD80A /* MusicTableViewCell.swift */; };
 		D408D2E4209E706F008DD80A /* MarketPlaceCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2E3209E706F008DD80A /* MarketPlaceCollectionViewController.swift */; };
 		D408D2E6209E71E3008DD80A /* VotesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2E5209E71E3008DD80A /* VotesCollectionViewController.swift */; };
@@ -26,7 +25,6 @@
 		D4639111207041D400C4E3DA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4639110207041D400C4E3DA /* SignUpViewController.swift */; };
 		D465157F20ABA8B30075A59C /* NewsDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D465157E20ABA8B30075A59C /* NewsDetailedViewController.swift */; };
 		D4761EAE207193E90065ACD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4761EAD207193E90065ACD7 /* GoogleService-Info.plist */; };
-		D4E8302A20CE86040001CE20 /* NewsFeedMatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E8302920CE86040001CE20 /* NewsFeedMatureViewController.swift */; };
 		D4FA49DE207994C300CC425B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FA49DD207994C300CC425B /* SWRevealViewController.m */; };
 		D4FA49EE207AF0EC00CC425B /* ProfileMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA49ED207AF0EC00CC425B /* ProfileMenuViewController.swift */; };
 		D4FA49F0207AF45500CC425B /* ProfileMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA49EF207AF45500CC425B /* ProfileMenuTableViewCell.swift */; };
@@ -94,7 +92,6 @@
 		70026634E6D636FAAB5C124C /* Pods-AmericasVision.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmericasVision.release.xcconfig"; path = "Pods/Target Support Files/Pods-AmericasVision/Pods-AmericasVision.release.xcconfig"; sourceTree = "<group>"; };
 		812CD0268CBC06E0044E0603 /* Pods_AmericasVision.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmericasVision.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFB0380C16A0716129E9C7F /* Pods-AmericasVision.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmericasVision.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AmericasVision/Pods-AmericasVision.debug.xcconfig"; sourceTree = "<group>"; };
-		D408D2DD2095E5BB008DD80A /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		D408D2E1209E425B008DD80A /* MusicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTableViewCell.swift; sourceTree = "<group>"; };
 		D408D2E3209E706F008DD80A /* MarketPlaceCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceCollectionViewController.swift; sourceTree = "<group>"; };
 		D408D2E5209E71E3008DD80A /* VotesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotesCollectionViewController.swift; sourceTree = "<group>"; };
@@ -114,7 +111,6 @@
 		D4639110207041D400C4E3DA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D465157E20ABA8B30075A59C /* NewsDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailedViewController.swift; sourceTree = "<group>"; };
 		D4761EAD207193E90065ACD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D4E8302920CE86040001CE20 /* NewsFeedMatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedMatureViewController.swift; sourceTree = "<group>"; };
 		D4FA49DB207994C200CC425B /* AmericasVision-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AmericasVision-Bridging-Header.h"; sourceTree = "<group>"; };
 		D4FA49DC207994C300CC425B /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		D4FA49DD207994C300CC425B /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -272,7 +268,6 @@
 				D465157E20ABA8B30075A59C /* NewsDetailedViewController.swift */,
 				D4FA49FE2082AD9F00CC425B /* NewsFeedAdminViewController.swift */,
 				DC04104B20B8A4D100085718 /* NewsEntertainmentViewController.swift */,
-				D4E8302920CE86040001CE20 /* NewsFeedMatureViewController.swift */,
 				D43E5D3520A8F143000F0307 /* NewsFeedMiscViewController.swift */,
 				DC0C6E0B2121EFA1000F284D /* NewsMatureViewController.swift */,
 				DC0C6E082121E199000F284D /* NewsMiscellaneousViewcontroller.swift */,
@@ -323,7 +318,6 @@
 		DC0C6E0A2121EE59000F284D /* cells */ = {
 			isa = PBXGroup;
 			children = (
-				D408D2DD2095E5BB008DD80A /* PostCollectionViewCell.swift */,
 				DCF8AB2720B1137C0064FF72 /* SlideCollectionViewCell.swift */,
 				D43E5D3320A8F0B2000F0307 /* PostTableViewCell.swift */,
 				DC0C6E022120468F000F284D /* NewsTableViewCell.swift */,
@@ -501,7 +495,6 @@
 				D408D2F0209E8844008DD80A /* MusicByAlbumTableViewController.swift in Sources */,
 				D4FA49F0207AF45500CC425B /* ProfileMenuTableViewCell.swift in Sources */,
 				DC33663F20B9BB2F002B8064 /* ChatTableViewCell.swift in Sources */,
-				D4E8302A20CE86040001CE20 /* NewsFeedMatureViewController.swift in Sources */,
 				D4FA49FF2082AD9F00CC425B /* NewsFeedAdminViewController.swift in Sources */,
 				DC04104C20B8A4D100085718 /* NewsEntertainmentViewController.swift in Sources */,
 				D408D2F2209E903D008DD80A /* MyProfileViewController.swift in Sources */,
@@ -524,7 +517,6 @@
 				DC0C6E0C2121EFA1000F284D /* NewsMatureViewController.swift in Sources */,
 				D4FA49F8207D0D7D00CC425B /* ProgressHUD.m in Sources */,
 				DC8317AE20B8ABEF00517AE9 /* UserDefaultsHelper.swift in Sources */,
-				D408D2DE2095E5BB008DD80A /* PostCollectionViewCell.swift in Sources */,
 				D408D2E4209E706F008DD80A /* MarketPlaceCollectionViewController.swift in Sources */,
 				DCF8AB2F20B1527E0064FF72 /* NewsSportsViewController.swift in Sources */,
 				D46390FB207036F300C4E3DA /* AppDelegate.swift in Sources */,
