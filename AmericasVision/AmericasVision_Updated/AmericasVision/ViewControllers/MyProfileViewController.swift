@@ -157,10 +157,10 @@ class MyProfileViewController: UIViewController {
         profileImage.topAnchor.constraint(equalTo: self.view.topAnchor, constant:40).isActive = true
         profileImage.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 130).isActive = true
         profileImage.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -130).isActive = true
-        profileImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        profileImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        profileImage.layer.cornerRadius = profileImage.frame.width + profileImage.frame.height/2;
-        profileImage.layer.borderWidth = 1.5
+        profileImage.heightAnchor.constraint(equalToConstant: 105).isActive = true
+        profileImage.widthAnchor.constraint(equalToConstant: 105).isActive = true
+        profileImage.layer.cornerRadius = 52.5;
+        profileImage.layer.borderWidth = 0
         profileImage.layer.borderColor = UIColor.white.cgColor
         profileImage.clipsToBounds = true
    

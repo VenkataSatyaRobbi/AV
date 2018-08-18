@@ -316,6 +316,7 @@ class VotesCollectionViewController: UICollectionViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Opinion Poll"
+        
         self.collectionView?.backgroundColor = UIColor(red: 100/255, green:100/255, blue: 100/255, alpha: 1)
         
         layout.sectionInset = UIEdgeInsets(top: 10, left: 5, bottom: 5, right: 5)
