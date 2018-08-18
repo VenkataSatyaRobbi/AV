@@ -40,6 +40,20 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
         print(convertTimestamp(serverTimestamp: 1526426690527))
         
         alignments()
+        
+        
+        
+      
+        let colorTop =  UIColor(red: 69/255, green: 90/255, blue: 195/255, alpha: 1.0).cgColor
+        
+        let colorBottom = UIColor(red: 230/255, green: 44/255, blue: 75/255, alpha: 1.0).cgColor
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [ colorTop, colorBottom]
+        
+        gradientLayer.frame = CGRect(x:0, y:0, width:375, height:64)
+        //UINavigationBar.appearance().layer.addSublayer(gradientLayer)
+          self.navigationController?.navigationBar.tintColor = UIColor.green
 
     }
     

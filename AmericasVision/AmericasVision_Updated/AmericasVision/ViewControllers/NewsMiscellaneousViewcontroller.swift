@@ -1,32 +1,29 @@
 //
-//  NewsFeedMiscViewController.swift
+//  NewsMiscellaneousViewcontroller.swift
 //  AmericasVision
 //
-//  Created by Venkata Satya R Robbi on 5/13/18.
+//  Created by Mohan Dola on 13/08/18.
 //  Copyright © 2018 zeroGravity. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class NewsFeedMiscViewController: UIViewController {
-
-    @IBOutlet weak var NewsFeedMiscTableView: UITableView!
+class NewsMiscellaneousViewController: UITableViewController{
+    
     @IBOutlet weak var NewsFeedMiscHomeButton: UIBarButtonItem!
+    
     var posts = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        NewsFeedMiscTableView.isHidden = false
-        NewsFeedMiscTableView.dataSource = self
-        NewsFeedMiscTableView.delegate = self
-        view.backgroundColor = UIColor.white
-        NewsFeedMiscTableView.rowHeight = UITableViewAutomaticDimension
-        NewsFeedMiscTableView.estimatedRowHeight = 80
+        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: "NewsTableViewCell")
+        tableView?.dataSource = self
+        tableView?.delegate = self
+        self.tableView.backgroundColor = UIColor.groupTableViewBackground
         sideMenus()
         loadPosts()
     }
@@ -39,7 +36,7 @@ class NewsFeedMiscViewController: UIViewController {
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
     }
-
+    
     func loadPosts(){
         Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Misc").observe(.childAdded) { (snapshot: DataSnapshot) in
             if let dict = snapshot.value as? [String: Any] {
@@ -58,40 +55,28 @@ class NewsFeedMiscViewController: UIViewController {
                 let newsLocationString = dict["newsLocation"] as! String
                 let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt,postIDString: postIDString, useridString: useridString, timeStampDouble: timestamp, imageCourtesyString: photoCourtesyString, newsLocationString: newsLocationString, newsContentString: newsContentString)
                 self.posts.append(post)
-                self.NewsFeedMiscTableView.reloadData()
+                self.tableView.reloadData()
             }
         }
     }
-}
 
-extension NewsFeedMiscViewController: UITableViewDataSource,UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
     
-    func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
-        let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13)]
-        let approximateWidth = tableView.layer.frame.width - 20
-        let size = CGSize(width: approximateWidth, height:1000)
-        
-        let estimatedSize = NSString(string: posts[indexPath.row].postTitle).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-        if estimatedSize.height > 66 {
-            return estimatedSize.height
-        }else{
-            return 66
-        }
+    override func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
+        return 115
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
-        let newsRow = NewsFeedMiscTableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let newsRow = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
         //newsRow.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-        newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
-        newsRow.PostTableViewHeadlines.isScrollEnabled = false
-        newsRow.postID = self.posts[indexPath.row].postID
-        newsRow.PostTableViewHeadlines.sizeToFit()
-
+        newsRow.headLines.text = posts[indexPath.row].postTitle
+        newsRow.Id = self.posts[indexPath.row].postID
+        newsRow.headLines.numberOfLines = 0
+        newsRow.headLines.sizeToFit()
+        
         let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
         AVPostStorageRef.downloadURL { (url, error) in
             if error != nil{
@@ -106,24 +91,37 @@ extension NewsFeedMiscViewController: UITableViewDataSource,UITableViewDelegate 
                 guard let imageData = UIImage(data: data!) else { return }
                 DispatchQueue.main.async {
                     print(imageData)
-                    newsRow.PostTableViewImage.image = imageData
+                    newsRow.imageView1.image = imageData
                 }
             }).resume()
         }
         return newsRow
-        }
+    }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
         let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "NewsDetailedViewController") as! NewsDetailedViewController
         
+       // destinationViewController.getPhotoCourtesy = posts[indexPath.row].imageCourtesy
+       // destinationViewController.getContent = posts[indexPath.row].newsContent
+        let postDate = CommonUtils.convertFromTimestamp(seconds: posts[indexPath.row].timestamp)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let postDateDate = dateFormatter.date(from: postDate)
         
+        let dateFormatter2 = DateFormatter()
+        dateFormatter2.dateFormat = "MMM dd, yyyy. HH':'mm"
+        let currentDateString: String = dateFormatter2.string(from: postDateDate!)
+        print("Current date is \(currentDateString)")
+       // destinationViewController.getLocationandTimestamp = posts[indexPath.row].newsLocation + " - " + currentDateString
         
+       // destinationViewController.likes = posts[indexPath.row].postLikes
+       // destinationViewController.dislikes = posts[indexPath.row].postDislikes
         destinationViewController.postId = posts[indexPath.row].postID
-        
+        //destinationViewController.getPhotoURL = posts[indexPath.row].photoUrl
+        destinationViewController.getPostedBy = posts[indexPath.row].userid
         self.navigationController?.pushViewController(destinationViewController, animated: true)
-        
         let rowDataPostID = posts[indexPath.row].postID
-        print("rowdata ID value: \(rowDataPostID)")
     }
 }
+

@@ -31,14 +31,18 @@ class PostTableViewCell: UITableViewCell {
        // PostTablebutton.layer.cornerRadius = 5.0
        // PostTablebutton.clipsToBounds = true
         
-        
-        PostTableViewbg.backgroundColor = UIColor.white
-        PostTableViewbg.layer.cornerRadius = 5.0
-        PostTableViewbg.layer.masksToBounds = false
-        PostTableViewbg.layer.shadowColor =
-            UIColor.white.withAlphaComponent(0.2).cgColor
-        PostTableViewbg.layer.shadowOffset = CGSize(width: 0, height: 0)
-        PostTableViewbg.layer.shadowOpacity =  1
+        self.contentView.backgroundColor = UIColor.white
+        self.contentView.layer.borderWidth = 3
+        self.contentView.layer.borderColor = UIColor.groupTableViewBackground.cgColor
+        self.contentView.layer.cornerRadius = 5.0
+        self.contentView.layer.masksToBounds = false
+       // PostTableViewbg.backgroundColor = UIColor.white
+//        PostTableViewbg.layer.cornerRadius = 5.0
+//
+//        PostTableViewbg.layer.shadowColor =
+//            UIColor.white.withAlphaComponent(0.2).cgColor
+//        PostTableViewbg.layer.shadowOffset = CGSize(width: 0, height: 0)
+//        PostTableViewbg.layer.shadowOpacity =  1
         
         
       

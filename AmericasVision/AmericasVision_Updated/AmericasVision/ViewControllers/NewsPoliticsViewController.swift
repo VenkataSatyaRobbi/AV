@@ -1,8 +1,8 @@
 //
-//  NewsFeedMiscViewController.swift
+//  PoliticsViewController.swift
 //  AmericasVision
 //
-//  Created by Venkata Satya R Robbi on 5/13/18.
+//  Created by Mohan Dola on 12/08/18.
 //  Copyright © 2018 zeroGravity. All rights reserved.
 //
 
@@ -11,37 +11,37 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class NewsFeedMiscViewController: UIViewController {
-
-    @IBOutlet weak var NewsFeedMiscTableView: UITableView!
-    @IBOutlet weak var NewsFeedMiscHomeButton: UIBarButtonItem!
+class NewsPoliticsViewController: UITableViewController{
+    
+    @IBOutlet weak var NewsFeedPoliticsHomeButton: UIBarButtonItem!
+     
     var posts = [Post]()
+    var imageHeight:CGFloat = 90
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        NewsFeedMiscTableView.isHidden = false
-        NewsFeedMiscTableView.dataSource = self
-        NewsFeedMiscTableView.delegate = self
-        view.backgroundColor = UIColor.white
-        NewsFeedMiscTableView.rowHeight = UITableViewAutomaticDimension
-        NewsFeedMiscTableView.estimatedRowHeight = 80
+        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: "NewsTableViewCell")
+        //  Register cell classes
+        tableView?.dataSource = self
+        tableView?.delegate = self
+        self.tableView.backgroundColor = UIColor.lightGray
         sideMenus()
         loadPosts()
+        
     }
     
     func sideMenus(){
         if revealViewController() != nil {
-            NewsFeedMiscHomeButton.target = revealViewController()
-            NewsFeedMiscHomeButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            NewsFeedPoliticsHomeButton.target = revealViewController()
+            NewsFeedPoliticsHomeButton.action = #selector(SWRevealViewController.revealToggle(_:))
             revealViewController().rearViewRevealWidth = 260
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
     }
-
+    
     func loadPosts(){
-        Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Misc").observe(.childAdded) { (snapshot: DataSnapshot) in
+        Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Politics").observe(.childAdded) { (snapshot: DataSnapshot) in
+            //print(snapshot.value)
             if let dict = snapshot.value as? [String: Any] {
                 let captionText = dict["caption"] as! String
                 let photoUrlString = dict["photoUrl"] as! String
@@ -58,40 +58,35 @@ class NewsFeedMiscViewController: UIViewController {
                 let newsLocationString = dict["newsLocation"] as! String
                 let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt,postIDString: postIDString, useridString: useridString, timeStampDouble: timestamp, imageCourtesyString: photoCourtesyString, newsLocationString: newsLocationString, newsContentString: newsContentString)
                 self.posts.append(post)
-                self.NewsFeedMiscTableView.reloadData()
+                self.tableView.reloadData()
             }
         }
     }
-}
-
-extension NewsFeedMiscViewController: UITableViewDataSource,UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
     
-    func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
-        let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13)]
+    override func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
+        let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]
         let approximateWidth = tableView.layer.frame.width - 20
         let size = CGSize(width: approximateWidth, height:1000)
-        
-        let estimatedSize = NSString(string: posts[indexPath.row].postTitle).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-        if estimatedSize.height > 66 {
-            return estimatedSize.height
-        }else{
-            return 66
-        }
+        let estimatedSize = NSString(string: posts[indexPath.row].caption!).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+        let height = estimatedSize.height + 110
+        return height
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
-        let newsRow = NewsFeedMiscTableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
-        //newsRow.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-        newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
-        newsRow.PostTableViewHeadlines.isScrollEnabled = false
-        newsRow.postID = self.posts[indexPath.row].postID
-        newsRow.PostTableViewHeadlines.sizeToFit()
-
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let newsRow = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
+        newsRow.headLines.text = posts[indexPath.row].postTitle
+        newsRow.caption.text = posts[indexPath.row].caption
+        posts[indexPath.row].caption = newsRow.caption.text
+        newsRow.Id = self.posts[indexPath.row].postID
         let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
         AVPostStorageRef.downloadURL { (url, error) in
             if error != nil{
@@ -105,25 +100,42 @@ extension NewsFeedMiscViewController: UITableViewDataSource,UITableViewDelegate 
                 }
                 guard let imageData = UIImage(data: data!) else { return }
                 DispatchQueue.main.async {
-                    print(imageData)
-                    newsRow.PostTableViewImage.image = imageData
+                    newsRow.imageView1.image = imageData
                 }
             }).resume()
         }
         return newsRow
-        }
+    }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
         let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
         let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "NewsDetailedViewController") as! NewsDetailedViewController
         
+//        destinationViewController.getPhotoCourtesy = posts[indexPath.row].imageCourtesy
+//        destinationViewController.getContent = posts[indexPath.row].newsContent
+//        let postDate = CommonUtils.convertFromTimestamp(seconds: posts[indexPath.row].timestamp)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "MM-dd-yyyy"
+//        let postDateDate = dateFormatter.date(from: postDate)
+//
+//        let dateFormatter2 = DateFormatter()
+//        dateFormatter2.dateFormat = "MMM dd, yyyy. HH':'mm"
+//        let currentDateString: String = dateFormatter2.string(from: postDateDate!)
+//        print("Current date is \(currentDateString)")
+//        destinationViewController.getLocationandTimestamp = posts[indexPath.row].newsLocation + " - " + currentDateString
         
-        
+       
         destinationViewController.postId = posts[indexPath.row].postID
+      
         
         self.navigationController?.pushViewController(destinationViewController, animated: true)
         
         let rowDataPostID = posts[indexPath.row].postID
         print("rowdata ID value: \(rowDataPostID)")
+        
     }
+    
 }
+

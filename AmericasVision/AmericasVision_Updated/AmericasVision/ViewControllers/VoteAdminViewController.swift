@@ -34,7 +34,7 @@ class VoteAdminViewController: UIViewController{
         
         opTionThree.text = nil
         opTionThree.placeholder = "Option Three"
-        
+      
     }
     
     @IBAction func publishAction(_ sender: Any) {

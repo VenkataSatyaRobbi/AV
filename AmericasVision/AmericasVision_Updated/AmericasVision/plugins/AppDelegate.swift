@@ -22,11 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         UITabBar.appearance().tintColor = UIColor(displayP3Red: 70/255, green: 146/255, blue: 250/255, alpha: 1)
-        UITabBar.appearance().barTintColor = UIColor.white
+        UITabBar.appearance().barTintColor = UIColor.black
         //UINavigationBar.appearance().barTintColor = UIColor(red: 51/255, green: 90/255, blue: 149/255, alpha: 1)
-        UINavigationBar.appearance().barTintColor = UIColor(red: 0/255, green: 180/255, blue: 210/255, alpha: 1)
+        //UINavigationBar.appearance().barTintColor = UIColor(red: 0/255, green: 180/255, blue: 210/255, alpha: 1)
         
-       
+        let navBackgroundImage:UIImage! = UIImage(named: "nabar")
+        UINavigationBar.appearance().setBackgroundImage(navBackgroundImage, for: .default)
+
         UINavigationBar.appearance().tintColor = UIColor.white
         
       //  application.statusBarStyle = .lightContent
@@ -36,8 +38,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //FBSDKLoginButton.classForCoder()
         
      
-       
-        
+//        let gradient = CAGradientLayer()
+//        let sizeLength = UIScreen.main.bounds.size.height * 2
+//        let defaultNavigationBarFrame = CGRect(x: 0, y: 0, width: sizeLength, height: 64)
+//        gradient.frame = defaultNavigationBarFrame
+//        gradient.colors = [UIColor(red: 2/255, green: 152/255, blue: 219/255, alpha: 100.0).cgColor,
+//                           UIColor(red: 6/255, green: 90/255, blue: 157/255, alpha: 100.0).cgColor]
+//       gradient.startPoint = CGPoint(x: 0, y: 0)
+//       gradient.endPoint = CGPoint(x: 1, y: 0)
+//
+//        UINavigationBar.appearance().setBackgroundImage(self.image(fromLayer: gradient), for: .default)
+//
+//
         
        //uploadMusicAlbum()
         
@@ -108,6 +120,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func image(fromLayer layer: CALayer) -> UIImage {
+        UIGraphicsBeginImageContext(layer.frame.size)
+        layer.render(in: UIGraphicsGetCurrentContext()!)
+        let outputImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return outputImage!
     }
 
 

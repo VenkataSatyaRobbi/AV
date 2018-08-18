@@ -12,7 +12,6 @@
 		D408D2E2209E425B008DD80A /* MusicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2E1209E425B008DD80A /* MusicTableViewCell.swift */; };
 		D408D2E4209E706F008DD80A /* MarketPlaceCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2E3209E706F008DD80A /* MarketPlaceCollectionViewController.swift */; };
 		D408D2E6209E71E3008DD80A /* VotesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2E5209E71E3008DD80A /* VotesCollectionViewController.swift */; };
-		D408D2E8209E8178008DD80A /* NewsFeedPoliticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2E7209E8178008DD80A /* NewsFeedPoliticsViewController.swift */; };
 		D408D2EA209E8622008DD80A /* ChatPrivateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2E9209E8622008DD80A /* ChatPrivateViewController.swift */; };
 		D408D2EE209E8831008DD80A /* MusicByTrackTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2ED209E8831008DD80A /* MusicByTrackTableViewController.swift */; };
 		D408D2F0209E8844008DD80A /* MusicByAlbumTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408D2EF209E8844008DD80A /* MusicByAlbumTableViewController.swift */; };
@@ -41,8 +40,14 @@
 		D4FA4A0D208822BF00CC425B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA4A0A208822BF00CC425B /* FBSDKLoginKit.framework */; };
 		D4FA4A0E208822BF00CC425B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA4A0B208822BF00CC425B /* Bolts.framework */; };
 		D4FA4A0F208822BF00CC425B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FA4A0C208822BF00CC425B /* FBSDKCoreKit.framework */; };
-		DC04104C20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC04104B20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift */; };
+		DC04104C20B8A4D100085718 /* NewsEntertainmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC04104B20B8A4D100085718 /* NewsEntertainmentViewController.swift */; };
 		DC04CDE0210D9AC600E70B6B /* CommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC04CDDF210D9AC600E70B6B /* CommonUtils.swift */; };
+		DC0C6E032120468F000F284D /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0C6E022120468F000F284D /* NewsTableViewCell.swift */; };
+		DC0C6E0521204EC1000F284D /* NewsPoliticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0C6E0421204EC1000F284D /* NewsPoliticsViewController.swift */; };
+		DC0C6E07212070F4000F284D /* AVLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0C6E06212070F4000F284D /* AVLabel.swift */; };
+		DC0C6E092121E199000F284D /* NewsMiscellaneousViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0C6E082121E199000F284D /* NewsMiscellaneousViewcontroller.swift */; };
+		DC0C6E0C2121EFA1000F284D /* NewsMatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0C6E0B2121EFA1000F284D /* NewsMatureViewController.swift */; };
+		DC2067552123378D003541F4 /* NewsSlideCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2067542123378D003541F4 /* NewsSlideCollectionCell.swift */; };
 		DC33663F20B9BB2F002B8064 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33663E20B9BB2F002B8064 /* ChatTableViewCell.swift */; };
 		DC33664120BC6EB0002B8064 /* MusicAlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33664020BC6EB0002B8064 /* MusicAlbumTableViewCell.swift */; };
 		DC33664320BF06C8002B8064 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33664220BF06C8002B8064 /* ImageCache.swift */; };
@@ -54,7 +59,6 @@
 		DC46B8F220CB911600188EC9 /* audio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DC46B8EE20CB911600188EC9 /* audio.mp3 */; };
 		DC46B8F320CB911600188EC9 /* pdf.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DC46B8EF20CB911600188EC9 /* pdf.pdf */; };
 		DC4A12B1209F2BD7007C4755 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */; };
-		DC6F3FE82108E646001795DF /* NewsFeedMatureCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F3FE72108E646001795DF /* NewsFeedMatureCollectionViewController.swift */; };
 		DC6F3FF42109043D001795DF /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6F3FF32109043D001795DF /* Charts.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		DC7F1D9A20CD9E8C005CB41F /* PrivateMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F1D9920CD9E8C005CB41F /* PrivateMessageHandler.swift */; };
 		DC8317AE20B8ABEF00517AE9 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8317AD20B8ABEF00517AE9 /* UserDefaultsHelper.swift */; };
@@ -62,6 +66,7 @@
 		DC8C89FA2112233700AE8E92 /* VoteAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C89F92112233600AE8E92 /* VoteAdminViewController.swift */; };
 		DC8C89FC21122DE900AE8E92 /* Opinion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C89FB21122DE900AE8E92 /* Opinion.swift */; };
 		DC8C89FE21135C6300AE8E92 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C89FD21135C6300AE8E92 /* RadioButton.swift */; };
+		DC9444B2212804C300CE99B1 /* launchscreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC9444B1212804C300CE99B1 /* launchscreen.jpg */; };
 		DCBEBC3820A786EE00E8EAEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3720A786ED00E8EAEA /* Constants.swift */; };
 		DCBEBC3A20A7871900E8EAEA /* ChatContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */; };
 		DCBEBC3C20A78BF200E8EAEA /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */; };
@@ -69,7 +74,7 @@
 		DCC76A9521036B88003FC4FC /* PublicMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC76A9421036B88003FC4FC /* PublicMessageHandler.swift */; };
 		DCF8AB2820B1137C0064FF72 /* SlideCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF8AB2720B1137C0064FF72 /* SlideCollectionViewCell.swift */; };
 		DCF8AB2D20B1505F0064FF72 /* FeedsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF8AB2C20B1505F0064FF72 /* FeedsTableViewCell.swift */; };
-		DCF8AB2F20B1527E0064FF72 /* SportsNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF8AB2E20B1527E0064FF72 /* SportsNewsViewController.swift */; };
+		DCF8AB2F20B1527E0064FF72 /* NewsSportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF8AB2E20B1527E0064FF72 /* NewsSportsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -93,7 +98,6 @@
 		D408D2E1209E425B008DD80A /* MusicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTableViewCell.swift; sourceTree = "<group>"; };
 		D408D2E3209E706F008DD80A /* MarketPlaceCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceCollectionViewController.swift; sourceTree = "<group>"; };
 		D408D2E5209E71E3008DD80A /* VotesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotesCollectionViewController.swift; sourceTree = "<group>"; };
-		D408D2E7209E8178008DD80A /* NewsFeedPoliticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedPoliticsViewController.swift; sourceTree = "<group>"; };
 		D408D2E9209E8622008DD80A /* ChatPrivateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPrivateViewController.swift; sourceTree = "<group>"; };
 		D408D2ED209E8831008DD80A /* MusicByTrackTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicByTrackTableViewController.swift; sourceTree = "<group>"; };
 		D408D2EF209E8844008DD80A /* MusicByAlbumTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicByAlbumTableViewController.swift; sourceTree = "<group>"; };
@@ -127,8 +131,14 @@
 		D4FA4A0A208822BF00CC425B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		D4FA4A0B208822BF00CC425B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		D4FA4A0C208822BF00CC425B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		DC04104B20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedEntertainmentViewController.swift; sourceTree = "<group>"; };
+		DC04104B20B8A4D100085718 /* NewsEntertainmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsEntertainmentViewController.swift; sourceTree = "<group>"; };
 		DC04CDDF210D9AC600E70B6B /* CommonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtils.swift; sourceTree = "<group>"; };
+		DC0C6E022120468F000F284D /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		DC0C6E0421204EC1000F284D /* NewsPoliticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPoliticsViewController.swift; sourceTree = "<group>"; };
+		DC0C6E06212070F4000F284D /* AVLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLabel.swift; sourceTree = "<group>"; };
+		DC0C6E082121E199000F284D /* NewsMiscellaneousViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsMiscellaneousViewcontroller.swift; sourceTree = "<group>"; };
+		DC0C6E0B2121EFA1000F284D /* NewsMatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsMatureViewController.swift; sourceTree = "<group>"; };
+		DC2067542123378D003541F4 /* NewsSlideCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSlideCollectionCell.swift; sourceTree = "<group>"; };
 		DC33663E20B9BB2F002B8064 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		DC33664020BC6EB0002B8064 /* MusicAlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAlbumTableViewCell.swift; sourceTree = "<group>"; };
 		DC33664220BF06C8002B8064 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
@@ -140,7 +150,6 @@
 		DC46B8EE20CB911600188EC9 /* audio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = audio.mp3; sourceTree = "<group>"; };
 		DC46B8EF20CB911600188EC9 /* pdf.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pdf.pdf; sourceTree = "<group>"; };
 		DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
-		DC6F3FE72108E646001795DF /* NewsFeedMatureCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedMatureCollectionViewController.swift; sourceTree = "<group>"; };
 		DC6F3FED21090062001795DF /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6F3FF32109043D001795DF /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6F3FFA210A25F8001795DF /* FileExplorer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FileExplorer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +159,7 @@
 		DC8C89F92112233600AE8E92 /* VoteAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteAdminViewController.swift; sourceTree = "<group>"; };
 		DC8C89FB21122DE900AE8E92 /* Opinion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opinion.swift; sourceTree = "<group>"; };
 		DC8C89FD21135C6300AE8E92 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		DC9444B1212804C300CE99B1 /* launchscreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = launchscreen.jpg; path = ../../../../../../Desktop/launchscreen.jpg; sourceTree = "<group>"; };
 		DCBEBC3720A786ED00E8EAEA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContactsViewController.swift; sourceTree = "<group>"; };
 		DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
@@ -157,7 +167,7 @@
 		DCC76A9421036B88003FC4FC /* PublicMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMessageHandler.swift; sourceTree = "<group>"; };
 		DCF8AB2720B1137C0064FF72 /* SlideCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideCollectionViewCell.swift; sourceTree = "<group>"; };
 		DCF8AB2C20B1505F0064FF72 /* FeedsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsTableViewCell.swift; sourceTree = "<group>"; };
-		DCF8AB2E20B1527E0064FF72 /* SportsNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsNewsViewController.swift; sourceTree = "<group>"; };
+		DCF8AB2E20B1527E0064FF72 /* NewsSportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSportsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,12 +230,14 @@
 		D46390F9207036F300C4E3DA /* AmericasVision */ = {
 			isa = PBXGroup;
 			children = (
+				DC0C6E0A2121EE59000F284D /* cells */,
 				DC04104D20B8A7B000085718 /* plugins */,
 				DCBEBC3D20A78F8900E8EAEA /* Database */,
 				D4FA4A002082FBE000CC425B /* Model */,
 				D4FA49F6207D0D7C00CC425B /* ProgressHUD.bundle */,
 				D4639101207036F300C4E3DA /* Assets.xcassets */,
 				DC46B8EE20CB911600188EC9 /* audio.mp3 */,
+				DC9444B1212804C300CE99B1 /* launchscreen.jpg */,
 				DC46B8ED20CB911600188EC9 /* image.jpg */,
 				DC46B8EF20CB911600188EC9 /* pdf.pdf */,
 				DC46B8EC20CB911500188EC9 /* video.mp4 */,
@@ -250,32 +262,25 @@
 				DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */,
 				D408D2E9209E8622008DD80A /* ChatPrivateViewController.swift */,
 				DC46B8D520C7104400188EC9 /* ChatPublicViewController.swift */,
-				DC33663E20B9BB2F002B8064 /* ChatTableViewCell.swift */,
-				DCF8AB2C20B1505F0064FF72 /* FeedsTableViewCell.swift */,
 				D408D2E3209E706F008DD80A /* MarketPlaceCollectionViewController.swift */,
 				DC33664620C5B092002B8064 /* MusicAdminViewController.swift */,
-				DC33664020BC6EB0002B8064 /* MusicAlbumTableViewCell.swift */,
 				D408D2EF209E8844008DD80A /* MusicByAlbumTableViewController.swift */,
 				D408D2ED209E8831008DD80A /* MusicByTrackTableViewController.swift */,
-				D408D2E1209E425B008DD80A /* MusicTableViewCell.swift */,
 				DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */,
 				D408D2F1209E903D008DD80A /* MyProfileViewController.swift */,
 				DC46B8D720C930F900188EC9 /* New Group */,
 				D465157E20ABA8B30075A59C /* NewsDetailedViewController.swift */,
 				D4FA49FE2082AD9F00CC425B /* NewsFeedAdminViewController.swift */,
-				DC04104B20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift */,
+				DC04104B20B8A4D100085718 /* NewsEntertainmentViewController.swift */,
 				D4E8302920CE86040001CE20 /* NewsFeedMatureViewController.swift */,
 				D43E5D3520A8F143000F0307 /* NewsFeedMiscViewController.swift */,
-				D408D2E7209E8178008DD80A /* NewsFeedPoliticsViewController.swift */,
-				DC6F3FE72108E646001795DF /* NewsFeedMatureCollectionViewController.swift */,
-				D408D2DD2095E5BB008DD80A /* PostCollectionViewCell.swift */,
-				D43E5D3320A8F0B2000F0307 /* PostTableViewCell.swift */,
-				D4FA49EF207AF45500CC425B /* ProfileMenuTableViewCell.swift */,
+				DC0C6E0B2121EFA1000F284D /* NewsMatureViewController.swift */,
+				DC0C6E082121E199000F284D /* NewsMiscellaneousViewcontroller.swift */,
+				DC0C6E0421204EC1000F284D /* NewsPoliticsViewController.swift */,
 				D4FA49ED207AF0EC00CC425B /* ProfileMenuViewController.swift */,
 				D463910E207037CB00C4E3DA /* SignInViewController.swift */,
 				D4639110207041D400C4E3DA /* SignUpViewController.swift */,
-				DCF8AB2720B1137C0064FF72 /* SlideCollectionViewCell.swift */,
-				DCF8AB2E20B1527E0064FF72 /* SportsNewsViewController.swift */,
+				DCF8AB2E20B1527E0064FF72 /* NewsSportsViewController.swift */,
 				D408D2E5209E71E3008DD80A /* VotesCollectionViewController.swift */,
 				DC8C89F92112233600AE8E92 /* VoteAdminViewController.swift */,
 			);
@@ -310,8 +315,26 @@
 				D4FA49DB207994C200CC425B /* AmericasVision-Bridging-Header.h */,
 				D4FA49F3207C6EA200CC425B /* PropertyConfig.swift */,
 				DC8C89FD21135C6300AE8E92 /* RadioButton.swift */,
+				DC0C6E06212070F4000F284D /* AVLabel.swift */,
 			);
 			path = plugins;
+			sourceTree = "<group>";
+		};
+		DC0C6E0A2121EE59000F284D /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				D408D2DD2095E5BB008DD80A /* PostCollectionViewCell.swift */,
+				DCF8AB2720B1137C0064FF72 /* SlideCollectionViewCell.swift */,
+				D43E5D3320A8F0B2000F0307 /* PostTableViewCell.swift */,
+				DC0C6E022120468F000F284D /* NewsTableViewCell.swift */,
+				D408D2E1209E425B008DD80A /* MusicTableViewCell.swift */,
+				DC33664020BC6EB0002B8064 /* MusicAlbumTableViewCell.swift */,
+				DC33663E20B9BB2F002B8064 /* ChatTableViewCell.swift */,
+				D4FA49EF207AF45500CC425B /* ProfileMenuTableViewCell.swift */,
+				DCF8AB2C20B1505F0064FF72 /* FeedsTableViewCell.swift */,
+				DC2067542123378D003541F4 /* NewsSlideCollectionCell.swift */,
+			);
+			path = cells;
 			sourceTree = "<group>";
 		};
 		DC46B8D720C930F900188EC9 /* New Group */ = {
@@ -396,6 +419,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC9444B2212804C300CE99B1 /* launchscreen.jpg in Resources */,
 				D4761EAE207193E90065ACD7 /* GoogleService-Info.plist in Resources */,
 				DC46B8F220CB911600188EC9 /* audio.mp3 in Resources */,
 				DC46B8F020CB911600188EC9 /* video.mp4 in Resources */,
@@ -479,35 +503,38 @@
 				DC33663F20B9BB2F002B8064 /* ChatTableViewCell.swift in Sources */,
 				D4E8302A20CE86040001CE20 /* NewsFeedMatureViewController.swift in Sources */,
 				D4FA49FF2082AD9F00CC425B /* NewsFeedAdminViewController.swift in Sources */,
-				DC04104C20B8A4D100085718 /* NewsFeedEntertainmentViewController.swift in Sources */,
+				DC04104C20B8A4D100085718 /* NewsEntertainmentViewController.swift in Sources */,
 				D408D2F2209E903D008DD80A /* MyProfileViewController.swift in Sources */,
 				D4639111207041D400C4E3DA /* SignUpViewController.swift in Sources */,
 				DC33664320BF06C8002B8064 /* ImageCache.swift in Sources */,
-				DC6F3FE82108E646001795DF /* NewsFeedMatureCollectionViewController.swift in Sources */,
 				D4FA49DE207994C300CC425B /* SWRevealViewController.m in Sources */,
 				D4FA49F2207C5B3C00CC425B /* AVAuthService.swift in Sources */,
 				D463910F207037CB00C4E3DA /* SignInViewController.swift in Sources */,
+				DC0C6E0521204EC1000F284D /* NewsPoliticsViewController.swift in Sources */,
 				D408D2E2209E425B008DD80A /* MusicTableViewCell.swift in Sources */,
 				DCC76A9521036B88003FC4FC /* PublicMessageHandler.swift in Sources */,
 				DC8C89FC21122DE900AE8E92 /* Opinion.swift in Sources */,
+				DC0C6E032120468F000F284D /* NewsTableViewCell.swift in Sources */,
 				D43E5D3620A8F143000F0307 /* NewsFeedMiscViewController.swift in Sources */,
+				DC2067552123378D003541F4 /* NewsSlideCollectionCell.swift in Sources */,
 				D408D2EA209E8622008DD80A /* ChatPrivateViewController.swift in Sources */,
 				D4FA4A022082FBF100CC425B /* Post.swift in Sources */,
 				D465157F20ABA8B30075A59C /* NewsDetailedViewController.swift in Sources */,
 				DC33664120BC6EB0002B8064 /* MusicAlbumTableViewCell.swift in Sources */,
+				DC0C6E0C2121EFA1000F284D /* NewsMatureViewController.swift in Sources */,
 				D4FA49F8207D0D7D00CC425B /* ProgressHUD.m in Sources */,
 				DC8317AE20B8ABEF00517AE9 /* UserDefaultsHelper.swift in Sources */,
 				D408D2DE2095E5BB008DD80A /* PostCollectionViewCell.swift in Sources */,
 				D408D2E4209E706F008DD80A /* MarketPlaceCollectionViewController.swift in Sources */,
-				DCF8AB2F20B1527E0064FF72 /* SportsNewsViewController.swift in Sources */,
+				DCF8AB2F20B1527E0064FF72 /* NewsSportsViewController.swift in Sources */,
 				D46390FB207036F300C4E3DA /* AppDelegate.swift in Sources */,
 				DC46B8E320C93C8800188EC9 /* ViewController.swift in Sources */,
 				DC4A12B1209F2BD7007C4755 /* MusicViewController.swift in Sources */,
 				D4FA49EE207AF0EC00CC425B /* ProfileMenuViewController.swift in Sources */,
 				DC8C89FA2112233700AE8E92 /* VoteAdminViewController.swift in Sources */,
 				DCF8AB2D20B1505F0064FF72 /* FeedsTableViewCell.swift in Sources */,
-				D408D2E8209E8178008DD80A /* NewsFeedPoliticsViewController.swift in Sources */,
 				D408D2EE209E8831008DD80A /* MusicByTrackTableViewController.swift in Sources */,
+				DC0C6E092121E199000F284D /* NewsMiscellaneousViewcontroller.swift in Sources */,
 				D408D2E6209E71E3008DD80A /* VotesCollectionViewController.swift in Sources */,
 				DC04CDE0210D9AC600E70B6B /* CommonUtils.swift in Sources */,
 				DC33664720C5B092002B8064 /* MusicAdminViewController.swift in Sources */,
@@ -517,6 +544,7 @@
 				DCBEBC3A20A7871900E8EAEA /* ChatContactsViewController.swift in Sources */,
 				DCF8AB2820B1137C0064FF72 /* SlideCollectionViewCell.swift in Sources */,
 				DCBEBC3C20A78BF200E8EAEA /* Contacts.swift in Sources */,
+				DC0C6E07212070F4000F284D /* AVLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

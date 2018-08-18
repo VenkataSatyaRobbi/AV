@@ -1,8 +1,8 @@
 //
-//  SportsNewsViewController.swift
+//  NewsFeedEntertainmentViewController.swift
 //  AmericasVision
 //
-//  Created by Mohan Dola on 20/05/18.
+//  Created by Venkata Satya R Robbi on 5/6/18.
 //  Copyright © 2018 zeroGravity. All rights reserved.
 //
 
@@ -11,17 +11,20 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class SportsNewsViewController: UIViewController {
+class NewsEntertainmentViewController: UIViewController{
     
-    @IBOutlet weak var homeButton: UIBarButtonItem!
-    @IBOutlet weak var sportstableview: UITableView!
-   
+    @IBOutlet weak var NewsFeedEntertainmentHomeButton: UIBarButtonItem!
+    @IBOutlet var label: UILabel!
+    
+    @IBOutlet weak var entertainmentTableview: UITableView!
+    
     var posts = [Post]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        sportstableview.dataSource = self
-        sportstableview.delegate = self
+        entertainmentTableview.register(NewsTableViewCell.self, forCellReuseIdentifier: "NewsTableViewCell")
+        entertainmentTableview.dataSource = self
+        entertainmentTableview.delegate = self
         view.backgroundColor = UIColor.white
         sideMenus()
         loadPosts()
@@ -29,14 +32,16 @@ class SportsNewsViewController: UIViewController {
     
     func sideMenus(){
         if revealViewController() != nil {
-            homeButton.target = revealViewController()
-            homeButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            NewsFeedEntertainmentHomeButton.target = revealViewController()
+            NewsFeedEntertainmentHomeButton.action = #selector(SWRevealViewController.revealToggle(_:))
             revealViewController().rearViewRevealWidth = 260
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
     }
+    
+    
     func loadPosts(){
-        Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Sports").observe(.childAdded) { (snapshot: DataSnapshot) in
+        Database.database().reference().child("posts").queryOrdered(byChild: "category").queryEqual(toValue: "Entertainment").observe(.childAdded) { (snapshot: DataSnapshot) in
             if let dict = snapshot.value as? [String: Any] {
                 let captionText = dict["caption"] as! String
                 let photoUrlString = dict["photoUrl"] as! String
@@ -54,7 +59,7 @@ class SportsNewsViewController: UIViewController {
                 let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt, postIDString: postIDString, useridString: useridString, timeStampDouble: timestamp, imageCourtesyString: photoCourtesyString, newsLocationString: newsLocationString, newsContentString: newsContentString)
                 self.posts.append(post)
                 print("loading posts..\(self.posts.count)")
-                self.sportstableview.reloadData()
+                self.entertainmentTableview.reloadData()
                 //                if (self.posts.count > 4){
                 //                    self.setImagesInPageView()
                 //                }
@@ -63,12 +68,15 @@ class SportsNewsViewController: UIViewController {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
+    
 }
 
-extension SportsNewsViewController:UITableViewDataSource,UITableViewDelegate{
+
+extension NewsEntertainmentViewController:UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -76,11 +84,16 @@ extension SportsNewsViewController:UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
-       let row = indexPath.row
+        let row = indexPath.row
         if row == 0 {
-           return 165
+            return 165
         }else{
-            return 200
+            let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]
+            let approximateWidth = tableView.layer.frame.width - 20
+            let size = CGSize(width: approximateWidth, height:1000)
+            let estimatedSize = NSString(string: posts[indexPath.row].caption!).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+            let height = estimatedSize.height + 110
+            return height
         }
     }
     
@@ -91,13 +104,11 @@ extension SportsNewsViewController:UITableViewDataSource,UITableViewDelegate{
             cell?.registerCollectoinView(datasource: self)
             return cell!
         }else{
-            let newsRow = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as! PostTableViewCell
+            let newsRow = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
             //newsRow.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-            newsRow.PostTableViewHeadlines.text = posts[indexPath.row].postTitle
-            newsRow.PostCollectionViewCaption.text = posts[indexPath.row].caption
-            newsRow.PostTableViewHeadlines.isScrollEnabled = false
-            newsRow.PostCollectionViewCaption.isScrollEnabled = false
-            newsRow.postID = self.posts[indexPath.row].postID
+            newsRow.headLines.text = posts[indexPath.row].postTitle
+            newsRow.caption.text = posts[indexPath.row].caption
+            newsRow.Id = self.posts[indexPath.row].postID
             
             let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
             AVPostStorageRef.downloadURL { (url, error) in
@@ -113,7 +124,7 @@ extension SportsNewsViewController:UITableViewDataSource,UITableViewDelegate{
                     guard let imageData = UIImage(data: data!) else { return }
                     DispatchQueue.main.async {
                         print(imageData)
-                        newsRow.PostTableViewImage.image = imageData
+                        newsRow.imageView1.image = imageData
                     }
                 }).resume()
             }
@@ -126,71 +137,64 @@ extension SportsNewsViewController:UITableViewDataSource,UITableViewDelegate{
         let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
         let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "NewsDetailedViewController") as! NewsDetailedViewController
         
-        destinationViewController.getPhotoCourtesy = posts[indexPath.row].imageCourtesy
-        destinationViewController.getContent = posts[indexPath.row].newsContent
-        let postDate = CommonUtils.convertFromTimestamp(seconds: posts[indexPath.row].timestamp)
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy"
-        let postDateDate = dateFormatter.date(from: postDate)
         
-        let dateFormatter2 = DateFormatter()        
-        dateFormatter2.dateFormat = "EEEE, MMM dd, yyyy. HH':'mm"
-        let currentDateString: String = dateFormatter2.string(from: postDateDate!)
-        print("Current date is \(currentDateString)")
-        destinationViewController.getLocationandTimestamp = posts[indexPath.row].newsLocation + " - " + currentDateString
-        destinationViewController.likes = posts[indexPath.row].postLikes
-        destinationViewController.dislikes = posts[indexPath.row].postDislikes
         destinationViewController.postId = posts[indexPath.row].postID
-        destinationViewController.getPhotoURL = posts[indexPath.row].photoUrl
-        destinationViewController.getPostedBy = posts[indexPath.row].userid
+       
         self.navigationController?.pushViewController(destinationViewController, animated: true)
         
         let rowDataPostID = posts[indexPath.row].postID
         print("rowdata ID value: \(rowDataPostID)")
     }
 }
-    
-extension SportsNewsViewController:UICollectionViewDataSource,UICollectionViewDelegate{
+
+extension NewsEntertainmentViewController:UICollectionViewDataSource,UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-   
-            return 2
-        //return 4
+        //  return 2
+        return 1
     }
-   
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let row = indexPath.row
-        if row < 2{
-            //if row < 4{
-             print("fun the loading posts..\(self.posts.count)")
-           let newsRow = collectionView.dequeueReusableCell(withReuseIdentifier:"SlideCollectionViewCell", for: indexPath) as! SlideCollectionViewCell
-                newsRow.headlines.text = posts[indexPath.row].postTitle
-                let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
-                AVPostStorageRef.downloadURL { (url, error) in
-                    if error != nil{
+        //if row < 2{
+        if row < 1{
+            print("fun the loading posts..\(self.posts.count)")
+            let newsRow = collectionView.dequeueReusableCell(withReuseIdentifier:"SlideCollectionViewCell", for: indexPath) as! SlideCollectionViewCell
+            newsRow.headlines.text = posts[indexPath.row].postTitle
+            let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
+            AVPostStorageRef.downloadURL { (url, error) in
+                if error != nil{
+                    print(error?.localizedDescription as Any)
+                    return
+                }
+                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                    if error != nil {
                         print(error?.localizedDescription as Any)
                         return
                     }
-                    URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                        if error != nil {
-                            print(error?.localizedDescription as Any)
-                            return
-                        }
-                        guard let imageData = UIImage(data: data!) else { return }
-                        DispatchQueue.main.async {
-                            print(imageData)
-                            newsRow.cellImage.image = imageData
-                        }
-                    }).resume()
-                }
-                return newsRow
+                    guard let imageData = UIImage(data: data!) else { return }
+                    DispatchQueue.main.async {
+                        print(imageData)
+                        newsRow.cellImage.image = imageData
+                    }
+                }).resume()
+            }
+            return newsRow
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"SlideCollectionViewCell", for: indexPath) as! SlideCollectionViewCell
             return cell
         }
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
+        let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "NewsDetailedViewController") as! NewsDetailedViewController
+        
+        destinationViewController.postId = posts[indexPath.row].postID
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
+        
+        let rowDataPostID = posts[indexPath.row].postID
+        print("rowdata ID value: \(rowDataPostID)")
+    }
 }
-

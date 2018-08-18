@@ -1,28 +1,90 @@
 //
-//  NewsFeedMatureViewController.swift
+//  NewsMatureViewController.swift
 //  AmericasVision
 //
-//  Created by Venkata Satya R Robbi on 6/11/18.
+//  Created by Mohan Dola on 13/08/18.
 //  Copyright © 2018 zeroGravity. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class NewsFeedMatureViewController: UIViewController {
+class MatureCell: UICollectionViewCell{
+    
+    var Id:String = ""
+    
+    var imageView : UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        let image = UIImage(named: "default")
+        view.image = image
+        return view
+    }()
+    
+    let headLines: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.sizeToFit()
+        label.font = UIFont.boldSystemFont(ofSize: 13)
+        label.textAlignment = .justified
+        label.backgroundColor = UIColor.groupTableViewBackground
+        return label
+    }()
+    
+    override init(frame: CGRect) {
+        
+        super.init(frame: frame)
+        backgroundColor = UIColor.white
+        self.addSubview(imageView)
+        self.addSubview(headLines)
+        let width = self.contentView.frame.width - 30
+        let height = self.contentView.frame.height
+        
+        imageView.leftAnchor.constraint(equalTo: leftAnchor, constant:15).isActive = true
+        imageView.topAnchor.constraint(equalTo: topAnchor, constant:15).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant:90).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant:width/2).isActive = true
+        
+        headLines.leftAnchor.constraint(equalTo: leftAnchor, constant:15).isActive = true
+        headLines.topAnchor.constraint(equalTo: topAnchor, constant:105).isActive = true
+        headLines.widthAnchor.constraint(equalToConstant: width/2).isActive = true
+        headLines.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+  
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init code vote cell")
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+}
 
+class NewsMatureViewController: UICollectionViewController {
+    
     @IBOutlet weak var NewsFeedMatureHomeButton: UIBarButtonItem!
-    @IBOutlet weak var NewsFeedMatureCollectionView: UICollectionView!
+    
+    let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     
     var posts = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NewsFeedMatureCollectionView.dataSource = self
-        NewsFeedMatureCollectionView.delegate = self
-        // Do any additional setup after loading the view.
+        self.navigationItem.title = "Mature News"
+        self.collectionView?.backgroundColor = UIColor.groupTableViewBackground
+        
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        let cellwidth = Int(self.view.frame.width)
+        let cellHeight = Int(self.view.frame.height)
+        layout.itemSize = CGSize(width: cellwidth, height: cellHeight)
+
+        self.collectionView?.collectionViewLayout = layout
+        collectionView!.register(MatureCell.self, forCellWithReuseIdentifier: "MatureCell")
+        collectionView?.dataSource = self
+        collectionView?.delegate = self
         sideMenus()
         loadPosts()
     }
@@ -55,30 +117,31 @@ class NewsFeedMatureViewController: UIViewController {
                 let newsLocationString = dict["newsLocation"] as! String
                 let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt,postIDString: postIDString, useridString: useridString, timeStampDouble: timestamp, imageCourtesyString: photoCourtesyString, newsLocationString: newsLocationString, newsContentString: newsContentString)
                 self.posts.append(post)
-                print("loading posts..")
-                print(self.posts)
-                self.NewsFeedMatureCollectionView.reloadData()
+                self.collectionView?.reloadData()
             }
         }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-}
-
-extension NewsFeedMatureViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(posts.count)
+    override func viewWillAppear(_ animated: Bool) {
+        sideMenus()
+    }
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return posts.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let item = NewsFeedMatureCollectionView.dequeueReusableCell(withReuseIdentifier: "PostCollectionViewCell", for: indexPath) as! PostCollectionViewCell
-        item.PostCollectionViewHeadlines.text = posts[indexPath.item].postTitle
-        print(posts[indexPath.item].postTitle)
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let item = collectionView.dequeueReusableCell(withReuseIdentifier: "MatureCell", for: indexPath) as! MatureCell
+        item.headLines.text = posts[indexPath.item].postTitle
         
         let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
         AVPostStorageRef.downloadURL { (url, error) in
@@ -95,31 +158,20 @@ extension NewsFeedMatureViewController: UICollectionViewDelegate, UICollectionVi
                 guard let imageData = UIImage(data: data!) else { return }
                 DispatchQueue.main.async {
                     print(imageData)
-                    item.PostCollectionViewImage.image = imageData
+                    item.imageView.image = imageData
                 }
                 
             }).resume()
             
         }
         return item
-        
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
         let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "NewsDetailedViewController") as! NewsDetailedViewController
         
-//        
-//        let postDate = CommonUtils.convertFromTimestamp(seconds: posts[indexPath.row].timestamp)
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "MM-dd-yyyy"
-//        let postDateDate = dateFormatter.date(from: postDate)
-//        
-//        let dateFormatter2 = DateFormatter()        
-//        dateFormatter2.dateFormat = "EEEE, MMM dd, yyyy. HH':'mm"
-//        let currentDateString: String = dateFormatter2.string(from: postDateDate!)
-//        print("Current date is \(currentDateString)")
-//        
+        
         destinationViewController.postId = posts[indexPath.row].postID
         
         self.navigationController?.pushViewController(destinationViewController, animated: true)
@@ -128,15 +180,4 @@ extension NewsFeedMatureViewController: UICollectionViewDelegate, UICollectionVi
         print("rowdata ID value: \(rowDataPostID)")
     }
     
-    
 }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */

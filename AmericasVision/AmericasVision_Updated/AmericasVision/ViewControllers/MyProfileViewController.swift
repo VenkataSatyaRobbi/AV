@@ -11,17 +11,73 @@ import UIKit
 class MyProfileViewController: UIViewController {
     
     @IBOutlet weak var MyProfileHomeButton: UIBarButtonItem!
-    @IBOutlet weak var bgview: UIView!
-    @IBOutlet weak var bgview1: UIView!
-    @IBOutlet weak var bgview2: UIView!
-    @IBOutlet weak var profileimg: UIImageView!
-    @IBOutlet weak var btnsubmit: UIButton!
+  
+    let header: UIView = {
+        let header = UIImageView()
+        header.image = UIImage(named: "nabar")
+        header.translatesAutoresizingMaskIntoConstraints = false
+        return header
+    }()
     
-    @IBOutlet weak var textUserName: UITextField!
-    @IBOutlet weak var textEmail: UITextField!
-    @IBOutlet weak var textDOB: UITextField!
-    @IBOutlet weak var textPwd: UITextField!
-    @IBOutlet weak var textConfirmPwd: UITextField!
+    let profileImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "profile")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    let profileBackView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    let textUserName: UITextField = {
+        let userName = UITextField()
+       
+        userName.translatesAutoresizingMaskIntoConstraints = false
+        return userName
+    }()
+    let textEmail: UITextField = {
+        let emailText = UITextField()
+        emailText.translatesAutoresizingMaskIntoConstraints = false
+        return emailText
+    }()
+    let textPwd: UITextField = {
+        let passwordText = UITextField()
+        passwordText.isSecureTextEntry = true
+        passwordText.translatesAutoresizingMaskIntoConstraints = false
+        return passwordText
+    }()
+    let textConfirmPwd: UITextField = {
+        let passwordconfirm = UITextField()
+        passwordconfirm.isSecureTextEntry = true
+        passwordconfirm.translatesAutoresizingMaskIntoConstraints = false
+        return passwordconfirm
+    }()
+    
+    let textDOB: UITextField = {
+        let birthdate = UITextField()
+        birthdate.translatesAutoresizingMaskIntoConstraints = false
+        return birthdate
+    }()
+    
+    let btnsubmit: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Save", for: .normal)
+        button.layer.cornerRadius = 5
+        button.titleLabel?.textColor = UIColor.white
+        button.backgroundColor = UIColor(red: 6/255, green: 90/255, blue: 157/255, alpha: 1)
+       
+        return button
+    }()
+    
+    let btnBack: UIButton = {
+        let backbutton = UIButton()
+        backbutton.setImage(UIImage(named: "backArrow"), for: .normal)
+        backbutton.translatesAutoresizingMaskIntoConstraints = false
+        return backbutton
+    }()
     
     var userInfo:UserInfo!
     var DateNow: Date = Date(timeIntervalSinceNow: 0)
@@ -29,14 +85,15 @@ class MyProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
-        alignment()
+        view.backgroundColor = UIColor(red: 55/255, green:55/255, blue: 55/255, alpha: 1)
         populateUserinfo()
         sideMenus()
-        textUserName .isEnabled = false
-        textEmail .isEnabled = false
-        textPwd.isSecureTextEntry = true
-        textConfirmPwd.isSecureTextEntry = true
+    }
+    
+    @IBAction func backAction(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "AV", bundle:nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "test") as! UINavigationController
+        self.present(vc, animated:true, completion:nil)
     }
     
     func populateUserinfo(){
@@ -44,18 +101,8 @@ class MyProfileViewController: UIViewController {
         textUserName.text = userInfo.firstName
         textEmail.text = userInfo.email
         textDOB.text = userInfo.dob
-        profileimg.image = userInfo.profileImage
+        profileImage.image = userInfo.profileImage
         
-    }
-    
-    func alignment(){
-        let myColor : UIColor = UIColor(red: 0/255, green: 180/255, blue: 210/255, alpha: 1)
-        //bgview1.layer.cornerRadius = 2
-        //bgview1.clipsToBounds = true
-        profileimg.layer.cornerRadius = 45
-        profileimg.clipsToBounds = true
-        //profileimg.layer.borderWidth = 0.5
-        profileimg.layer.borderColor = myColor.cgColor
     }
     
     func sideMenus(){
@@ -66,9 +113,104 @@ class MyProfileViewController: UIViewController {
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
     }
-    
+    //6,90,157
     override func viewWillAppear(_ animated: Bool) {
         sideMenus()
+        self.navigationController?.isNavigationBarHidden = true
+        profileBackView.addSubview(profileImage)
+        profileBackView.addSubview(textUserName)
+        CommonUtils.addLineToView(view: textUserName, position:.LINE_POSITION_BOTTOM, color: UIColor(red: 6/255, green: 90/255, blue: 1157/255, alpha: 1), width: 0.5)
+
+        profileBackView.addSubview(textEmail)
+         CommonUtils.addLineToView(view: textEmail, position:.LINE_POSITION_BOTTOM, color: UIColor(red: 6/255, green: 90/255, blue: 1157/255, alpha: 1), width: 0.5)
+        
+        profileBackView.addSubview(textDOB)
+        CommonUtils.addLineToView(view: textDOB, position:.LINE_POSITION_BOTTOM, color: UIColor(red: 6/255, green: 90/255, blue: 1157/255, alpha: 1), width: 0.5)
+        
+        profileBackView.addSubview(textPwd)
+        CommonUtils.addLineToView(view: textPwd, position:.LINE_POSITION_BOTTOM, color: UIColor(red: 6/255, green: 90/255, blue: 1157/255, alpha: 1), width: 0.5)
+        
+        profileBackView.addSubview(textConfirmPwd)
+         CommonUtils.addLineToView(view: textConfirmPwd, position:.LINE_POSITION_BOTTOM, color: UIColor(red: 6/255, green: 90/255, blue: 1157/255, alpha: 1), width: 0.5)
+       
+        profileBackView.addSubview(btnsubmit)
+        self.view.addSubview(header)
+       
+        self.view.addSubview(profileBackView)
+        self.view.addSubview(btnBack)
+        //self.view.addSubview(btnBack)
+        header.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        header.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        
+        var textFieldHight = (self.view.frame.height - 150) / 5
+        if textFieldHight > 60{
+            textFieldHight = 60
+        }
+        
+        
+        btnBack.topAnchor.constraint(equalTo: self.view.topAnchor, constant:15).isActive = true
+        btnBack.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:5).isActive = true
+        btnBack.heightAnchor.constraint(equalToConstant:30).isActive = true
+        btnBack.widthAnchor.constraint(equalToConstant:30).isActive = true
+        btnBack.addTarget(self,action: #selector(self.backAction(_:)),for: .touchUpInside)
+        
+        profileImage.topAnchor.constraint(equalTo: self.view.topAnchor, constant:40).isActive = true
+        profileImage.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 130).isActive = true
+        profileImage.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -130).isActive = true
+        profileImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        profileImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        profileImage.layer.cornerRadius = profileImage.frame.width + profileImage.frame.height/2;
+        profileImage.layer.borderWidth = 1.5
+        profileImage.layer.borderColor = UIColor.white.cgColor
+        profileImage.clipsToBounds = true
+   
+        profileBackView.topAnchor.constraint(equalTo: self.view.topAnchor, constant:110).isActive = true
+        profileBackView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 30).isActive = true
+        profileBackView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -30).isActive = true
+        profileBackView.backgroundColor = .white
+        profileBackView.layer.cornerRadius = 12
+        profileBackView.heightAnchor.constraint(equalToConstant: self.view.frame.height-130).isActive = true
+        
+        textUserName.topAnchor.constraint(equalTo: self.view.topAnchor, constant:170).isActive = true
+        textUserName.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:50).isActive = true
+        textUserName.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant:-50).isActive = true
+        textUserName.heightAnchor.constraint(equalToConstant:30).isActive = true
+        textUserName.widthAnchor.constraint(equalToConstant:self.view.frame.width - 80).isActive = true
+        
+        textEmail.topAnchor.constraint(equalTo: self.view.topAnchor, constant:180 + textFieldHight).isActive = true
+        textEmail.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:50).isActive = true
+        textEmail.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant:-50).isActive = true
+        textEmail.heightAnchor.constraint(equalToConstant:30).isActive = true
+        textEmail.widthAnchor.constraint(equalToConstant:self.view.frame.width - 80).isActive = true
+        
+        textDOB.topAnchor.constraint(equalTo: self.view.topAnchor, constant:180 + textFieldHight * 2).isActive = true
+        textDOB.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:50).isActive = true
+        textDOB.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant:-50).isActive = true
+        textDOB.heightAnchor.constraint(equalToConstant:30).isActive = true
+        textDOB.widthAnchor.constraint(equalToConstant:self.view.frame.width - 80).isActive = true
+        textDOB.addTarget(self,action: #selector(self.DateofBirthFieldTouched(_:)),for: .touchUpInside)
+        
+        textPwd.topAnchor.constraint(equalTo: self.view.topAnchor, constant:180 + textFieldHight * 3).isActive = true
+        textPwd.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:50).isActive = true
+        textPwd.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant:-50).isActive = true
+        textPwd.heightAnchor.constraint(equalToConstant:30).isActive = true
+        textPwd.widthAnchor.constraint(equalToConstant:self.view.frame.width - 80).isActive = true
+        textPwd.placeholder = "Password"
+        
+        textConfirmPwd.topAnchor.constraint(equalTo: self.view.topAnchor, constant:180 + textFieldHight * 4).isActive = true
+        textConfirmPwd.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:50).isActive = true
+        textConfirmPwd.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant:-50).isActive = true
+        textConfirmPwd.heightAnchor.constraint(equalToConstant:30).isActive = true
+        textConfirmPwd.widthAnchor.constraint(equalToConstant:self.view.frame.width - 80).isActive = true
+       textConfirmPwd.placeholder = "Confirm Password"
+        
+        btnsubmit.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant:-30).isActive = true
+        btnsubmit.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:50).isActive = true
+        btnsubmit.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant:-50).isActive = true
+        btnsubmit.heightAnchor.constraint(equalToConstant:30).isActive = true
+        btnsubmit.widthAnchor.constraint(equalToConstant:self.view.frame.width - 80).isActive = true
+        btnsubmit.addTarget(self,action: #selector(self.updateProfile(_:)),for: .touchUpInside)
+        
     }
     
     override func didReceiveMemoryWarning() {
