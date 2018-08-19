@@ -64,7 +64,6 @@
 		DC8C89FA2112233700AE8E92 /* VoteAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C89F92112233600AE8E92 /* VoteAdminViewController.swift */; };
 		DC8C89FC21122DE900AE8E92 /* Opinion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C89FB21122DE900AE8E92 /* Opinion.swift */; };
 		DC8C89FE21135C6300AE8E92 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C89FD21135C6300AE8E92 /* RadioButton.swift */; };
-		DC9444B2212804C300CE99B1 /* launchscreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC9444B1212804C300CE99B1 /* launchscreen.jpg */; };
 		DCBEBC3820A786EE00E8EAEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3720A786ED00E8EAEA /* Constants.swift */; };
 		DCBEBC3A20A7871900E8EAEA /* ChatContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */; };
 		DCBEBC3C20A78BF200E8EAEA /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */; };
@@ -155,7 +154,6 @@
 		DC8C89F92112233600AE8E92 /* VoteAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteAdminViewController.swift; sourceTree = "<group>"; };
 		DC8C89FB21122DE900AE8E92 /* Opinion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opinion.swift; sourceTree = "<group>"; };
 		DC8C89FD21135C6300AE8E92 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
-		DC9444B1212804C300CE99B1 /* launchscreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = launchscreen.jpg; path = ../../../../../../Desktop/launchscreen.jpg; sourceTree = "<group>"; };
 		DCBEBC3720A786ED00E8EAEA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContactsViewController.swift; sourceTree = "<group>"; };
 		DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
@@ -233,7 +231,6 @@
 				D4FA49F6207D0D7C00CC425B /* ProgressHUD.bundle */,
 				D4639101207036F300C4E3DA /* Assets.xcassets */,
 				DC46B8EE20CB911600188EC9 /* audio.mp3 */,
-				DC9444B1212804C300CE99B1 /* launchscreen.jpg */,
 				DC46B8ED20CB911600188EC9 /* image.jpg */,
 				DC46B8EF20CB911600188EC9 /* pdf.pdf */,
 				DC46B8EC20CB911500188EC9 /* video.mp4 */,
@@ -413,7 +410,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC9444B2212804C300CE99B1 /* launchscreen.jpg in Resources */,
 				D4761EAE207193E90065ACD7 /* GoogleService-Info.plist in Resources */,
 				DC46B8F220CB911600188EC9 /* audio.mp3 in Resources */,
 				DC46B8F020CB911600188EC9 /* video.mp4 in Resources */,
