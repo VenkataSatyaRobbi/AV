@@ -40,7 +40,7 @@ class MatureCell: UICollectionViewCell{
         backgroundColor = UIColor.white
         self.addSubview(imageView)
         self.addSubview(headLines)
-        let width = self.contentView.frame.width - 30
+        let width = self.contentView.frame.width - 35
         let height = self.contentView.frame.height
         
         imageView.leftAnchor.constraint(equalTo: leftAnchor, constant:15).isActive = true
@@ -117,6 +117,7 @@ class NewsMatureViewController: UICollectionViewController {
                 let newsLocationString = dict["newsLocation"] as! String
                 let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt,postIDString: postIDString, useridString: useridString, timeStampDouble: timestamp, imageCourtesyString: photoCourtesyString, newsLocationString: newsLocationString, newsContentString: newsContentString)
                 self.posts.append(post)
+                print(post.caption)
                 self.collectionView?.reloadData()
             }
         }
@@ -130,9 +131,9 @@ class NewsMatureViewController: UICollectionViewController {
         sideMenus()
     }
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return posts.count
-    }
+//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return posts.count
+//    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
@@ -170,12 +171,8 @@ class NewsMatureViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
         let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "NewsDetailedViewController") as! NewsDetailedViewController
-        
-        
         destinationViewController.postId = posts[indexPath.row].postID
-        
         self.navigationController?.pushViewController(destinationViewController, animated: true)
-        
         let rowDataPostID = posts[indexPath.row].postID
         print("rowdata ID value: \(rowDataPostID)")
     }

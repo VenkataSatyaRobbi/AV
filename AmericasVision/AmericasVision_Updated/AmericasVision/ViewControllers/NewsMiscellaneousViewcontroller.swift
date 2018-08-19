@@ -101,25 +101,7 @@ class NewsMiscellaneousViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
         let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "NewsDetailedViewController") as! NewsDetailedViewController
-        
-       // destinationViewController.getPhotoCourtesy = posts[indexPath.row].imageCourtesy
-       // destinationViewController.getContent = posts[indexPath.row].newsContent
-        let postDate = CommonUtils.convertFromTimestamp(seconds: posts[indexPath.row].timestamp)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy"
-        let postDateDate = dateFormatter.date(from: postDate)
-        
-        let dateFormatter2 = DateFormatter()
-        dateFormatter2.dateFormat = "MMM dd, yyyy. HH':'mm"
-        let currentDateString: String = dateFormatter2.string(from: postDateDate!)
-        print("Current date is \(currentDateString)")
-       // destinationViewController.getLocationandTimestamp = posts[indexPath.row].newsLocation + " - " + currentDateString
-        
-       // destinationViewController.likes = posts[indexPath.row].postLikes
-       // destinationViewController.dislikes = posts[indexPath.row].postDislikes
         destinationViewController.postId = posts[indexPath.row].postID
-        //destinationViewController.getPhotoURL = posts[indexPath.row].photoUrl
-        destinationViewController.getPostedBy = posts[indexPath.row].userid
         self.navigationController?.pushViewController(destinationViewController, animated: true)
         let rowDataPostID = posts[indexPath.row].postID
     }

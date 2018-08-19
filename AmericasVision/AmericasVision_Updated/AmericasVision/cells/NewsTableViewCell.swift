@@ -33,6 +33,7 @@ class NewsTableViewCell: UITableViewCell,UICollectionViewDelegate {
         label.sizeToFit()
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.textAlignment = .justified
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
     
@@ -44,6 +45,7 @@ class NewsTableViewCell: UITableViewCell,UICollectionViewDelegate {
         label.numberOfLines = 0
         label.sizeToFit()
         label.textAlignment = .justified
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
    
@@ -96,33 +98,8 @@ class NewsTableViewCell: UITableViewCell,UICollectionViewDelegate {
         // topanchor + imageheight
         caption.topAnchor.constraint(equalTo: topAnchor, constant:110).isActive = true
         caption.widthAnchor.constraint(equalToConstant: width).isActive = true
-        caption.bottomAnchor.constraint(equalTo: bottomAnchor,constant:-5).isActive = true
+        caption.bottomAnchor.constraint(equalTo: bottomAnchor,constant:0).isActive = true
         
     }
     
-//    func setCollectionViewDataSourceDelegate
-//        <D: UICollectionViewDataSource & UICollectionViewDelegate>
-//        (dataSourceDelegate: D, forRow row: Int) {
-//
-//
-//        self.collectionView!.backgroundColor = UIColor.clear
-//        self.collectionView.delegate = self as? UICollectionViewDelegate
-//        self.collectionView.dataSource = self as? UICollectionViewDataSource
-//        collectionView.tag = row
-//        collectionView.reloadData()
-//    }
-    
-//    func setCollectionViewDataSourceDelegate<D: UICollectionViewDataSource & UICollectionViewDelegate>(_ dataSourceDelegate: D, forRow row: Int) {
-//
-//        collectionView.delegate = dataSourceDelegate
-//        collectionView.dataSource = dataSourceDelegate
-//        collectionView.tag = row
-//        collectionView.setContentOffset(collectionView.contentOffset, animated:false) // Stops collection view if it was scrolling.
-//        collectionView.reloadData()
-//    }
-    
-//    func registerCollectoinView<DataSource:UICollectionViewDataSource>(datasource:DataSource){
-//
-//        self.collectionView.dataSource = datasource
-//    }
 }

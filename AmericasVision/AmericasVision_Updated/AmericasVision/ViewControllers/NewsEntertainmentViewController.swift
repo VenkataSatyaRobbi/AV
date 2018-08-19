@@ -92,7 +92,7 @@ extension NewsEntertainmentViewController:UITableViewDataSource,UITableViewDeleg
             let approximateWidth = tableView.layer.frame.width - 20
             let size = CGSize(width: approximateWidth, height:1000)
             let estimatedSize = NSString(string: posts[indexPath.row].caption!).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-            let height = estimatedSize.height + 110
+            let height = estimatedSize.height + 120
             return height
         }
     }

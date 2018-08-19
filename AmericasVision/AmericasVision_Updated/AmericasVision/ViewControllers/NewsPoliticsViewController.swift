@@ -74,9 +74,9 @@ class NewsPoliticsViewController: UITableViewController{
     override func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
         let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]
         let approximateWidth = tableView.layer.frame.width - 20
-        let size = CGSize(width: approximateWidth, height:1000)
+        let size = CGSize(width: approximateWidth, height:10000)
         let estimatedSize = NSString(string: posts[indexPath.row].caption!).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-        let height = estimatedSize.height + 110
+        let height = estimatedSize.height + 110 + 10
         return height
     }
     
@@ -112,21 +112,6 @@ class NewsPoliticsViewController: UITableViewController{
         
         let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
         let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "NewsDetailedViewController") as! NewsDetailedViewController
-        
-//        destinationViewController.getPhotoCourtesy = posts[indexPath.row].imageCourtesy
-//        destinationViewController.getContent = posts[indexPath.row].newsContent
-//        let postDate = CommonUtils.convertFromTimestamp(seconds: posts[indexPath.row].timestamp)
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "MM-dd-yyyy"
-//        let postDateDate = dateFormatter.date(from: postDate)
-//
-//        let dateFormatter2 = DateFormatter()
-//        dateFormatter2.dateFormat = "MMM dd, yyyy. HH':'mm"
-//        let currentDateString: String = dateFormatter2.string(from: postDateDate!)
-//        print("Current date is \(currentDateString)")
-//        destinationViewController.getLocationandTimestamp = posts[indexPath.row].newsLocation + " - " + currentDateString
-        
-       
         destinationViewController.postId = posts[indexPath.row].postID
       
         

@@ -36,13 +36,9 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
         PhotoAdmin.isUserInteractionEnabled = true
         // Do any additional setup after loading the view.
         
-        
         print(convertTimestamp(serverTimestamp: 1526426690527))
         
         alignments()
-        
-        
-        
       
         let colorTop =  UIColor(red: 69/255, green: 90/255, blue: 195/255, alpha: 1.0).cgColor
         
@@ -53,7 +49,7 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
         
         gradientLayer.frame = CGRect(x:0, y:0, width:375, height:64)
         //UINavigationBar.appearance().layer.addSublayer(gradientLayer)
-          self.navigationController?.navigationBar.tintColor = UIColor.green
+        self.navigationController?.navigationBar.tintColor = UIColor.green
 
     }
     
@@ -64,8 +60,6 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
      
     }
 
-
-    
      func alignments(){
         PhotoCaptionAdmin.layer.cornerRadius = 8
         PhotoCaptionAdmin.clipsToBounds = true
@@ -93,8 +87,6 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
         PostCategoryText.layer.cornerRadius = 8
         PostCategoryText.clipsToBounds = true
         PostCategoryText.layer.borderWidth = 0.8
-        
-        
     }
         
     func convertTimestamp(serverTimestamp: Double) -> String {
@@ -181,20 +173,6 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
             }
         }
     }
-    
-  /*  @IBAction func BackButtonAdminTouchUpInside(_ sender: Any) {
-      // self.dismiss(animated: true, completion: nil)
-      
-        //self.dismiss(animated: true, completion: nil)
-            if let nav = self.navigationController {
-                nav.dismiss(animated: true)
-            } else {
-                self.dismiss(animated: true, completion: nil)
-            }
-        
-        
-        
-    }*/
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
