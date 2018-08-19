@@ -28,10 +28,10 @@ class MatureCell: UICollectionViewCell{
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.sizeToFit()
-        label.font = UIFont.boldSystemFont(ofSize: 13)
+        label.font = UIFont.systemFont(ofSize: 13)
         label.textAlignment = .justified
         label.lineBreakMode = .byWordWrapping
-        label.backgroundColor = UIColor.groupTableViewBackground
+        label.backgroundColor = UIColor.white
         return label
     }()
     
@@ -41,18 +41,18 @@ class MatureCell: UICollectionViewCell{
         backgroundColor = UIColor.white
         self.addSubview(imageView)
         self.addSubview(headLines)
-        let width = self.contentView.frame.width - 35
-        let height = self.contentView.frame.height
-        
-        imageView.leftAnchor.constraint(equalTo: leftAnchor, constant:15).isActive = true
-        imageView.topAnchor.constraint(equalTo: topAnchor, constant:15).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant:90).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant:width/2).isActive = true
-        
-        headLines.leftAnchor.constraint(equalTo: leftAnchor, constant:15).isActive = true
-        headLines.topAnchor.constraint(equalTo: topAnchor, constant:105).isActive = true
-        headLines.widthAnchor.constraint(equalToConstant: width/2).isActive = true
-        headLines.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        let width = (self.contentView.frame.width)
+        let height = (self.contentView.frame.height)
+//
+//        imageView.leftAnchor.constraint(equalTo: leftAnchor, constant:15).isActive = true
+//        imageView.topAnchor.constraint(equalTo: topAnchor, constant:15).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant:100).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant:width).isActive = true
+//
+//        headLines.leftAnchor.constraint(equalTo: leftAnchor, constant:15).isActive = true
+        headLines.topAnchor.constraint(equalTo: topAnchor, constant:100).isActive = true
+        headLines.widthAnchor.constraint(equalToConstant: width).isActive = true
+       // headLines.heightAnchor.constraint(equalToConstant: height - 100).isActive = true
     }
   
     required init?(coder aDecoder: NSCoder) {
@@ -77,9 +77,9 @@ class NewsMatureViewController: UICollectionViewController {
         self.navigationItem.title = "Mature News"
         self.collectionView?.backgroundColor = UIColor.groupTableViewBackground
         
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        let cellwidth = Int(self.view.frame.width)
-        let cellHeight = Int(self.view.frame.height)
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        let cellwidth = Int((self.view.frame.width-30)/2)
+        let cellHeight = Int(130)
         layout.itemSize = CGSize(width: cellwidth, height: cellHeight)
 
         self.collectionView?.collectionViewLayout = layout
