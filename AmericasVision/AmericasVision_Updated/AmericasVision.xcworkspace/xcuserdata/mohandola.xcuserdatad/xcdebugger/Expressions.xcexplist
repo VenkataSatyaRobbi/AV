@@ -246,5 +246,13 @@
       <ContextState
          contextName = "closure #1 in PublicMessageHandler.observeMediaMessages():PublicMessageHandler.swift">
       </ContextState>
+      <ContextState
+         contextName = "closure #3 in NewsDetailedViewController.viewDidAppear(_:):NewsDetailedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "comment[&quot;comments&quot;].text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

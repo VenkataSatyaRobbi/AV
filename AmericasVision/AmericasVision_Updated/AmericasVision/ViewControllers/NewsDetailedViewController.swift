@@ -28,7 +28,6 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         label.sizeToFit()
         label.font = UIFont.boldSystemFont(ofSize: 13)
         label.textAlignment = .justified
-        label.backgroundColor = UIColor.groupTableViewBackground
         return label
     }()
     
@@ -39,7 +38,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         label.sizeToFit()
         label.font = UIFont.systemFont(ofSize: 15)
         label.textAlignment = .justified
-        label.backgroundColor = UIColor.groupTableViewBackground
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
     
@@ -54,7 +53,6 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         label.sizeToFit()
         label.font = UIFont.boldSystemFont(ofSize: 13)
         label.textAlignment = .justified
-        label.backgroundColor = UIColor.groupTableViewBackground
         return label
     }()
     
@@ -78,9 +76,9 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         label.numberOfLines = 0
         label.sizeToFit()
         label.text = "User Comments"
-        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.font = UIFont.boldSystemFont(ofSize: 13)
         label.textAlignment = .justified
-        label.backgroundColor = UIColor.groupTableViewBackground
+        label.textColor = UIColor.blue
         return label
     }()
     
@@ -92,7 +90,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         label.sizeToFit()
         label.font = UIFont.boldSystemFont(ofSize: 13)
         label.textAlignment = .justified
-        label.backgroundColor = UIColor.groupTableViewBackground
+        label.textColor = UIColor.blue
         return label
     }()
     
@@ -102,7 +100,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         writeComment.layer.borderColor = UIColor.lightGray.cgColor
         writeComment.layer.borderWidth = 1.0;
         writeComment.layer.cornerRadius = 5.0;
-        writeComment.font = UIFont.boldSystemFont(ofSize: 15)
+        writeComment.font = UIFont.boldSystemFont(ofSize: 13)
         return writeComment
     }()
     
@@ -111,9 +109,9 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.sizeToFit()
-        label.font = UIFont.boldSystemFont(ofSize: 13)
+        label.font = UIFont.systemFont(ofSize: 13)
         label.textAlignment = .justified
-        label.backgroundColor = UIColor.groupTableViewBackground
+        label.backgroundColor = UIColor.lightGray
         label.layer.borderColor = UIColor.lightGray.cgColor
         label.layer.borderWidth = 1.0;
         label.layer.cornerRadius = 5.0;
@@ -127,7 +125,6 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         label.sizeToFit()
         label.font = UIFont.boldSystemFont(ofSize: 13)
         label.textAlignment = .justified
-        label.backgroundColor = UIColor.groupTableViewBackground
         return label
     }()
     
@@ -138,7 +135,6 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         label.sizeToFit()
         label.font = UIFont.boldSystemFont(ofSize: 13)
         label.textAlignment = .justified
-        label.backgroundColor = UIColor.groupTableViewBackground
         return label
     }()
     
@@ -149,10 +145,15 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         label.sizeToFit()
         label.font = UIFont.boldSystemFont(ofSize: 13)
         label.textAlignment = .justified
-        label.backgroundColor = UIColor.groupTableViewBackground
         return label
     }()
-
+    
+    let oldCommentsView: UIView = {
+        let oldCommentsView = UIView()
+        oldCommentsView.translatesAutoresizingMaskIntoConstraints = false
+        return oldCommentsView
+    }()
+    
     var postId = String()
     var postedUserId = String()
     var likeToggle: Bool = false
@@ -160,9 +161,8 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
     var username = String()
     var postedDate = String()
     var photoUrl = String()
-    
-    var commentKey = "-LIaLIBaIl1zYD9f-Kqn"
-    
+    var comments = [NSDictionary]()
+    var commentKey = String()
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -171,17 +171,47 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
                 let userFirstName = (snapshot.value as! NSDictionary)["FirstName"] as? String
                 let userLastName = (snapshot.value as! NSDictionary)["LastName"] as? String
                 self.postedBy.text = "Posted By: " + userFirstName! + ", " + userLastName!
+        }
+        var commentsHeight:CGFloat = 0
+        comments.forEach { comment in
+            
+            let commentLabel = UILabel()
+            commentLabel.translatesAutoresizingMaskIntoConstraints = false
+            commentLabel.numberOfLines = 0
+            commentLabel.sizeToFit()
+            commentLabel.textColor = UIColor.black
+            commentLabel.backgroundColor = UIColor.groupTableViewBackground
+            commentLabel.font = UIFont.systemFont(ofSize: 13)
+            commentLabel.text = comment["comments"] as? String
+            let width = self.view.frame.width
+            var textHeight = CommonUtils.calculateHeight(text: commentLabel.text!, width: width)
+            if textHeight < 40 {
+                textHeight = 40
             }
+            commentsHeight = commentsHeight + textHeight
+            self.oldCommentsView.addSubview(commentLabel)
+            commentLabel.leftAnchor.constraint(equalTo: oldCommentsView.leftAnchor, constant:40).isActive = true
+            commentLabel.topAnchor.constraint(equalTo: oldCommentsView.topAnchor, constant:commentsHeight-textHeight).isActive = true
+            commentLabel.heightAnchor.constraint(equalToConstant:textHeight).isActive = true
+            commentLabel.widthAnchor.constraint(equalToConstant:width - 40 ).isActive = true
+            
+            let commentUserProf = UIImageView()
+            commentUserProf.image = UIImage(named: "profile")
+            commentUserProf.translatesAutoresizingMaskIntoConstraints = false
+            self.oldCommentsView.addSubview(commentUserProf)
+            commentUserProf.leftAnchor.constraint(equalTo: oldCommentsView.leftAnchor, constant:1).isActive = true
+            commentUserProf.topAnchor.constraint(equalTo: oldCommentsView.topAnchor, constant:commentsHeight-textHeight).isActive = true
+            commentUserProf.heightAnchor.constraint(equalToConstant:40).isActive = true
+            commentUserProf.widthAnchor.constraint(equalToConstant:40).isActive = true
+        }
+        
+        self.scrollView.addSubview(oldCommentsView)
     
         NewsDetailedVCImage.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:1).isActive = true
-        // NewsDetailedVCImage.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:0).isActive = true
-        // NewsDetailedVCImage.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant:0).isActive = true
         NewsDetailedVCImage.heightAnchor.constraint(equalToConstant:300).isActive = true
         NewsDetailedVCImage.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
         
-        // NewsDetailedVCImageCourtesy.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:0).isActive = true
         NewsDetailedVCImageCourtesy.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:300).isActive = true
-        // NewsDetailedVCImageCourtesy.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant:0).isActive = true
         NewsDetailedVCImageCourtesy.heightAnchor.constraint(equalToConstant:20).isActive = true
         NewsDetailedVCImageCourtesy.widthAnchor.constraint(equalToConstant:self.view.frame.width/2).isActive = true
         
@@ -189,16 +219,14 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         postedBy.leftAnchor.constraint(equalTo: scrollView.rightAnchor, constant:self.view.frame.width/2).isActive = true
         postedBy.heightAnchor.constraint(equalToConstant:20).isActive = true
         postedBy.widthAnchor.constraint(equalToConstant:self.view.frame.width/2).isActive = true
-        //
-        //   NewsDetailedVCImageCaption.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:0).isActive = true
         NewsDetailedVCImageCaption.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:320).isActive = true
-        //   NewsDetailedVCImageCaption.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant:0).isActive = true
         NewsDetailedVCImageCaption.heightAnchor.constraint(equalToConstant:20).isActive = true
         NewsDetailedVCImageCaption.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
         
         likeButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:320).isActive = true
         likeButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:self.view.frame.width/2).isActive = true
         likeButton.heightAnchor.constraint(equalToConstant:20).isActive = true
+        likeButton.addTarget(self,action: #selector(self.likesAction(_:)),for: .touchUpInside)
         
         likeLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:320).isActive = true
         likeLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:self.view.frame.width/2 + 30).isActive = true
@@ -207,42 +235,32 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         dislikeButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:320).isActive = true
         dislikeButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:self.view.frame.width/2 + 60).isActive = true
         dislikeButton.heightAnchor.constraint(equalToConstant:20).isActive = true
+        dislikeButton.addTarget(self,action: #selector(self.dislikeAction(_:)),for: .touchUpInside)
         
         dislikeLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:320).isActive = true
         dislikeLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:self.view.frame.width/2 + 90).isActive = true
         dislikeLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
         
-        // NewsDetailedVCNewsContent.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:0).isActive = true
         NewsDetailedVCNewsContent.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:340).isActive = true
-        //  NewsDetailedVCNewsContent.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant:0).isActive = true
         let contentHeight = calculateHeight()
         NewsDetailedVCNewsContent.heightAnchor.constraint(equalToConstant:contentHeight).isActive = true
         NewsDetailedVCNewsContent.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
-        
-        // writeCommentLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:0).isActive = true
-        // writeCommentLabel.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant:0).isActive = true
         
         writeCommentLabel.topAnchor.constraint(equalTo:scrollView.topAnchor, constant: 340 + contentHeight).isActive = true
         writeCommentLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
         writeCommentLabel.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
         
-        // writeComment.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:0).isActive = true
         writeComment.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:360 + contentHeight).isActive = true
-        // writeComment.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant:0).isActive = true
         writeComment.heightAnchor.constraint(equalToConstant:50).isActive = true
         writeComment.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
         
-        //  oldCommentsLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant:0).isActive = true
         oldCommentsLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:410 + contentHeight).isActive = true
-        //  oldCommentsLabel.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant:0).isActive = true
         oldCommentsLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
         oldCommentsLabel.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
         
-        //  oldComments.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:0).isActive = true
-        oldComments.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:430 + contentHeight).isActive = true
-        //  oldComments.rightAnchor.constraint(equalTo: view.rightAnchor, constant:0).isActive = true
-        oldComments.heightAnchor.constraint(equalToConstant:130).isActive = true
-        oldComments.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
+        oldCommentsView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:430 + contentHeight).isActive = true
+        oldCommentsView.heightAnchor.constraint(equalToConstant:commentsHeight).isActive = true
+        oldCommentsView.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
         
         likeLabel.text = likesCount.stringValue
         dislikeLabel.text = dislikesCount.stringValue
@@ -270,7 +288,6 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         }
         
         
-        //checkCurrentUserComments()
     }
     
     override func viewDidLoad() {
@@ -289,7 +306,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         self.scrollView.addSubview(writeCommentLabel)
         self.scrollView.addSubview(writeComment)
         self.scrollView.addSubview(oldCommentsLabel)
-        self.scrollView.addSubview(oldComments)
+        //self.scrollView.addSubview(oldCommentsView)
         scrollView.isScrollEnabled = true
         scrollView.delegate = self
         self.navigationItem.title = "Details"
@@ -300,14 +317,16 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
                 self.likesCount = dict["likes"] as! NSNumber
                 self.dislikesCount = dict["dislikes"] as! NSNumber
                 self.postedUserId = dict["userid"] as! String
-                self.NewsDetailedVCImageCaption.text = dict["newsLocation"] as! String
-                self.NewsDetailedVCImageCourtesy.text = dict["photoCourtesy"] as! String
+                self.NewsDetailedVCImageCaption.text = dict["newsLocation"] as? String
+                self.NewsDetailedVCImageCourtesy.text = dict["photoCourtesy"] as? String
                 let time = dict["timestamp"] as! Double
                 self.postedDate = self.postedDateFormat(time:time)
                 self.NewsDetailedVCImageCaption.text = self.NewsDetailedVCImageCaption.text! + self.postedDate
-                self.NewsDetailedVCNewsContent.text = dict["newsContent"] as! String
+                self.NewsDetailedVCNewsContent.text = dict["newsContent"] as? String
             }
         }
+        
+        checkCurrentUserComments()
         
     }
     
@@ -377,6 +396,8 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
     }
     
     func updateCountInPost(){
+        self.dislikeLabel.text = dislikesCount.stringValue
+        self.likeLabel.text = likesCount.stringValue
         let ref = DBProvider.instance.newsFeedRef.child(postId)
         ref.updateChildValues(["likes": likesCount])
         ref.updateChildValues(["dislikes": dislikesCount])
@@ -395,14 +416,13 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
     func checkCurrentUserComments(){
         DBProvider.instance.newsFeedRef.child(postId).child("usercomments").observeSingleEvent(of: DataEventType.value){
             (snapShot:DataSnapshot) in
-            var comments = [NSDictionary]()
             
             if let mycomments = snapShot.value as? NSDictionary{
                 for(key,value) in mycomments{
                     if let commentDic = value as? NSDictionary{
+                        self.comments.append(commentDic)
                         if AVAuthService.getCurrentUserId() == commentDic["userId"] as? String {
                             self.commentKey = (key as? String)!
-                            comments.append(commentDic)
                             let type = commentDic["type"] as? String
                             if type == "Like" {
                                 self.likeToggle = true

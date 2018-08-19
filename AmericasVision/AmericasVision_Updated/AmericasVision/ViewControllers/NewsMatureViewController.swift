@@ -30,6 +30,7 @@ class MatureCell: UICollectionViewCell{
         label.sizeToFit()
         label.font = UIFont.boldSystemFont(ofSize: 13)
         label.textAlignment = .justified
+        label.lineBreakMode = .byWordWrapping
         label.backgroundColor = UIColor.groupTableViewBackground
         return label
     }()
