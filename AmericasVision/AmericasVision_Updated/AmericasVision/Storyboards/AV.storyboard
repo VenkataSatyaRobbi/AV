@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -443,7 +442,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b5A-87-rXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2011.5" y="1033.5"/>
+            <point key="canvasLocation" x="-1550" y="1054"/>
         </scene>
         <!--Music by Album-->
         <scene sceneID="Wc3-7g-jA9">
@@ -454,144 +453,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedsTableViewCell" rowHeight="163" id="JBh-J6-StF" customClass="FeedsTableViewCell" customModule="AmericasVision" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="163"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JBh-J6-StF" id="Vz5-Ut-1Mj">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="LHh-lj-k3d">
-                                            <rect key="frame" x="15" y="30" width="344" height="110"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6ad-lD-gMQ">
-                                                <size key="itemSize" width="142" height="110"/>
-                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                            </collectionViewFlowLayout>
-                                            <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SlideCollectionViewCell" id="unh-Vj-4pF" customClass="SlideCollectionViewCell" customModule="AmericasVision" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="142" height="110"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="142" height="110"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Yj8-fF-U3y">
-                                                                <rect key="frame" x="0.0" y="0.0" width="142" height="110"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="j6h-kN-OPv">
-                                                                <rect key="frame" x="7" y="79" width="128" height="27"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </view>
-                                                    <connections>
-                                                        <outlet property="cellImage" destination="Yj8-fF-U3y" id="xmo-Gu-mlT"/>
-                                                        <outlet property="headlines" destination="j6h-kN-OPv" id="riV-hy-4kX"/>
-                                                    </connections>
-                                                </collectionViewCell>
-                                            </cells>
-                                        </collectionView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latest Album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="om9-Up-n6H">
-                                            <rect key="frame" x="15" y="0.0" width="294" height="32"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="14"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="collectionView" destination="LHh-lj-k3d" id="ejE-ST-lqx"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MusicTableViewCell1" rowHeight="322" id="b8W-Vz-7QK" customClass="MusicTableViewCell" customModule="AmericasVision" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="191" width="375" height="322"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MusicTableViewCell" rowHeight="60" id="b8W-Vz-7QK" customClass="MusicTableViewCell" customModule="AmericasVision" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b8W-Vz-7QK" id="zOU-m1-4cH">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="322"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" misplaced="YES" id="y5F-WV-mLB">
-                                            <rect key="frame" x="16" y="35" width="343" height="276"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="OB5-8i-FaO">
-                                                    <rect key="frame" x="1" y="0.0" width="342" height="276"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Unknown" id="Mgc-tu-4hN">
-                                                            <rect key="frame" x="238" y="8" width="104" height="76"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Unknown" id="7hd-Dy-eiq">
-                                                            <rect key="frame" x="120" y="10" width="104" height="76"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Unknown" id="Oha-MG-jK8">
-                                                            <rect key="frame" x="8" y="98" width="104" height="76"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Unknown" id="C3Q-gs-JEo">
-                                                            <rect key="frame" x="122" y="98" width="104" height="76"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Unknown" id="Xuz-ET-Rlc">
-                                                            <rect key="frame" x="238" y="98" width="104" height="76"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Unknown" id="skh-v2-c9l">
-                                                            <rect key="frame" x="7" y="186" width="106" height="71"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Unknown" id="6ff-La-BA2">
-                                                            <rect key="frame" x="123" y="186" width="106" height="71"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="landscape" id="QnX-bW-Y0A">
-                                                            <rect key="frame" x="122" y="186" width="0.0" height="85"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Unknown" id="b7A-eD-fdo">
-                                                            <rect key="frame" x="236" y="186" width="106" height="71"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Unknown" id="QDV-m4-75E">
-                                                            <rect key="frame" x="4" y="10" width="104" height="76"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="b8W-Vz-7QK" id="2Qs-Qh-GZQ"/>
-                                                    </connections>
-                                                </scrollView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tranding Albums" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BBC-fe-Prt">
-                                            <rect key="frame" x="16" y="11" width="331" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="MusicScrollview" destination="OB5-8i-FaO" id="r0U-1Y-dw8"/>
-                                    <outlet property="MusicTableImage" destination="Oha-MG-jK8" id="Af1-uL-x75"/>
-                                    <outlet property="MusicTablebg" destination="y5F-WV-mLB" id="fAI-65-tm9"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -600,72 +468,26 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="8aG-oY-oWq">
-                        <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="r6s-JX-omt"/>
+                        <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="r6s-JX-omt">
+                            <connections>
+                                <segue destination="QYm-8g-8yd" kind="push" identifier="AVMusicPlayerController" id="1Hq-ZX-F9h"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add to Store" image="adminconsole" landscapeImage="adminconsole" largeContentSizeImage="adminconsole" id="reb-LH-omv">
                             <connections>
-                                <segue destination="QYm-8g-8yd" kind="push" id="Qs7-wB-hfP"/>
+                                <segue destination="fZ4-Iz-qPJ" kind="push" id="nwY-qY-9pd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="MusicByAlbumAdminButton" destination="reb-LH-omv" id="DPI-OB-3bh"/>
                         <outlet property="MusicByAlbumHomeButton" destination="r6s-JX-omt" id="BJC-g6-y4S"/>
-                        <outlet property="musicByAlbumtableview" destination="J9P-H2-opv" id="RXA-au-K9z"/>
+                        <outlet property="view" destination="J9P-H2-opv" id="Awc-PF-IZZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVQ-LQ-wSt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1549.5" y="1033.5"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="bHg-LP-eTx">
-            <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="olt-JC-2dN" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="IdA-az-zQI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Album Name" textAlignment="center" minimumFontSize="17" id="VpF-9r-xtc">
-                                <rect key="frame" x="25" y="100" width="334" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Rmy-p8-rtD" id="p8e-LO-5LN"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Album Date" textAlignment="center" minimumFontSize="17" id="qvc-NZ-bt9">
-                                <rect key="frame" x="21" y="159" width="334" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Rmy-p8-rtD" id="SiZ-11-pjx"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="x8L-0B-EXc">
-                                <rect key="frame" x="105" y="430" width="166" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.70588235290000001" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Upload">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="camera" id="nsH-VV-zPD">
-                                <rect key="frame" x="137" y="231" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="oW8-tL-Jbs"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xkq-lr-7iz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1094" y="1037"/>
+            <point key="canvasLocation" x="-2012.5" y="1053.5"/>
         </scene>
         <!--MarketPlace-->
         <scene sceneID="N4X-7M-2k7">
@@ -1326,47 +1148,35 @@
             </objects>
             <point key="canvasLocation" x="1157.5" y="-668.11166666666657"/>
         </scene>
-        <!--View Controller-->
+        <!--Music Player Controller-->
         <scene sceneID="pe4-qG-M2B">
             <objects>
-                <viewController id="QYm-8g-8yd" customClass="ViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AVMusicPlayerController" id="QYm-8g-8yd" customClass="AVMusicPlayerController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cL9-CS-ZJ9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" id="ExD-LN-Bfi">
-                                <rect key="frame" x="0.0" y="105" width="375" height="562"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="x1q-ZY-6Eb">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="292"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0ku-tN-UUA">
-                        <barButtonItem key="leftBarButtonItem" title="Choose" id="410-Jh-DY0">
-                            <connections>
-                                <action selector="chooseImageWithSender:" destination="QYm-8g-8yd" id="aWC-vF-nSR"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Upload" id="UfH-xC-WxQ">
-                            <connections>
-                                <action selector="uploadWithSender:" destination="QYm-8g-8yd" id="35V-P3-4W9"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="imageView" destination="x1q-ZY-6Eb" id="zLv-HL-Hdj"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="0ku-tN-UUA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BJD-oN-frs" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1095.5" y="1859.5"/>
+            <point key="canvasLocation" x="-2034" y="1915"/>
+        </scene>
+        <!--MusicAdmin-->
+        <scene sceneID="lvv-o3-T4P">
+            <objects>
+                <viewController title="MusicAdmin" id="fZ4-Iz-qPJ" customClass="MusicAdminViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d3W-tp-H0k">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="P48-vB-kvo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Cg-Lt-rEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1585" y="1915"/>
         </scene>
         <!--Mature-->
         <scene sceneID="JXA-Pu-viD">
@@ -1722,7 +1532,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Unknown" width="216" height="234"/>
         <image name="adminconsole" width="23" height="23"/>
         <image name="camera" width="128" height="128"/>
         <image name="entertainment" width="20" height="19"/>

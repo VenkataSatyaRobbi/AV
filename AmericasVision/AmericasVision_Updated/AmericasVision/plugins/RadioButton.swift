@@ -4,7 +4,7 @@
 //
 //  Created by Mohan Dola on 02/08/18.
 //  Copyright © 2018 zeroGravity. All rights reserved.
-//
+// 10
 
 import Foundation
 
@@ -14,8 +14,10 @@ class RadioButton: UIButton {
     var alternateButton:Array<RadioButton>?
     
     override func awakeFromNib() {
-        self.layer.cornerRadius = 10
-        self.layer.borderWidth = 2.0
+        self.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        self.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        self.layer.cornerRadius = 12
+        self.layer.borderWidth = 1.0
         self.layer.masksToBounds = true
     }
     

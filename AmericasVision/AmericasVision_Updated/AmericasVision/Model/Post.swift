@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 class Post{
     var caption: String?
     var photoUrl: String

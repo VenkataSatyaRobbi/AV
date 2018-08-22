@@ -17,10 +17,10 @@
          contextName = "NewsDetailedViewController.loadPost():NewsDetailedViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = ".value">
+               value = "DBProvider.instance.newsFeedRef.queryEqual(toValue: &quot;postID&quot;).observe(.childAdded){ (snapshot: DataSnapshot) in }">
             </PersistentString>
             <PersistentString
-               value = "DBProvider.instance.newsFeedRef.queryEqual(toValue: &quot;postID&quot;).observe(.childAdded){ (snapshot: DataSnapshot) in }">
+               value = ".value">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -115,6 +115,14 @@
          contextName = "FeedsTableViewCell.init(style:reuseIdentifier:):FeedsTableViewCell.swift">
       </ContextState>
       <ContextState
+         contextName = "MusicByAlbumTableViewController.tableView(_:cellForRowAt:):MusicByAlbumTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tableView.dequeueReusableCell(withIdentifier: &quot;MusicTableViewCell&quot;, for: indexPath) as! MusicTableViewCell">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in MessageHandler.observeMessages():MessageHandler.swift">
          <PersistentStrings>
             <PersistentString
@@ -123,15 +131,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "NewsMatureViewController.numberOfSections(in:):NewsMatureViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in VotesCollectionViewController.viewDidLoad():VotesCollectionViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "dict[&quot;Question&quot;] as! String">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "NewsMatureViewController.numberOfSections(in:):NewsMatureViewController.swift">
       </ContextState>
       <ContextState
          contextName = "VoteAdminViewController.publishAction(_:):VoteAdminViewController.swift">
