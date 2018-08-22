@@ -358,7 +358,7 @@ class VotesCollectionViewController: UICollectionViewController{
     
     func isUserVoted(id:String,index:Int){
         DBProvider.instance.opinionRef.child(id).child("voteusers").child(AVAuthService.getCurrentUserId())
-            .observe(DataEventType.childAdded){(snapshot:DataSnapshot) in
+            .observe(DataEventType.value){(snapshot:DataSnapshot) in
             if let data = snapshot.value as? String {
                     self.opinion[index].selectedOption = data
              }

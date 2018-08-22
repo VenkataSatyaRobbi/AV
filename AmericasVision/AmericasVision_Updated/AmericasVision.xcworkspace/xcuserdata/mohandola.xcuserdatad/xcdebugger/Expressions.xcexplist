@@ -42,7 +42,7 @@
                value = "opinion[indexPath.row]">
             </PersistentString>
             <PersistentString
-               value = "opinion[indexPath.row].selectedOption=&quot;Yes&quot;">
+               value = "opinion[indexPath.row].option1">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -53,9 +53,6 @@
                value = "question.text">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "RadioButton.unselectAlternateButtons():RadioButton.swift">
       </ContextState>
       <ContextState
          contextName = "NewsTableViewCell.setCollectionViewDataSourceDelegate&lt;A&gt;(_:forRow:):NewsTableViewCell.swift">
