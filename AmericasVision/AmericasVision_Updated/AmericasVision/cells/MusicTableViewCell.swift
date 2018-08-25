@@ -25,6 +25,16 @@ class MusicTableViewCell: UITableViewCell{
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.sizeToFit()
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.textAlignment = .justified
+        label.textColor = .white
+        label.lineBreakMode = .byWordWrapping
+        return label
+    }()
+    
+    let MusicTableTilte: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 12)
         label.textAlignment = .justified
         label.textColor = .white
@@ -59,6 +69,7 @@ class MusicTableViewCell: UITableViewCell{
         let width = self.contentView.layer.frame.width - 30
         self.addSubview(MusicTableImage)
         self.addSubview(MusicTableHeadlines)
+        self.addSubview(MusicTableTilte)
         self.addSubview(menuButton)
 
         MusicTableImage.topAnchor.constraint(equalTo: topAnchor, constant:5).isActive = true
@@ -68,6 +79,10 @@ class MusicTableViewCell: UITableViewCell{
         MusicTableHeadlines.leftAnchor.constraint(equalTo: leftAnchor, constant:65).isActive = true
         MusicTableHeadlines.topAnchor.constraint(equalTo: topAnchor, constant:5).isActive = true
         MusicTableHeadlines.widthAnchor.constraint(equalToConstant: width-85).isActive = true
+        
+        MusicTableTilte.leftAnchor.constraint(equalTo: leftAnchor, constant:65).isActive = true
+        MusicTableTilte.topAnchor.constraint(equalTo: topAnchor, constant:25).isActive = true
+        MusicTableTilte.widthAnchor.constraint(equalToConstant: width-85).isActive = true
 
         menuButton.rightAnchor.constraint(equalTo: rightAnchor, constant:-5).isActive = true
         menuButton.topAnchor.constraint(equalTo: topAnchor, constant:5).isActive = true

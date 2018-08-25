@@ -91,6 +91,7 @@ class MusicByAlbumTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MusicTableViewCell") as! MusicTableViewCell
         cell.MusicTableImage.image = UIImage.init(named: "Unknown")
         cell.MusicTableHeadlines.text = "Rock ON"
+        cell.MusicTableTilte.text = "Farhan Akhtar,Arujun Rampal,Prachi Desai"
         return cell
         
     }
