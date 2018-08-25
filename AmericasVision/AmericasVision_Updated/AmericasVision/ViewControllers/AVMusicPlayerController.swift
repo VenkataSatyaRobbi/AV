@@ -21,6 +21,19 @@ class AVMusicPlayerController: UIViewController {
     let trackTitle : UILabel = {
         let label = UILabel()
         label.text = "Rock On"
+        label.textColor = UIColor.white
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let trackSubTitle : UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.white
+        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.textAlignment = .center
+        label.text = "Farhan Akhtar,Arujun Rampal,Prachi Desai"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -33,19 +46,25 @@ class AVMusicPlayerController: UIViewController {
     
     let playButton : UIButton = {
        let button =  UIButton()
-        button.setTitle("Play", for: .normal)
-        button.backgroundColor = UIColor.blue
-        button.titleLabel?.textColor = UIColor.white
         button.translatesAutoresizingMaskIntoConstraints = false
+        let image = UIImage(named: "playMusic")
+        button.setBackgroundImage(image, for: .normal)
         return button
     }()
     
-    let pauseButton : UIButton = {
+    let forwardButton : UIButton = {
         let button =  UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-         button.setTitle("Pause", for: .normal)
-        button.titleLabel?.textColor = UIColor.white
-        button.backgroundColor = UIColor.blue
+        let image = UIImage(named: "forwardMusic")
+        button.setBackgroundImage(image, for: .normal)
+        return button
+    }()
+    
+    let backWardButton : UIButton = {
+        let button =  UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let image = UIImage(named: "backwardMusic")
+        button.setBackgroundImage(image, for: .normal)
         return button
     }()
     
@@ -68,44 +87,70 @@ class AVMusicPlayerController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "musicback.jpg")
+        backgroundImage.contentMode = UIViewContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
+        
         self.view.addSubview(imageView)
         self.view.addSubview(trackTitle)
+        self.view.addSubview(trackSubTitle)
         self.view.addSubview(progressBar)
+        self.view.addSubview(backWardButton)
         self.view.addSubview(playButton)
-        self.view.addSubview(pauseButton)
+        self.view.addSubview(forwardButton)
         
         playButton.addTarget(self,action: #selector(self.playAction(_:)),for: .touchUpInside)
-        pauseButton.addTarget(self,action: #selector(self.pauseAction(_:)),for: .touchUpInside)
-        imageView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        forwardButton.addTarget(self,action: #selector(self.pauseAction(_:)),for: .touchUpInside)
+        backWardButton.addTarget(self,action: #selector(self.pauseAction(_:)),for: .touchUpInside)
+        
+        imageView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 60).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: self.view.frame.height/2).isActive = true
-        imageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 5).isActive = true
+        imageView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 30).isActive = true
+        imageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 80).isActive = true
         
-        trackTitle.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        trackTitle.widthAnchor.constraint(equalToConstant: self.view.frame.width-60).isActive = true
+        trackTitle.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 30).isActive = true
         trackTitle.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        trackTitle.topAnchor.constraint(equalTo: self.view.topAnchor, constant: self.view.frame.height/2).isActive = true
+        trackTitle.topAnchor.constraint(equalTo: self.view.topAnchor, constant: (self.view.frame.height/2)+80).isActive = true
         
-        progressBar.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        trackSubTitle.widthAnchor.constraint(equalToConstant: self.view.frame.width-60).isActive = true
+        trackSubTitle.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 30).isActive = true
+        trackSubTitle.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        trackSubTitle.topAnchor.constraint(equalTo: self.view.topAnchor, constant: (self.view.frame.height/2)+110).isActive = true
+        
+        progressBar.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 30).isActive = true
+        progressBar.widthAnchor.constraint(equalToConstant: self.view.frame.width-60).isActive = true
         progressBar.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        progressBar.topAnchor.constraint(equalTo: self.view.topAnchor, constant:( self.view.frame.height/2)+30).isActive = true
+        progressBar.topAnchor.constraint(equalTo: self.view.topAnchor, constant:( self.view.frame.height/2)+140).isActive = true
+        
+        let buttonLeft = (self.view.frame.width/2)-150
+        backWardButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        backWardButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        backWardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor,constant:buttonLeft+50).isActive = true
+        backWardButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: (self.view.frame.height/2)+170).isActive = true
         
         playButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        playButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        playButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: (self.view.frame.width/2)-25).isActive = true
-        playButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: (self.view.frame.height/2)+80).isActive = true
+        playButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        playButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:buttonLeft+120).isActive = true
+        playButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: (self.view.frame.height/2)+170).isActive = true
         
-        pauseButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        pauseButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        pauseButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: (self.view.frame.width/2)+30).isActive = true
-        pauseButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: (self.view.frame.height/2)+80).isActive = true
-        
+        forwardButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        forwardButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        forwardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: buttonLeft+190).isActive = true
+        forwardButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: (self.view.frame.height/2)+170).isActive = true
     }
     
     @IBAction func playAction(_ sender: UIButton) {
+        let image = UIImage(named: "pauseMusic")
+        playButton.setBackgroundImage(image, for: .normal)
         player.play()
     }
     
     @IBAction func pauseAction(_ sender: UIButton) {
         if player.isPlaying {
+            let image = UIImage(named: "playMusic")
+            playButton.setBackgroundImage(image, for: .normal)
             player.pause()
         }
     }

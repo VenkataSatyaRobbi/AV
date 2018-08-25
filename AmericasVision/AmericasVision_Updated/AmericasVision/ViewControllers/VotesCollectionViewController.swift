@@ -404,6 +404,7 @@ class VotesCollectionViewController: UICollectionViewController{
         let option2Height = CommonUtils.calculateHeight(text:opinion[indexPath.row].question, width: (self.collectionView?.frame.size.width)! - 20)
         let option3Height = CommonUtils.calculateHeight(text:opinion[indexPath.row].question, width: (self.collectionView?.frame.size.width)! - 20)
         cell.questionTextheight = questionTextheight
+        
         cell.option1Height = option1Height
         cell.option2Height = option2Height
         cell.option3Height = option3Height

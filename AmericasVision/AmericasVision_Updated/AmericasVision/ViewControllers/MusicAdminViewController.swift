@@ -11,25 +11,45 @@ import FirebaseStorage
 import FirebaseDatabase
 import FirebaseAuth
 
+import MobileCoreServices
 class MusicAdminViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    
+  
+    
+    var imagePickerController = UIImagePickerController()
+    var videoURL: URL?
+    
+    private func openImgPicker() {
+        imagePickerController.sourceType = .savedPhotosAlbum
+        imagePickerController.delegate = self
+        imagePickerController.mediaTypes = ["public.movie"]
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+   
+    
+    
     
     let imageView : UIImageView = {
         let view = UIImageView()
+       // view.backgroundColor = UIColor.red
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     let uploadButton: UIButton = {
         let btn = UIButton()
+        btn.backgroundColor = UIColor.red
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
     
-    var imagePickerController: UIImagePickerController!
+   // var imagePickerController: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(imageView)
+       
         //uploadButton.addTarget(self,action: #selector(self.upload(_:)),for: .touchUpInside)
         imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -39,7 +59,23 @@ class MusicAdminViewController: UIViewController, UIImagePickerControllerDelegat
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+       // self.view.addSubview(imageView)
+        self.view.addSubview(uploadButton)
+       
+        
+      
+        imageView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: self.view.frame.height/2).isActive = true
+        imageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 5).isActive = true
+        
+       
+        
+        uploadButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant:5).isActive = true
+        uploadButton.leftAnchor.constraint(equalTo: self.view.rightAnchor, constant:self.view.frame.width/2).isActive = true
+        uploadButton.heightAnchor.constraint(equalToConstant:20).isActive = true
+        uploadButton.widthAnchor.constraint(equalToConstant:self.view.frame.width/2).isActive = true
+}
     
     @IBAction func upload(sender: AnyObject) {
         if let image = self.imageView.image {
@@ -151,3 +187,4 @@ class MusicAdminViewController: UIViewController, UIImagePickerControllerDelegat
 
     
 }
+
