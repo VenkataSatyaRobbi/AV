@@ -8,9 +8,13 @@
 
 import Foundation
 
-class MusicTableViewCell: UITableViewCell{
+class MusicViewCell: UICollectionViewCell{
     
     var Id:String = ""
+    
+    //var leftPosition:CGFloat = 65
+   // var imageSize:CGFloat = 60
+    
     
     var MusicTableImage : UIImageView = {
         let view = UIImageView()
@@ -52,42 +56,44 @@ class MusicTableViewCell: UITableViewCell{
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-       
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
         
+        super.init(frame: frame)
+        backgroundColor = UIColor.white
         self.contentView.layer.borderColor = UIColor.groupTableViewBackground.cgColor
         self.contentView.layer.borderWidth = 2.0
         self.contentView.layer.cornerRadius = 5.0
         self.contentView.layer.masksToBounds = false
         self.contentView.backgroundColor = UIColor(red: 15/255, green: 27/255, blue: 41/255, alpha: 1)
-        let width = self.contentView.layer.frame.width - 30
+        let width1 = self.contentView.layer.frame.width - 30
         self.addSubview(MusicTableImage)
         self.addSubview(MusicTableHeadlines)
         self.addSubview(MusicTableTilte)
         self.addSubview(menuButton)
-
+    }
+ 
+    func setAllignments(imageSize:CGFloat,headLinesLeft:CGFloat,headLinesTop:CGFloat,headLinesWidth:CGFloat,
+                        tileTop:CGFloat,titleLeft:CGFloat,menuTop:CGFloat,menuLeft:CGFloat){
         MusicTableImage.topAnchor.constraint(equalTo: topAnchor, constant:5).isActive = true
-        MusicTableImage.heightAnchor.constraint(equalToConstant:60).isActive = true
-        MusicTableImage.widthAnchor.constraint(equalToConstant:60).isActive = true
-
-        MusicTableHeadlines.leftAnchor.constraint(equalTo: leftAnchor, constant:65).isActive = true
-        MusicTableHeadlines.topAnchor.constraint(equalTo: topAnchor, constant:5).isActive = true
-        MusicTableHeadlines.widthAnchor.constraint(equalToConstant: width-85).isActive = true
+        MusicTableImage.heightAnchor.constraint(equalToConstant:imageSize).isActive = true
+        MusicTableImage.widthAnchor.constraint(equalToConstant:imageSize).isActive = true
         
-        MusicTableTilte.leftAnchor.constraint(equalTo: leftAnchor, constant:65).isActive = true
-        MusicTableTilte.topAnchor.constraint(equalTo: topAnchor, constant:25).isActive = true
-        MusicTableTilte.widthAnchor.constraint(equalToConstant: width-85).isActive = true
-
-        menuButton.rightAnchor.constraint(equalTo: rightAnchor, constant:-5).isActive = true
-        menuButton.topAnchor.constraint(equalTo: topAnchor, constant:5).isActive = true
+        MusicTableHeadlines.leftAnchor.constraint(equalTo: leftAnchor, constant:headLinesLeft).isActive = true
+        MusicTableHeadlines.topAnchor.constraint(equalTo: topAnchor, constant:headLinesTop).isActive = true
+        MusicTableHeadlines.widthAnchor.constraint(equalToConstant: headLinesWidth-20).isActive = true
+        
+        MusicTableTilte.leftAnchor.constraint(equalTo: leftAnchor, constant:titleLeft).isActive = true
+        MusicTableTilte.topAnchor.constraint(equalTo: topAnchor, constant:tileTop).isActive = true
+        MusicTableTilte.widthAnchor.constraint(equalToConstant: headLinesWidth-20).isActive = true
+        
+        menuButton.leftAnchor.constraint(equalTo: leftAnchor, constant:menuLeft).isActive = true
+        menuButton.topAnchor.constraint(equalTo: topAnchor, constant:menuTop).isActive = true
         menuButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        
     }
     
 }
