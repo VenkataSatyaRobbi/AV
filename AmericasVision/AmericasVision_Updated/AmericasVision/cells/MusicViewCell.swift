@@ -64,9 +64,9 @@ class MusicViewCell: UICollectionViewCell{
     override init(frame: CGRect) {
         
         super.init(frame: frame)
-        backgroundColor = UIColor.white
+        
         self.contentView.layer.borderColor = UIColor.groupTableViewBackground.cgColor
-        self.contentView.layer.borderWidth = 2.0
+        self.contentView.layer.borderWidth = 0.0
         self.contentView.layer.cornerRadius = 5.0
         self.contentView.layer.masksToBounds = false
         self.contentView.backgroundColor = UIColor(red: 15/255, green: 27/255, blue: 41/255, alpha: 1)

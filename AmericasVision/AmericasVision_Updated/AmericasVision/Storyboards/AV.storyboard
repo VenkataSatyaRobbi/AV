@@ -444,51 +444,6 @@
             </objects>
             <point key="canvasLocation" x="-1550" y="1054"/>
         </scene>
-        <!--Music by Album-->
-        <scene sceneID="Wc3-7g-jA9">
-            <objects>
-                <tableViewController title="Music by Album" id="ViP-a4-onz" customClass="MusicByAlbumTableViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="J9P-H2-opv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MusicTableViewCell" rowHeight="60" id="b8W-Vz-7QK" customClass="MusicTableViewCell" customModule="AmericasVision" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b8W-Vz-7QK" id="zOU-m1-4cH">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="ViP-a4-onz" id="jmj-c9-koW"/>
-                            <outlet property="delegate" destination="ViP-a4-onz" id="q9V-0S-4IP"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="8aG-oY-oWq">
-                        <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="r6s-JX-omt">
-                            <connections>
-                                <segue destination="QYm-8g-8yd" kind="push" identifier="AVMusicPlayerController" id="1Hq-ZX-F9h"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add to Store" image="adminconsole" landscapeImage="adminconsole" largeContentSizeImage="adminconsole" id="reb-LH-omv">
-                            <connections>
-                                <segue destination="fZ4-Iz-qPJ" kind="push" id="nwY-qY-9pd"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="MusicByAlbumAdminButton" destination="reb-LH-omv" id="DPI-OB-3bh"/>
-                        <outlet property="MusicByAlbumHomeButton" destination="r6s-JX-omt" id="BJC-g6-y4S"/>
-                        <outlet property="view" destination="J9P-H2-opv" id="Awc-PF-IZZ"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YVQ-LQ-wSt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2012.5" y="1053.5"/>
-        </scene>
         <!--MarketPlace-->
         <scene sceneID="N4X-7M-2k7">
             <objects>
@@ -1030,7 +985,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ViP-a4-onz" kind="relationship" relationship="rootViewController" id="w4j-lD-b9R"/>
+                        <segue destination="byc-lj-mcz" kind="relationship" relationship="rootViewController" id="4St-hY-21V"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTc-e7-LIV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1161,7 +1116,60 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BJD-oN-frs" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2034" y="1915"/>
+            <point key="canvasLocation" x="-2012" y="1967"/>
+        </scene>
+        <!--Music By Album Collection View Controller-->
+        <scene sceneID="QJp-7R-tpR">
+            <objects>
+                <collectionViewController id="byc-lj-mcz" customClass="MusicByAlbumCollectionViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="vmd-tB-RW6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cN9-UG-cdm">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="50" height="20"/>
+                            <size key="footerReferenceSize" width="50" height="20"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MusicViewCell" id="4xv-aO-dDs" customClass="MusicViewCell" customModule="AmericasVision" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="MusicCellHeader" id="CJW-kR-JbX">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </collectionReusableView>
+                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="MusicCellFooter" id="6VX-vz-FbV">
+                            <rect key="frame" x="0.0" y="70" width="375" height="20"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="byc-lj-mcz" id="hod-6r-JH9"/>
+                            <outlet property="delegate" destination="byc-lj-mcz" id="HeZ-JW-01C"/>
+                        </connections>
+                    </collectionView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="9Hr-VO-Xyb">
+                        <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="sge-Ji-xdh"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add to Store" image="adminconsole" landscapeImage="adminconsole" largeContentSizeImage="adminconsole" id="VWG-qF-zkk"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="MusicByAlbumHomeButton" destination="sge-Ji-xdh" id="CYL-xL-M8M"/>
+                        <segue destination="QYm-8g-8yd" kind="push" id="85o-nB-xIo"/>
+                        <segue destination="fZ4-Iz-qPJ" kind="push" id="cBV-Ey-ign"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yJO-c4-hHn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2012.5" y="1053.5"/>
         </scene>
         <!--MusicAdmin-->
         <scene sceneID="lvv-o3-T4P">

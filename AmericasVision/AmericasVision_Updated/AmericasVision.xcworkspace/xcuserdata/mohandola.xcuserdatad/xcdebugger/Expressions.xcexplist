@@ -17,10 +17,10 @@
          contextName = "NewsDetailedViewController.loadPost():NewsDetailedViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "DBProvider.instance.newsFeedRef.queryEqual(toValue: &quot;postID&quot;).observe(.childAdded){ (snapshot: DataSnapshot) in }">
+               value = ".value">
             </PersistentString>
             <PersistentString
-               value = ".value">
+               value = "DBProvider.instance.newsFeedRef.queryEqual(toValue: &quot;postID&quot;).observe(.childAdded){ (snapshot: DataSnapshot) in }">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -115,7 +115,7 @@
          contextName = "MusicByAlbumTableViewController.tableView(_:cellForRowAt:):MusicByAlbumTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "tableView.dequeueReusableCell(withIdentifier: &quot;MusicTableViewCell&quot;, for: indexPath) as! MusicTableViewCell">
+               value = "indexPath.section">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
