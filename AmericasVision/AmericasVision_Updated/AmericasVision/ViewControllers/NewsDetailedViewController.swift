@@ -26,7 +26,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.sizeToFit()
-        label.font = UIFont.boldSystemFont(ofSize: 13)
+        label.font = UIFont.systemFont(ofSize: 13)
         label.textAlignment = .justified
         return label
     }()
@@ -51,7 +51,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.sizeToFit()
-        label.font = UIFont.boldSystemFont(ofSize: 13)
+        label.font = UIFont.systemFont(ofSize: 13)
         label.textAlignment = .justified
         return label
     }()
@@ -123,7 +123,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.sizeToFit()
-        label.font = UIFont.boldSystemFont(ofSize: 13)
+        label.font = UIFont.systemFont(ofSize: 13)
         label.textAlignment = .justified
         return label
     }()
@@ -152,6 +152,16 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         let oldCommentsView = UIView()
         oldCommentsView.translatesAutoresizingMaskIntoConstraints = false
         return oldCommentsView
+    }()
+    
+    let postCommentButton: UIButton = {
+        let button = UIButton(type: UIButtonType.system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor(red: 6/255, green: 90/255, blue: 157/255, alpha: 1)
+        button.layer.cornerRadius = 2.0
+        button.setTitle("Post Comment", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        return button
     }()
     
     var postId = String()
@@ -196,8 +206,10 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
             commentLabel.widthAnchor.constraint(equalToConstant:width - 40 ).isActive = true
             
             let commentUserProf = UIImageView()
-            commentUserProf.image = UIImage(named: "profile")
+            commentUserProf.image = UIImage(named: "Unknown")
             commentUserProf.translatesAutoresizingMaskIntoConstraints = false
+            commentUserProf.layer.cornerRadius = 20
+            commentUserProf.clipsToBounds = true
             self.oldCommentsView.addSubview(commentUserProf)
             commentUserProf.leftAnchor.constraint(equalTo: oldCommentsView.leftAnchor, constant:1).isActive = true
             commentUserProf.topAnchor.constraint(equalTo: oldCommentsView.topAnchor, constant:commentsHeight-textHeight).isActive = true
@@ -208,66 +220,80 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         self.scrollView.addSubview(oldCommentsView)
     
         NewsDetailedVCImage.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:1).isActive = true
-        NewsDetailedVCImage.heightAnchor.constraint(equalToConstant:300).isActive = true
+        NewsDetailedVCImage.heightAnchor.constraint(equalToConstant:200).isActive = true
         NewsDetailedVCImage.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
         
-        NewsDetailedVCImageCourtesy.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:300).isActive = true
+        NewsDetailedVCImageCourtesy.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:5).isActive = true
+        NewsDetailedVCImageCourtesy.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:200).isActive = true
         NewsDetailedVCImageCourtesy.heightAnchor.constraint(equalToConstant:20).isActive = true
-        NewsDetailedVCImageCourtesy.widthAnchor.constraint(equalToConstant:self.view.frame.width/2).isActive = true
+        NewsDetailedVCImageCourtesy.widthAnchor.constraint(equalToConstant:(self.view.frame.width/2)-5).isActive = true
         
-        postedBy.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:300).isActive = true
+        postedBy.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:200).isActive = true
         postedBy.leftAnchor.constraint(equalTo: scrollView.rightAnchor, constant:self.view.frame.width/2).isActive = true
         postedBy.heightAnchor.constraint(equalToConstant:20).isActive = true
-        postedBy.widthAnchor.constraint(equalToConstant:self.view.frame.width/2).isActive = true
-        NewsDetailedVCImageCaption.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:320).isActive = true
+        postedBy.widthAnchor.constraint(equalToConstant:(self.view.frame.width/2)-5).isActive = true
+        
+        NewsDetailedVCImageCaption.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:5).isActive = true
+        NewsDetailedVCImageCaption.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:220).isActive = true
         NewsDetailedVCImageCaption.heightAnchor.constraint(equalToConstant:20).isActive = true
         NewsDetailedVCImageCaption.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
         
-        likeButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:320).isActive = true
+        likeButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:220).isActive = true
         likeButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:self.view.frame.width/2).isActive = true
         likeButton.heightAnchor.constraint(equalToConstant:20).isActive = true
         likeButton.addTarget(self,action: #selector(self.likesAction(_:)),for: .touchUpInside)
         
-        likeLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:320).isActive = true
+        likeLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:220).isActive = true
         likeLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:self.view.frame.width/2 + 30).isActive = true
         likeLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
         
-        dislikeButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:320).isActive = true
+        dislikeButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:220).isActive = true
         dislikeButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:self.view.frame.width/2 + 60).isActive = true
         dislikeButton.heightAnchor.constraint(equalToConstant:20).isActive = true
         dislikeButton.addTarget(self,action: #selector(self.dislikeAction(_:)),for: .touchUpInside)
         
-        dislikeLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:320).isActive = true
+        dislikeLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:220).isActive = true
         dislikeLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:self.view.frame.width/2 + 90).isActive = true
         dislikeLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
         
-        NewsDetailedVCNewsContent.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:340).isActive = true
+        NewsDetailedVCNewsContent.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:240).isActive = true
+        NewsDetailedVCNewsContent.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:5).isActive = true
         let contentHeight = calculateHeight()
         NewsDetailedVCNewsContent.heightAnchor.constraint(equalToConstant:contentHeight).isActive = true
-        NewsDetailedVCNewsContent.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
+        NewsDetailedVCNewsContent.widthAnchor.constraint(equalToConstant:self.view.frame.width-10).isActive = true
         
-        writeCommentLabel.topAnchor.constraint(equalTo:scrollView.topAnchor, constant: 340 + contentHeight).isActive = true
+        writeCommentLabel.leftAnchor.constraint(equalTo:scrollView.leftAnchor, constant: 5).isActive = true
+        writeCommentLabel.topAnchor.constraint(equalTo:scrollView.topAnchor, constant: 240 + contentHeight).isActive = true
         writeCommentLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
-        writeCommentLabel.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
+        writeCommentLabel.widthAnchor.constraint(equalToConstant:self.view.frame.width-10).isActive = true
         
-        writeComment.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:360 + contentHeight).isActive = true
+        writeComment.leftAnchor.constraint(equalTo:scrollView.leftAnchor, constant: 5).isActive = true
+        writeComment.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:260 + contentHeight).isActive = true
         writeComment.heightAnchor.constraint(equalToConstant:50).isActive = true
-        writeComment.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
+        writeComment.widthAnchor.constraint(equalToConstant:self.view.frame.width-10).isActive = true
         
-        oldCommentsLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:410 + contentHeight).isActive = true
+        postCommentButton.leftAnchor.constraint(equalTo:scrollView.leftAnchor, constant: 5).isActive = true
+        postCommentButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:315 + contentHeight).isActive = true
+        postCommentButton.heightAnchor.constraint(equalToConstant:30).isActive = true
+        postCommentButton.widthAnchor.constraint(equalToConstant:self.view.frame.width-10).isActive = true
+        postCommentButton.addTarget(self,action: #selector(self.postCommentAction(_:)),for: .touchUpInside)
+        
+        oldCommentsLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:5).isActive = true
+        oldCommentsLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:350 + contentHeight).isActive = true
         oldCommentsLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
-        oldCommentsLabel.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
+        oldCommentsLabel.widthAnchor.constraint(equalToConstant:self.view.frame.width-10).isActive = true
         
-        oldCommentsView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:430 + contentHeight).isActive = true
+        oldCommentsView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:5).isActive = true
+        oldCommentsView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:370 + contentHeight).isActive = true
         oldCommentsView.heightAnchor.constraint(equalToConstant:commentsHeight).isActive = true
-        oldCommentsView.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
+        oldCommentsView.widthAnchor.constraint(equalToConstant:self.view.frame.width-10).isActive = true
         
         likeLabel.text = likesCount.stringValue
         dislikeLabel.text = dislikesCount.stringValue
         
         self.scrollView.isScrollEnabled = true
-        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height:560 + contentHeight)
-        
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height:370 + contentHeight + commentsHeight + 10)
+        // 10 height for bottom
         let NewsDetailAVPostStorageRef = Storage.storage().reference(forURL:photoUrl)
         NewsDetailAVPostStorageRef.downloadURL { (url, error) in
             if error != nil{
@@ -286,14 +312,10 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
                 }
             }).resume()
         }
-        
-        
-    }
+     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         self.scrollView.addSubview(NewsDetailedVCImage)
         self.scrollView.addSubview(NewsDetailedVCImageCourtesy)
         self.scrollView.addSubview(postedBy)
@@ -305,8 +327,9 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         self.scrollView.addSubview(dislikeLabel)
         self.scrollView.addSubview(writeCommentLabel)
         self.scrollView.addSubview(writeComment)
+        self.scrollView.addSubview(postCommentButton)
         self.scrollView.addSubview(oldCommentsLabel)
-        //self.scrollView.addSubview(oldCommentsView)
+        
         scrollView.isScrollEnabled = true
         scrollView.delegate = self
         self.navigationItem.title = "Details"
@@ -330,6 +353,23 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         
     }
     
+    @IBAction func postCommentAction(_ sender: Any) {
+        postCommentButton.isEnabled = false
+        let postRef = DBProvider.instance.newsFeedRef.child(postId)
+        let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
+        commentsRef.setValue(["userId": AVAuthService.getCurrentUserId(),"type": "",
+          "comments": writeComment.text as String], withCompletionBlock:{(error, ref) in
+            if error != nil{
+                ProgressHUD.showError(error!.localizedDescription)
+                return
+            }
+            self.comments.append(["comments":self.writeComment.text as String,"type": "", "userId": AVAuthService.getCurrentUserId()])
+            self.writeComment.text=""
+            self.postCommentButton.isEnabled = true
+        })
+        
+    }
+    
      @IBAction func likesAction(_ sender: Any) {
         print("likes")
         let postRef = DBProvider.instance.newsFeedRef.child(postId)
@@ -339,22 +379,24 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
             
             self.dislikesCount = value
             NSLog("remove user dislike comments and add like comment section")
-            DBProvider.instance.newsFeedRef.child(postId).child("usercomments").child(commentKey).removeValue()
+            DBProvider.instance.newsFeedRef.child(postId).child("usercomments").child(commentKey).updateChildValues(["type": "Like"])
+        }else{
+            let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
+            commentsRef.setValue(["type": "Like", "userId": AVAuthService.getCurrentUserId(),
+                                  "comments": ""], withCompletionBlock:{(error, ref) in
+                if error != nil{
+                    ProgressHUD.showError(error!.localizedDescription)
+                    return
+                }
+                
+            })
         }
-        let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
-        commentsRef.setValue(["type": "Like", "userId": AVAuthService.getCurrentUserId(),
-                              "comments": ""], withCompletionBlock:{(error, ref) in
-            if error != nil{
-                ProgressHUD.showError(error!.localizedDescription)
-                return
-            }
-            self.likeToggle = true
-            let likecount = self.likesCount.intValue + 1
-            let value = likecount as NSNumber
-            self.likesCount = value
-            self.toggleLikeDislike()
-            self.updateCountInPost()
-        })
+        self.likeToggle = true
+        let likecount = self.likesCount.intValue + 1
+        let value = likecount as NSNumber
+        self.likesCount = value
+        self.toggleLikeDislike()
+        self.updateCountInPost()
         
     }
     
@@ -366,23 +408,24 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
             let value = likecount as NSNumber
             self.likesCount = value
             NSLog("remove user like comments and add dislike comment section")
-            DBProvider.instance.newsFeedRef.child(postId).child("usercomments").child(commentKey).removeValue()
+            DBProvider.instance.newsFeedRef.child(postId).child("usercomments").child(commentKey).updateChildValues(["type": "Dislike"])
+        }else{
+            let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
+            commentsRef.setValue(["type": "Dislike", "userId": userId ,
+              "comments": ""], withCompletionBlock:{(error, ref) in
+                if error != nil{
+                    ProgressHUD.showError(error!.localizedDescription)
+                    return
+                }
+                
+            })
         }
-        let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
-        commentsRef.setValue(["type": "Dislike", "userId": userId ,
-          "comments": ""], withCompletionBlock:{(error, ref) in
-            if error != nil{
-                ProgressHUD.showError(error!.localizedDescription)
-                return
-            }
-            self.likeToggle = false
-            let dislikecount = self.dislikesCount.intValue + 1
-            let value = dislikecount as NSNumber
-            self.dislikesCount = value
-            self.toggleLikeDislike()
-            self.updateCountInPost()
-        })
-        
+        self.likeToggle = false
+        let dislikecount = self.dislikesCount.intValue + 1
+        let value = dislikecount as NSNumber
+        self.dislikesCount = value
+        self.toggleLikeDislike()
+        self.updateCountInPost()
     }
     
     func toggleLikeDislike() {
@@ -420,16 +463,23 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
             if let mycomments = snapShot.value as? NSDictionary{
                 for(key,value) in mycomments{
                     if let commentDic = value as? NSDictionary{
-                        self.comments.append(commentDic)
+                        if "" == commentDic["type"] as? String {
+                            self.comments.append(commentDic)
+                        }
+                        
                         if AVAuthService.getCurrentUserId() == commentDic["userId"] as? String {
                             self.commentKey = (key as? String)!
                             let type = commentDic["type"] as? String
                             if type == "Like" {
                                 self.likeToggle = true
-                            }else{
+                                self.toggleLikeDislike()
+                            }else if type == "Dislike" {
                                 self.likeToggle = false
+                                self.toggleLikeDislike()
+                            }else{
+                                NSLog("generanl user comments")
                             }
-                            self.toggleLikeDislike()
+                            
                         }
                     }
                 }

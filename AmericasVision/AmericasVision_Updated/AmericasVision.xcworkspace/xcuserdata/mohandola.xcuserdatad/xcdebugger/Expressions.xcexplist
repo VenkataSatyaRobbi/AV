@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "NewsDetailedViewController.dislikeAction(_:):NewsDetailedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "postRef.child(&quot;usercomments&quot;).queryOrdered(byChild: &quot;userId&quot;).queryEqual(toValue: userId).ref">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "NewsDetailedViewController.likesAction(_:):NewsDetailedViewController.swift">
       </ContextState>
       <ContextState
@@ -146,6 +154,14 @@
             </PersistentString>
             <PersistentString
                value = "optionOne.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NewsDetailedViewController.postCommentAction(_:):NewsDetailedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "writeComment.text">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

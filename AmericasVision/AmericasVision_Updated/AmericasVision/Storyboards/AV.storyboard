@@ -1158,7 +1158,11 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="9Hr-VO-Xyb">
                         <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="sge-Ji-xdh"/>
-                        <barButtonItem key="rightBarButtonItem" title="Add to Store" image="adminconsole" landscapeImage="adminconsole" largeContentSizeImage="adminconsole" id="VWG-qF-zkk"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add to Store" image="adminconsole" landscapeImage="adminconsole" largeContentSizeImage="adminconsole" id="VWG-qF-zkk">
+                            <connections>
+                                <segue destination="fZ4-Iz-qPJ" kind="push" id="pUE-gf-861"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -1561,6 +1565,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="iZm-Fm-GVO"/>
+        <segue reference="cBV-Ey-ign"/>
         <segue reference="tcg-Fz-vNU"/>
         <segue reference="Y6J-Yd-ugj"/>
         <segue reference="yj6-fy-86n"/>
