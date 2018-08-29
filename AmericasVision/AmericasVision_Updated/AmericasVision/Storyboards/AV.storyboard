@@ -1148,7 +1148,7 @@
                         </collectionReusableView>
                         <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="MusicCellFooter" id="6VX-vz-FbV">
                             <rect key="frame" x="0.0" y="70" width="375" height="20"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                         </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="byc-lj-mcz" id="hod-6r-JH9"/>

@@ -229,7 +229,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         NewsDetailedVCImageCourtesy.widthAnchor.constraint(equalToConstant:(self.view.frame.width/2)-5).isActive = true
         
         postedBy.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:200).isActive = true
-        postedBy.leftAnchor.constraint(equalTo: scrollView.rightAnchor, constant:self.view.frame.width/2).isActive = true
+        postedBy.leftAnchor.constraint(equalTo: scrollView.rightAnchor, constant:(self.view.frame.width/2) + 40).isActive = true
         postedBy.heightAnchor.constraint(equalToConstant:20).isActive = true
         postedBy.widthAnchor.constraint(equalToConstant:(self.view.frame.width/2)-5).isActive = true
         
@@ -239,21 +239,21 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         NewsDetailedVCImageCaption.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
         
         likeButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:220).isActive = true
-        likeButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:self.view.frame.width/2).isActive = true
+        likeButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:(self.view.frame.width/2)+40).isActive = true
         likeButton.heightAnchor.constraint(equalToConstant:20).isActive = true
         likeButton.addTarget(self,action: #selector(self.likesAction(_:)),for: .touchUpInside)
         
         likeLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:220).isActive = true
-        likeLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:self.view.frame.width/2 + 30).isActive = true
+        likeLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:(self.view.frame.width/2) + 65).isActive = true
         likeLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
         
         dislikeButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:220).isActive = true
-        dislikeButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:self.view.frame.width/2 + 60).isActive = true
+        dislikeButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:(self.view.frame.width/2) + 80).isActive = true
         dislikeButton.heightAnchor.constraint(equalToConstant:20).isActive = true
         dislikeButton.addTarget(self,action: #selector(self.dislikeAction(_:)),for: .touchUpInside)
         
         dislikeLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:220).isActive = true
-        dislikeLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:self.view.frame.width/2 + 90).isActive = true
+        dislikeLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:(self.view.frame.width/2) + 105).isActive = true
         dislikeLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
         
         NewsDetailedVCNewsContent.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:240).isActive = true
@@ -495,8 +495,11 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         let postDate = CommonUtils.convertFromTimestamp(seconds: time)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
-        let postedDate = dateFormatter.date(from: postDate)
-        let currentDateString: String = dateFormatter.string(from: postedDate!)
+        let postDateDate = dateFormatter.date(from: postDate)
+        
+        let dateFormatter2 = DateFormatter()
+        dateFormatter2.dateFormat = "EEEE, MMM dd, yyyy. HH':'mm"
+        let currentDateString: String = dateFormatter2.string(from: postDateDate!)
         return currentDateString
     }
 }
