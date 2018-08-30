@@ -11,6 +11,55 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
+class CommentsTableCell:UITableViewCell{
+    
+    let profileImageView: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 15
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    let comment: UILabel = {
+            let label = UILabel()
+            label.textColor = UIColor.black
+            label.font = UIFont.systemFont(ofSize: 13)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.numberOfLines = 0
+            label.sizeToFit()
+            label.textAlignment = .justified
+            return label
+    }()
+ 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.addSubview(profileImageView)
+        self.addSubview(comment)
+        
+        profileImageView.leftAnchor.constraint(equalTo: leftAnchor, constant:10).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant:30).isActive = true
+        profileImageView.widthAnchor.constraint(equalToConstant:30).isActive = true
+        
+        comment.leftAnchor.constraint(equalTo: leftAnchor, constant:40).isActive = true
+        //comment.heightAnchor.constraint(equalToConstant:30).isActive = true
+        comment.widthAnchor.constraint(equalToConstant:self.frame.width-40).isActive = true
+       
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+}
+
 class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
     
     var NewsDetailedVCImage : UIImageView = {
@@ -171,10 +220,11 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
     var username = String()
     var postedDate = String()
     var photoUrl = String()
-    var comments = [NSDictionary]()
+    var comments = [PostComment]()
     var commentKey = String()
     
     @IBOutlet weak var scrollView: UIScrollView!
+    var tableView: UITableView = UITableView()
     
     override func viewDidAppear(_ animated: Bool) {
        DBProvider.instance.userRef.child(postedUserId).observe(.value) { (snapshot) in
@@ -184,40 +234,11 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         }
         var commentsHeight:CGFloat = 0
         comments.forEach { comment in
-            
-            let commentLabel = UILabel()
-            commentLabel.translatesAutoresizingMaskIntoConstraints = false
-            commentLabel.numberOfLines = 0
-            commentLabel.sizeToFit()
-            commentLabel.textColor = UIColor.black
-            commentLabel.backgroundColor = UIColor.groupTableViewBackground
-            commentLabel.font = UIFont.systemFont(ofSize: 13)
-            commentLabel.text = comment["comments"] as? String
-            let width = self.view.frame.width
-            var textHeight = CommonUtils.calculateHeight(text: commentLabel.text!, width: width)
-            if textHeight < 40 {
-                textHeight = 40
-            }
-            commentsHeight = commentsHeight + textHeight
-            self.oldCommentsView.addSubview(commentLabel)
-            commentLabel.leftAnchor.constraint(equalTo: oldCommentsView.leftAnchor, constant:40).isActive = true
-            commentLabel.topAnchor.constraint(equalTo: oldCommentsView.topAnchor, constant:commentsHeight-textHeight).isActive = true
-            commentLabel.heightAnchor.constraint(equalToConstant:textHeight).isActive = true
-            commentLabel.widthAnchor.constraint(equalToConstant:width - 40 ).isActive = true
-            
-            let commentUserProf = UIImageView()
-            commentUserProf.image = UIImage(named: "Unknown")
-            commentUserProf.translatesAutoresizingMaskIntoConstraints = false
-            commentUserProf.layer.cornerRadius = 20
-            commentUserProf.clipsToBounds = true
-            self.oldCommentsView.addSubview(commentUserProf)
-            commentUserProf.leftAnchor.constraint(equalTo: oldCommentsView.leftAnchor, constant:1).isActive = true
-            commentUserProf.topAnchor.constraint(equalTo: oldCommentsView.topAnchor, constant:commentsHeight-textHeight).isActive = true
-            commentUserProf.heightAnchor.constraint(equalToConstant:40).isActive = true
-            commentUserProf.widthAnchor.constraint(equalToConstant:40).isActive = true
+            let approximateWidth = tableView.layer.frame.width - 50
+            let hgt = CommonUtils.calculateHeight(text: comment.comments, width: approximateWidth)
+            let height = hgt < 40 ? 40:hgt
+            commentsHeight = commentsHeight + height
         }
-        
-        self.scrollView.addSubview(oldCommentsView)
     
         NewsDetailedVCImage.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:1).isActive = true
         NewsDetailedVCImage.heightAnchor.constraint(equalToConstant:200).isActive = true
@@ -258,7 +279,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         
         NewsDetailedVCNewsContent.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:240).isActive = true
         NewsDetailedVCNewsContent.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:5).isActive = true
-        let contentHeight = calculateHeight()
+        let contentHeight = calculateHeight(text:NewsDetailedVCNewsContent.text!)
         NewsDetailedVCNewsContent.heightAnchor.constraint(equalToConstant:contentHeight).isActive = true
         NewsDetailedVCNewsContent.widthAnchor.constraint(equalToConstant:self.view.frame.width-10).isActive = true
         
@@ -283,15 +304,17 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         oldCommentsLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
         oldCommentsLabel.widthAnchor.constraint(equalToConstant:self.view.frame.width-10).isActive = true
         
-        oldCommentsView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:5).isActive = true
-        oldCommentsView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:370 + contentHeight).isActive = true
-        oldCommentsView.heightAnchor.constraint(equalToConstant:commentsHeight).isActive = true
-        oldCommentsView.widthAnchor.constraint(equalToConstant:self.view.frame.width-10).isActive = true
-        
         likeLabel.text = likesCount.stringValue
         dislikeLabel.text = dislikesCount.stringValue
         
-        self.scrollView.isScrollEnabled = true
+        if comments.count > 0 {
+            let indexPath = NSIndexPath(row:comments.count-1, section: 0)
+            tableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: false)
+            tableView.frame = CGRect(x: 0, y: (370 + contentHeight), width: self.view.frame.width, height: commentsHeight)
+            
+            self.scrollView.addSubview(tableView)
+            self.scrollView.isScrollEnabled = true
+        }
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height:370 + contentHeight + commentsHeight + 10)
         // 10 height for bottom
         let NewsDetailAVPostStorageRef = Storage.storage().reference(forURL:photoUrl)
@@ -312,6 +335,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
                 }
             }).resume()
         }
+        
      }
     
     override func viewDidLoad() {
@@ -329,6 +353,13 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         self.scrollView.addSubview(writeComment)
         self.scrollView.addSubview(postCommentButton)
         self.scrollView.addSubview(oldCommentsLabel)
+        
+        tableView.register(CommentsTableCell.self, forCellReuseIdentifier: "CommentsTableCell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.bounces = false
+        tableView.isScrollEnabled = true
+       // self.scrollView.addSubview(tableView)
         
         scrollView.isScrollEnabled = true
         scrollView.delegate = self
@@ -353,6 +384,15 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         
     }
     
+    func fetchProfileImageURL(comment:PostComment){
+        DBProvider.instance.userRef.child(comment.userId).observeSingleEvent(of: DataEventType.value){
+                (snapShot:DataSnapshot) in
+            comment.profileImageUrl = ((snapShot.value as! NSDictionary)["ProfileImageURL"] as? String)!
+            self.comments.append(comment)
+        }
+    }
+    
+    
     @IBAction func postCommentAction(_ sender: Any) {
         postCommentButton.isEnabled = false
         let postRef = DBProvider.instance.newsFeedRef.child(postId)
@@ -363,9 +403,16 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
-            self.comments.append(["comments":self.writeComment.text as String,"type": "", "userId": AVAuthService.getCurrentUserId()])
+            let comment = PostComment(profileImageUrl: "", userId: AVAuthService.getCurrentUserId(), type: "", comments: self.writeComment.text, commentDate: Date())
+            self.fetchProfileImageURL(comment: comment)
+            
+            let commentHeight = CommonUtils.calculateHeight(text: self.writeComment.text,width: self.tableView.frame.width-50)
+            let height = commentHeight < 40 ? 40 : commentHeight
+            self.tableView.contentSize = CGSize(width: self.view.frame.size.width, height:self.tableView.contentSize.height + height)
+            self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height:self.scrollView.contentSize.height + height)
             self.writeComment.text=""
             self.postCommentButton.isEnabled = true
+            self.tableView.reloadData()
         })
         
     }
@@ -446,28 +493,32 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         ref.updateChildValues(["dislikes": dislikesCount])
     }
     
-    func calculateHeight() -> CGFloat {
+    func calculateHeight(text:String) -> CGFloat {
         let attributes: [NSAttributedStringKey : Any] = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15.0)]
         //Add AvalinNext Regular
         let approximateWidth = self.scrollView.frame.width - 10
         let size = CGSize(width: approximateWidth, height:10000)
-        let estimatedSize = NSString(string: NewsDetailedVCNewsContent.text!).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+        let estimatedSize = NSString(string: text).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
         let height = estimatedSize.height
         return height
     }
    
     func checkCurrentUserComments(){
+        
         DBProvider.instance.newsFeedRef.child(postId).child("usercomments").observeSingleEvent(of: DataEventType.value){
             (snapShot:DataSnapshot) in
             
             if let mycomments = snapShot.value as? NSDictionary{
                 for(key,value) in mycomments{
                     if let commentDic = value as? NSDictionary{
+                        let userId = commentDic["userId"] as? String
                         if "" == commentDic["type"] as? String {
-                            self.comments.append(commentDic)
+                            let comments = commentDic["comments"] as? String
+                            let comment = PostComment(profileImageUrl: "", userId: AVAuthService.getCurrentUserId(), type: "", comments: comments!, commentDate: Date())
+                            self.fetchProfileImageURL(comment:comment)
                         }
                         
-                        if AVAuthService.getCurrentUserId() == commentDic["userId"] as? String {
+                        if AVAuthService.getCurrentUserId() == userId {
                             self.commentKey = (key as? String)!
                             let type = commentDic["type"] as? String
                             if type == "Like" {
@@ -502,4 +553,40 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         let currentDateString: String = dateFormatter2.string(from: postDateDate!)
         return currentDateString
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == self.scrollView{
+           // scrollView.contentOffset.y = scrollView.contentOffset.y + tableView.frame.height
+            print("scrollview")
+        }
+        else if scrollView == self.tableView{
+             print("tableview")
+        }
+       
+        
+    }
+}
+
+extension NewsDetailedViewController:UITableViewDataSource,UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return comments.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentsTableCell") as! CommentsTableCell
+       
+        let url = comments[indexPath.row].profileImageUrl as String
+        cell.profileImageView.loadImageUsingCache(urlStr: url)
+        cell.comment.text = comments[indexPath.row].comments as String
+        return cell
+    }
+    
+   func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
+    
+        let estimatedHgt = CommonUtils.calculateHeight(text: comments[indexPath.row].comments,width: tableView.layer.frame.width-50)
+        let height = estimatedHgt < 40 ? 40 : estimatedHgt
+        return height
+    }
+    
 }

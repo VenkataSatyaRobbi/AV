@@ -53,6 +53,7 @@
 		DC46B8D620C7104400188EC9 /* ChatPublicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46B8D520C7104400188EC9 /* ChatPublicViewController.swift */; };
 		DC4A12B1209F2BD7007C4755 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */; };
 		DC6F3FF42109043D001795DF /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6F3FF32109043D001795DF /* Charts.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		DC7C017E21379FC600C6DE67 /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7C017D21379FC600C6DE67 /* PostComment.swift */; };
 		DC7F1D9A20CD9E8C005CB41F /* PrivateMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F1D9920CD9E8C005CB41F /* PrivateMessageHandler.swift */; };
 		DC8317AE20B8ABEF00517AE9 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8317AD20B8ABEF00517AE9 /* UserDefaultsHelper.swift */; };
 		DC8317B020B8AC0F00517AE9 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8317AF20B8AC0F00517AE9 /* UserInfo.swift */; };
@@ -139,6 +140,7 @@
 		DC6F3FED21090062001795DF /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6F3FF32109043D001795DF /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6F3FFA210A25F8001795DF /* FileExplorer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FileExplorer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC7C017D21379FC600C6DE67 /* PostComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComment.swift; sourceTree = "<group>"; };
 		DC7F1D9920CD9E8C005CB41F /* PrivateMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMessageHandler.swift; sourceTree = "<group>"; };
 		DC8317AD20B8ABEF00517AE9 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		DC8317AF20B8AC0F00517AE9 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				D4FA4A012082FBF100CC425B /* Post.swift */,
 				DC04CDDF210D9AC600E70B6B /* CommonUtils.swift */,
 				DC8C89FB21122DE900AE8E92 /* Opinion.swift */,
+				DC7C017D21379FC600C6DE67 /* PostComment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 			files = (
 				DCBEBC3820A786EE00E8EAEA /* Constants.swift in Sources */,
 				DC8C89FE21135C6300AE8E92 /* RadioButton.swift in Sources */,
+				DC7C017E21379FC600C6DE67 /* PostComment.swift in Sources */,
 				D4FA4A082086D86700CC425B /* CurrentUserInfo.swift in Sources */,
 				DC46B8D620C7104400188EC9 /* ChatPublicViewController.swift in Sources */,
 				DC7F1D9A20CD9E8C005CB41F /* PrivateMessageHandler.swift in Sources */,

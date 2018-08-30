@@ -11,6 +11,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in NewsDetailedViewController.fetchProfileImageURL(comment:):NewsDetailedViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "NewsDetailedViewController.likesAction(_:):NewsDetailedViewController.swift">
       </ContextState>
       <ContextState
@@ -29,6 +32,17 @@
             </PersistentString>
             <PersistentString
                value = "DBProvider.instance.newsFeedRef.queryEqual(toValue: &quot;postID&quot;).observe(.childAdded){ (snapshot: DataSnapshot) in }">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NewsDetailedViewController.scrollViewDidScroll(_:):NewsDetailedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "scrollView.contentOffset.y">
+            </PersistentString>
+            <PersistentString
+               value = "tableView.frame.height">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -132,6 +146,14 @@
          <PersistentStrings>
             <PersistentString
                value = "data[Constants.SENDERNAME]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NewsDetailedViewController.tableView(_:numberOfRowsInSection:):NewsDetailedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "comments.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -244,6 +266,20 @@
       </ContextState>
       <ContextState
          contextName = "VotesCollectionViewController.handlePollButton(_:):VotesCollectionViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "NewsDetailedViewController.tableView(_:cellForRowAt:):NewsDetailedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+            <PersistentString
+               value = "comments[indexPath.row].comments as String">
+            </PersistentString>
+            <PersistentString
+               value = "comments.count">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "NewsDetailedViewController.checkCurrentUserComments():NewsDetailedViewController.swift">
