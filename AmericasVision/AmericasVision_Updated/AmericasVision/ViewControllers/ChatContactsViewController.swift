@@ -8,14 +8,16 @@
 
 import UIKit
 
-class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource, FetchData{
+class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate, FetchData{
     
     private let cellID = "chatContactsCell"
     private var contacts = [Contacts]();
+    private var filterContacts = [Contacts]();
     private let CHAT_SEGUE = "chatsegue"
 
     @IBOutlet weak var contactsTable: UITableView!
     @IBOutlet weak var ChatPrivateHomeButton: UIBarButtonItem!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +25,12 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
         self.navigationItem.title = "Contacts"
         DBProvider.instance.delegate = self
         DBProvider.instance.getContacts()
+        searchBar.delegate = self
     }
     
     func dataReceived(contacts: [Contacts]) {
         self.contacts = contacts
+        self.filterContacts = contacts
         contactsTable.reloadData()
     }
     
@@ -43,14 +47,13 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
         super.didReceiveMemoryWarning()
     }
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contacts.count
+        return filterContacts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? ChatTableViewCell
-        let contact = contacts[indexPath.row]
+        let contact = filterContacts[indexPath.row]
         cell?.ChatTableViewCellUsername?.text = contact.name
         cell?.ChatTableViewCellImage.loadImageUsingCache(urlStr: contact.profileImageUrl)
         return cell!
@@ -69,6 +72,19 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
         let indexNumber = index?.row
         let vc: ChatPrivateViewController = segue.destination as! ChatPrivateViewController
         vc.contact = contacts[indexNumber!]
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else{
+            filterContacts = contacts
+            contactsTable.reloadData()
+            return
+        }
+        filterContacts = contacts.filter({contact -> Bool in
+            guard let text = searchBar.text else {return false}
+            return contact.name.contains(text)
+        })
+        contactsTable.reloadData()
     }
     
 }

@@ -770,9 +770,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="4C1-xb-tV0">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="92d-b6-uij" id="vBy-CD-eEb"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatContactsCell" rowHeight="60" id="BYR-P0-BWD" customClass="ChatTableViewCell" customModule="AmericasVision" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatContactsCell" rowHeight="59" id="BYR-P0-BWD" customClass="ChatTableViewCell" customModule="AmericasVision" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="59"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BYR-P0-BWD" id="Hdv-VX-NkN">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -792,13 +800,6 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Active" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w6H-el-Ngx">
                                             <rect key="frame" x="79" y="33" width="218" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="by date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wMs-DJ-zRc">
-                                            <rect key="frame" x="323" y="11" width="48" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -824,6 +825,7 @@
                     <connections>
                         <outlet property="ChatPrivateHomeButton" destination="9vu-50-unO" id="rwg-5r-yZh"/>
                         <outlet property="contactsTable" destination="dNt-14-Fyh" id="58x-xc-n2t"/>
+                        <outlet property="searchBar" destination="4C1-xb-tV0" id="vHN-w0-aL8"/>
                         <segue destination="Dit-Al-4Rf" kind="push" identifier="chatsegue" id="NIm-Gp-Kjv"/>
                     </connections>
                 </viewController>
