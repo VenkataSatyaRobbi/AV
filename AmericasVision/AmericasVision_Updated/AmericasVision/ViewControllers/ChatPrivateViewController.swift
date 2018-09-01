@@ -110,8 +110,7 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
                 let data = try Data(contentsOf: mediaUrl);
                 if let _ = UIImage(data:data){
                     let _ = SDWebImageDownloader.shared().downloadImage(with: mediaUrl, options: [], progress: nil, completed: { (image,data,error,finished) in
-                      
-                        DispatchQueue.main.sync(){
+                       DispatchQueue.main.async {
                             let photo = JSQPhotoMediaItem(image:image)
                             if senderId == self.senderId{
                                photo?.appliesMediaViewMaskAsOutgoing = true
@@ -120,8 +119,8 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
                             }
                             if id == senderId {
                                 self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                                self.collectionView.reloadData()
                             }
-                           // self.collectionView.reloadData()
                         }
                     })
                 }else{
@@ -156,7 +155,7 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
-        cell.textView.textColor = UIColor(red:0.20, green:0.23, blue:0.23, alpha:1.0)
+        //cell.textView.textColor = UIColor(red:0.20, green:0.23, blue:0.23, alpha:1.0)
         return cell
     }
     

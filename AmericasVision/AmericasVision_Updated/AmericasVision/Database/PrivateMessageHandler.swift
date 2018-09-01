@@ -85,7 +85,7 @@ class PrivateMessageHandler {
                 if err != nil {
                     print("error")
                 }else{
-                    self.sendMediaMessages(senderId: senderId, senderName: senderName, url: String (describing: metadata!.downloadURL()),receiverId: receiverId,receiverName: receiverName)
+                    self.sendMediaMessages(senderId: senderId, senderName: senderName, url: (metadata?.downloadURL()?.absoluteString)!,receiverId: receiverId,receiverName: receiverName)
                 }
                 
             }
@@ -95,7 +95,7 @@ class PrivateMessageHandler {
                 if err != nil {
                     print("error")
                 }else{
-                    self.sendMediaMessages(senderId: senderId, senderName: senderName, url: String (describing: metadata!.downloadURL()),receiverId: receiverId,receiverName: receiverName)
+                    self.sendMediaMessages(senderId: senderId, senderName: senderName, url: (metadata?.downloadURL()?.absoluteString)!,receiverId: receiverId,receiverName: receiverName)
                 }
             }
         }
