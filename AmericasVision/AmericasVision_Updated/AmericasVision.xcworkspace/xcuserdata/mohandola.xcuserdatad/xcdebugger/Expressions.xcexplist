@@ -3,6 +3,9 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "closure #1 in NewsDetailedViewController.fetchProfileImageURL(comment:):NewsDetailedViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "NewsDetailedViewController.dislikeAction(_:):NewsDetailedViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -11,10 +14,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in NewsDetailedViewController.fetchProfileImageURL(comment:):NewsDetailedViewController.swift">
+         contextName = "NewsDetailedViewController.likesAction(_:):NewsDetailedViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "NewsDetailedViewController.likesAction(_:):NewsDetailedViewController.swift">
+         contextName = "ChatPublicViewController.messageReceived(senderId:senderName:url:):ChatPublicViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Data(contentsOf:NSURL(fileURLWithPath: url))">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "closure #1 in VotesCollectionViewController.isUserVoted(id:index:):VotesCollectionViewController.swift">
@@ -28,10 +36,10 @@
          contextName = "NewsDetailedViewController.loadPost():NewsDetailedViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = ".value">
+               value = "DBProvider.instance.newsFeedRef.queryEqual(toValue: &quot;postID&quot;).observe(.childAdded){ (snapshot: DataSnapshot) in }">
             </PersistentString>
             <PersistentString
-               value = "DBProvider.instance.newsFeedRef.queryEqual(toValue: &quot;postID&quot;).observe(.childAdded){ (snapshot: DataSnapshot) in }">
+               value = ".value">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -51,6 +59,14 @@
          <PersistentStrings>
             <PersistentString
                value = "posts.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in PublicMessageHandler.sendMedia(image:video:senderId:senderName:):PublicMessageHandler.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(metadata?.downloadURL()?.absoluteString)!">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -146,6 +162,22 @@
          <PersistentStrings>
             <PersistentString
                value = "data[Constants.SENDERNAME]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DBProvider.mediaMessageRef.getter:DBProvider.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Constants.DB_MEDIA_MESSAGES">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ChatPublicViewController.messageReceived(senderId:senderName:url:):ChatPublicViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "error">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -271,10 +303,10 @@
          contextName = "NewsDetailedViewController.tableView(_:cellForRowAt:):NewsDetailedViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "indexPath.row">
+               value = "comments[indexPath.row].comments as String">
             </PersistentString>
             <PersistentString
-               value = "comments[indexPath.row].comments as String">
+               value = "indexPath.row">
             </PersistentString>
             <PersistentString
                value = "comments.count">
