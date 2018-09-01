@@ -229,6 +229,14 @@
          contextName = "ChatPublicViewController.collectionView(_:messageBubbleImageDataForItemAt:):ChatPublicViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "closure #1 in closure #1 in ChatPrivateViewController.messageReceived(senderId:senderName:url:):ChatPrivateViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "AVAuthService.getCurrentUserId()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "NewsDetailedViewController.viewDidAppear(_:):NewsDetailedViewController.swift">
          <PersistentStrings>
             <PersistentString

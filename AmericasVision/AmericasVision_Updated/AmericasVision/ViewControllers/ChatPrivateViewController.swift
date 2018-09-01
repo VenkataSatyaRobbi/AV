@@ -117,10 +117,10 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
                             }else{
                                photo?.appliesMediaViewMaskAsOutgoing = false
                             }
-                            if id == senderId {
+                            if AVAuthService.getCurrentUserId() == senderId {
                                 self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
-                                self.collectionView.reloadData()
                             }
+                            self.collectionView.reloadData()
                         }
                     })
                 }else{
