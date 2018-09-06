@@ -60,7 +60,7 @@ class CommentsTableCell:UITableViewCell{
     }
 }
 
-class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
+class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextViewDelegate {
     
     var NewsDetailedVCImage : UIImageView = {
         let view = UIImageView()
@@ -231,6 +231,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
                 let userFirstName = (snapshot.value as! NSDictionary)["FirstName"] as? String
                 let userLastName = (snapshot.value as! NSDictionary)["LastName"] as? String
                 self.postedBy.text = "Posted By: " + userFirstName! + ", " + userLastName!
+        
         }
         var commentsHeight:CGFloat = 0
         comments.forEach { comment in
@@ -364,6 +365,10 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         scrollView.isScrollEnabled = true
         scrollView.delegate = self
         self.navigationItem.title = "Details"
+        writeComment.delegate = self
+        self.postCommentButton.isEnabled = false
+        self.postCommentButton.tintColor = UIColor.darkGray
+        self.postCommentButton.backgroundColor = UIColor.gray
         
         DBProvider.instance.newsFeedRef.child(postId).observe(.value) { (snapshot: DataSnapshot) in
             if let dict = snapshot.value as? NSDictionary {
@@ -375,12 +380,13 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
                 self.NewsDetailedVCImageCourtesy.text = dict["photoCourtesy"] as? String
                 let time = dict["timestamp"] as! Double
                 self.postedDate = self.postedDateFormat(time:time)
-                self.NewsDetailedVCImageCaption.text = self.NewsDetailedVCImageCaption.text! + self.postedDate
+                self.NewsDetailedVCImageCaption.text = self.NewsDetailedVCImageCaption.text! + " - " + self.postedDate
                 self.NewsDetailedVCNewsContent.text = dict["newsContent"] as? String
             }
         }
         
         checkCurrentUserComments()
+        
         
     }
     
@@ -392,9 +398,34 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
         }
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//        if(self.writeComment.hasText == true){
+//            self.postCommentButton.isEnabled = true
+//            self.postCommentButton.tintColor = UIColor.white
+//            self.postCommentButton.backgroundColor = UIColor.blue
+//        }
+//        else{
+//            self.postCommentButton.isEnabled = false
+//            self.postCommentButton.tintColor = UIColor.darkGray
+//            self.postCommentButton.backgroundColor = UIColor.gray
+//        }
+//    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        guard let commentsEntered = writeComment.text, !commentsEntered.isEmpty else {
+            self.postCommentButton.isEnabled = false
+            self.postCommentButton.tintColor = UIColor.darkGray
+            self.postCommentButton.backgroundColor = UIColor.gray
+            return
+        }
+        self.postCommentButton.isEnabled = true
+        self.postCommentButton.tintColor = UIColor.white
+        self.postCommentButton.backgroundColor = UIColor.blue
+    }
     
     @IBAction func postCommentAction(_ sender: Any) {
-        postCommentButton.isEnabled = false
+        //postCommentButton.isEnabled = false
         let postRef = DBProvider.instance.newsFeedRef.child(postId)
         let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
         commentsRef.setValue(["userId": AVAuthService.getCurrentUserId(),"type": "",
@@ -410,8 +441,8 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate {
             let height = commentHeight < 40 ? 40 : commentHeight
             self.tableView.contentSize = CGSize(width: self.view.frame.size.width, height:self.tableView.contentSize.height + height)
             self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height:self.scrollView.contentSize.height + height)
-            self.writeComment.text=""
-            self.postCommentButton.isEnabled = true
+            self.writeComment.text = ""
+            self.postCommentButton.isEnabled = false
             self.tableView.reloadData()
         })
         
