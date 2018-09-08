@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="jWU-YA-LEo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="jWU-YA-LEo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen.jpg" id="1xB-VU-TPc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen" id="1xB-VU-TPc">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -98,7 +98,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen.jpg" id="yxm-KP-iPU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen" id="yxm-KP-iPU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -246,7 +246,7 @@
         <!--Home-->
         <scene sceneID="ozI-zd-yUd">
             <objects>
-                <viewController title="Home" id="lwY-e8-OY2" customClass="ProfileMenuViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="menu" title="Home" id="lwY-e8-OY2" customClass="ProfileMenuViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nBu-w6-WBo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -325,7 +325,7 @@
         <!--Votes-->
         <scene sceneID="iJl-SH-fOA">
             <objects>
-                <collectionViewController title="Votes" id="vRI-Xs-AJd" customClass="VotesCollectionViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="voteVC" title="Votes" id="vRI-Xs-AJd" customClass="VotesCollectionViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="90t-lh-aOk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1016,7 +1016,7 @@
         <!--Votes Navbar-->
         <scene sceneID="T9m-hy-Eyd">
             <objects>
-                <navigationController storyboardIdentifier="test" title="Votes Navbar" automaticallyAdjustsScrollViewInsets="NO" id="p6n-yT-Imy" sceneMemberID="viewController">
+                <navigationController title="Votes Navbar" automaticallyAdjustsScrollViewInsets="NO" id="p6n-yT-Imy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VWX-fx-lJQ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1553,7 +1553,6 @@
         <image name="home" width="22" height="18"/>
         <image name="landscape" width="640" height="1136"/>
         <image name="launchscreen" width="401" height="654"/>
-        <image name="launchscreen.jpg" width="401" height="654"/>
         <image name="mature" width="21" height="22"/>
         <image name="matureselected" width="21" height="22"/>
         <image name="misc1x" width="17" height="19"/>

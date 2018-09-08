@@ -91,9 +91,18 @@ class MyProfileViewController: UIViewController {
     }
     
     @IBAction func backAction(_ sender: Any) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "AV", bundle:nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "test") as! UINavigationController
-        self.present(vc, animated:true, completion:nil)
+        
+        //VotesFromSideMenuSegue
+        
+       let storyBoard : UIStoryboard = UIStoryboard(name: "AV", bundle:nil)
+       let vc = storyBoard.instantiateViewController(withIdentifier: "voteVC") as! VotesCollectionViewController
+        let nv = UINavigationController(rootViewController: vc)
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        appdelegate.window!.rootViewController = nv
+      // self.present(vc, animated:true, completion:nil)
+        
+        
+       
     }
     
     func populateUserinfo(){
@@ -140,9 +149,9 @@ class MyProfileViewController: UIViewController {
         self.view.addSubview(btnBack)
         //self.view.addSubview(btnBack)
         header.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        header.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        header.heightAnchor.constraint(equalToConstant: 180).isActive = true //150
         
-        var textFieldHight = (self.view.frame.height - 150) / 5
+        var textFieldHight = (self.view.frame.height - 180) / 5
         if textFieldHight > 60{
             textFieldHight = 60
         }
@@ -154,22 +163,31 @@ class MyProfileViewController: UIViewController {
         btnBack.widthAnchor.constraint(equalToConstant:30).isActive = true
         btnBack.addTarget(self,action: #selector(self.backAction(_:)),for: .touchUpInside)
         
-        profileImage.topAnchor.constraint(equalTo: self.view.topAnchor, constant:40).isActive = true
-        profileImage.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 130).isActive = true
-        profileImage.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -130).isActive = true
-        profileImage.heightAnchor.constraint(equalToConstant: 105).isActive = true
-        profileImage.widthAnchor.constraint(equalToConstant: 105).isActive = true
+        profileImage.topAnchor.constraint(equalTo: self.view.topAnchor, constant:60).isActive = true //40
+        
+        profileImage.center = self.view.center
+        
+        profileImage.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: (self.view.frame.width / 3) + 15).isActive = true //135
+        //profileImage.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -135).isActive = true //130
+        profileImage.heightAnchor.constraint(equalToConstant:105).isActive = true //105
+        profileImage.widthAnchor.constraint(equalToConstant:105).isActive = true
+      //  let profilePhotoTapGesture = UITapGestureRecognizer(target: self, action:#selector(self.selectProfileImage))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        profileImage.isUserInteractionEnabled = true
+        profileImage.addGestureRecognizer(tapGestureRecognizer)
+       
         profileImage.layer.cornerRadius = 52.5;
         profileImage.layer.borderWidth = 0
         profileImage.layer.borderColor = UIColor.white.cgColor
         profileImage.clipsToBounds = true
    
-        profileBackView.topAnchor.constraint(equalTo: self.view.topAnchor, constant:110).isActive = true
+        profileBackView.topAnchor.constraint(equalTo: self.view.topAnchor, constant:140).isActive = true //110
         profileBackView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 30).isActive = true
         profileBackView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -30).isActive = true
         profileBackView.backgroundColor = .white
         profileBackView.layer.cornerRadius = 12
-        profileBackView.heightAnchor.constraint(equalToConstant: self.view.frame.height-130).isActive = true
+        profileBackView.heightAnchor.constraint(equalToConstant: self.view.frame.height-150).isActive = true//130
+       
         
         textUserName.topAnchor.constraint(equalTo: self.view.topAnchor, constant:170).isActive = true
         textUserName.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:50).isActive = true
@@ -188,8 +206,9 @@ class MyProfileViewController: UIViewController {
         textDOB.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant:-50).isActive = true
         textDOB.heightAnchor.constraint(equalToConstant:30).isActive = true
         textDOB.widthAnchor.constraint(equalToConstant:self.view.frame.width - 80).isActive = true
-        textDOB.addTarget(self,action: #selector(self.DateofBirthFieldTouched(_:)),for: .touchUpInside)
-        
+        //textDOB.addTarget(self,action: #selector(self.DateofBirthFieldTouched(_:)),for: .touchUpInside)
+        textDOB.addTarget(self, action: #selector(DateofBirthFieldTouched), for: UIControlEvents.touchDown)
+
         textPwd.topAnchor.constraint(equalTo: self.view.topAnchor, constant:180 + textFieldHight * 3).isActive = true
         textPwd.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:50).isActive = true
         textPwd.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant:-50).isActive = true
@@ -204,7 +223,7 @@ class MyProfileViewController: UIViewController {
         textConfirmPwd.widthAnchor.constraint(equalToConstant:self.view.frame.width - 80).isActive = true
        textConfirmPwd.placeholder = "Confirm Password"
         
-        btnsubmit.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant:-30).isActive = true
+        btnsubmit.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant:-50).isActive = true //30
         btnsubmit.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:50).isActive = true
         btnsubmit.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant:-50).isActive = true
         btnsubmit.heightAnchor.constraint(equalToConstant:30).isActive = true
@@ -284,4 +303,26 @@ class MyProfileViewController: UIViewController {
         })
     }
     
+//    @objc func selectProfileImage() {
+//        let profileImagePickerController = UIImagePickerController()
+//        profileImagePickerController.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+//        present(profileImagePickerController, animated: true, completion: nil)
+//    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let profileImagePickerController = UIImagePickerController()
+        profileImagePickerController.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        present(profileImagePickerController, animated: true, completion: nil)
+    }
+    
+}
+extension MyProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let profieImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+           // profileImage = profieImage
+            profileImage.image = profieImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
 }

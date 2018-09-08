@@ -65,6 +65,7 @@
 		DCBEBC3C20A78BF200E8EAEA /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */; };
 		DCBEBC4120A78FCC00E8EAEA /* DBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC4020A78FCC00E8EAEA /* DBProvider.swift */; };
 		DCC76A9521036B88003FC4FC /* PublicMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC76A9421036B88003FC4FC /* PublicMessageHandler.swift */; };
+		DCD10FB92142F868007A3779 /* AVCommonFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD10FB82142F868007A3779 /* AVCommonFields.swift */; };
 		DCEBA7DD21326C45001555F6 /* MusicByAlbumCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEBA7DC21326C45001555F6 /* MusicByAlbumCollectionViewController.swift */; };
 		DCF8AB2820B1137C0064FF72 /* SlideCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF8AB2720B1137C0064FF72 /* SlideCollectionViewCell.swift */; };
 		DCF8AB2D20B1505F0064FF72 /* FeedsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF8AB2C20B1505F0064FF72 /* FeedsTableViewCell.swift */; };
@@ -152,6 +153,7 @@
 		DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		DCBEBC4020A78FCC00E8EAEA /* DBProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBProvider.swift; sourceTree = "<group>"; };
 		DCC76A9421036B88003FC4FC /* PublicMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMessageHandler.swift; sourceTree = "<group>"; };
+		DCD10FB82142F868007A3779 /* AVCommonFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCommonFields.swift; sourceTree = "<group>"; };
 		DCEBA7DC21326C45001555F6 /* MusicByAlbumCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicByAlbumCollectionViewController.swift; sourceTree = "<group>"; };
 		DCF8AB2720B1137C0064FF72 /* SlideCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideCollectionViewCell.swift; sourceTree = "<group>"; };
 		DCF8AB2C20B1505F0064FF72 /* FeedsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedsTableViewCell.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				D4FA49F3207C6EA200CC425B /* PropertyConfig.swift */,
 				DC8C89FD21135C6300AE8E92 /* RadioButton.swift */,
 				DC0C6E06212070F4000F284D /* AVLabel.swift */,
+				DCD10FB82142F868007A3779 /* AVCommonFields.swift */,
 			);
 			path = plugins;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				DC8C89FC21122DE900AE8E92 /* Opinion.swift in Sources */,
 				DC0C6E032120468F000F284D /* NewsTableViewCell.swift in Sources */,
 				DC2067552123378D003541F4 /* NewsSlideCollectionCell.swift in Sources */,
+				DCD10FB92142F868007A3779 /* AVCommonFields.swift in Sources */,
 				D408D2EA209E8622008DD80A /* ChatPrivateViewController.swift in Sources */,
 				D4FA4A022082FBF100CC425B /* Post.swift in Sources */,
 				D465157F20ABA8B30075A59C /* NewsDetailedViewController.swift in Sources */,
