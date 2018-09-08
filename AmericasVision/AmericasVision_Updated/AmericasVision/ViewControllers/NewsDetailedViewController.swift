@@ -426,6 +426,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
     
     @IBAction func postCommentAction(_ sender: Any) {
         //postCommentButton.isEnabled = false
+        ProgressHUD.show("", interaction: true)
         let postRef = DBProvider.instance.newsFeedRef.child(postId)
         let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
         commentsRef.setValue(["userId": AVAuthService.getCurrentUserId(),"type": "",
@@ -441,8 +442,11 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
             let height = commentHeight < 40 ? 40 : commentHeight
             self.tableView.contentSize = CGSize(width: self.view.frame.size.width, height:self.tableView.contentSize.height + height)
             self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height:self.scrollView.contentSize.height + height)
+            
             self.writeComment.text = ""
-            self.postCommentButton.isEnabled = false
+            self.textViewDidChange(self.writeComment)
+            ProgressHUD.dismiss()
+            //self.postCommentButton.isEnabled = false
             self.tableView.reloadData()
         })
         
