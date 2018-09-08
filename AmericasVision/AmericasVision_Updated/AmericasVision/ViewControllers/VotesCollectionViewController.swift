@@ -62,28 +62,31 @@ class VoteCell: UICollectionViewCell{
     
     let optionOne: UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.groupTableViewBackground
         label.textColor = UIColor.black
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.sizeToFit()
+        label.numberOfLines = 0
         return label
     }()
     
     let optionTwo: UILabel = {
         let label = UILabel()
-         label.backgroundColor = UIColor.groupTableViewBackground
         label.textColor = UIColor.black
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.sizeToFit()
+        label.numberOfLines = 0
         return label
     }()
     
     let OptionThree: UILabel = {
         let label = UILabel()
-        label.backgroundColor = UIColor.groupTableViewBackground
         label.textColor = UIColor.black
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.sizeToFit()
+        label.numberOfLines = 0
         return label
     }()
     
@@ -231,15 +234,18 @@ class VoteCell: UICollectionViewCell{
         
         optionOne.leftAnchor.constraint(equalTo: leftAnchor, constant: 110).isActive = true
         optionOne.topAnchor.constraint(equalTo: topAnchor, constant: top1).isActive = true
-        optionOne.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        optionOne.widthAnchor.constraint(equalToConstant: self.frame.width - 95 ).isActive = true
+        optionOne.heightAnchor.constraint(equalToConstant: option1Height)
         
         optionTwo.leftAnchor.constraint(equalTo: leftAnchor, constant: 110).isActive = true
         optionTwo.topAnchor.constraint(equalTo: topAnchor, constant: top2).isActive = true
-        optionTwo.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        optionTwo.widthAnchor.constraint(equalToConstant: self.frame.width - 95 ).isActive = true
+        optionTwo.heightAnchor.constraint(equalToConstant: option2Height)
         
         OptionThree.leftAnchor.constraint(equalTo: leftAnchor, constant: 110).isActive = true
         OptionThree.topAnchor.constraint(equalTo: topAnchor, constant: top3).isActive = true
-        OptionThree.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        OptionThree.widthAnchor.constraint(equalToConstant: self.frame.width - 95 ).isActive = true
+        OptionThree.heightAnchor.constraint(equalToConstant: option3Height)
    
         imageView1.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
         imageView1.topAnchor.constraint(equalTo: topAnchor, constant: top1).isActive = true
@@ -269,6 +275,7 @@ class VoteCell: UICollectionViewCell{
         viewfooter.topAnchor.constraint(equalTo: topAnchor, constant: top3 + option3Height + 15).isActive = true
         viewfooter.heightAnchor.constraint(equalToConstant:32).isActive = true
         viewfooter.widthAnchor.constraint(equalToConstant: self.frame.width-30).isActive = true
+        pieChart.setExtraOffsets (left: -5.0, top: top3 + option3Height + 47, right:-5.0, bottom: 0.0)
     }
     
    func pieChartSetup(){
@@ -277,7 +284,7 @@ class VoteCell: UICollectionViewCell{
     }
     
     func setupPieChart() {
-        pieChart.setExtraOffsets (left: -15.0, top: 70.0, right:-15.0, bottom: 0.0)
+       
         pieChart.legend.enabled  = true
         pieChart.drawHoleEnabled = true
         pieChart.chartDescription?.text = "AV Users Opinion Dashboard"
@@ -287,7 +294,7 @@ class VoteCell: UICollectionViewCell{
         pieChart.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
         pieChart.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
         pieChart.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
-        pieChart.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
+        pieChart.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1).isActive = true
     }
     
     func fillChart() {
@@ -337,7 +344,7 @@ class VotesCollectionViewController: UICollectionViewController{
         
         layout.sectionInset = UIEdgeInsets(top: 10, left: 5, bottom: 5, right: 5)
         let cellwidth = Int(self.view.frame.width - 10)
-        let cellHeight = Int(self.view.frame.height - 20)
+        let cellHeight = Int(self.view.frame.height-((self.navigationController?.navigationBar.frame.height)!+25))
         layout.itemSize = CGSize(width: cellwidth, height: cellHeight)
         
         fetchFirstOpinion()
@@ -416,9 +423,9 @@ class VotesCollectionViewController: UICollectionViewController{
         cell.OptionThree.text = opinion[indexPath.row].option3
         
         let questionTextheight = CommonUtils.calculateHeight(text:opinion[indexPath.row].question, width: (self.collectionView?.frame.size.width)! - 20)
-        let option1Height = CommonUtils.calculateHeight(text:opinion[indexPath.row].question, width: (self.collectionView?.frame.size.width)! - 20)
-        let option2Height = CommonUtils.calculateHeight(text:opinion[indexPath.row].question, width: (self.collectionView?.frame.size.width)! - 20)
-        let option3Height = CommonUtils.calculateHeight(text:opinion[indexPath.row].question, width: (self.collectionView?.frame.size.width)! - 20)
+        let option1Height = CommonUtils.calculateHeight(text:opinion[indexPath.row].option1, width: (self.collectionView?.frame.size.width)! - 95)
+        let option2Height = CommonUtils.calculateHeight(text:opinion[indexPath.row].option2, width: (self.collectionView?.frame.size.width)! - 95)
+        let option3Height = CommonUtils.calculateHeight(text:opinion[indexPath.row].option3, width: (self.collectionView?.frame.size.width)! - 95)
         cell.questionTextheight = questionTextheight
         
         cell.option1Height = option1Height
@@ -447,7 +454,7 @@ class VotesCollectionViewController: UICollectionViewController{
         cell.surveyData.updateValue(opinion[indexPath.row].count2, forKey: opinion[indexPath.row].option2)
         cell.surveyData.updateValue(opinion[indexPath.row].count3, forKey: opinion[indexPath.row].option3)
         cell.totalCount = opinion[indexPath.row].count1.doubleValue + opinion[indexPath.row].count2.doubleValue + opinion[indexPath.row].count3.doubleValue
-        cell.pieChartSetup()
+        cell.pieChartSetup( )
         
         cell.scoreBoard1.text = opinion[indexPath.row].count1.stringValue
         cell.scoreBoard2.text = opinion[indexPath.row].count2.stringValue
