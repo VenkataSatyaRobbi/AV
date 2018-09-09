@@ -64,10 +64,6 @@ class DBProvider {
         return databaseRef.child(Constants.DB_PRIVATE_MEDIA_MESSAGES)
     }
     
-    var mediaMessageRef: DatabaseReference {
-        return databaseRef.child(Constants.DB_MEDIA_MESSAGES)
-    }
-    
     var videoStorageRef: StorageReference {
         return storageRef.child(Constants.DB_VIDEO_MESSAGES)
     }

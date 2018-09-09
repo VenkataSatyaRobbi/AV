@@ -94,15 +94,17 @@ class MyProfileViewController: UIViewController {
         
         //VotesFromSideMenuSegue
         
-       let storyBoard : UIStoryboard = UIStoryboard(name: "AV", bundle:nil)
-       let vc = storyBoard.instantiateViewController(withIdentifier: "voteVC") as! VotesCollectionViewController
-        let nv = UINavigationController(rootViewController: vc)
-        let appdelegate = UIApplication.shared.delegate as! AppDelegate
-        appdelegate.window!.rootViewController = nv
-      // self.present(vc, animated:true, completion:nil)
+//       let storyBoard : UIStoryboard = UIStoryboard(name: "AV", bundle:nil)
+//       let vc = storyBoard.instantiateViewController(withIdentifier: "voteVC") as! VotesCollectionViewController
+//        let nv = UINavigationController(rootViewController: vc)
+//        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+//        appdelegate.window!.rootViewController = nv
+//      // self.present(vc, animated:true, completion:nil)
+//
+      
+        guard let vc = self.presentingViewController else { return }
+        vc.dismiss(animated: true, completion: nil)
         
-        
-       
     }
     
     func populateUserinfo(){

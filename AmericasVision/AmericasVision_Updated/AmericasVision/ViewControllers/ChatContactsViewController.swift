@@ -82,7 +82,7 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
         }
         filterContacts = contacts.filter({contact -> Bool in
             guard let text = searchBar.text else {return false}
-            return contact.name.contains(text)
+            return contact.name.lowercased().contains(text.lowercased())
         })
         contactsTable.reloadData()
     }

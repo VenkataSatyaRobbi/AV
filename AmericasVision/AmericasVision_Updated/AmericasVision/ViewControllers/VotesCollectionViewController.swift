@@ -49,7 +49,32 @@ class VoteCell: UICollectionViewCell{
         headerView.translatesAutoresizingMaskIntoConstraints = false
         return headerView
     }()
+    
+    let backView: UIView = {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.white
+        headerView.layer.borderWidth = 1
+        headerView.layer.borderColor = UIColor.lightGray.cgColor
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        return headerView
+    }()
+    let backView2: UIView = {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.white
+        headerView.layer.borderWidth = 1
+        headerView.layer.borderColor = UIColor.lightGray.cgColor
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        return headerView
+    }()
    
+    let bagGroundView: UIView = {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor(red: 6/255, green: 90/255, blue: 157/255, alpha: 1)
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        return headerView
+    }()
+    
+    
     let question: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.black
@@ -62,8 +87,8 @@ class VoteCell: UICollectionViewCell{
     
     let optionOne: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.black
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.textColor = UIColor.purple
+        label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.numberOfLines = 0
@@ -72,8 +97,8 @@ class VoteCell: UICollectionViewCell{
     
     let optionTwo: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.black
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.textColor = UIColor.gray
+        label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.numberOfLines = 0
@@ -82,8 +107,8 @@ class VoteCell: UICollectionViewCell{
     
     let OptionThree: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.black
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.textColor = UIColor.brown
+        label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.numberOfLines = 0
@@ -142,6 +167,7 @@ class VoteCell: UICollectionViewCell{
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "like")
+        imageView.backgroundColor = UIColor.gray
         return imageView
     }()
     
@@ -178,6 +204,8 @@ class VoteCell: UICollectionViewCell{
         backgroundColor = UIColor.white
         self.headerView.addSubview(header)
         self.addSubview(headerView)
+        self.addSubview(backView)
+        self.addSubview(backView2)
         self.addSubview(question)
         self.addSubview(option1Radio)
         self.addSubview(optionOne)
@@ -232,17 +260,17 @@ class VoteCell: UICollectionViewCell{
         option3Radio.alternateButton?.append(option1Radio)
         option3Radio.alternateButton?.append(option2Radio)
         
-        optionOne.leftAnchor.constraint(equalTo: leftAnchor, constant: 110).isActive = true
+        optionOne.leftAnchor.constraint(equalTo: leftAnchor, constant: 100).isActive = true
         optionOne.topAnchor.constraint(equalTo: topAnchor, constant: top1).isActive = true
         optionOne.widthAnchor.constraint(equalToConstant: self.frame.width - 95 ).isActive = true
         optionOne.heightAnchor.constraint(equalToConstant: option1Height)
         
-        optionTwo.leftAnchor.constraint(equalTo: leftAnchor, constant: 110).isActive = true
+        optionTwo.leftAnchor.constraint(equalTo: leftAnchor, constant: 100).isActive = true
         optionTwo.topAnchor.constraint(equalTo: topAnchor, constant: top2).isActive = true
         optionTwo.widthAnchor.constraint(equalToConstant: self.frame.width - 95 ).isActive = true
         optionTwo.heightAnchor.constraint(equalToConstant: option2Height)
         
-        OptionThree.leftAnchor.constraint(equalTo: leftAnchor, constant: 110).isActive = true
+        OptionThree.leftAnchor.constraint(equalTo: leftAnchor, constant: 100).isActive = true
         OptionThree.topAnchor.constraint(equalTo: topAnchor, constant: top3).isActive = true
         OptionThree.widthAnchor.constraint(equalToConstant: self.frame.width - 95 ).isActive = true
         OptionThree.heightAnchor.constraint(equalToConstant: option3Height)
@@ -276,6 +304,21 @@ class VoteCell: UICollectionViewCell{
         viewfooter.heightAnchor.constraint(equalToConstant:32).isActive = true
         viewfooter.widthAnchor.constraint(equalToConstant: self.frame.width-30).isActive = true
         pieChart.setExtraOffsets (left: -5.0, top: top3 + option3Height + 47, right:-5.0, bottom: 0.0)
+        
+//        backView.leftAnchor.constraint(equalTo: leftAnchor, constant:0).isActive = true
+//        backView.topAnchor.constraint(equalTo: topAnchor, constant:top1 - 2).isActive = true
+//        backView.heightAnchor.constraint(equalToConstant:2).isActive = true
+//        backView.widthAnchor.constraint(equalToConstant:self.frame.width).isActive = true
+//
+//
+//        backView2.leftAnchor.constraint(equalTo: leftAnchor, constant:0).isActive = true
+//        backView2.topAnchor.constraint(equalTo: topAnchor, constant:top2 - 2).isActive = true
+//        backView2.heightAnchor.constraint(equalToConstant:2).isActive = true
+//        backView2.widthAnchor.constraint(equalToConstant:self.frame.width).isActive = true
+//
+        
+       
+        
     }
     
    func pieChartSetup(){
@@ -338,7 +381,7 @@ class VotesCollectionViewController: UICollectionViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Opinion Poll"
-       // sideMenus()
+        sideMenus()
         self.collectionView?.backgroundColor = UIColor.groupTableViewBackground
             //UIColor(red: 100/255, green:100/255, blue: 100/255, alpha: 1)
         
@@ -416,6 +459,8 @@ class VotesCollectionViewController: UICollectionViewController{
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let id = opinion[indexPath.row].id
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! VoteCell
+        
+        
         cell.opinionId = id
         cell.question.text = opinion[indexPath.row].question
         cell.optionOne.text = opinion[indexPath.row].option1

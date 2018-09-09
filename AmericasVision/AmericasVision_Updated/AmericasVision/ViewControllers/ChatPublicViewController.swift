@@ -37,10 +37,7 @@ class ChatPublicViewController: JSQMessagesViewController,PublicMessageReceivedD
         self.senderId = AVAuthService.getCurrentUserId()
         self.senderDisplayName = AVAuthService.getCurrentUserName()
         self.navigationItem.title = "AV Public Chat"
-        
         PublicMessageHandler.Instance.observeMessages()
-        PublicMessageHandler.Instance.observeMediaMessages()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +48,7 @@ class ChatPublicViewController: JSQMessagesViewController,PublicMessageReceivedD
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        PublicMessageHandler.Instance.sendMessage(senderId: senderId, senderName: senderDisplayName, text: text)
+        PublicMessageHandler.Instance.sendMessage(senderId: senderId, senderName: senderDisplayName, text: text,url: "")
         finishSendingMessage()
     }
     
@@ -89,35 +86,36 @@ class ChatPublicViewController: JSQMessagesViewController,PublicMessageReceivedD
         collectionView.reloadData()
     }
     
-    func messageReceived(senderId: String, senderName:String,text: String) {
-        messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
-        collectionView.reloadData()
-    }
-    
-    func messageReceived(senderId: String, senderName:String,url: String) {
-        if let mediaUrl = URL(string: url){
-            do{
-                let data = try Data(contentsOf: mediaUrl);
-                if let _ = UIImage(data:data){
-                    let _ = SDWebImageDownloader.shared().downloadImage(with: mediaUrl, options: [], progress: nil, completed: { (image,data,error,finished) in
-                        DispatchQueue.main.async {
-                            let photo = JSQPhotoMediaItem(image:image)
-                            if senderId == self.senderId{
-                                photo?.appliesMediaViewMaskAsOutgoing = true
-                            }else{
-                                photo?.appliesMediaViewMaskAsOutgoing = false
+    func messageReceived(senderId: String, senderName:String,text: String,url: String) {
+        if url.isEmpty {
+            messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
+            collectionView.reloadData()
+        }else{
+            if let mediaUrl = URL(string: url){
+                do{
+                    let data = try Data(contentsOf: mediaUrl);
+                    if let _ = UIImage(data:data){
+                        let _ = SDWebImageDownloader.shared().downloadImage(with: mediaUrl, options: [], progress: nil, completed: { (image,data,error,finished) in
+                            DispatchQueue.main.async {
+                                let photo = JSQPhotoMediaItem(image:image)
+                                if senderId == self.senderId{
+                                    photo?.appliesMediaViewMaskAsOutgoing = true
+                                }else{
+                                    photo?.appliesMediaViewMaskAsOutgoing = false
+                                }
+                                self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                                self.collectionView.reloadData()
                             }
-                            self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
-                            self.collectionView.reloadData()
-                        }
-                    })
-                }else{
-                    print("test")
+                        })
+                    }else{
+                        print("test")
+                    }
+                }catch{
+                    print("exceptions")
                 }
-            }catch{
-                print("exceptions")
             }
         }
+       
     }
     
     //Collection view functions
@@ -126,19 +124,16 @@ class ChatPublicViewController: JSQMessagesViewController,PublicMessageReceivedD
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         let message = messages[indexPath.item]
         if message.senderId == self.senderId {
-            return bubbleImageFactory?.outgoingMessagesBubbleImage(with: UIColor(red:0.79, green:0.91, blue:0.96, alpha:1.0))
+            return bubbleImageFactory?.outgoingMessagesBubbleImage(with: UIColor(red:0.08, green:0.45, blue:0.79, alpha:1.0))
         }else{
-            return bubbleImageFactory?.incomingMessagesBubbleImage(with: UIColor(red:0.89, green:0.91, blue:0.91, alpha:1.0))
+            return bubbleImageFactory?.incomingMessagesBubbleImage(with: UIColor(red:0.57, green:0.57, blue:0.58, alpha:1.0))
         }
-        
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
        
         let  placeHolderImage = UIImage(named: "profile")
-        
         let avatarImage = JSQMessagesAvatarImageFactory.avatarImage(with: placeHolderImage, diameter: 30)
-        
         let message = messages[indexPath.item]
         avatarImage?.avatarImage = SDImageCache.shared().imageFromDiskCache(forKey: message.senderId)
         
@@ -150,7 +145,6 @@ class ChatPublicViewController: JSQMessagesViewController,PublicMessageReceivedD
                             SDWebImageManager.shared().imageCache?.store(image, forKey: message.senderId)
                             DispatchQueue.main.async {
                                 avatarImage!.avatarImage = image
-                                
                             }
                         })
                     }
@@ -169,7 +163,6 @@ class ChatPublicViewController: JSQMessagesViewController,PublicMessageReceivedD
         cell.avatarImageView.layer.cornerRadius = (cell.avatarImageView.frame.size.width-4)/2
         NSLog("imsize", cell.avatarImageView.frame.size.width)
         cell.avatarImageView.clipsToBounds = true
-        
         //cell.textView.textColor = UIColor(red:0.20, green:0.23, blue:0.23, alpha:1.0)
         return cell
     }

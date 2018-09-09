@@ -40,8 +40,7 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
        // let profileImage = UIImageView(image: navImage)
        // profileImage.loadImageUsingCache(urlStr: (contact?.profileImageUrl)!)
        // self.navigationItem.leftBarButtonItems?.append(UIBarButtonItem(image: profileImage.image, style: UIBarButtonItemStyle.plain, target: nil, action: nil))
-        PrivateMessageHandler.Instance.observeMessages()
-        PrivateMessageHandler.Instance.observeMediaMessages()
+        PrivateMessageHandler.Instance.observeMessages(contactId:(contact?.id)!)
         self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero;
         self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero;
     }
@@ -56,7 +55,7 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         let receiverId = contact?.id
         let receiverName = contact?.name
-        PrivateMessageHandler.Instance.sendMessage(senderId: senderId, senderName: senderDisplayName, text: text,receiverId:receiverId!,receiverName:receiverName!)
+        PrivateMessageHandler.Instance.sendMessage(senderId: senderId, senderName: senderDisplayName, text: text,url:"",receiverId:receiverId!,receiverName:receiverName!)
         finishSendingMessage()
     }
     
@@ -96,41 +95,36 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
         collectionView.reloadData()
     }
     
-    func messageReceived(senderId: String, senderName:String,text: String,receiverID:String) {
-        if (contact?.id == senderId ) || (AVAuthService.getCurrentUserId() == senderId && contact?.id == receiverID) {
-            messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
-        }
-        collectionView.reloadData()
-    }
-    
-    func messageReceived(senderId: String, senderName:String,url: String) {
-        if let mediaUrl = URL(string: url){
-            do{
-                let id = contact?.id
-                let data = try Data(contentsOf: mediaUrl);
-                if let _ = UIImage(data:data){
-                    let _ = SDWebImageDownloader.shared().downloadImage(with: mediaUrl, options: [], progress: nil, completed: { (image,data,error,finished) in
-                       DispatchQueue.main.async {
-                            let photo = JSQPhotoMediaItem(image:image)
-                            if senderId == self.senderId{
-                               photo?.appliesMediaViewMaskAsOutgoing = true
-                            }else{
-                               photo?.appliesMediaViewMaskAsOutgoing = false
-                            }
-                            if AVAuthService.getCurrentUserId() == senderId {
+    func messageReceived(senderId: String, senderName:String,text: String,url:String,receiverID:String) {
+        if text.isEmpty {
+            if let mediaUrl = URL(string: url){
+                do{
+                    let data = try Data(contentsOf: mediaUrl);
+                    if let _ = UIImage(data:data){
+                        let _ = SDWebImageDownloader.shared().downloadImage(with: mediaUrl, options: [], progress: nil, completed: { (image,data,error,finished) in
+                            DispatchQueue.main.async {
+                                let photo = JSQPhotoMediaItem(image:image)
+                                if senderId == self.senderId{
+                                    photo?.appliesMediaViewMaskAsOutgoing = true
+                                }else{
+                                    photo?.appliesMediaViewMaskAsOutgoing = false
+                                }
                                 self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                                self.collectionView.reloadData()
                             }
-                            self.collectionView.reloadData()
-                        }
-                    })
-                }else{
-                    print("test")
+                        })
+                    }else{
+                        print("test")
+                    }
+                }catch{
+                    print("exceptions")
                 }
-            }catch{
-                print("exceptions")
             }
+        }else{
+            messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
+            collectionView.reloadData()
         }
-    }
+     }
     
     //Collection view functions
     
@@ -138,9 +132,9 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         let message = messages[indexPath.item]
         if message.senderId == self.senderId {
-            return bubbleImageFactory?.outgoingMessagesBubbleImage(with: UIColor(red:0.79, green:0.91, blue:0.96, alpha:1.0))
+            return bubbleImageFactory?.outgoingMessagesBubbleImage(with: UIColor(red:0.08, green:0.45, blue:0.79, alpha:1.0))
         }else{
-             return bubbleImageFactory?.incomingMessagesBubbleImage(with: UIColor(red:0.89, green:0.91, blue:0.91, alpha:1.0))
+             return bubbleImageFactory?.incomingMessagesBubbleImage(with: UIColor(red:0.57, green:0.57, blue:0.58, alpha:1.0))
         }
         
     }
