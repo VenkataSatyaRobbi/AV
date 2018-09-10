@@ -316,6 +316,7 @@
                         <segue destination="fTh-Os-Wjg" kind="modal" identifier="ChatFromSideMenuSegue" customClass="SWRevealViewControllerSeguePushController" id="yzM-jZ-7dJ"/>
                         <segue destination="uct-0f-f13" kind="modal" identifier="NewsFeedFromSideMenuSegue" customClass="SWRevealViewControllerSeguePushController" id="vhs-nr-zxy"/>
                         <segue destination="mFN-OW-rVF" kind="modal" identifier="MyProfileFromSideMenuSegue" customClass="SWRevealViewControllerSeguePushController" id="Jbx-9Y-faC"/>
+                        <segue destination="UHy-u5-eBG" kind="modal" identifier="SettingFromSideMenuSegue" customClass="SWRevealViewControllerSeguePushController" id="BwJ-cb-TCm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVg-da-H5w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1105,6 +1106,27 @@
             </objects>
             <point key="canvasLocation" x="1157.5" y="-668.11166666666657"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="U6g-PK-9BN">
+            <objects>
+                <viewController id="UHy-u5-eBG" customClass="AVSettingsViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uTJ-uz-RKH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1fZ-XT-cLT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oP6-LH-QSk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MHo-zI-cUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1666" y="-664"/>
+        </scene>
         <!--Music Player Controller-->
         <scene sceneID="pe4-qG-M2B">
             <objects>
@@ -1190,7 +1212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Cg-Lt-rEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1585" y="1915"/>
+            <point key="canvasLocation" x="-1551" y="1967"/>
         </scene>
         <!--Mature-->
         <scene sceneID="JXA-Pu-viD">

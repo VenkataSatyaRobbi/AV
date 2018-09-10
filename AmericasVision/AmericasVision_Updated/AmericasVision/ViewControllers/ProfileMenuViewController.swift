@@ -103,7 +103,7 @@ class ProfileMenuViewController: UIViewController, UITableViewDelegate, UITableV
             self.performSegue(withIdentifier: "MyProfileFromSideMenuSegue", sender: nil)
         }
         else if rowIndex == 6 {
-            self.performSegue(withIdentifier: "NewsFeedFromSideMenuSegue", sender: nil)
+            self.performSegue(withIdentifier: "SettingFromSideMenuSegue", sender: nil)
         }
     }
     
