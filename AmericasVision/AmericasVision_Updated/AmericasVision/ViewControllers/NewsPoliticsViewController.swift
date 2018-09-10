@@ -76,7 +76,7 @@ class NewsPoliticsViewController: UITableViewController{
         let approximateWidth = tableView.layer.frame.width - 20
         let size = CGSize(width: approximateWidth, height:10000)
         let estimatedSize = NSString(string: posts[indexPath.row].caption!).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-        let height = estimatedSize.height + 110 + 10
+        let height = estimatedSize.height + 110 + 20
         return height
     }
     
