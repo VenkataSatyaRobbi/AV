@@ -31,16 +31,18 @@ class NewsTableViewCell: UITableViewCell,UICollectionViewDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.sizeToFit()
-        label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.textAlignment = .justified
+        //label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.font = UIFont(name: "Verdana-Bold", size: 16)
+        label.textAlignment = .left
         label.lineBreakMode = .byWordWrapping
         return label
     }()
     
     let caption: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.black
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = UIColor.gray
+        //label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont(name: "Verdana", size: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.sizeToFit()
@@ -86,17 +88,17 @@ class NewsTableViewCell: UITableViewCell,UICollectionViewDelegate {
         imageView1.leftAnchor.constraint(equalTo: leftAnchor, constant:15).isActive = true
         imageView1.topAnchor.constraint(equalTo: topAnchor, constant:15).isActive = true
         imageView1.heightAnchor.constraint(equalToConstant:90).isActive = true
-        imageView1.widthAnchor.constraint(equalToConstant:width/3).isActive = true
+        imageView1.widthAnchor.constraint(equalToConstant:(width/3) + (width/9)).isActive = true
         // 10 = 5 left image + 5
-        headLines.leftAnchor.constraint(equalTo: leftAnchor, constant:(width/3) + 20).isActive = true
+        headLines.leftAnchor.constraint(equalTo: leftAnchor, constant:(width/3) + (width/10) + 25).isActive = true
         headLines.rightAnchor.constraint(equalTo: rightAnchor, constant:-15).isActive = true
         headLines.topAnchor.constraint(equalTo: topAnchor, constant:15).isActive = true
-        headLines.widthAnchor.constraint(equalToConstant: width-(width/3)).isActive = true
+        headLines.widthAnchor.constraint(equalToConstant: width-((width/3) + (width/9))).isActive = true
         
         caption.leftAnchor.constraint(equalTo: leftAnchor, constant: 15).isActive = true
         caption.rightAnchor.constraint(equalTo: rightAnchor, constant:-15).isActive = true
         // topanchor + imageheight
-        caption.topAnchor.constraint(equalTo: topAnchor, constant:110).isActive = true
+        caption.topAnchor.constraint(equalTo: topAnchor, constant:100).isActive = true
         caption.widthAnchor.constraint(equalToConstant: width).isActive = true
         caption.bottomAnchor.constraint(equalTo: bottomAnchor,constant:0).isActive = true
         
