@@ -39,7 +39,7 @@ class VoteAdminViewController: UIViewController{
     
     @IBAction func publishAction(_ sender: Any) {
         let postedDate = NSDate().timeIntervalSince1970
-        DBProvider.instance.opinionRef.childByAutoId().setValue(["Question": QuestionsView.text, "Option1": optionOne.text,"Option2": oPtionTwo.text,"Option3": opTionThree.text, "Date": postedDate],withCompletionBlock:{(error, ref) in
+        DBProvider.instance.opinionRef.childByAutoId().setValue(["Question": QuestionsView.text, "Option1": optionOne.text,"Option2": oPtionTwo.text,"Option3": opTionThree.text, "Date": postedDate,"Count1":0,"Count2":0,"Count3":0],withCompletionBlock:{(error, ref) in
             if error != nil{
                 ProgressHUD.showError(error!.localizedDescription)
                 return

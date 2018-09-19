@@ -52,6 +52,10 @@ class DBProvider {
         return databaseRef.child(Constants.DB_MESSAGES)
     }
     
+    var chatStatusRef: DatabaseReference {
+        return databaseRef.child(Constants.DB_PRIVATECHATSTATUS)
+    }
+    
     var opinionRef: DatabaseReference {
         return databaseRef.child(Constants.DB_OPINION)
     }
@@ -86,7 +90,7 @@ class DBProvider {
                                 let lastName = contactData[Constants.LASTNAME] as? String
                                 let url = contactData[Constants.PROFILEIMAGEURL] as? String
                                 let userName = firstName + " " + lastName!
-                                let newContact = Contacts(name :userName,id:id,profileImageUrl:url!)
+                                let newContact = Contacts(name :userName,id:id,profileImageUrl:url!,status:"Unavailable")
                                 contacts.append(newContact)
                             }
                         }
@@ -96,8 +100,7 @@ class DBProvider {
             self.delegate?.dataReceived(contacts: contacts)
         }
     }
-    
-    
+        
     func updateProfileInfo(userInfo:UserInfo){
         let userId = userInfo.userid
         let imageData = UIImageJPEGRepresentation(userInfo.profileImage, 0.1)
@@ -111,8 +114,6 @@ class DBProvider {
             AVDBnewuserref.setValue(["FirstName": userInfo.firstName, "LastName": userInfo.lastName, "Phone": userInfo.phone, "Email": userInfo.email, "ProfileImageURL": profileImageURL, "UserId": userInfo.userid ])
         })
     }
-    
-    
    
     
 }

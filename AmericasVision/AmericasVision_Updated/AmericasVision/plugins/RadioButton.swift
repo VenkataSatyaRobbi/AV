@@ -19,6 +19,7 @@ class RadioButton: UIButton {
         self.layer.cornerRadius = 12
         self.layer.borderWidth = 1.0
         self.layer.masksToBounds = true
+       
     }
     
     func unselectAlternateButtons(){

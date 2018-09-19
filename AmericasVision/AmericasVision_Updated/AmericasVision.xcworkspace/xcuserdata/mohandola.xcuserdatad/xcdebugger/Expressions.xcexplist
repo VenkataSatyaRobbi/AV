@@ -3,13 +3,40 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "closure #1 in NewsDetailedViewController.fetchProfileImageURL(comment:):NewsDetailedViewController.swift">
+         contextName = "NewsEntertainmentViewController.tableView(_:cellForRowAt:):NewsEntertainmentViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "NewsDetailedViewController.dislikeAction(_:):NewsDetailedViewController.swift">
+         contextName = "closure #1 in PublicMessageHandler.sendMedia(image:video:senderId:senderName:):PublicMessageHandler.swift">
          <PersistentStrings>
             <PersistentString
-               value = "postRef.child(&quot;usercomments&quot;).queryOrdered(byChild: &quot;userId&quot;).queryEqual(toValue: userId).ref">
+               value = "(metadata?.downloadURL()?.absoluteString)!">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FeedsTableViewCell.registerCollectoinView&lt;A&gt;(datasource:cellName:):FeedsTableViewCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MusicByAlbumTableViewController.tableView(_:cellForRowAt:):MusicByAlbumTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath.section">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ChatPublicViewController.messageReceived(senderId:senderName:url:):ChatPublicViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "error">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MyProfileViewController.datePickerFromValueChanged(sender:):MyProfileViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Int(day.replacingOccurrences(of: &quot;,&quot;, with: &quot;&quot;))/365">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -17,29 +44,57 @@
          contextName = "NewsDetailedViewController.likesAction(_:):NewsDetailedViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "ChatPublicViewController.messageReceived(senderId:senderName:url:):ChatPublicViewController.swift">
+         contextName = "closure #1 in NewsDetailedViewController.fetchProfileImageURL(comment:):NewsDetailedViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ChatContactsViewController.populateContacts(userId:status:):ChatContactsViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "NewsDetailedViewController.tableView(_:cellForRowAt:):NewsDetailedViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "Data(contentsOf:NSURL(fileURLWithPath: url))">
+               value = "comments[indexPath.row].comments as String">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+            <PersistentString
+               value = "comments.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in VotesCollectionViewController.isUserVoted(id:index:):VotesCollectionViewController.swift">
+         contextName = "closure #1 in closure #1 in static AVAuthService.updateUserProfile(phone:dob:email:password:confirmpassword:imagedata:onSuccess:onError:):AVAuthService.swift">
          <PersistentStrings>
             <PersistentString
-               value = "snapshot.value as? String">
+               value = "DBProvider.instance.databaseRef.child(userId!).child(&quot;Phone&quot;)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "NewsDetailedViewController.loadPost():NewsDetailedViewController.swift">
+         contextName = "NewsTableViewCell.setCollectionViewDataSourceDelegate&lt;A&gt;(_:forRow:):NewsTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "DBProvider.instance.newsFeedRef.queryEqual(toValue: &quot;postID&quot;).observe(.childAdded){ (snapshot: DataSnapshot) in }">
+               value = "collectionView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatContactsViewController.longPressed(sender:):ChatContactsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "((sender.view as! UICollectionView).indexPathForItemAtPoint(position))">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AppDelegate.application(_:didFinishLaunchingWithOptions:):AppDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
             </PersistentString>
             <PersistentString
-               value = ".value">
+               value = "UINavigationBar.appearance().layer">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -53,25 +108,6 @@
                value = "tableView.frame.height">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "NewsMatureViewController.collectionView(_:cellForItemAt:):NewsMatureViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "posts.count">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in PublicMessageHandler.sendMedia(image:video:senderId:senderName:):PublicMessageHandler.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "(metadata?.downloadURL()?.absoluteString)!">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "FeedsTableViewCell.registerCollectoinView&lt;A&gt;(datasource:cellName:):FeedsTableViewCell.swift">
       </ContextState>
       <ContextState
          contextName = "VotesCollectionViewController.collectionView(_:cellForItemAt:):VotesCollectionViewController.swift">
@@ -93,10 +129,73 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "NewsTableViewCell.setCollectionViewDataSourceDelegate&lt;A&gt;(_:forRow:):NewsTableViewCell.swift">
+         contextName = "closure #1 in MessageHandler.observeMessages():MessageHandler.swift">
          <PersistentStrings>
             <PersistentString
-               value = "collectionView">
+               value = "data[Constants.SENDERNAME]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NewsDetailedViewController.tableView(_:numberOfRowsInSection:):NewsDetailedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "comments.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MyProfileViewController.updateProfile(_:):MyProfileViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in PublicMessageHandler.observeMediaMessages():PublicMessageHandler.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in VotesCollectionViewController.viewDidLoad():VotesCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dict[&quot;Question&quot;] as! String">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NewsDetailedViewController.postCommentAction(_:):NewsDetailedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "writeComment.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatPrivateViewController.collectionView(_:attributedTextForCellBottomLabelAt:):ChatPrivateViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ChatPublicViewController.collectionView(_:messageBubbleImageDataForItemAt:):ChatPublicViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in NewsDetailedViewController.checkCurrentUserComments():NewsDetailedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "snapshot.value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NewsMatureViewController.collectionView(_:cellForItemAt:):NewsMatureViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "posts.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NewsDetailedViewController.loadPost():NewsDetailedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = ".value">
+            </PersistentString>
+            <PersistentString
+               value = "DBProvider.instance.newsFeedRef.queryEqual(toValue: &quot;postID&quot;).observe(.childAdded){ (snapshot: DataSnapshot) in }">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -109,12 +208,62 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "NewsTableViewCell.init(style:reuseIdentifier:):NewsTableViewCell.swift">
+         contextName = "VotesCollectionViewController.handlePollButton(_:):VotesCollectionViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "NewsDetailedViewController.calculateHeight():NewsDetailedViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "collectionView">
+               value = "NewsDetailedVCNewsContent.text!">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatPublicViewController.messageReceived(senderId:senderName:url:):ChatPublicViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Data(contentsOf:NSURL(fileURLWithPath: url))">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NewsDetailedViewController.checkCurrentUserComments():NewsDetailedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = " postRef.child(&quot;usercomments&quot;).ref.child(&quot;userId&quot;)">
+            </PersistentString>
+            <PersistentString
+               value = "postRef.child(&quot;usercomments&quot;).ref.child(&quot;userId&quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NewsMatureViewController.numberOfSections(in:):NewsMatureViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in ChatPrivateViewController.messageReceived(senderId:senderName:url:):ChatPrivateViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "AVAuthService.getCurrentUserId()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VoteAdminViewController.publishAction(_:):VoteAdminViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "QuestionsView.text">
+            </PersistentString>
+            <PersistentString
+               value = "optionOne.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatPrivateViewController.goBack(_:):ChatPrivateViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "FeedsTableViewCell.registerCollectoinView&lt;A&gt;(datasource:):FeedsTableViewCell.swift">
       </ContextState>
       <ContextState
          contextName = "NewsFeedPoliticsViewController.tableView(_:didSelectRowAt:):NewsFeedPoliticsViewController.swift">
@@ -133,35 +282,27 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "FeedsTableViewCell.registerCollectoinView&lt;A&gt;(datasource:):FeedsTableViewCell.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MyProfileViewController.populateUserinfo():MyProfileViewController.swift">
+         contextName = "NewsDetailedViewController.viewDidAppear(_:):NewsDetailedViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "textDOB.text">
+               value = "self.scrollView.contentSize">
+            </PersistentString>
+            <PersistentString
+               value = "560 + contentHeight">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "NewsDetailedViewController.viewDidLoad():NewsDetailedViewController.swift">
+         contextName = "MyProfileViewController.updateProfile():MyProfileViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "FeedsTableViewCell.init(style:reuseIdentifier:):FeedsTableViewCell.swift">
+         contextName = "UserDefaults.getLoginUserInfo():UserDefaultsHelper.swift">
       </ContextState>
       <ContextState
-         contextName = "MusicByAlbumTableViewController.tableView(_:cellForRowAt:):MusicByAlbumTableViewController.swift">
+         contextName = "ChatContactsViewController.fetchUserStatus():ChatContactsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "indexPath.section">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in MessageHandler.observeMessages():MessageHandler.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "data[Constants.SENDERNAME]">
+               value = "AVAuthService.getCurrentUserId()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -174,114 +315,56 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in ChatPublicViewController.messageReceived(senderId:senderName:url:):ChatPublicViewController.swift">
+         contextName = "MyProfileViewController.populateUserinfo():MyProfileViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "error">
+               value = "textDOB.text">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "NewsDetailedViewController.tableView(_:numberOfRowsInSection:):NewsDetailedViewController.swift">
+         contextName = "closure #1 in VotesCollectionViewController.isUserVoted(id:index:):VotesCollectionViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "comments.count">
+               value = "snapshot.value as? String">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "NewsMatureViewController.numberOfSections(in:):NewsMatureViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in VotesCollectionViewController.viewDidLoad():VotesCollectionViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "dict[&quot;Question&quot;] as! String">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "VoteAdminViewController.publishAction(_:):VoteAdminViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "QuestionsView.text">
-            </PersistentString>
-            <PersistentString
-               value = "optionOne.text">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "NewsDetailedViewController.postCommentAction(_:):NewsDetailedViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "writeComment.text">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "NewsEntertainmentViewController.tableView(_:cellForRowAt:):NewsEntertainmentViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MyProfileViewController.updateProfile():MyProfileViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "ChatPublicViewController.collectionView(_:messageBubbleImageDataForItemAt:):ChatPublicViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in closure #1 in ChatPrivateViewController.messageReceived(senderId:senderName:url:):ChatPrivateViewController.swift">
+         contextName = "closure #2 in ChatContactsViewController.fetchUserStatus():ChatContactsViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "AVAuthService.getCurrentUserId()">
             </PersistentString>
+            <PersistentString
+               value = "status == 1">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "NewsDetailedViewController.viewDidAppear(_:):NewsDetailedViewController.swift">
+         contextName = "FeedsTableViewCell.init(style:reuseIdentifier:):FeedsTableViewCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "NewsTableViewCell.init(style:reuseIdentifier:):NewsTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.scrollView.contentSize">
-            </PersistentString>
-            <PersistentString
-               value = "560 + contentHeight">
+               value = "collectionView">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ChatPrivateViewController.goBack(_:):ChatPrivateViewController.swift">
+         contextName = "NewsDetailedViewController.dislikeAction(_:):NewsDetailedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "postRef.child(&quot;usercomments&quot;).queryOrdered(byChild: &quot;userId&quot;).queryEqual(toValue: userId).ref">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "DBProvider.getProfileImage(senderId:):DBProvider.swift">
          <PersistentStrings>
             <PersistentString
                value = "userRef.child(senderId).key">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in closure #1 in static AVAuthService.updateUserProfile(phone:dob:email:password:confirmpassword:imagedata:onSuccess:onError:):AVAuthService.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "DBProvider.instance.databaseRef.child(userId!).child(&quot;Phone&quot;)">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "NewsDetailedViewController.calculateHeight():NewsDetailedViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "NewsDetailedVCNewsContent.text!">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "AppDelegate.application(_:didFinishLaunchingWithOptions:):AppDelegate.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "">
-            </PersistentString>
-            <PersistentString
-               value = "UINavigationBar.appearance().layer">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -294,60 +377,43 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MyProfileViewController.updateProfile(_:):MyProfileViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in NewsDetailedViewController.checkCurrentUserComments():NewsDetailedViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "snapshot.value">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "VotesCollectionViewController.handlePollButton(_:):VotesCollectionViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "NewsDetailedViewController.tableView(_:cellForRowAt:):NewsDetailedViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "comments[indexPath.row].comments as String">
-            </PersistentString>
-            <PersistentString
-               value = "indexPath.row">
-            </PersistentString>
-            <PersistentString
-               value = "comments.count">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "NewsDetailedViewController.checkCurrentUserComments():NewsDetailedViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = " postRef.child(&quot;usercomments&quot;).ref.child(&quot;userId&quot;)">
-            </PersistentString>
-            <PersistentString
-               value = "postRef.child(&quot;usercomments&quot;).ref.child(&quot;userId&quot;)">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MyProfileViewController.datePickerFromValueChanged(sender:):MyProfileViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "Int(day.replacingOccurrences(of: &quot;,&quot;, with: &quot;&quot;))/365">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in PublicMessageHandler.observeMediaMessages():PublicMessageHandler.swift">
+         contextName = "NewsDetailedViewController.viewDidLoad():NewsDetailedViewController.swift">
       </ContextState>
       <ContextState
          contextName = "closure #3 in NewsDetailedViewController.viewDidAppear(_:):NewsDetailedViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "comment[&quot;comments&quot;].text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ChatContactsViewController.fetchUserStatus():ChatContactsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "snapShot.value as? NSDictionary">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatContactsViewController.addMessageActionTapped(sender:):ChatContactsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "AVAuthService.getCurrentUserId()">
+            </PersistentString>
+            <PersistentString
+               value = "sender.action">
+            </PersistentString>
+            <PersistentString
+               value = "sender">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in PrivateMessageHandler.observeMessages(contactId:):PrivateMessageHandler.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "data[Constants.MESSAGE_DATE]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -1114,18 +1114,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1fZ-XT-cLT">
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" id="1fZ-XT-cLT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <items>
+                                    <navigationItem id="oP6-LH-QSk">
+                                        <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="w15-na-Jz8"/>
+                                    </navigationItem>
+                                </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="eLJ-GP-7vK">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="UHy-u5-eBG" id="mAP-F2-mBr"/>
+                                    <outlet property="delegate" destination="UHy-u5-eBG" id="YZz-5c-qTH"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <navigationItem key="navigationItem" id="oP6-LH-QSk"/>
+                    <connections>
+                        <outlet property="homeButton" destination="w15-na-Jz8" id="KBN-eV-IDj"/>
+                        <outlet property="settingsTableview" destination="eLJ-GP-7vK" id="FRv-pb-KWy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MHo-zI-cUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1666" y="-664"/>
+            <point key="canvasLocation" x="1665.5" y="-664.5"/>
         </scene>
         <!--Music Player Controller-->
         <scene sceneID="pe4-qG-M2B">
@@ -1563,6 +1580,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2hP-AW-NBV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="X5c-gN-Kbg"/>
             </objects>
             <point key="canvasLocation" x="2603.5" y="1036.5"/>
         </scene>

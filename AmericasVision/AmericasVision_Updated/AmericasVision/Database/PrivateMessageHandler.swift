@@ -21,7 +21,7 @@ import FirebaseDatabase
 import FirebaseStorage
 
 protocol PrivateMessageReceivedDelegate: class {
-    func messageReceived(senderId:String,senderName:String,text:String,url:String,receiverID:String)
+    func messageReceived(senderId:String,senderName:String,date:Date,text:String,url:String,receiverID:String)
 }
 
 class PrivateMessageHandler {
@@ -55,8 +55,10 @@ class PrivateMessageHandler {
                 if url == nil {
                     url = ""
                 }
+                let time = data[Constants.MESSAGE_DATE] as? Double
+                let date = Date(timeIntervalSince1970: TimeInterval(time!))
                 if (contactId == senderId ) || (AVAuthService.getCurrentUserId() == senderId && contactId == receiverID) {
-                    self.delegate?.messageReceived(senderId: senderId!,senderName: senderName! ,text: text!,url: url!,receiverID:receiverID!)
+                    self.delegate?.messageReceived(senderId: senderId!,senderName: senderName!,date:date,text: text!,url: url!,receiverID:receiverID!)
                 }
             }
         }

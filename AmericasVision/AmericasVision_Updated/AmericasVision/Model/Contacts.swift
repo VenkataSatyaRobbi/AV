@@ -10,15 +10,16 @@ import Foundation
 
 class Contacts{
     
-    private var _name = ""
-    private var  _id = ""
-    private var _profileImageUrl: String = ""
+    var _name = ""
+    var  _id = ""
+    var _profileImageUrl: String = ""
+    var _status = ""
     
-    
-    init(name:String, id:String,profileImageUrl:String) {
+    init(name:String, id:String,profileImageUrl:String,status:String) {
         _name = name
         _id = id
         _profileImageUrl = profileImageUrl
+        _status = status
     }
     
     var name :String {
@@ -32,5 +33,15 @@ class Contacts{
     var profileImageUrl :String {
         return _profileImageUrl;
     }
+    
+    var status:String {
+        get{
+          return _status
+        }
+        set(value){
+            _status = value
+        }
+    }
+    
     
 }
