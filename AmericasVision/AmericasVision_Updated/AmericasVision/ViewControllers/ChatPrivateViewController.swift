@@ -167,11 +167,7 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
         }
     }
     
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat {
-       return 20
-    }
-    
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAt indexPath: IndexPath!) -> NSAttributedString! {
         let message = messages[indexPath.item]
         let text = CommonUtils.convertStringFromDate(date: message.date)
         let textRange = NSRange(location: 0, length: (text.count))
@@ -184,6 +180,10 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
         let attributedText = NSMutableAttributedString(string: text,attributes: [.paragraphStyle: paragraph])
         attributedText.addAttribute(NSAttributedStringKey.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: textRange)
         return attributedText
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellBottomLabelAt indexPath: IndexPath!) -> CGFloat {
+        return 20
     }
 
 }
