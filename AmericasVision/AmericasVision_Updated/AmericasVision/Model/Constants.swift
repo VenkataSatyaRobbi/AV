@@ -23,6 +23,7 @@ class Constants {
     static let DB_PRIVATE_MESSAGES = "privatemessage"
     static let DB_MEDIA_MESSAGES = "mediapublicmessages"
     static let DB_PRIVATE_MEDIA_MESSAGES = "mediaprivatemessages"
+    static let DB_PRIVATECHATSTATUS = "chatinvitation"
     static let DB_TIMESTAMP = "timestamp"
     
     static let LOGINUSERINFO = "user_info"
@@ -34,4 +35,12 @@ class Constants {
     static let RECEIVERID = "receiverId"
     static let RECEIVERNAME = "receiverName"
     static let DB_OPINION = "opinion"
+    static let MESSAGE_DATE="timestamp"
+    
+    static let FROMID = "from_id"
+    static let TOID = "to_id"
+    static let STATUS = "status"
+    static let ACTIONID = "action_id"
+    
+    
 }

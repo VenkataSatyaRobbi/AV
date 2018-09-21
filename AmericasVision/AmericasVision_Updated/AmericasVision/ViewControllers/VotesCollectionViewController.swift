@@ -27,7 +27,6 @@ class VoteCell: UICollectionViewCell{
         let label = UILabel()
         label.textColor = UIColor.white
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.text = "Opinion"
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -87,7 +86,7 @@ class VoteCell: UICollectionViewCell{
     
     let optionOne: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.purple
+        label.textColor = UIColor.gray
         label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
@@ -107,7 +106,7 @@ class VoteCell: UICollectionViewCell{
     
     let OptionThree: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.brown
+        label.textColor = UIColor.gray
         label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
@@ -288,37 +287,23 @@ class VoteCell: UICollectionViewCell{
         imageView3.widthAnchor.constraint(equalToConstant:32).isActive = true
         
         scoreBoard1.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
-        scoreBoard1.topAnchor.constraint(equalTo: topAnchor, constant: top1).isActive = true
+        scoreBoard1.topAnchor.constraint(equalTo: topAnchor, constant: top1+22).isActive = true
         scoreBoard1.widthAnchor.constraint(equalToConstant:32).isActive = true
         
         scoreBoard2.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
-        scoreBoard2.topAnchor.constraint(equalTo: topAnchor, constant: top2).isActive = true
+        scoreBoard2.topAnchor.constraint(equalTo: topAnchor, constant: top2+22).isActive = true
         scoreBoard2.widthAnchor.constraint(equalToConstant:32).isActive = true
         
         scoreBoard3.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
-        scoreBoard3.topAnchor.constraint(equalTo: topAnchor, constant: top3).isActive = true
-        scoreBoard3.widthAnchor.constraint(equalToConstant:24).isActive = true
+        scoreBoard3.topAnchor.constraint(equalTo: topAnchor, constant: top3+22).isActive = true
+        scoreBoard3.widthAnchor.constraint(equalToConstant:32).isActive = true
         
         viewfooter.leftAnchor.constraint(equalTo: leftAnchor, constant: 15).isActive = true
-        viewfooter.topAnchor.constraint(equalTo: topAnchor, constant: top3 + option3Height + 15).isActive = true
+        viewfooter.topAnchor.constraint(equalTo: topAnchor, constant: top3 + option3Height + 5).isActive = true
         viewfooter.heightAnchor.constraint(equalToConstant:32).isActive = true
         viewfooter.widthAnchor.constraint(equalToConstant: self.frame.width-30).isActive = true
         pieChart.setExtraOffsets (left: -5.0, top: top3 + option3Height + 47, right:-5.0, bottom: 0.0)
-        
-//        backView.leftAnchor.constraint(equalTo: leftAnchor, constant:0).isActive = true
-//        backView.topAnchor.constraint(equalTo: topAnchor, constant:top1 - 2).isActive = true
-//        backView.heightAnchor.constraint(equalToConstant:2).isActive = true
-//        backView.widthAnchor.constraint(equalToConstant:self.frame.width).isActive = true
-//
-//
-//        backView2.leftAnchor.constraint(equalTo: leftAnchor, constant:0).isActive = true
-//        backView2.topAnchor.constraint(equalTo: topAnchor, constant:top2 - 2).isActive = true
-//        backView2.heightAnchor.constraint(equalToConstant:2).isActive = true
-//        backView2.widthAnchor.constraint(equalToConstant:self.frame.width).isActive = true
-//
-        
-       
-        
+
     }
     
    func pieChartSetup(){
@@ -401,7 +386,7 @@ class VotesCollectionViewController: UICollectionViewController{
     }
     
     func fetchFirstOpinion(){
-        DBProvider.instance.opinionRef.queryOrdered(byChild: "Date").queryLimited(toFirst: 1).observe(.childAdded)
+        DBProvider.instance.opinionRef.queryOrdered(byChild: "Date").queryLimited(toFirst: 2).observe(.childAdded)
             //queryOrdered(byChild: "Date").observe(.childAdded)
         { (snapshot: DataSnapshot) in
             if let dict = snapshot.value as? [String: Any] {
@@ -460,7 +445,7 @@ class VotesCollectionViewController: UICollectionViewController{
         let id = opinion[indexPath.row].id
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! VoteCell
         
-        
+        cell.header.text = "Question" + String(indexPath.row)
         cell.opinionId = id
         cell.question.text = opinion[indexPath.row].question
         cell.optionOne.text = opinion[indexPath.row].option1
@@ -473,9 +458,9 @@ class VotesCollectionViewController: UICollectionViewController{
         let option3Height = CommonUtils.calculateHeight(text:opinion[indexPath.row].option3, width: (self.collectionView?.frame.size.width)! - 95)
         cell.questionTextheight = questionTextheight
         
-        cell.option1Height = option1Height
-        cell.option2Height = option2Height
-        cell.option3Height = option3Height
+        cell.option1Height = option1Height > 40 ? option1Height : 40
+        cell.option2Height = option2Height > 40 ? option2Height : 40
+        cell.option3Height = option3Height > 40 ? option3Height : 40
         cell.addAllignments()
         
         isUserVoted(id: id,index: indexPath.row)

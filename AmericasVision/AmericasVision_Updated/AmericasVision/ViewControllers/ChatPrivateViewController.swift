@@ -95,7 +95,8 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
         collectionView.reloadData()
     }
     
-    func messageReceived(senderId: String, senderName:String,text: String,url:String,receiverID:String) {
+    func messageReceived(senderId: String, senderName:String,date:Date,text: String,url:String,receiverID:String) {
+        
         if text.isEmpty {
             if let mediaUrl = URL(string: url){
                 do{
@@ -109,7 +110,7 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
                                 }else{
                                     photo?.appliesMediaViewMaskAsOutgoing = false
                                 }
-                                self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: photo))
+                                self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: date, media: photo))
                                 self.collectionView.reloadData()
                             }
                         })
@@ -121,7 +122,7 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
                 }
             }
         }else{
-            messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
+            messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: date, text:text))
             collectionView.reloadData()
         }
      }
@@ -136,7 +137,6 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
         }else{
              return bubbleImageFactory?.incomingMessagesBubbleImage(with: UIColor(red:0.57, green:0.57, blue:0.58, alpha:1.0))
         }
-        
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
@@ -166,6 +166,25 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
             self.present(playerController, animated: true, completion: nil)
         }
     }
- 
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAt indexPath: IndexPath!) -> NSAttributedString! {
+        let message = messages[indexPath.item]
+        let text = CommonUtils.convertStringFromDate(date: message.date)
+        let textRange = NSRange(location: 0, length: (text.count))
+        let paragraph = NSMutableParagraphStyle()
+        if message.senderId == self.senderId {
+            paragraph.alignment = .right
+        }else{
+            paragraph.alignment = .left
+        }
+        let attributedText = NSMutableAttributedString(string: text,attributes: [.paragraphStyle: paragraph])
+        attributedText.addAttribute(NSAttributedStringKey.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: textRange)
+        return attributedText
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellBottomLabelAt indexPath: IndexPath!) -> CGFloat {
+        return 20
+    }
+
 }
 

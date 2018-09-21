@@ -316,6 +316,7 @@
                         <segue destination="fTh-Os-Wjg" kind="modal" identifier="ChatFromSideMenuSegue" customClass="SWRevealViewControllerSeguePushController" id="yzM-jZ-7dJ"/>
                         <segue destination="uct-0f-f13" kind="modal" identifier="NewsFeedFromSideMenuSegue" customClass="SWRevealViewControllerSeguePushController" id="vhs-nr-zxy"/>
                         <segue destination="mFN-OW-rVF" kind="modal" identifier="MyProfileFromSideMenuSegue" customClass="SWRevealViewControllerSeguePushController" id="Jbx-9Y-faC"/>
+                        <segue destination="UHy-u5-eBG" kind="modal" identifier="SettingFromSideMenuSegue" customClass="SWRevealViewControllerSeguePushController" id="BwJ-cb-TCm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVg-da-H5w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1105,6 +1106,44 @@
             </objects>
             <point key="canvasLocation" x="1157.5" y="-668.11166666666657"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="U6g-PK-9BN">
+            <objects>
+                <viewController id="UHy-u5-eBG" customClass="AVSettingsViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uTJ-uz-RKH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" id="1fZ-XT-cLT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <items>
+                                    <navigationItem id="oP6-LH-QSk">
+                                        <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="w15-na-Jz8"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="eLJ-GP-7vK">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="UHy-u5-eBG" id="mAP-F2-mBr"/>
+                                    <outlet property="delegate" destination="UHy-u5-eBG" id="YZz-5c-qTH"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="homeButton" destination="w15-na-Jz8" id="KBN-eV-IDj"/>
+                        <outlet property="settingsTableview" destination="eLJ-GP-7vK" id="FRv-pb-KWy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MHo-zI-cUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1665.5" y="-664.5"/>
+        </scene>
         <!--Music Player Controller-->
         <scene sceneID="pe4-qG-M2B">
             <objects>
@@ -1190,7 +1229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Cg-Lt-rEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1585" y="1915"/>
+            <point key="canvasLocation" x="-1551" y="1967"/>
         </scene>
         <!--Mature-->
         <scene sceneID="JXA-Pu-viD">
@@ -1541,6 +1580,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2hP-AW-NBV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="X5c-gN-Kbg"/>
             </objects>
             <point key="canvasLocation" x="2603.5" y="1036.5"/>
         </scene>

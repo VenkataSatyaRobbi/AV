@@ -180,5 +180,24 @@ class ChatPublicViewController: JSQMessagesViewController,PublicMessageReceivedD
             self.present(playerController, animated: true, completion: nil)
         }
     }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAt indexPath: IndexPath!) -> NSAttributedString! {
+        let message = messages[indexPath.item]
+        let text = CommonUtils.convertStringFromDate(date: message.date)
+        let textRange = NSRange(location: 0, length: (text.count))
+        let paragraph = NSMutableParagraphStyle()
+        if message.senderId == self.senderId {
+            paragraph.alignment = .right
+        }else{
+            paragraph.alignment = .left
+        }
+        let attributedText = NSMutableAttributedString(string: text,attributes: [.paragraphStyle: paragraph])
+        attributedText.addAttribute(NSAttributedStringKey.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: textRange)
+        return attributedText
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellBottomLabelAt indexPath: IndexPath!) -> CGFloat {
+        return 20
+    }
 
 }

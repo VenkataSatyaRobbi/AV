@@ -23,6 +23,12 @@ class CommonUtils {
         return dateFormatter.string(from: date)
     }
     
+    static func convertStringFromDate(date:Date) -> String {
+        let dateFormatter =  DateFormatter()
+        dateFormatter.dateFormat = "MMM d, h:mm a"
+        return dateFormatter.string(from: date)
+    }
+    
     static func calculateHeight(text:String, width: CGFloat)  -> CGFloat {
         
         let attributes: [NSAttributedStringKey : Any] = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15.0)]

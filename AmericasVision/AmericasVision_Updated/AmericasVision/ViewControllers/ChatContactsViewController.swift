@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate, FetchData{
     
     private let cellID = "chatContactsCell"
     private var contacts = [Contacts]();
-    private var filterContacts = [Contacts]();
+    private var filterContacts = [Contacts]()
     private let CHAT_SEGUE = "chatsegue"
+    private var selectedId = String()
+    private var selectedStatus = String()
 
     @IBOutlet weak var contactsTable: UITableView!
     @IBOutlet weak var ChatPrivateHomeButton: UIBarButtonItem!
@@ -29,6 +32,7 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
     }
     
     func dataReceived(contacts: [Contacts]) {
+        fetchUserStatus()
         self.contacts = contacts
         self.filterContacts = contacts
         contactsTable.reloadData()
@@ -42,7 +46,7 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -53,9 +57,14 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? ChatTableViewCell
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(sender:)))
+        cell?.addGestureRecognizer(longPressRecognizer)
+     
         let contact = filterContacts[indexPath.row]
+      //  longPressRecognizer.tag = indexPath.row
         cell?.ChatTableViewCellUsername?.text = contact.name
         cell?.ChatTableViewCellImage.loadImageUsingCache(urlStr: contact.profileImageUrl)
+        cell?.ChatTableViewCellCaption.text = contact.status
         return cell!
     }
     
@@ -64,7 +73,9 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: CHAT_SEGUE, sender: self)
+        if filterContacts[indexPath.row].status == "Accepted" {
+            performSegue(withIdentifier: CHAT_SEGUE, sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -85,6 +96,135 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
             return contact.name.lowercased().contains(text.lowercased())
         })
         contactsTable.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    @IBAction func longPressed(sender: UILongPressGestureRecognizer) {
+        // let buttonRow = sender.tag
+        let p = sender.location(in: self.contactsTable)
+        
+        let indexPath = self.contactsTable.indexPathForRow(at: p)
+        if indexPath == nil {
+            print("Long press on table view, not row.")
+        }
+        let contact = filterContacts[(indexPath?.row)!]
+        if sender.state == UIGestureRecognizerState.began {
+            longPressMenuItem(frame:(sender.view?.frame)!,contact:contact)
+          sender.view?.becomeFirstResponder()
+        }
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    func longPressMenuItem(frame:CGRect,contact:Contacts){
+        let myMenuController: UIMenuController = UIMenuController.shared
+        myMenuController.isMenuVisible = true
+        //myMenuController.arrowDirection = UIMenuControllerArrowDirection.down
+        myMenuController.setTargetRect(frame, in: self.contactsTable)
+        selectedId = contact.id
+        selectedStatus = contact.status
+        if contact.status == "Unavailable" {
+            let myMenuItem_1: UIMenuItem = UIMenuItem(title: "Invite", action: #selector(ChatContactsViewController.addMessageActionTapped(sender:)))
+            let myMenuItem_2: UIMenuItem = UIMenuItem(title: "Block", action: #selector(ChatContactsViewController.addMessageActionTapped(sender:)))
+            let myMenuItems: NSArray = [myMenuItem_1, myMenuItem_2]
+            myMenuController.menuItems = myMenuItems as? [UIMenuItem]
+        }else if contact.status == "Pending" {
+            let myMenuItem_1: UIMenuItem = UIMenuItem(title: "Accept", action: #selector(ChatContactsViewController.addMessageActionTapped(sender:)))
+            let myMenuItem_2: UIMenuItem = UIMenuItem(title: "Block", action: #selector(ChatContactsViewController.addMessageActionTapped(sender:)))
+            let myMenuItems: NSArray = [myMenuItem_1,myMenuItem_2]
+            myMenuController.menuItems = myMenuItems as? [UIMenuItem]
+        }else if contact.status == "Accepted" {
+            let myMenuItem_1: UIMenuItem = UIMenuItem(title: "Block", action: #selector(ChatContactsViewController.addMessageActionTapped(sender:)))
+            let myMenuItems: NSArray = [myMenuItem_1]
+            myMenuController.menuItems = myMenuItems as? [UIMenuItem]
+        }else if contact.status == "Blocked" {
+            let myMenuItem_1: UIMenuItem = UIMenuItem(title: "Unblock", action: #selector(ChatContactsViewController.addMessageActionTapped(sender:)))
+            let myMenuItems: NSArray = [myMenuItem_1]
+            myMenuController.menuItems = myMenuItems as? [UIMenuItem]
+        }
+        
+    }
+    
+    @IBAction func addMessageActionTapped(sender: UIMenuItem){
+        NSLog("Invite")
+        if selectedStatus == "Unavailable"{
+            let status = sender.title == "Invite" ? 1: 3
+            let data :Dictionary<String,Any> = [Constants.FROMID:AVAuthService.getCurrentUserId(),Constants.TOID:selectedId,Constants.STATUS:status,Constants.ACTIONID:AVAuthService.getCurrentUserId()]
+            DBProvider.instance.chatStatusRef.childByAutoId().setValue((data))
+        }else{
+           //get the details and update the value
+            let ref = DBProvider.instance.chatStatusRef.child("LMRM_mAAgGYoeAmccVg") // testing
+            if sender.title == "Accept"{
+                ref.updateChildValues([Constants.STATUS: 2])
+                ref.updateChildValues([Constants.ACTIONID: AVAuthService.getCurrentUserId()])
+            }else if sender.title == "Block"{
+                ref.updateChildValues([Constants.STATUS: 3])
+                ref.updateChildValues([Constants.ACTIONID: AVAuthService.getCurrentUserId()])
+            }else if sender.title == "Block"{
+                ref.updateChildValues([Constants.STATUS: 1])
+                ref.updateChildValues([Constants.ACTIONID: AVAuthService.getCurrentUserId()])
+            }
+           
+        }
+    }
+    
+    /*
+     * Unavialale->0, pending->1 ,Accepted->2,Blocked->3, Unblocked->4
+     */
+    func fetchUserStatus(){
+        DBProvider.instance.chatStatusRef.queryOrdered(byChild: Constants.ACTIONID).queryEqual(toValue: AVAuthService.getCurrentUserId()).observeSingleEvent(of: DataEventType.value){
+                (snapShot:DataSnapshot) in
+                if let myContacts = snapShot.value as? NSDictionary{
+                    for(_,value) in myContacts{
+                        if let contactData = value as? NSDictionary{
+                           let  userId = contactData[Constants.TOID] as? String
+                           let  status = contactData[Constants.STATUS] as? NSNumber
+                           if status == 1{
+                            self.populateContacts(userId: userId!, status: "Pending")
+                           }else if status == 2{
+                            self.populateContacts(userId: userId!, status:"Accepted")
+                           }else if status == 3{
+                            self.populateContacts(userId: userId!, status:"Blocked")
+                           }
+                           self.contactsTable.reloadData()
+                        }
+                   }
+                }
+        }
+        
+        DBProvider.instance.chatStatusRef.queryOrdered(byChild: Constants.TOID).queryEqual(toValue:
+            AVAuthService.getCurrentUserId()).observeSingleEvent(of: DataEventType.value){
+            (snapShot:DataSnapshot) in
+            if let myContacts = snapShot.value as? NSDictionary{
+                for(_,value) in myContacts{
+                    if let contactData = value as? NSDictionary{
+                        let  userId = contactData[Constants.ACTIONID] as? String == AVAuthService.getCurrentUserId() ? contactData[Constants.FROMID] as? String : contactData[Constants.ACTIONID] as? String
+                        let  status = contactData[Constants.STATUS] as? NSNumber
+                        if status == 1{
+                            self.populateContacts(userId: userId!, status:"Pending")
+                        }else if status == 2{
+                            self.populateContacts(userId: userId!, status:"Accepted")
+                        }else if status == 3{
+                            self.populateContacts(userId: userId!, status:"Blocked")
+                        }
+                        self.contactsTable.reloadData()
+                    }
+                }
+            }
+        }
+    }
+    
+    func populateContacts(userId:String,status:String){
+        for (index, contact) in contacts.enumerated() {
+            if contact.id == userId {
+                self.contacts[index].status = status
+            }
+        }
     }
     
 }
