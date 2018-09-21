@@ -854,33 +854,6 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
                 print("dislikeCount = 0. do nothing")
             }
         }
-        
-        /*        if(self.dislikesCount.intValue > 0){
-         let dislikecount = self.dislikesCount.intValue - 1
-         let value = dislikecount as NSNumber
-         
-         self.dislikesCount = value
-         NSLog("remove user dislike comments and add like comment section")
-         DBProvider.instance.newsFeedRef.child(postId).child("usercomments").child(commentKey).updateChildValues(["type": "Like"])
-         }else{
-         let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
-         commentsRef.setValue(["type": "Like", "userId": AVAuthService.getCurrentUserId(),
-         "comments": ""], withCompletionBlock:{(error, ref) in
-         if error != nil{
-         ProgressHUD.showError(error!.localizedDescription)
-         return
-         }
-         
-         })
-         }
-         self.likeToggle = true
-         let likecount = self.likesCount.intValue + 1
-         let value = likecount as NSNumber
-         self.likesCount = value */
-        // self.toggleLikeDislike()
-        //print("before Update Count in post called")
-        //self.updateCountInPost()
-        
     }
     
     /*{
@@ -969,7 +942,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
                             self.fetchProfileImageURL(comment:comment)
                         }
                         
-                        if AVAuthService.getCurrentUserId() == userId {
+                        /*if AVAuthService.getCurrentUserId() == userId {
                             self.commentKey = (key as? String)!
                             let type = commentDic["type"] as? String
                             if type == "Like" {
@@ -982,7 +955,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
                                 NSLog("general user comments")
                             }
                             
-                        }
+                        }*/
                     }
                 }
             }
