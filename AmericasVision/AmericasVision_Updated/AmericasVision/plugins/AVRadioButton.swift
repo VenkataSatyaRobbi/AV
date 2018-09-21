@@ -19,7 +19,10 @@ class RadioButton: UIButton {
         self.layer.cornerRadius = 12
         self.layer.borderWidth = 1.0
         self.layer.masksToBounds = true
-       
+        let view = UIImageView()
+        view.image = UIImage(named: "check")
+        self.addSubview(view)
+        
     }
     
     func unselectAlternateButtons(){
@@ -47,10 +50,11 @@ class RadioButton: UIButton {
         didSet {
             if isSelected {
                 self.layer.borderColor = UIColor(red:0.89, green:0.91, blue:0.91, alpha:1.0).cgColor
-                self.layer.backgroundColor = UIColor(red:0.79, green:0.91, blue:0.96, alpha:1.0).cgColor
+                self.layer.backgroundColor = UIColor.blue.cgColor
             } else {
                 self.layer.borderColor = UIColor(red:0.89, green:0.91, blue:0.91, alpha:1.0).cgColor
                 self.layer.backgroundColor = UIColor.white.cgColor
+                self.layer.backgroundColor = UIColor.blue.cgColor
             }
         }
     }
