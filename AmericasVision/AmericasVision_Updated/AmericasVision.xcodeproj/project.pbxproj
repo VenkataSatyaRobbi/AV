@@ -59,8 +59,9 @@
 		DC8317B020B8AC0F00517AE9 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8317AF20B8AC0F00517AE9 /* UserInfo.swift */; };
 		DC8C89FA2112233700AE8E92 /* VoteAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C89F92112233600AE8E92 /* VoteAdminViewController.swift */; };
 		DC8C89FC21122DE900AE8E92 /* Opinion.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C89FB21122DE900AE8E92 /* Opinion.swift */; };
-		DC8C89FE21135C6300AE8E92 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C89FD21135C6300AE8E92 /* RadioButton.swift */; };
+		DC8C89FE21135C6300AE8E92 /* AVRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C89FD21135C6300AE8E92 /* AVRadioButton.swift */; };
 		DCBB0ACB2145660B008056A5 /* AVSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBB0ACA2145660B008056A5 /* AVSettingsViewController.swift */; };
+		DCBB0ACD215578E6008056A5 /* VotedUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBB0ACC215578E6008056A5 /* VotedUsersTableViewController.swift */; };
 		DCBEBC3820A786EE00E8EAEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3720A786ED00E8EAEA /* Constants.swift */; };
 		DCBEBC3A20A7871900E8EAEA /* ChatContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */; };
 		DCBEBC3C20A78BF200E8EAEA /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */; };
@@ -148,8 +149,9 @@
 		DC8317AF20B8AC0F00517AE9 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		DC8C89F92112233600AE8E92 /* VoteAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteAdminViewController.swift; sourceTree = "<group>"; };
 		DC8C89FB21122DE900AE8E92 /* Opinion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opinion.swift; sourceTree = "<group>"; };
-		DC8C89FD21135C6300AE8E92 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		DC8C89FD21135C6300AE8E92 /* AVRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVRadioButton.swift; sourceTree = "<group>"; };
 		DCBB0ACA2145660B008056A5 /* AVSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVSettingsViewController.swift; sourceTree = "<group>"; };
+		DCBB0ACC215578E6008056A5 /* VotedUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotedUsersTableViewController.swift; sourceTree = "<group>"; };
 		DCBEBC3720A786ED00E8EAEA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContactsViewController.swift; sourceTree = "<group>"; };
 		DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				D408D2E3209E706F008DD80A /* MarketPlaceCollectionViewController.swift */,
 				DC33664620C5B092002B8064 /* MusicAdminViewController.swift */,
 				D408D2ED209E8831008DD80A /* MusicByTrackTableViewController.swift */,
+				DCBB0ACC215578E6008056A5 /* VotedUsersTableViewController.swift */,
 				DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */,
 				D408D2F1209E903D008DD80A /* MyProfileViewController.swift */,
 				D465157E20ABA8B30075A59C /* NewsDetailedViewController.swift */,
@@ -303,7 +306,7 @@
 				D46390FA207036F300C4E3DA /* AppDelegate.swift */,
 				D4FA49DB207994C200CC425B /* AmericasVision-Bridging-Header.h */,
 				D4FA49F3207C6EA200CC425B /* PropertyConfig.swift */,
-				DC8C89FD21135C6300AE8E92 /* RadioButton.swift */,
+				DC8C89FD21135C6300AE8E92 /* AVRadioButton.swift */,
 				DC0C6E06212070F4000F284D /* AVLabel.swift */,
 				DCD10FB82142F868007A3779 /* AVCommonFields.swift */,
 			);
@@ -477,10 +480,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCBEBC3820A786EE00E8EAEA /* Constants.swift in Sources */,
-				DC8C89FE21135C6300AE8E92 /* RadioButton.swift in Sources */,
+				DC8C89FE21135C6300AE8E92 /* AVRadioButton.swift in Sources */,
 				DC7C017E21379FC600C6DE67 /* PostComment.swift in Sources */,
 				D4FA4A082086D86700CC425B /* CurrentUserInfo.swift in Sources */,
 				DC46B8D620C7104400188EC9 /* ChatPublicViewController.swift in Sources */,
+				DCBB0ACD215578E6008056A5 /* VotedUsersTableViewController.swift in Sources */,
 				DC7F1D9A20CD9E8C005CB41F /* PrivateMessageHandler.swift in Sources */,
 				D4FA49F0207AF45500CC425B /* ProfileMenuTableViewCell.swift in Sources */,
 				DC33663F20B9BB2F002B8064 /* ChatTableViewCell.swift in Sources */,

@@ -41,6 +41,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "VotesCollectionViewController.viewDidLoad():VotesCollectionViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "NewsDetailedViewController.likesAction(_:):NewsDetailedViewController.swift">
       </ContextState>
       <ContextState
@@ -200,6 +203,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "VotesCollectionViewController.viewWillAppear(_:):VotesCollectionViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "NewsTableViewCell.registerCollectoinView&lt;A&gt;(datasource:):NewsTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
@@ -261,6 +267,14 @@
       </ContextState>
       <ContextState
          contextName = "ChatPrivateViewController.goBack(_:):ChatPrivateViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in VotesCollectionViewController.fetchFirstOpinion():VotesCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "snapshot.accessibilityElementCount()">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "FeedsTableViewCell.registerCollectoinView&lt;A&gt;(datasource:):FeedsTableViewCell.swift">

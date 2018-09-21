@@ -10,8 +10,9 @@ import Foundation
 
 import UIKit
 
-class RadioButton: UIButton {
-    var alternateButton:Array<RadioButton>?
+class AVRadioButton: UIButton {
+    
+    var alternateButton:Array<AVRadioButton>?
     
     override func awakeFromNib() {
         self.heightAnchor.constraint(equalToConstant: 24).isActive = true
@@ -19,9 +20,6 @@ class RadioButton: UIButton {
         self.layer.cornerRadius = 12
         self.layer.borderWidth = 1.0
         self.layer.masksToBounds = true
-        let view = UIImageView()
-        view.image = UIImage(named: "check")
-        self.addSubview(view)
         
     }
     
@@ -29,7 +27,7 @@ class RadioButton: UIButton {
         if alternateButton != nil {
             self.isSelected = true
             
-            for aButton:RadioButton in alternateButton! {
+            for aButton:AVRadioButton in alternateButton! {
                 aButton.isSelected = false
             }
         }else{
@@ -49,13 +47,16 @@ class RadioButton: UIButton {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                self.layer.borderColor = UIColor(red:0.89, green:0.91, blue:0.91, alpha:1.0).cgColor
                 self.layer.backgroundColor = UIColor.blue.cgColor
+                self.layer.borderColor = UIColor.blue.cgColor
+                let image = UIImage(named: "check")
+                self.setBackgroundImage(image, for: UIControlState.normal)
             } else {
-                self.layer.borderColor = UIColor(red:0.89, green:0.91, blue:0.91, alpha:1.0).cgColor
                 self.layer.backgroundColor = UIColor.white.cgColor
-                self.layer.backgroundColor = UIColor.blue.cgColor
+                  
             }
         }
     }
+    
+   
 }

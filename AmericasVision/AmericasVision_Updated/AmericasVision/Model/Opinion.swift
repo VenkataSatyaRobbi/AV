@@ -14,13 +14,13 @@ class Opinion{
     var option1: String
     var option2: String
     var option3: String
-    var publishDate:Date
+    var publishDate:Double
     var count1:NSNumber
     var count2:NSNumber
     var count3:NSNumber
     var selectedOption: String
     
-    init(id:String,question: String, option1: String, option2: String, option3: String, publishDate: Date,count1:NSNumber,count2:NSNumber,count3:NSNumber){
+    init(id:String,question: String, option1: String, option2: String, option3: String, publishDate: Double,count1:NSNumber,count2:NSNumber,count3:NSNumber){
         self.id = id
         self.question = question
         self.option1 = option1

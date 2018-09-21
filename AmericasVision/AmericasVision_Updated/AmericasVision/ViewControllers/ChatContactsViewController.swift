@@ -158,18 +158,30 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
             DBProvider.instance.chatStatusRef.childByAutoId().setValue((data))
         }else{
            //get the details and update the value
-            let ref = DBProvider.instance.chatStatusRef.child("LMRM_mAAgGYoeAmccVg") // testing
+            let ref = DBProvider.instance.chatStatusRef
+            
             if sender.title == "Accept"{
-                ref.updateChildValues([Constants.STATUS: 2])
-                ref.updateChildValues([Constants.ACTIONID: AVAuthService.getCurrentUserId()])
+                ref.queryOrdered(byChild: Constants.TOID).queryEqual(toValue: AVAuthService.getCurrentUserId()).observe(.childAdded) { (snapshot: DataSnapshot) in
+                    let key = snapshot.key as String
+                    ref.child(key).updateChildValues([Constants.STATUS: 2])
+                    ref.child(key).updateChildValues([Constants.ACTIONID: AVAuthService.getCurrentUserId()])
+                    
+                }
             }else if sender.title == "Block"{
-                ref.updateChildValues([Constants.STATUS: 3])
-                ref.updateChildValues([Constants.ACTIONID: AVAuthService.getCurrentUserId()])
-            }else if sender.title == "Block"{
-                ref.updateChildValues([Constants.STATUS: 1])
-                ref.updateChildValues([Constants.ACTIONID: AVAuthService.getCurrentUserId()])
+                ref.queryOrdered(byChild: Constants.TOID).queryEqual(toValue: AVAuthService.getCurrentUserId()).observe(.childAdded) { (snapshot: DataSnapshot) in
+                    let key = snapshot.key as String
+                    ref.child(key).updateChildValues([Constants.STATUS: 3])
+                    ref.child(key).updateChildValues([Constants.ACTIONID: AVAuthService.getCurrentUserId()])
+                    
+                }
+            }else if sender.title == "Unblock"{
+                ref.queryOrdered(byChild: Constants.TOID).queryEqual(toValue: AVAuthService.getCurrentUserId()).observe(.childAdded) { (snapshot: DataSnapshot) in
+                    let key = snapshot.key as String
+                    ref.child(key).updateChildValues([Constants.STATUS: 1])
+                    ref.child(key).updateChildValues([Constants.ACTIONID: AVAuthService.getCurrentUserId()])
+                
+                }
             }
-           
         }
     }
     

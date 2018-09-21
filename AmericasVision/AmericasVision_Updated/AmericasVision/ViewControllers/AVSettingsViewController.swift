@@ -100,6 +100,7 @@ class AVSettingsViewController:UIViewController,UITableViewDataSource,UITableVie
         
         cell.textLabel?.text = settings[indexPath.row]
         cell.accessoryType = .disclosureIndicator
+        
         return cell
     }
     

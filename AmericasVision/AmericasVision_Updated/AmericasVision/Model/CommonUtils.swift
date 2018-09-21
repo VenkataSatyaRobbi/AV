@@ -16,11 +16,17 @@ enum LINE_POSITION {
 class CommonUtils {
     
     static func convertFromTimestamp(seconds: Double) -> String {
-        let time = seconds/1000.0
+        let time = seconds
         let dateFormatter =  DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
         let date = Date(timeIntervalSince1970: TimeInterval(time))
         return dateFormatter.string(from: date)
+    }
+    
+    static func convertTimeFromSeconds(seconds: Double) -> NSDate {
+        let dateFormatter =  DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return NSDate(timeIntervalSince1970: TimeInterval(seconds))
     }
     
     static func convertStringFromDate(date:Date) -> String {
