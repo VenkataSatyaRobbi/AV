@@ -56,7 +56,7 @@ class CommentsTableCell:UITableViewCell{
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addSubview(profileImageView)
         self.addSubview(comment)
-        //self.addSubview(commentedDateLabel)
+        self.addSubview(commentedDateLabel)
         
         profileImageView.leftAnchor.constraint(equalTo: leftAnchor, constant:10).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant:30).isActive = true
@@ -112,7 +112,6 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
     }()
     
     var likesCount: NSNumber = 0
-    
     var dislikesCount: NSNumber = 0
     
     let postedBy: UILabel = {
@@ -128,15 +127,21 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
     
     let likeButton: UIButton = {
         let likeButtonbutton = UIButton()
+        let likeimage = UIImage(named: "like")
         likeButtonbutton.translatesAutoresizingMaskIntoConstraints = false
-        likeButtonbutton.setImage(UIImage(named: "like"), for: .normal)
+        //likeButtonbutton.setImage(UIImage(named: "like"), for: .normal)
+        likeButtonbutton.setImage(likeimage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: .normal)
+        likeButtonbutton.tintColor = UIColor.gray
         return likeButtonbutton
     }()
     
     let dislikeButton: UIButton = {
         let dislikeButtonbutton = UIButton()
+        let dislikeimage = UIImage(named: "dislike")
         dislikeButtonbutton.translatesAutoresizingMaskIntoConstraints = false
-        dislikeButtonbutton.setImage(UIImage(named: "dislike"), for: .normal)
+        //dislikeButtonbutton.setImage(UIImage(named: "dislike"), for: .normal)
+    dislikeButtonbutton.setImage(dislikeimage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: .normal)
+        dislikeButtonbutton.tintColor = UIColor.gray
         return dislikeButtonbutton
     }()
     
@@ -243,7 +248,9 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
     var photoUrl = String()
     var comments = [PostComment]()
     var commentKey = String()
-    
+    var userAlreadyLiked: Bool = false
+    var userAlreadyDisliked: Bool = false
+    var currentUserid: String = AVAuthService.getCurrentUserId()
     
     @IBOutlet weak var scrollView: UIScrollView!
     var tableView: UITableView = UITableView()
@@ -272,53 +279,53 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         NewsDetailedVCImageCourtesy.heightAnchor.constraint(equalToConstant:20).isActive = true
         NewsDetailedVCImageCourtesy.widthAnchor.constraint(equalToConstant:(self.view.frame.width)-20).isActive = true
         
-        postedBy.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:220).isActive = true
+        postedBy.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:225).isActive = true
         postedBy.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10).isActive = true
         postedBy.heightAnchor.constraint(equalToConstant:20).isActive = true
         postedBy.widthAnchor.constraint(equalToConstant:(self.view.frame.width)-20).isActive = true
         
         NewsDetailedVCDateAndLocation.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10).isActive = true
-        NewsDetailedVCDateAndLocation.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:240).isActive = true
+        NewsDetailedVCDateAndLocation.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:250).isActive = true
         NewsDetailedVCDateAndLocation.heightAnchor.constraint(equalToConstant:20).isActive = true
         NewsDetailedVCDateAndLocation.widthAnchor.constraint(equalToConstant:(self.view.frame.width)-20).isActive = true
         
-        likeButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:260).isActive = true
+        likeButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:275).isActive = true
         likeButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10).isActive = true
         likeButton.heightAnchor.constraint(equalToConstant:20).isActive = true
         likeButton.addTarget(self,action: #selector(self.likesAction(_:)),for: .touchUpInside)
         
-        likeLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:260).isActive = true
+        likeLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:275).isActive = true
         likeLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10 + 30).isActive = true
         likeLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
         
-        dislikeButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:260).isActive = true
-        dislikeButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10 + 30 + 50).isActive = true
+        dislikeButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:275).isActive = true
+        dislikeButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10 + 30 + 70).isActive = true
         dislikeButton.heightAnchor.constraint(equalToConstant:20).isActive = true
         dislikeButton.addTarget(self,action: #selector(self.dislikeAction(_:)),for: .touchUpInside)
         
-        dislikeLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:260).isActive = true
-        dislikeLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10 + 30 + 50 + 30).isActive = true
+        dislikeLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:275).isActive = true
+        dislikeLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10 + 30 + 70 + 30).isActive = true
         dislikeLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
         
-        NewsDetailedVCNewsContent.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:280).isActive = true
+        NewsDetailedVCNewsContent.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:300).isActive = true
         NewsDetailedVCNewsContent.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10).isActive = true
         let contentHeight = calculateHeight(text:NewsDetailedVCNewsContent.text!)
         NewsDetailedVCNewsContent.heightAnchor.constraint(equalToConstant:contentHeight).isActive = true
         NewsDetailedVCNewsContent.widthAnchor.constraint(equalToConstant:self.view.frame.width-20).isActive = true
         
         writeCommentLabel.leftAnchor.constraint(equalTo:scrollView.leftAnchor, constant: 10).isActive = true
-        writeCommentLabel.topAnchor.constraint(equalTo:scrollView.topAnchor, constant: 280 + contentHeight).isActive = true
+        writeCommentLabel.topAnchor.constraint(equalTo:scrollView.topAnchor, constant: 300 + contentHeight).isActive = true
         writeCommentLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
         writeCommentLabel.widthAnchor.constraint(equalToConstant:self.view.frame.width-20).isActive = true
         //writeCommentLabel.text = "\(getCommentsCount()) Comments"
         
         writeComment.leftAnchor.constraint(equalTo:scrollView.leftAnchor, constant: 10).isActive = true
-        writeComment.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:300 + contentHeight).isActive = true
+        writeComment.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:320 + contentHeight).isActive = true
         writeComment.heightAnchor.constraint(equalToConstant:50).isActive = true
         writeComment.widthAnchor.constraint(equalToConstant:self.view.frame.width-20).isActive = true
         
         postCommentButton.leftAnchor.constraint(equalTo:scrollView.leftAnchor, constant: 10).isActive = true
-        postCommentButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:355 + contentHeight).isActive = true
+        postCommentButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:375 + contentHeight).isActive = true
         postCommentButton.heightAnchor.constraint(equalToConstant:30).isActive = true
         postCommentButton.widthAnchor.constraint(equalToConstant:self.view.frame.width-20).isActive = true
         postCommentButton.addTarget(self,action: #selector(self.postCommentAction(_:)),for: .touchUpInside)
@@ -334,7 +341,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         if comments.count > 0 {
             let indexPath = NSIndexPath(row:comments.count-1, section: 0)
             tableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: false)
-            tableView.frame = CGRect(x: 0, y: (400 + contentHeight), width: self.view.frame.width, height: commentsHeight)
+            tableView.frame = CGRect(x: 0, y: (415 + contentHeight), width: self.view.frame.width, height: commentsHeight)
             
             self.scrollView.addSubview(tableView)
             self.scrollView.isScrollEnabled = true
@@ -364,6 +371,47 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.likeButton.tintColor = UIColor.gray
+        //self.dislikeButton.tintColor = UIColor.gray
+        
+        let postRef = DBProvider.instance.newsFeedRef.child(postId)
+        postRef.child("usercomments").queryOrdered(byChild: "type").queryEqual(toValue: "Like").observeSingleEvent(of: DataEventType.value){
+            (snapShot:DataSnapshot) in
+            if let mycomments = snapShot.value as? NSDictionary{
+                for(key,value) in mycomments{
+                    if let commentDic = value as? NSDictionary{
+                        let userId = commentDic["userId"] as? String
+                        print("Like userID: \(userId)")
+                        print("Like getCurrentUserId: \(self.currentUserid)")
+                        if userId == self.currentUserid{
+                            print("userid found")
+                            self.userAlreadyLiked = true
+                            self.likeButton.tintColor = UIColor.blue
+                            break
+                        }
+                    }
+                }
+            }
+        }
+        postRef.child("usercomments").queryOrdered(byChild: "type").queryEqual(toValue: "Dislike").observeSingleEvent(of: DataEventType.value){
+            (snapShot:DataSnapshot) in
+            if let mycomments = snapShot.value as? NSDictionary{
+                for(key,value) in mycomments{
+                    if let commentDic = value as? NSDictionary{
+                        let userId = commentDic["userId"] as? String
+                        print("Dislike userID: \(userId)")
+                        print("Dislike getCurrentUserId: \(self.currentUserid)")
+                        if userId == self.currentUserid{
+                            print("userid found");
+                            self.userAlreadyDisliked = true
+                            self.dislikeButton.tintColor = UIColor.red
+                            break
+                        }
+                    }
+                }
+            }
+        }
+        
         writeComment.text = "Add a comment"
         writeComment.textColor = UIColor.lightGray
         writeComment.font = UIFont(name: "Verdana", size: 13)
@@ -471,14 +519,16 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
     @IBAction func postCommentAction(_ sender: Any) {
         //postCommentButton.isEnabled = false
         ProgressHUD.show("", interaction: true)
+        let commentTimestamp = ServerValue.timestamp()
         let postRef = DBProvider.instance.newsFeedRef.child(postId)
         let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
-        commentsRef.setValue(["userId": AVAuthService.getCurrentUserId(),"type": "",
-          "comments": writeComment.text as String], withCompletionBlock:{(error, ref) in
+        commentsRef.setValue(["userId": AVAuthService.getCurrentUserId(),"type": "", "comments": writeComment.text as String, "commentTimestamp": commentTimestamp], withCompletionBlock:{(error, ref) in
             if error != nil{
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
+            
+            
             let comment = PostComment(profileImageUrl: "", userId: AVAuthService.getCurrentUserId(), type: "", comments: self.writeComment.text, commentDate: Date())
             self.fetchProfileImageURL(comment: comment)
             
@@ -499,9 +549,146 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
     }
     
      @IBAction func likesAction(_ sender: Any) {
-        print("likes")
         let postRef = DBProvider.instance.newsFeedRef.child(postId)
-        if(self.dislikesCount.intValue > 0){
+        if self.likesCount.intValue > 0
+        {
+            if userAlreadyLiked == true
+            {
+                postRef.child("usercomments").queryOrdered(byChild: "type").queryEqual(toValue: "Like").observeSingleEvent(of: DataEventType.value){
+                    (snapShot:DataSnapshot) in
+                    if let mycomments = snapShot.value as? NSDictionary{
+                        for(key,value) in mycomments{
+                            if let commentDic = value as? NSDictionary{
+                                let userId = commentDic["userId"] as? String
+                                if userId == self.currentUserid{
+                                    postRef.child("usercomments").child(key as! String).removeValue()
+                                    self.userAlreadyLiked = false
+                                    self.likeButton.tintColor = UIColor.gray
+                                    let likecount = self.likesCount.intValue - 1
+                                    let value = likecount as NSNumber
+                                    self.likesCount = value
+                                    self.updateCountInPost()
+                                    break
+                                }
+                                else{
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else{
+                let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
+                commentsRef.setValue(["type": "Like", "userId": self.currentUserid,
+                                      "comments": ""], withCompletionBlock:{(error, ref) in
+                                        if error != nil{
+                                            ProgressHUD.showError(error!.localizedDescription)
+                                            return
+                                        }
+                                        
+                })
+                self.likeButton.tintColor = UIColor.blue
+                
+                self.userAlreadyLiked = true
+                let likecount = self.likesCount.intValue + 1
+                let value = likecount as NSNumber
+                self.likesCount = value
+                self.updateCountInPost()
+                
+                if self.dislikesCount.intValue > 0 {
+                    if self.userAlreadyDisliked == true {
+                        
+                        postRef.child("usercomments").queryOrdered(byChild: "type").queryEqual(toValue: "Dislike").observeSingleEvent(of: DataEventType.value){
+                            (snapShot:DataSnapshot) in
+                            if let mycomments = snapShot.value as? NSDictionary{
+                                for(key,value) in mycomments{
+                                    if let commentDic = value as? NSDictionary{
+                                        let userId = commentDic["userId"] as? String
+                                        if userId == self.currentUserid{
+                                            postRef.child("usercomments").child(key as! String).removeValue()
+                                            self.userAlreadyDisliked = false
+                                            self.dislikeButton.tintColor = UIColor.gray
+                                            let dislikecount = self.dislikesCount.intValue - 1
+                                            let value = dislikecount as NSNumber
+                                            self.dislikesCount = value
+                                            self.updateCountInPost()
+                                            break
+                                        }
+                                        else{
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else{
+                        print("userAlreadyDisliked false. do nothing.")
+                    }
+                }
+                else{
+                    print("dislikeCount = 0. do nothing")
+                }
+            }
+        }
+        else
+        {
+
+            
+                let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
+                commentsRef.setValue(["type": "Like", "userId": self.currentUserid,
+                                      "comments": ""], withCompletionBlock:{(error, ref) in
+                                        if error != nil{
+                                            ProgressHUD.showError(error!.localizedDescription)
+                                            return
+                                        }
+                                        
+                })
+                self.userAlreadyLiked = true
+            self.likeButton.tintColor = UIColor.blue
+            let likecount = self.likesCount.intValue + 1
+            let value = likecount as NSNumber
+            self.likesCount = value
+            self.updateCountInPost()
+                
+                if self.dislikesCount.intValue > 0 {
+                    if self.userAlreadyDisliked == true {
+                        
+                        postRef.child("usercomments").queryOrdered(byChild: "type").queryEqual(toValue: "Dislike").observeSingleEvent(of: DataEventType.value){
+                            (snapShot:DataSnapshot) in
+                            if let mycomments = snapShot.value as? NSDictionary{
+                                for(key,value) in mycomments{
+                                    if let commentDic = value as? NSDictionary{
+                                        let userId = commentDic["userId"] as? String
+                                        if userId == self.currentUserid{
+                                            postRef.child("usercomments").child(key as! String).removeValue()
+                                            self.userAlreadyDisliked = false
+                                            self.dislikeButton.tintColor = UIColor.gray
+                                            let dislikecount = self.dislikesCount.intValue - 1
+                                            let value = dislikecount as NSNumber
+                                            self.dislikesCount = value
+                                            self.updateCountInPost()
+                                            break
+                                        }
+                                        else{
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else{
+                        print("userAlreadyDisliked false. do nothing.")
+                    }
+                }
+                else{
+                    print("dislikeCount = 0. do nothing")
+                }
+        }
+        
+/*        if(self.dislikesCount.intValue > 0){
             let dislikecount = self.dislikesCount.intValue - 1
             let value = dislikecount as NSNumber
             
@@ -522,13 +709,181 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         self.likeToggle = true
         let likecount = self.likesCount.intValue + 1
         let value = likecount as NSNumber
-        self.likesCount = value
-        self.toggleLikeDislike()
-        self.updateCountInPost()
+        self.likesCount = value */
+       // self.toggleLikeDislike()
+        //print("before Update Count in post called")
+        //self.updateCountInPost()
+ 
+    }
+    
+    @IBAction func dislikeAction(_ sender: Any){
+        let postRef = DBProvider.instance.newsFeedRef.child(postId)
+        if self.dislikesCount.intValue > 0
+        {
+            if userAlreadyDisliked == true
+            {
+                postRef.child("usercomments").queryOrdered(byChild: "type").queryEqual(toValue: "Dislike").observeSingleEvent(of: DataEventType.value){
+                    (snapShot:DataSnapshot) in
+                    if let mycomments = snapShot.value as? NSDictionary{
+                        for(key,value) in mycomments{
+                            if let commentDic = value as? NSDictionary{
+                                let userId = commentDic["userId"] as? String
+                                if userId == self.currentUserid{
+                                    postRef.child("usercomments").child(key as! String).removeValue()
+                                    self.userAlreadyDisliked = false
+                                    self.dislikeButton.tintColor = UIColor.gray
+                                    let dislikecount = self.dislikesCount.intValue - 1
+                                    let value = dislikecount as NSNumber
+                                    self.dislikesCount = value
+                                    self.updateCountInPost()
+                                    break
+                                }
+                                else{
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else{
+                let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
+                commentsRef.setValue(["type": "Dislike", "userId": self.currentUserid,
+                                      "comments": ""], withCompletionBlock:{(error, ref) in
+                                        if error != nil{
+                                            ProgressHUD.showError(error!.localizedDescription)
+                                            return
+                                        }
+                                        
+                })
+                self.dislikeButton.tintColor = UIColor.red
+                
+                self.userAlreadyDisliked = true
+                let dislikecount = self.dislikesCount.intValue + 1
+                let value = dislikecount as NSNumber
+                self.dislikesCount = value
+                self.updateCountInPost()
+                
+                if self.likesCount.intValue > 0 {
+                    if self.userAlreadyLiked == true {
+                        postRef.child("usercomments").queryOrdered(byChild: "type").queryEqual(toValue: "Like").observeSingleEvent(of: DataEventType.value){
+                            (snapShot:DataSnapshot) in
+                            if let mycomments = snapShot.value as? NSDictionary{
+                                for(key,value) in mycomments{
+                                    if let commentDic = value as? NSDictionary{
+                                        let userId = commentDic["userId"] as? String
+                                        if userId == self.currentUserid{
+                                            postRef.child("usercomments").child(key as! String).removeValue()
+                                            self.userAlreadyLiked = false
+                                            self.likeButton.tintColor = UIColor.gray
+                                            let likecount = self.likesCount.intValue - 1
+                                            let value = likecount as NSNumber
+                                            self.likesCount = value
+                                            self.updateCountInPost()
+                                            break
+                                        }
+                                        else{
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else{
+                        print("userAlreadyDisliked false. do nothing.")
+                    }
+                }
+                else{
+                    print("dislikeCount = 0. do nothing")
+                }
+            }
+        }
+        else
+        {
+            
+            
+            let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
+            commentsRef.setValue(["type": "Dislike", "userId": self.currentUserid,
+                                  "comments": ""], withCompletionBlock:{(error, ref) in
+                                    if error != nil{
+                                        ProgressHUD.showError(error!.localizedDescription)
+                                        return
+                                    }
+                                    
+            })
+            self.userAlreadyDisliked = true
+            self.dislikeButton.tintColor = UIColor.red
+            let dislikecount = self.dislikesCount.intValue + 1
+            let value = dislikecount as NSNumber
+            self.dislikesCount = value
+            self.updateCountInPost()
+            
+            if self.likesCount.intValue > 0 {
+                if self.userAlreadyLiked == true {
+                    
+                    postRef.child("usercomments").queryOrdered(byChild: "type").queryEqual(toValue: "Like").observeSingleEvent(of: DataEventType.value){
+                        (snapShot:DataSnapshot) in
+                        if let mycomments = snapShot.value as? NSDictionary{
+                            for(key,value) in mycomments{
+                                if let commentDic = value as? NSDictionary{
+                                    let userId = commentDic["userId"] as? String
+                                    if userId == self.currentUserid{
+                                        postRef.child("usercomments").child(key as! String).removeValue()
+                                        self.userAlreadyLiked = false
+                                        self.likeButton.tintColor = UIColor.gray
+                                        let likecount = self.likesCount.intValue - 1
+                                        let value = likecount as NSNumber
+                                        self.likesCount = value
+                                        self.updateCountInPost()
+                                        break
+                                    }
+                                    else{
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else{
+                    print("userAlreadyDisliked false. do nothing.")
+                }
+            }
+            else{
+                print("dislikeCount = 0. do nothing")
+            }
+        }
+        
+        /*        if(self.dislikesCount.intValue > 0){
+         let dislikecount = self.dislikesCount.intValue - 1
+         let value = dislikecount as NSNumber
+         
+         self.dislikesCount = value
+         NSLog("remove user dislike comments and add like comment section")
+         DBProvider.instance.newsFeedRef.child(postId).child("usercomments").child(commentKey).updateChildValues(["type": "Like"])
+         }else{
+         let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
+         commentsRef.setValue(["type": "Like", "userId": AVAuthService.getCurrentUserId(),
+         "comments": ""], withCompletionBlock:{(error, ref) in
+         if error != nil{
+         ProgressHUD.showError(error!.localizedDescription)
+         return
+         }
+         
+         })
+         }
+         self.likeToggle = true
+         let likecount = self.likesCount.intValue + 1
+         let value = likecount as NSNumber
+         self.likesCount = value */
+        // self.toggleLikeDislike()
+        //print("before Update Count in post called")
+        //self.updateCountInPost()
         
     }
     
-    @IBAction func dislikeAction(_ sender: Any) {
+    /*{
         let postRef = DBProvider.instance.newsFeedRef.child(postId)
         let userId = AVAuthService.getCurrentUserId()
         if(self.likesCount.intValue > 0){
@@ -554,15 +909,21 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         self.dislikesCount = value
         self.toggleLikeDislike()
         self.updateCountInPost()
-    }
+    }*/
     
     func toggleLikeDislike() {
         if likeToggle == true {
-            likeButton.isEnabled = false
-            dislikeButton.isEnabled = true
+            //likeButton.isEnabled = false
+            //dislikeButton.isEnabled = true
+            
+            likeButton.tintColor = UIColor.gray
+            dislikeButton.tintColor = UIColor.darkGray
         }else{
-            likeButton.isEnabled = true
-            dislikeButton.isEnabled = false
+            //likeButton.isEnabled = true
+            //dislikeButton.isEnabled = false
+            
+            likeButton.tintColor = UIColor.darkGray
+            dislikeButton.tintColor = UIColor.gray
         }
     }
     
@@ -585,7 +946,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
     }
    
     func getCommentsCount(){
-        DBProvider.instance.newsFeedRef.child(postId).child("usercomments").observeSingleEvent(of: DataEventType.value){
+        DBProvider.instance.newsFeedRef.child(postId).child("usercomments").queryOrdered(byChild: "type").queryEqual(toValue: "").observeSingleEvent(of: DataEventType.value){
             (snapShot:DataSnapshot) in
             self.writeCommentLabel.text = String(snapShot.childrenCount) + " Comments"
             

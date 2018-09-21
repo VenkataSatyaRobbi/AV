@@ -17,7 +17,7 @@ class PostComment{
     var commentDate:Date
     
     
-    init(profileImageUrl:String,userId: String, type: String, comments: String, commentDate: Date){
+    init(profileImageUrl:String, userId: String, type: String, comments: String, commentDate: Date){
         self.profileImageUrl = profileImageUrl
         self.userId = userId
         self.type = type
