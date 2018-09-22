@@ -44,7 +44,7 @@ class VoteCell: UICollectionViewCell{
     }()
     
      let viewfooter: UIButton = {
-        let button = UIButton(type: UIButtonType.system)
+        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(red: 6/255, green: 90/255, blue: 157/255, alpha: 1)
         button.layer.cornerRadius = 4.0
@@ -131,7 +131,6 @@ class VoteCell: UICollectionViewCell{
         let radioButton = AVRadioButton()
         radioButton.awakeFromNib()
         radioButton.translatesAutoresizingMaskIntoConstraints = false
-       // radioButton.isUserInteractionEnabled = true
         radioButton.isSelected = true
        return radioButton
     }()
@@ -140,7 +139,6 @@ class VoteCell: UICollectionViewCell{
         let radioButton = AVRadioButton()
         radioButton.awakeFromNib()
         radioButton.translatesAutoresizingMaskIntoConstraints = false
-        radioButton.isUserInteractionEnabled = true
         return radioButton
     }()
     
@@ -148,7 +146,6 @@ class VoteCell: UICollectionViewCell{
         let radioButton = AVRadioButton()
         radioButton.awakeFromNib()
         radioButton.translatesAutoresizingMaskIntoConstraints = false
-        radioButton.isUserInteractionEnabled = true
         return radioButton
     }()
     
@@ -205,6 +202,13 @@ class VoteCell: UICollectionViewCell{
         self.addSubview(option3Radio)
         self.addSubview(OptionThree)
         self.addSubview(viewfooter)
+        
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        self.layer.shadowRadius = 3.0
+        self.layer.shadowOpacity = 0.5
+        self.layer.masksToBounds = false
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
        
     }
     
@@ -368,7 +372,7 @@ class VotesCollectionViewController: UICollectionViewController{
         super.viewDidLoad()
         self.navigationItem.title = "Opinion Poll"
         sideMenus()
-        self.collectionView?.backgroundColor = UIColor.groupTableViewBackground
+        self.collectionView?.backgroundColor = UIColor.white
             //UIColor(red: 100/255, green:100/255, blue: 100/255, alpha: 1)
         
         layout.sectionInset = UIEdgeInsets(top: 10, left: 5, bottom: 5, right: 5)
@@ -534,6 +538,10 @@ class VotesCollectionViewController: UICollectionViewController{
     }
     
     @IBAction func getVotedUsers(_ sender: UIButton) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "AV", bundle:nil)
+        print("test")
+        let nextViewController = VotedUsersTableViewController()
+        self.present(nextViewController, animated:true, completion:nil)
        
     }
     

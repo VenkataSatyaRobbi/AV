@@ -28,7 +28,7 @@ class MatureCell: UICollectionViewCell{
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.sizeToFit()
-        label.font = UIFont.systemFont(ofSize: 13)
+        label.font = UIFont(name: "Verdana", size: 12)
         label.textAlignment = .justified
         label.lineBreakMode = .byWordWrapping
         label.backgroundColor = UIColor.white
@@ -42,19 +42,22 @@ class MatureCell: UICollectionViewCell{
         self.addSubview(imageView)
         self.addSubview(headLines)
         let width = (self.contentView.frame.width)
-        let height = (self.contentView.frame.height)
-//
-//        imageView.leftAnchor.constraint(equalTo: leftAnchor, constant:15).isActive = true
-//        imageView.topAnchor.constraint(equalTo: topAnchor, constant:15).isActive = true
+ 
         imageView.heightAnchor.constraint(equalToConstant:100).isActive = true
         imageView.widthAnchor.constraint(equalToConstant:width).isActive = true
-//
-//        headLines.leftAnchor.constraint(equalTo: leftAnchor, constant:15).isActive = true
+
         headLines.topAnchor.constraint(equalTo: topAnchor, constant:100).isActive = true
         headLines.widthAnchor.constraint(equalToConstant: width).isActive = true
-       // headLines.heightAnchor.constraint(equalToConstant: height - 100).isActive = true
+        
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        self.layer.shadowRadius = 3.0
+        self.layer.shadowOpacity = 0.5
+        self.layer.masksToBounds = false
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
+        
     }
-  
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init code vote cell")
     }
@@ -69,17 +72,18 @@ class NewsMatureViewController: UICollectionViewController {
     @IBOutlet weak var NewsFeedMatureHomeButton: UIBarButtonItem!
     
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-    
+    var cellwidth :CGFloat = 0
+    var cellHeight :CGFloat = 130
     var posts = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Mature News"
-        self.collectionView?.backgroundColor = UIColor.groupTableViewBackground
+        self.collectionView?.backgroundColor = UIColor.white
         
         layout.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-        let cellwidth = Int((self.view.frame.width-30)/2)
-        let cellHeight = Int(130)
+        cellwidth = (self.view.frame.width-30)/2
+
         layout.itemSize = CGSize(width: cellwidth, height: cellHeight)
 
         self.collectionView?.collectionViewLayout = layout
@@ -118,7 +122,6 @@ class NewsMatureViewController: UICollectionViewController {
                 let newsLocationString = dict["newsLocation"] as! String
                 let post = Post(captionText: captionText, photoUrlString: photoUrlString, postCategoryString: postCategoryString, postTitleString: postTitleString, postLikesInt: postLikesInt, postDislikesInt: postDislikesInt, postCommentsInt: postCommentsInt,postIDString: postIDString, useridString: useridString, timeStampDouble: timestamp, imageCourtesyString: photoCourtesyString, newsLocationString: newsLocationString, newsContentString: newsContentString)
                 self.posts.append(post)
-                print(post.caption)
                 self.collectionView?.reloadData()
             }
         }
@@ -131,10 +134,6 @@ class NewsMatureViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         sideMenus()
     }
-    
-//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return posts.count
-//    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count

@@ -29,7 +29,8 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
         DBProvider.instance.delegate = self
         DBProvider.instance.getContacts()
         searchBar.delegate = self
-    }
+        contactsTable.tableFooterView = UIView()
+     }
     
     func dataReceived(contacts: [Contacts]) {
         fetchUserStatus()
