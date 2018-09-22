@@ -151,31 +151,33 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
         
     }
     
-    @IBAction func addMessageActionTapped(sender: UIMenuItem){
-        NSLog("Invite")
+    @IBAction func addMessageActionTapped(sender: UIMenuController){
+        
+        let item = sender.menuItems?.first
         if selectedStatus == "Unavailable"{
-            let status = sender.title == "Invite" ? 1: 3
+            NSLog("Invite/Block")
+            let status = (item?.title == "Invite") ? 1: 3
             let data :Dictionary<String,Any> = [Constants.FROMID:AVAuthService.getCurrentUserId(),Constants.TOID:selectedId,Constants.STATUS:status,Constants.ACTIONID:AVAuthService.getCurrentUserId()]
             DBProvider.instance.chatStatusRef.childByAutoId().setValue((data))
         }else{
            //get the details and update the value
             let ref = DBProvider.instance.chatStatusRef
             
-            if sender.title == "Accept"{
+            if item?.title == "Accept"{
                 ref.queryOrdered(byChild: Constants.TOID).queryEqual(toValue: AVAuthService.getCurrentUserId()).observe(.childAdded) { (snapshot: DataSnapshot) in
                     let key = snapshot.key as String
                     ref.child(key).updateChildValues([Constants.STATUS: 2])
                     ref.child(key).updateChildValues([Constants.ACTIONID: AVAuthService.getCurrentUserId()])
                     
                 }
-            }else if sender.title == "Block"{
+            }else if item?.title == "Block"{
                 ref.queryOrdered(byChild: Constants.TOID).queryEqual(toValue: AVAuthService.getCurrentUserId()).observe(.childAdded) { (snapshot: DataSnapshot) in
                     let key = snapshot.key as String
                     ref.child(key).updateChildValues([Constants.STATUS: 3])
                     ref.child(key).updateChildValues([Constants.ACTIONID: AVAuthService.getCurrentUserId()])
                     
                 }
-            }else if sender.title == "Unblock"{
+            }else if item?.title == "Unblock"{
                 ref.queryOrdered(byChild: Constants.TOID).queryEqual(toValue: AVAuthService.getCurrentUserId()).observe(.childAdded) { (snapshot: DataSnapshot) in
                     let key = snapshot.key as String
                     ref.child(key).updateChildValues([Constants.STATUS: 1])
@@ -184,6 +186,7 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
                 }
             }
         }
+        self.contactsTable.reloadData()
     }
     
     /*

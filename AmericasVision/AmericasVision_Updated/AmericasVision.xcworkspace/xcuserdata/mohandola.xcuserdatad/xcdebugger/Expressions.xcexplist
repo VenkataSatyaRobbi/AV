@@ -424,10 +424,13 @@
          contextName = "ChatContactsViewController.addMessageActionTapped(sender:):ChatContactsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "sender">
+               value = "AVAuthService.getCurrentUserId()">
             </PersistentString>
             <PersistentString
-               value = "AVAuthService.getCurrentUserId()">
+               value = "item?.title">
+            </PersistentString>
+            <PersistentString
+               value = "sender">
             </PersistentString>
             <PersistentString
                value = "sender.action">
