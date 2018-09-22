@@ -12,7 +12,7 @@ import UIKit
 
 class AVRadioButton: UIButton {
     
-    var alternateButton:Array<AVRadioButton>?
+    var alternateButton = [AVRadioButton]()
     
     override func awakeFromNib() {
         self.heightAnchor.constraint(equalToConstant: 24).isActive = true
@@ -27,7 +27,7 @@ class AVRadioButton: UIButton {
         if alternateButton != nil {
             self.isSelected = true
             
-            for aButton:AVRadioButton in alternateButton! {
+            for aButton:AVRadioButton in alternateButton {
                 aButton.isSelected = false
             }
         }else{

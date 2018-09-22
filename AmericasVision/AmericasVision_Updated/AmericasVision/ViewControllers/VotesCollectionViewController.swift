@@ -131,8 +131,7 @@ class VoteCell: UICollectionViewCell{
         let radioButton = AVRadioButton()
         radioButton.awakeFromNib()
         radioButton.translatesAutoresizingMaskIntoConstraints = false
-        radioButton.isSelected = true
-       return radioButton
+        return radioButton
     }()
     
     let option2Radio: AVRadioButton = {
@@ -170,6 +169,12 @@ class VoteCell: UICollectionViewCell{
         return likeButton
     }()
     
+    let chartView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var pieChart: PieChartView = {
         let p = PieChartView()
         p.translatesAutoresizingMaskIntoConstraints = false
@@ -177,7 +182,6 @@ class VoteCell: UICollectionViewCell{
         p.legend.enabled = false
         p.chartDescription?.text = ""
         p.drawHoleEnabled = false
-        //p.delegate = self
         return p
     }()
     
@@ -202,6 +206,7 @@ class VoteCell: UICollectionViewCell{
         self.addSubview(option3Radio)
         self.addSubview(OptionThree)
         self.addSubview(viewfooter)
+        self.addSubview(chartView)
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 3.0)
@@ -269,12 +274,12 @@ class VoteCell: UICollectionViewCell{
         option3Radio.leftAnchor.constraint(equalTo: leftAnchor, constant: 55).isActive = true
         option3Radio.topAnchor.constraint(equalTo: topAnchor, constant: top3).isActive = true
         
-        option1Radio.alternateButton?.append(option2Radio)
-        option1Radio.alternateButton?.append(option3Radio)
-        option2Radio.alternateButton?.append(option1Radio)
-        option2Radio.alternateButton?.append(option3Radio)
-        option3Radio.alternateButton?.append(option1Radio)
-        option3Radio.alternateButton?.append(option2Radio)
+        option1Radio.alternateButton.append(option2Radio)
+        option1Radio.alternateButton.append(option3Radio)
+        option2Radio.alternateButton.append(option1Radio)
+        option2Radio.alternateButton.append(option3Radio)
+        option3Radio.alternateButton.append(option1Radio)
+        option3Radio.alternateButton.append(option2Radio)
         
         optionOne.leftAnchor.constraint(equalTo: leftAnchor, constant: 100).isActive = true
         optionOne.topAnchor.constraint(equalTo: topAnchor, constant: top1).isActive = true
@@ -295,8 +300,11 @@ class VoteCell: UICollectionViewCell{
         viewfooter.topAnchor.constraint(equalTo: topAnchor, constant: top3 + option3Height + 5).isActive = true
         viewfooter.heightAnchor.constraint(equalToConstant:32).isActive = true
         viewfooter.widthAnchor.constraint(equalToConstant: self.frame.width-30).isActive = true
-        pieChart.setExtraOffsets (left: -5.0, top: top3 + option3Height + 47, right:-5.0, bottom: 0.0)
-
+        
+        chartView.leftAnchor.constraint(equalTo: leftAnchor, constant:5).isActive = true
+        chartView.topAnchor.constraint(equalTo: topAnchor, constant:top3 + option3Height + 47).isActive = true
+        chartView.heightAnchor.constraint(equalToConstant:self.frame.height - top3 - option3Height - 47).isActive = true
+        chartView.widthAnchor.constraint(equalToConstant: self.frame.width-10).isActive = true
     }
     
    func pieChartSetup(){
@@ -305,17 +313,16 @@ class VoteCell: UICollectionViewCell{
     }
     
     func setupPieChart() {
-       
         pieChart.legend.enabled  = true
         pieChart.drawHoleEnabled = true
-        pieChart.chartDescription?.text = "AV Users Opinion Dashboard"
+        pieChart.chartDescription?.text = "Opinion Dashboard"
         pieChart.chartDescription?.textColor = UIColor(red: 6/255, green: 90/255, blue: 157/255, alpha: 1)
         pieChart.chartDescription?.font = NSUIFont.boldSystemFont(ofSize: 12)
-        addSubview(pieChart)
-        pieChart.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        pieChart.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0).isActive = true
-        pieChart.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
-        pieChart.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1).isActive = true
+        self.chartView.addSubview(pieChart)
+        pieChart.centerXAnchor.constraint(equalTo: chartView.centerXAnchor, constant: 0).isActive = true
+        pieChart.centerYAnchor.constraint(equalTo: chartView.centerYAnchor, constant: 0).isActive = true
+        pieChart.widthAnchor.constraint(equalTo: chartView.widthAnchor, multiplier: 1).isActive = true
+        pieChart.heightAnchor.constraint(equalTo: chartView.heightAnchor, multiplier: 1).isActive = true
     }
     
     func fillChart() {
@@ -415,9 +422,11 @@ class VotesCollectionViewController: UICollectionViewController{
     
     func isUserVoted(id:String,index:Int){
         DBProvider.instance.opinionRef.child(id).child("voteusers").child(AVAuthService.getCurrentUserId())
-            .observe(DataEventType.value){(snapshot:DataSnapshot) in
+            .observe(.childAdded){(snapshot:DataSnapshot) in
             if let data = snapshot.value as? String {
-                    self.opinion[index].selectedOption = data
+                self.opinion[index].selectedOption = data
+                self.collectionView?.reloadData()
+               
              }
         }
     }
