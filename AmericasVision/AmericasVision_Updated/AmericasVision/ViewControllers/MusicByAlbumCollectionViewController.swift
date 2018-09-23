@@ -20,13 +20,13 @@ class MusicByAlbumCollectionViewController:UICollectionViewController,UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        let backgroundView = UIView()
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "musicback.jpg")
-        backgroundImage.contentMode = UIViewContentMode.scaleAspectFill
-        backgroundView.addSubview(backgroundImage)
-        collectionView?.backgroundView = backgroundView
-        
+        //let backgroundView = UIView()
+        //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        //backgroundImage.image = UIImage(named: "musicback.jpg")
+        //backgroundImage.contentMode = UIViewContentMode.scaleAspectFill
+        //backgroundView.addSubview(backgroundImage)
+        //collectionView?.backgroundView = backgroundView
+        collectionView?.backgroundColor = UIColor.groupTableViewBackground
         collectionView!.register(MusicViewCell.self, forCellWithReuseIdentifier: "MusicViewCell")
         
         collectionView!.register(UICollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "MusicCellHeader")
@@ -125,7 +125,7 @@ class MusicByAlbumCollectionViewController:UICollectionViewController,UICollecti
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
             label.text = "Jazz Music"
-            label.textColor = UIColor.white
+            label.textColor = UIColor.black
             header.addSubview(label)
             return header
         }else{
@@ -133,7 +133,7 @@ class MusicByAlbumCollectionViewController:UICollectionViewController,UICollecti
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
             label.text = "See All"
-            label.textColor = UIColor.white
+            label.textColor = UIColor.black
             label.textAlignment = .right
             footer.addSubview(label)
             return footer
@@ -163,7 +163,7 @@ class MusicByAlbumCollectionViewController:UICollectionViewController,UICollecti
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
-        let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "AVMusicPlayerController") as! AVMusicPlayerController
+        let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "MusicAlbumListController") as! MusicAlbumListController
         //destinationViewController.postId = albums[indexPath.row].albumId
         self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
