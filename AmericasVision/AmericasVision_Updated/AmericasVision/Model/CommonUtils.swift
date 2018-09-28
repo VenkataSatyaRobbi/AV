@@ -67,5 +67,15 @@ class CommonUtils {
             break
         }
     }
+    
+    static func reachabilityAlert(){
+//        if Reachability.isConnectedToNetwork() == true {
+//            println("Internet connection OK")
+//        } else {
+//            println("Internet connection FAILED")
+//            var alert = UIAlertView(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", delegate: nil, cancelButtonTitle: "OK")
+//            alert.show()
+//        }
+    }
 
 }

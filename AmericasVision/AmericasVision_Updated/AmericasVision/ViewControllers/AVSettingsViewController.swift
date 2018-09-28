@@ -14,9 +14,22 @@ class AVSettingsViewController:UIViewController,UITableViewDataSource,UITableVie
     
     @IBOutlet weak var settingsTableview: UITableView!
     
-    let settings = ["Do not disturb", "Privacy policy", "Terms of use","Rate & Feedback","Notification","Company Info","Version","Get Help"]
-    let cellReuseIdentifier = "cell"
+    let settings = ["Do not disturb","Notification", "Privacy policy", "Terms of use","Rate & Feedback","Company Info","Version","Get Help"]
+    let cellReuseIdentifier = "SettingCell"
     
+    let disturbSwitch: UISwitch = {
+        let sc = UISwitch()
+        sc.translatesAutoresizingMaskIntoConstraints = false
+        sc.onTintColor = .blue
+        return sc
+    }()
+    
+    let notificationSwitch: UISwitch = {
+        let sc = UISwitch()
+        sc.onTintColor = .blue
+        sc.translatesAutoresizingMaskIntoConstraints = false
+        return sc
+    }()
     
     func sideMenus(){
         if revealViewController() != nil {
@@ -29,61 +42,13 @@ class AVSettingsViewController:UIViewController,UITableViewDataSource,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         sideMenus()
-        self.navigationItem.title = "Contacts"
+        self.navigationItem.title = "User Preferences"
         settingsTableview.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-        
-        settingsTableview.delegate = self as? UITableViewDelegate
-        settingsTableview.dataSource = (self as! UITableViewDataSource)
-        var top:CGFloat = 60
-        for name in settings{
-            
-            let _explore: UIImageView = {
-                let view = UIImageView()
-                view.image = UIImage(named: "forward")
-                view.translatesAutoresizingMaskIntoConstraints = false
-                return view
-            }()
-            
-            let _title: UILabel = {
-                let label = UILabel()
-                label.text = "Feedback"
-                label.textColor = UIColor.black
-                label.font = UIFont.systemFont(ofSize: 14)
-                label.translatesAutoresizingMaskIntoConstraints = false
-                label.textAlignment = .justified
-                return label
-            }()
-            
-            let _seperator: UIView = {
-                let view = UIView()
-                CommonUtils.addLineToView(view: view, position: .LINE_POSITION_BOTTOM, color: UIColor.lightGray, width: 1)
-                view.translatesAutoresizingMaskIntoConstraints = false
-                return view
-            }()
-            
-            _title.text = name
-            //           self.view.addSubview(_title)
-            //           self.view.addSubview(_explore)
-            //           self.view.addSubview(_seperator)
-            //
-            //            _title.topAnchor.constraint(equalTo: self.view.topAnchor, constant:top).isActive = true
-            //            _title.heightAnchor.constraint(equalToConstant:59).isActive = true
-            //            _title.widthAnchor.constraint(equalToConstant:self.view.frame.width - 40).isActive = true
-            //            _title.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:10).isActive = true
-            //
-            //            _explore.topAnchor.constraint(equalTo: self.view.topAnchor, constant:top+5).isActive = true
-            //            _explore.heightAnchor.constraint(equalToConstant:40).isActive = true
-            //            _explore.widthAnchor.constraint(equalToConstant:40).isActive = true
-            //            _explore.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:self.view.frame.width - 40).isActive = true
-            //
-            //            _seperator.topAnchor.constraint(equalTo: self.view.topAnchor, constant:top+59).isActive = true
-            //            _seperator.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:1).isActive = true
-            //            _seperator.heightAnchor.constraint(equalToConstant:1).isActive = true
-            //            _seperator.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
-            //             top = top + 60
-        }
+        settingsTableview.delegate = self
+        settingsTableview.dataSource = self
+        disturbSwitch.addTarget(self, action:#selector(AVSettingsViewController.categorySwitchValueChanged(_:)), for: .valueChanged)
+        notificationSwitch.addTarget(self, action:#selector(AVSettingsViewController.categorySwitchValueChanged(_:)), for: .valueChanged)
     }
     
     func getSettingInfo(){
@@ -95,17 +60,30 @@ class AVSettingsViewController:UIViewController,UITableViewDataSource,UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell:UITableViewCell = settingsTableview.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
-        
         cell.textLabel?.text = settings[indexPath.row]
-        cell.accessoryType = .disclosureIndicator
-        
+        if settings[indexPath.row] == "Do not disturb" {
+            cell.contentView.addSubview(disturbSwitch)
+            disturbSwitch.centerYAnchor.constraint(equalTo: cell.centerYAnchor).isActive = true
+            disturbSwitch.centerXAnchor.constraint(equalTo: cell.centerXAnchor, constant: (self.settingsTableview.frame.width/2)-50).isActive = true
+            cell.detailTextLabel?.text = "Notification"
+        }else if settings[indexPath.row] == "Notification" {
+           cell.contentView.addSubview(notificationSwitch)
+            notificationSwitch.centerYAnchor.constraint(equalTo: cell.centerYAnchor).isActive = true
+            notificationSwitch.centerXAnchor.constraint(equalTo: cell.centerXAnchor, constant: (self.settingsTableview.frame.width/2)-50).isActive = true
+            cell.detailTextLabel?.text = "Notification will not make Sound or vibrate"
+        }else {
+           cell.accessoryType = .disclosureIndicator
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
         return 60
+    }
+    
+    @IBAction func categorySwitchValueChanged(_ sender : UISwitch!){
+        
     }
     
 }

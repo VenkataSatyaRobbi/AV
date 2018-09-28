@@ -105,7 +105,7 @@ class MusicByAlbumCollectionViewController:UICollectionViewController,UICollecti
         cell.MusicTableTilte.text = "Farhan Akhtar,Arujun Rampal,Prachi Desai"
         
         if indexPath.section == 0 {
-            let imageWidth = ((self.collectionView?.frame.width)!/2)-10
+            let imageWidth = ((self.collectionView?.frame.width)!/2)-15
             cell.setAllignments(imageSize:imageWidth,headLinesLeft:5,headLinesTop:imageWidth + 5,headLinesWidth:imageWidth-25,
                                 tileTop:imageWidth + 20,titleLeft:5,menuTop:imageWidth + 5,menuLeft:imageWidth-25)
         }else  if indexPath.section == 1 {
@@ -142,7 +142,7 @@ class MusicByAlbumCollectionViewController:UICollectionViewController,UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width :CGFloat =  ((self.collectionView?.frame.width)!/2)-10
+        let width :CGFloat =  ((self.collectionView?.frame.width)!/2)-15
         let height:CGFloat = width+50
         if indexPath.section == 0{
             return CGSize(width: width, height: height)

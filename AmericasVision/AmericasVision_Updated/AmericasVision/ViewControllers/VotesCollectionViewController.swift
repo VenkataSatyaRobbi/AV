@@ -373,7 +373,7 @@ class VotesCollectionViewController: UICollectionViewController{
     
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     
-    var opinion = [Opinion]()
+    var opinions = [Opinion]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -398,7 +398,7 @@ class VotesCollectionViewController: UICollectionViewController{
     }
     
     func fetchFirstOpinion(){
-        DBProvider.instance.opinionRef.queryOrdered(byChild: "Date").queryLimited(toFirst: 2).observe(.childAdded)
+        DBProvider.instance.opinionRef.queryOrdered(byChild: "Date").observe(.childAdded)
             //queryOrdered(byChild: "Date").observe(.childAdded)
         { (snapshot: DataSnapshot) in
             if let dict = snapshot.value as? [String: Any] {
@@ -411,22 +411,21 @@ class VotesCollectionViewController: UICollectionViewController{
                 let count2 = dict["Count2"] as! NSNumber
                 let count3 = dict["Count3"] as! NSNumber
                 let publishDate = dict["Date"] as! Double
-                let data = Opinion.init(id:id,question: question, option1: option1, option2: option2, option3: option3, publishDate: publishDate,count1: count1,count2: count2,count3: count3)
-                self.opinion.append(data)
-                self.collectionView?.reloadData()
+                let opinion = Opinion.init(id:id,question: question, option1: option1, option2: option2, option3: option3, publishDate: publishDate,count1: count1,count2: count2,count3: count3)
+                self.isUserVoted(opinion:opinion)
             }
             
         }
     }
     
     
-    func isUserVoted(id:String,index:Int){
-        DBProvider.instance.opinionRef.child(id).child("voteusers").child(AVAuthService.getCurrentUserId())
+    func isUserVoted(opinion:Opinion){
+        DBProvider.instance.opinionRef.child(opinion.id).child("voteusers").child(AVAuthService.getCurrentUserId())
             .observe(.childAdded){(snapshot:DataSnapshot) in
             if let data = snapshot.value as? String {
-                self.opinion[index].selectedOption = data
+                opinion.selectedOption = data
+                self.opinions.append(opinion)
                 self.collectionView?.reloadData()
-               
              }
         }
     }
@@ -453,27 +452,27 @@ class VotesCollectionViewController: UICollectionViewController{
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return opinion.count
+        return opinions.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let id = opinion[indexPath.row].id
+        let id = opinions[indexPath.row].id
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! VoteCell
         
         cell.header.text = "Question-" + String(indexPath.row+1)
         cell.opinionId = id
-        cell.question.text = opinion[indexPath.row].question
-        cell.optionOne.text = opinion[indexPath.row].option1
-        cell.optionTwo.text = opinion[indexPath.row].option2
-        cell.OptionThree.text = opinion[indexPath.row].option3
+        cell.question.text = opinions[indexPath.row].question
+        cell.optionOne.text = opinions[indexPath.row].option1
+        cell.optionTwo.text = opinions[indexPath.row].option2
+        cell.OptionThree.text = opinions[indexPath.row].option3
         
         cell.startTimer()
-        cell.releaseDate = CommonUtils.convertTimeFromSeconds(seconds: opinion[indexPath.row].publishDate)
+        cell.releaseDate = CommonUtils.convertTimeFromSeconds(seconds: opinions[indexPath.row].publishDate)
         
-        let questionTextheight = CommonUtils.calculateHeight(text:opinion[indexPath.row].question, width: (self.collectionView?.frame.size.width)! - 20)
-        let option1Height = CommonUtils.calculateHeight(text:opinion[indexPath.row].option1, width: (self.collectionView?.frame.size.width)! - 95)
-        let option2Height = CommonUtils.calculateHeight(text:opinion[indexPath.row].option2, width: (self.collectionView?.frame.size.width)! - 95)
-        let option3Height = CommonUtils.calculateHeight(text:opinion[indexPath.row].option3, width: (self.collectionView?.frame.size.width)! - 95)
+        let questionTextheight = CommonUtils.calculateHeight(text:opinions[indexPath.row].question, width: (self.collectionView?.frame.size.width)! - 20)
+        let option1Height = CommonUtils.calculateHeight(text:opinions[indexPath.row].option1, width: (self.collectionView?.frame.size.width)! - 95)
+        let option2Height = CommonUtils.calculateHeight(text:opinions[indexPath.row].option2, width: (self.collectionView?.frame.size.width)! - 95)
+        let option3Height = CommonUtils.calculateHeight(text:opinions[indexPath.row].option3, width: (self.collectionView?.frame.size.width)! - 95)
         cell.questionTextheight = questionTextheight
         
         cell.option1Height = option1Height > 40 ? option1Height : 40
@@ -481,32 +480,31 @@ class VotesCollectionViewController: UICollectionViewController{
         cell.option3Height = option3Height > 40 ? option3Height : 40
         cell.addAllignments()
         
-        isUserVoted(id: id,index: indexPath.row)
-        
-        if opinion[indexPath.row].selectedOption == opinion[indexPath.row].option1 {
+        if opinions[indexPath.row].selectedOption == opinions[indexPath.row].option1 {
             cell.option1Radio.isSelected = true
-        }else if opinion[indexPath.row].selectedOption == opinion[indexPath.row].option2 {
+        }else if opinions[indexPath.row].selectedOption == opinions[indexPath.row].option2 {
             cell.option2Radio.isSelected = true
-        }else if opinion[indexPath.row].selectedOption == opinion[indexPath.row].option3 {
+        }else if opinions[indexPath.row].selectedOption == opinions[indexPath.row].option3 {
             cell.option3Radio.isSelected = true
         }
         
-        if opinion[indexPath.row].selectedOption != "" {
+        if opinions[indexPath.row].selectedOption != "" {
            cell.option1Radio.isEnabled = false
            cell.option2Radio.isEnabled = false
            cell.option3Radio.isEnabled = false
            cell.viewfooter.isEnabled = false
+           cell.viewfooter.setTitle("Thanks for your Opinion", for: .normal)
         }
         
-        cell.surveyData.updateValue(opinion[indexPath.row].count1, forKey: opinion[indexPath.row].option1)
-        cell.surveyData.updateValue(opinion[indexPath.row].count2, forKey: opinion[indexPath.row].option2)
-        cell.surveyData.updateValue(opinion[indexPath.row].count3, forKey: opinion[indexPath.row].option3)
-        cell.totalCount = opinion[indexPath.row].count1.doubleValue + opinion[indexPath.row].count2.doubleValue + opinion[indexPath.row].count3.doubleValue
+        cell.surveyData.updateValue(opinions[indexPath.row].count1, forKey: opinions[indexPath.row].option1)
+        cell.surveyData.updateValue(opinions[indexPath.row].count2, forKey: opinions[indexPath.row].option2)
+        cell.surveyData.updateValue(opinions[indexPath.row].count3, forKey: opinions[indexPath.row].option3)
+        cell.totalCount = opinions[indexPath.row].count1.doubleValue + opinions[indexPath.row].count2.doubleValue + opinions[indexPath.row].count3.doubleValue
         cell.pieChartSetup( )
         
-        cell.scoreBoard1.text = opinion[indexPath.row].count1.stringValue
-        cell.scoreBoard2.text = opinion[indexPath.row].count2.stringValue
-        cell.scoreBoard3.text = opinion[indexPath.row].count3.stringValue
+        cell.scoreBoard1.text = opinions[indexPath.row].count1.stringValue
+        cell.scoreBoard2.text = opinions[indexPath.row].count2.stringValue
+        cell.scoreBoard3.text = opinions[indexPath.row].count3.stringValue
         
         cell.viewfooter.tag = indexPath.item
         cell.viewfooter.addTarget(self,action: #selector(self.handlePollButton(_:)),for: .touchUpInside)

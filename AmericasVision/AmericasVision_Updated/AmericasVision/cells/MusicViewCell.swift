@@ -87,14 +87,15 @@ class MusicViewCell: UICollectionViewCell{
     func setAllignments(imageSize:CGFloat,headLinesLeft:CGFloat,headLinesTop:CGFloat,headLinesWidth:CGFloat,
                         tileTop:CGFloat,titleLeft:CGFloat,menuTop:CGFloat,menuLeft:CGFloat){
         MusicTableImage.topAnchor.constraint(equalTo: topAnchor, constant:0).isActive = true
+        MusicTableImage.leftAnchor.constraint(equalTo: leftAnchor, constant:5).isActive = true
         MusicTableImage.heightAnchor.constraint(equalToConstant:imageSize).isActive = true
         MusicTableImage.widthAnchor.constraint(equalToConstant:imageSize).isActive = true
         
-        MusicTableHeadlines.leftAnchor.constraint(equalTo: leftAnchor, constant:headLinesLeft).isActive = true
+        MusicTableHeadlines.leftAnchor.constraint(equalTo: leftAnchor, constant:headLinesLeft+5).isActive = true
         MusicTableHeadlines.topAnchor.constraint(equalTo: topAnchor, constant:headLinesTop).isActive = true
         MusicTableHeadlines.widthAnchor.constraint(equalToConstant: headLinesWidth-20).isActive = true
         
-        MusicTableTilte.leftAnchor.constraint(equalTo: leftAnchor, constant:titleLeft).isActive = true
+        MusicTableTilte.leftAnchor.constraint(equalTo: leftAnchor, constant:titleLeft+5).isActive = true
         MusicTableTilte.topAnchor.constraint(equalTo: topAnchor, constant:tileTop).isActive = true
         MusicTableTilte.widthAnchor.constraint(equalToConstant: headLinesWidth-20).isActive = true
         

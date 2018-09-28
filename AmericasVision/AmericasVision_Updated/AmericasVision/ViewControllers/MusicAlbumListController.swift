@@ -23,6 +23,7 @@ class MusicAlbumListController:UICollectionViewController,UICollectionViewDelega
         
         collectionView?.dataSource = self
         collectionView?.delegate = self
+        self.view.addSubview(MusicFloatingPlayer())
         sideMenus()
         loadAblumTracks()
         self.navigationItem.title = "Album Name"

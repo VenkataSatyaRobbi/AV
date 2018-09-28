@@ -62,6 +62,8 @@
 		DC8C89FE21135C6300AE8E92 /* AVRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C89FD21135C6300AE8E92 /* AVRadioButton.swift */; };
 		DC96CB262157774900A42052 /* MusicAlbumListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC96CB252157774900A42052 /* MusicAlbumListController.swift */; };
 		DC96CB2821577C6100A42052 /* MusicTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC96CB2721577C6100A42052 /* MusicTrack.swift */; };
+		DC96CB2A21579C3500A42052 /* MusicFloatingPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC96CB2921579C3500A42052 /* MusicFloatingPlayer.swift */; };
+		DC96CB2C21580C9700A42052 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC96CB2B21580C9700A42052 /* Reachability.swift */; };
 		DCBB0ACB2145660B008056A5 /* AVSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBB0ACA2145660B008056A5 /* AVSettingsViewController.swift */; };
 		DCBB0ACD215578E6008056A5 /* VotedUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBB0ACC215578E6008056A5 /* VotedUsersTableViewController.swift */; };
 		DCBEBC3820A786EE00E8EAEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3720A786ED00E8EAEA /* Constants.swift */; };
@@ -154,6 +156,8 @@
 		DC8C89FD21135C6300AE8E92 /* AVRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVRadioButton.swift; sourceTree = "<group>"; };
 		DC96CB252157774900A42052 /* MusicAlbumListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAlbumListController.swift; sourceTree = "<group>"; };
 		DC96CB2721577C6100A42052 /* MusicTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTrack.swift; sourceTree = "<group>"; };
+		DC96CB2921579C3500A42052 /* MusicFloatingPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFloatingPlayer.swift; sourceTree = "<group>"; };
+		DC96CB2B21580C9700A42052 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		DCBB0ACA2145660B008056A5 /* AVSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVSettingsViewController.swift; sourceTree = "<group>"; };
 		DCBB0ACC215578E6008056A5 /* VotedUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotedUsersTableViewController.swift; sourceTree = "<group>"; };
 		DCBEBC3720A786ED00E8EAEA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -309,12 +313,14 @@
 				D4FA49DD207994C300CC425B /* SWRevealViewController.m */,
 				D4FA49F7207D0D7C00CC425B /* ProgressHUD.h */,
 				D4FA49F5207D0D7C00CC425B /* ProgressHUD.m */,
+				DC96CB2921579C3500A42052 /* MusicFloatingPlayer.swift */,
 				D46390FA207036F300C4E3DA /* AppDelegate.swift */,
 				D4FA49DB207994C200CC425B /* AmericasVision-Bridging-Header.h */,
 				D4FA49F3207C6EA200CC425B /* PropertyConfig.swift */,
 				DC8C89FD21135C6300AE8E92 /* AVRadioButton.swift */,
 				DC0C6E06212070F4000F284D /* AVLabel.swift */,
 				DCD10FB82142F868007A3779 /* AVCommonFields.swift */,
+				DC96CB2B21580C9700A42052 /* Reachability.swift */,
 			);
 			path = plugins;
 			sourceTree = "<group>";
@@ -519,7 +525,9 @@
 				DC33664120BC6EB0002B8064 /* MusicAlbumTracksCell.swift in Sources */,
 				DC0C6E0C2121EFA1000F284D /* NewsMatureViewController.swift in Sources */,
 				D4FA49F8207D0D7D00CC425B /* ProgressHUD.m in Sources */,
+				DC96CB2A21579C3500A42052 /* MusicFloatingPlayer.swift in Sources */,
 				DC8317AE20B8ABEF00517AE9 /* UserDefaultsHelper.swift in Sources */,
+				DC96CB2C21580C9700A42052 /* Reachability.swift in Sources */,
 				D408D2E4209E706F008DD80A /* MarketPlaceCollectionViewController.swift in Sources */,
 				DCF8AB2F20B1527E0064FF72 /* NewsSportsViewController.swift in Sources */,
 				D46390FB207036F300C4E3DA /* AppDelegate.swift in Sources */,
