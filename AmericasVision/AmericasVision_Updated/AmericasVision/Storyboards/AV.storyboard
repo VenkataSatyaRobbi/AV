@@ -510,6 +510,21 @@
             </objects>
             <point key="canvasLocation" x="4808.8000000000002" y="-601.34932533733138"/>
         </scene>
+        <!--Settings Detailed View Controller-->
+        <scene sceneID="FOi-7J-1nv">
+            <objects>
+                <viewController storyboardIdentifier="SettingsDetailedViewController" id="ksu-3P-hcs" customClass="SettingsDetailedViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hsF-vg-x3b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="OUG-Ix-1dp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T6m-0i-qkj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2025" y="909"/>
+        </scene>
         <!--Political News-->
         <scene sceneID="LJX-Bn-XwM">
             <objects>
@@ -1136,17 +1151,24 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingCell" id="T12-Ep-vFm">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingCell" textLabel="jRr-Da-4yF" detailTextLabel="Qwu-yJ-FlH" rowHeight="46" style="IBUITableViewCellStyleSubtitle" id="T12-Ep-vFm">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T12-Ep-vFm" id="wOq-in-JSR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mka-xu-yHm">
-                                                    <rect key="frame" x="15" y="0.0" width="224" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jRr-Da-4yF">
+                                                    <rect key="frame" x="15" y="6" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qwu-yJ-FlH">
+                                                    <rect key="frame" x="15" y="26.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1168,11 +1190,12 @@
                     <connections>
                         <outlet property="homeButton" destination="TAA-hX-bsY" id="pGw-wb-UBX"/>
                         <outlet property="settingsTableview" destination="eLJ-GP-7vK" id="jrT-IV-IXM"/>
+                        <segue destination="ksu-3P-hcs" kind="push" identifier="SettingsDetailedSegue" id="zj5-kE-PhI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MHo-zI-cUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2025" y="161"/>
+            <point key="canvasLocation" x="2024.8" y="160.56971514242881"/>
         </scene>
         <!--Music Album List Controller-->
         <scene sceneID="8xf-oO-rkE">
@@ -1678,9 +1701,9 @@
         <image name="sportsselected" width="19" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iZm-Fm-GVO"/>
+        <segue reference="gEB-8k-KId"/>
         <segue reference="tcg-Fz-vNU"/>
-        <segue reference="Y6J-Yd-ugj"/>
+        <segue reference="ow8-Ni-goa"/>
         <segue reference="yj6-fy-86n"/>
     </inferredMetricsTieBreakers>
 </document>

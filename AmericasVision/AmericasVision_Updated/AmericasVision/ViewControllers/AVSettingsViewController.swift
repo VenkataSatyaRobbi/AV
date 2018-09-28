@@ -11,7 +11,6 @@ import Foundation
 class AVSettingsViewController:UIViewController,UITableViewDataSource,UITableViewDelegate{
     
     @IBOutlet weak var homeButton: UIBarButtonItem!
-    
     @IBOutlet weak var settingsTableview: UITableView!
     
     let settings = ["Do not disturb","Notification", "Privacy policy", "Terms of use","Rate & Feedback","Company Info","Version","Get Help"]
@@ -47,6 +46,7 @@ class AVSettingsViewController:UIViewController,UITableViewDataSource,UITableVie
         settingsTableview.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         settingsTableview.delegate = self
         settingsTableview.dataSource = self
+        settingsTableview.tableFooterView = UIView()
         disturbSwitch.addTarget(self, action:#selector(AVSettingsViewController.categorySwitchValueChanged(_:)), for: .valueChanged)
         notificationSwitch.addTarget(self, action:#selector(AVSettingsViewController.categorySwitchValueChanged(_:)), for: .valueChanged)
     }
@@ -80,6 +80,14 @@ class AVSettingsViewController:UIViewController,UITableViewDataSource,UITableVie
     
     func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
         return 60
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if settings[indexPath.row] != "Do not disturb" && settings[indexPath.row] != "Notification"{
+            let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
+            let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "SettingsDetailedViewController") as! SettingsDetailedViewController
+            self.navigationController?.pushViewController(destinationViewController, animated: true)
+        }
     }
     
     @IBAction func categorySwitchValueChanged(_ sender : UISwitch!){
