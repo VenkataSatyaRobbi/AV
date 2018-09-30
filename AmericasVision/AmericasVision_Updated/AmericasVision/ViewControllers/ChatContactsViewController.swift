@@ -12,7 +12,7 @@ import FirebaseDatabase
 class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate, FetchData{
     
     private let cellID = "chatContactsCell"
-    private var contacts = [Contacts]();
+    private var contacts = [Contacts]()
     private var filterContacts = [Contacts]()
     private let CHAT_SEGUE = "chatsegue"
     private var selectedId = String()

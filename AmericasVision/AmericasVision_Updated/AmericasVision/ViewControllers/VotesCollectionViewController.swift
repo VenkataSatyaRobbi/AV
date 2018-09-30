@@ -418,7 +418,6 @@ class VotesCollectionViewController: UICollectionViewController{
         }
     }
     
-    
     func isUserVoted(opinion:Opinion){
         DBProvider.instance.opinionRef.child(opinion.id).child("voteusers").child(AVAuthService.getCurrentUserId())
             .observe(.childAdded){(snapshot:DataSnapshot) in
@@ -546,9 +545,10 @@ class VotesCollectionViewController: UICollectionViewController{
     
     @IBAction func getVotedUsers(_ sender: UIButton) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "AV", bundle:nil)
-        print("test")
         let nextViewController = VotedUsersTableViewController()
-        self.present(nextViewController, animated:true, completion:nil)
+        nextViewController.opinionId = "LIvS_ymCE5jb4ZBrxRo"
+        nextViewController.option = "sender.tag"
+        self.navigationController?.pushViewController(nextViewController, animated: true)
        
     }
     

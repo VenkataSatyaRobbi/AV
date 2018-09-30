@@ -60,7 +60,7 @@ class AVSettingsViewController:UIViewController,UITableViewDataSource,UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = settingsTableview.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
+        let cell =  UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellReuseIdentifier)
         cell.textLabel?.text = settings[indexPath.row]
         if settings[indexPath.row] == "Do not disturb" {
             cell.contentView.addSubview(disturbSwitch)
@@ -72,6 +72,8 @@ class AVSettingsViewController:UIViewController,UITableViewDataSource,UITableVie
             notificationSwitch.centerYAnchor.constraint(equalTo: cell.centerYAnchor).isActive = true
             notificationSwitch.centerXAnchor.constraint(equalTo: cell.centerXAnchor, constant: (self.settingsTableview.frame.width/2)-50).isActive = true
             cell.detailTextLabel?.text = "Notification will not make Sound or vibrate"
+        }else if settings[indexPath.row] == "Version" {
+            cell.detailTextLabel?.text = "Version 1.0 and Lasted Updated on 1-Sep-2018"
         }else {
            cell.accessoryType = .disclosureIndicator
         }
@@ -83,9 +85,11 @@ class AVSettingsViewController:UIViewController,UITableViewDataSource,UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if settings[indexPath.row] != "Do not disturb" && settings[indexPath.row] != "Notification"{
+        if settings[indexPath.row] != "Do not disturb" && settings[indexPath.row] != "Notification"
+           && settings[indexPath.row] != "Version"{
             let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
             let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "SettingsDetailedViewController") as! SettingsDetailedViewController
+            destinationViewController.name = settings[indexPath.row]
             self.navigationController?.pushViewController(destinationViewController, animated: true)
         }
     }

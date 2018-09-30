@@ -11,6 +11,14 @@ import UIKit
 class MyProfileViewController: UIViewController {
     
     @IBOutlet weak var MyProfileHomeButton: UIBarButtonItem!
+    
+    let spinner : UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView()
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.isHidden = true
+        spinner.backgroundColor = .blue
+        return spinner
+    }()
   
     let header: UIView = {
         let header = UIImageView()
@@ -33,12 +41,13 @@ class MyProfileViewController: UIViewController {
     }()
     let textUserName: UITextField = {
         let userName = UITextField()
-       
+        userName.isEnabled = false
         userName.translatesAutoresizingMaskIntoConstraints = false
         return userName
     }()
     let textEmail: UITextField = {
         let emailText = UITextField()
+        emailText.isEnabled = false
         emailText.translatesAutoresizingMaskIntoConstraints = false
         return emailText
     }()
@@ -68,7 +77,6 @@ class MyProfileViewController: UIViewController {
         button.layer.cornerRadius = 5
         button.titleLabel?.textColor = UIColor.white
         button.backgroundColor = UIColor(red: 6/255, green: 90/255, blue: 157/255, alpha: 1)
-       
         return button
     }()
     
@@ -88,23 +96,11 @@ class MyProfileViewController: UIViewController {
         view.backgroundColor = UIColor(red: 55/255, green:55/255, blue: 55/255, alpha: 1)
         populateUserinfo()
         sideMenus()
-    }
+     }
     
     @IBAction func backAction(_ sender: Any) {
-        
-        //VotesFromSideMenuSegue
-        
-//       let storyBoard : UIStoryboard = UIStoryboard(name: "AV", bundle:nil)
-//       let vc = storyBoard.instantiateViewController(withIdentifier: "voteVC") as! VotesCollectionViewController
-//        let nv = UINavigationController(rootViewController: vc)
-//        let appdelegate = UIApplication.shared.delegate as! AppDelegate
-//        appdelegate.window!.rootViewController = nv
-//      // self.present(vc, animated:true, completion:nil)
-//
-      
         guard let vc = self.presentingViewController else { return }
         vc.dismiss(animated: true, completion: nil)
-        
     }
     
     func populateUserinfo(){
@@ -113,7 +109,6 @@ class MyProfileViewController: UIViewController {
         textEmail.text = userInfo.email
         textDOB.text = userInfo.dob
         profileImage.image = userInfo.profileImage
-        
     }
     
     func sideMenus(){
@@ -126,6 +121,7 @@ class MyProfileViewController: UIViewController {
     }
     //6,90,157
     override func viewWillAppear(_ animated: Bool) {
+        spinner.startAnimating()
         sideMenus()
         self.navigationController?.isNavigationBarHidden = true
         profileBackView.addSubview(profileImage)
@@ -146,19 +142,17 @@ class MyProfileViewController: UIViewController {
        
         profileBackView.addSubview(btnsubmit)
         self.view.addSubview(header)
-       
         self.view.addSubview(profileBackView)
         self.view.addSubview(btnBack)
-        //self.view.addSubview(btnBack)
-        header.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        header.heightAnchor.constraint(equalToConstant: 180).isActive = true //150
+        self.view.addSubview(spinner)
         
         var textFieldHight = (self.view.frame.height - 180) / 5
         if textFieldHight > 60{
             textFieldHight = 60
         }
         
-        
+        header.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        header.heightAnchor.constraint(equalToConstant: 180).isActive = true //150
         btnBack.topAnchor.constraint(equalTo: self.view.topAnchor, constant:15).isActive = true
         btnBack.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:5).isActive = true
         btnBack.heightAnchor.constraint(equalToConstant:30).isActive = true
@@ -166,14 +160,10 @@ class MyProfileViewController: UIViewController {
         btnBack.addTarget(self,action: #selector(self.backAction(_:)),for: .touchUpInside)
         
         profileImage.topAnchor.constraint(equalTo: self.view.topAnchor, constant:60).isActive = true //40
-        
         profileImage.center = self.view.center
-        
-        profileImage.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: (self.view.frame.width / 3) + 15).isActive = true //135
-        //profileImage.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -135).isActive = true //130
+        profileImage.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: (self.view.frame.width / 3) + 15).isActive = true
         profileImage.heightAnchor.constraint(equalToConstant:105).isActive = true //105
         profileImage.widthAnchor.constraint(equalToConstant:105).isActive = true
-      //  let profilePhotoTapGesture = UITapGestureRecognizer(target: self, action:#selector(self.selectProfileImage))
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         profileImage.isUserInteractionEnabled = true
         profileImage.addGestureRecognizer(tapGestureRecognizer)
@@ -208,7 +198,6 @@ class MyProfileViewController: UIViewController {
         textDOB.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant:-50).isActive = true
         textDOB.heightAnchor.constraint(equalToConstant:30).isActive = true
         textDOB.widthAnchor.constraint(equalToConstant:self.view.frame.width - 80).isActive = true
-        //textDOB.addTarget(self,action: #selector(self.DateofBirthFieldTouched(_:)),for: .touchUpInside)
         textDOB.addTarget(self, action: #selector(DateofBirthFieldTouched), for: UIControlEvents.touchDown)
 
         textPwd.topAnchor.constraint(equalTo: self.view.topAnchor, constant:180 + textFieldHight * 3).isActive = true
@@ -223,7 +212,7 @@ class MyProfileViewController: UIViewController {
         textConfirmPwd.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant:-50).isActive = true
         textConfirmPwd.heightAnchor.constraint(equalToConstant:30).isActive = true
         textConfirmPwd.widthAnchor.constraint(equalToConstant:self.view.frame.width - 80).isActive = true
-       textConfirmPwd.placeholder = "Confirm Password"
+        textConfirmPwd.placeholder = "Confirm Password"
         
         btnsubmit.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant:-50).isActive = true //30
         btnsubmit.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:50).isActive = true
@@ -232,6 +221,11 @@ class MyProfileViewController: UIViewController {
         btnsubmit.widthAnchor.constraint(equalToConstant:self.view.frame.width - 80).isActive = true
         btnsubmit.addTarget(self,action: #selector(self.updateProfile(_:)),for: .touchUpInside)
         
+        spinner.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:(self.view.frame.width/2)-20).isActive = true
+        spinner.topAnchor.constraint(equalTo: self.view.topAnchor, constant:self.view.frame.height/2).isActive = true
+        spinner.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        spinner.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        spinner.stopAnimating()
     }
     
     override func didReceiveMemoryWarning() {
@@ -240,6 +234,10 @@ class MyProfileViewController: UIViewController {
     
     @IBAction func DateofBirthFieldTouched(_ sender: Any) {
         let dateofBirthPickerView: UIDatePicker = UIDatePicker()
+        let dateofBirthDateFormatter = DateFormatter()
+        dateofBirthDateFormatter.dateFormat = "dd-MM-yyyy"
+        dateofBirthDateFormatter.dateStyle = .medium
+        dateofBirthPickerView.setDate(dateofBirthDateFormatter.date(from: textDOB.text!) ?? Date(), animated: false)
         dateofBirthPickerView.maximumDate = Date()
         dateofBirthPickerView.datePickerMode = UIDatePickerMode.date
         textDOB.inputView = dateofBirthPickerView
@@ -269,18 +267,20 @@ class MyProfileViewController: UIViewController {
     }
     
     @IBAction func updateProfile(_ sender: Any) {
+        spinner.startAnimating()
         if(YearsFromBirth <= 18){
+            spinner.stopAnimating()
             let errorAlert = UIAlertController(title: "Errors",
                                                message: "Your Age must be more then 18 years", preferredStyle: .alert)
             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(errorAlert, animated: true, completion: nil)
         }else if (textPwd.text?.isEmpty)! || (textConfirmPwd.text?.isEmpty)! {
+            spinner.stopAnimating()
             let resetEmailSentAlert = UIAlertController(title: "Errors", message: "Please enter Passoword and Confirm Password", preferredStyle: .alert)
             resetEmailSentAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(resetEmailSentAlert, animated: true, completion: nil)
-            
         }else if textPwd.text != textConfirmPwd.text {
-           
+            spinner.stopAnimating()
             let errorAlert = UIAlertController(title: "Errors",
                                                message: "Confirm password mismatch", preferredStyle: .alert)
             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -298,18 +298,15 @@ class MyProfileViewController: UIViewController {
                                                message: "Profile updated succesfully.", preferredStyle: .alert)
             successAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(successAlert, animated: true, completion: nil)
+            AVAuthService.saveProfileInfoToUserDefaults()
+            self.spinner.stopAnimating()
             
         }, onError: {
             (errorString) in
             print(errorString!)
+             self.spinner.stopAnimating()
         })
     }
-    
-//    @objc func selectProfileImage() {
-//        let profileImagePickerController = UIImagePickerController()
-//        profileImagePickerController.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
-//        present(profileImagePickerController, animated: true, completion: nil)
-//    }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
