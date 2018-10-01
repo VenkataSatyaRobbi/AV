@@ -152,6 +152,7 @@ class VoteCell: UICollectionViewCell{
         let likeButton = UIButton()
         likeButton.translatesAutoresizingMaskIntoConstraints = false
         likeButton.setImage(UIImage(named: "like"), for: .normal)
+        likeButton.tag = 1
         return likeButton
     }()
     
@@ -159,6 +160,7 @@ class VoteCell: UICollectionViewCell{
         let likeButton = UIButton()
         likeButton.translatesAutoresizingMaskIntoConstraints = false
         likeButton.setImage(UIImage(named: "like"), for: .normal)
+        likeButton.tag = 2
         return likeButton
     }()
     
@@ -166,6 +168,7 @@ class VoteCell: UICollectionViewCell{
         let likeButton = UIButton()
         likeButton.translatesAutoresizingMaskIntoConstraints = false
         likeButton.setImage(UIImage(named: "like"), for: .normal)
+        likeButton.tag = 3
         return likeButton
     }()
     
@@ -544,10 +547,23 @@ class VotesCollectionViewController: UICollectionViewController{
     }
     
     @IBAction func getVotedUsers(_ sender: UIButton) {
+        let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to:self.collectionView)
+        let indexPath = self.collectionView?.indexPathForItem(at: buttonPosition)
+        let cell = collectionView?.cellForItem(at: indexPath!) as! VoteCell
         let storyBoard : UIStoryboard = UIStoryboard(name: "AV", bundle:nil)
         let nextViewController = VotedUsersTableViewController()
-        nextViewController.opinionId = "LIvS_ymCE5jb4ZBrxRo"
-        nextViewController.option = "sender.tag"
+        nextViewController.opinionId = cell.opinionId
+        
+        if sender.tag == 1 {
+            nextViewController.option = cell.optionOne.text!
+            nextViewController.title = "Option 1"
+        }else if sender.tag == 2 {
+            nextViewController.option = cell.optionTwo.text!
+            nextViewController.title = "Option 2"
+        }else{
+            nextViewController.option = cell.OptionThree.text!
+            nextViewController.title = "Option 3"
+        }
         self.navigationController?.pushViewController(nextViewController, animated: true)
        
     }

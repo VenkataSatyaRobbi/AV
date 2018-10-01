@@ -25,18 +25,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in ChatPublicViewController.messageReceived(senderId:senderName:url:):ChatPublicViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "error">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "VoteCell.addAllignments():VotesCollectionViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "option3Radio.alternateButton">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ChatPublicViewController.messageReceived(senderId:senderName:url:):ChatPublicViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "error">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -95,6 +95,14 @@
          <PersistentStrings>
             <PersistentString
                value = "((sender.view as! UICollectionView).indexPathForItemAtPoint(position))">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in VotedUsersTableViewController.getUsers():VotedUsersTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "snapshot.value as? [String: Any] ">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -159,7 +167,7 @@
          contextName = "MyProfileViewController.updateProfile(_:):MyProfileViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "closure #1 in PublicMessageHandler.observeMediaMessages():PublicMessageHandler.swift">
+         contextName = "AVRadioButton.unselectAlternateButtons():AVRadioButton.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in VotesCollectionViewController.viewDidLoad():VotesCollectionViewController.swift">
@@ -170,7 +178,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "AVRadioButton.unselectAlternateButtons():AVRadioButton.swift">
+         contextName = "closure #1 in PublicMessageHandler.observeMediaMessages():PublicMessageHandler.swift">
       </ContextState>
       <ContextState
          contextName = "NewsDetailedViewController.postCommentAction(_:):NewsDetailedViewController.swift">
@@ -206,10 +214,10 @@
          contextName = "NewsDetailedViewController.loadPost():NewsDetailedViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "DBProvider.instance.newsFeedRef.queryEqual(toValue: &quot;postID&quot;).observe(.childAdded){ (snapshot: DataSnapshot) in }">
+               value = ".value">
             </PersistentString>
             <PersistentString
-               value = ".value">
+               value = "DBProvider.instance.newsFeedRef.queryEqual(toValue: &quot;postID&quot;).observe(.childAdded){ (snapshot: DataSnapshot) in }">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -348,6 +356,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in VotedUsersTableViewController.getUsers():VotedUsersTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "snapshot.key as String">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in VotesCollectionViewController.isUserVoted(id:index:):VotesCollectionViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -424,10 +440,10 @@
          contextName = "ChatContactsViewController.addMessageActionTapped(sender:):ChatContactsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "AVAuthService.getCurrentUserId()">
+               value = "item?.title">
             </PersistentString>
             <PersistentString
-               value = "item?.title">
+               value = "AVAuthService.getCurrentUserId()">
             </PersistentString>
             <PersistentString
                value = "sender">
@@ -444,6 +460,9 @@
                value = "data[Constants.MESSAGE_DATE]">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VotedUsersTableViewController.viewWillAppear(_:):VotedUsersTableViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

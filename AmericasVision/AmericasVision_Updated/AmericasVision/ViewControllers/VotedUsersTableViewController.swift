@@ -16,8 +16,7 @@ class VotedUsersTableViewController:UITableViewController{
     var users = [Contacts]()
     var option = String()
     var opinionId = String()
-    var userIds = [String]()
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -29,9 +28,17 @@ class VotedUsersTableViewController:UITableViewController{
     }
     
     func getUsers(){
-        let user = Contacts(name: "Mohan Dola", id: "1lbnOu1kLAZwnHd4BwEDAXhKAyW2", profileImageUrl: "https://firebasestorage.googleapis.com/v0/b/americasvision-fc7ba.appspot.com/o/profileImage%2F1lbnOu1kLAZwnHd4BwEDAXhKAyW2?alt=media&token=59f51402-d6b2-4524-b338-3e5b5eefc7d8", status: "")
        DBProvider.instance.opinionRef.child(opinionId).child("voteusers").queryOrdered(byChild: "SelectedOption").queryEqual(toValue: option).observe(.childAdded) { (snapshot: DataSnapshot) in
-                self.userIds.append(snapshot.key as String)
+        
+                DBProvider.instance.userRef.child(snapshot.key as String).observe(.value) { (snapshot: DataSnapshot) in
+                    if let dict = snapshot.value as? [String: Any] {
+                        let name = (dict["FirstName"] as? String)! + " " + (dict["LastName"] as? String)!
+                        let profileImageUrl = dict["ProfileImageURL"] as? String
+                        let user = Contacts(name: name, id: snapshot.key as String, profileImageUrl: profileImageUrl!, status: "")
+                        self.users.append(user)
+                        self.tableView.reloadData()
+                     }
+                }
         }
     }
     
@@ -40,11 +47,11 @@ class VotedUsersTableViewController:UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as? UITableViewCell
-        let contact = users[indexPath.row]
-        cell?.textLabel?.text = contact.name
-        cell?.imageView?.loadImageUsingCache(urlStr: contact.profileImageUrl)
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as UITableViewCell
+        let user = users[indexPath.row]
+        cell.textLabel?.text = user.name
+        cell.imageView?.loadImageUsingCache(urlStr: user.profileImageUrl)
+        return cell
     }
     
 }
