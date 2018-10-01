@@ -17,6 +17,7 @@ class MyProfileViewController: UIViewController {
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.isHidden = true
         spinner.backgroundColor = .blue
+        spinner.layer.cornerRadius = 3.0
         return spinner
     }()
   
@@ -299,6 +300,8 @@ class MyProfileViewController: UIViewController {
             successAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(successAlert, animated: true, completion: nil)
             AVAuthService.saveProfileInfoToUserDefaults()
+            self.textPwd.text = ""
+            self.textConfirmPwd.text = ""
             self.spinner.stopAnimating()
             
         }, onError: {
@@ -319,7 +322,6 @@ class MyProfileViewController: UIViewController {
 extension MyProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let profieImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-           // profileImage = profieImage
             profileImage.image = profieImage
         }
         dismiss(animated: true, completion: nil)
