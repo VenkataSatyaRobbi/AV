@@ -267,7 +267,8 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         
         }
         var commentsHeight:CGFloat = 0
-        let approximateWidth = self.scrollView.frame.width - 60
+        let approximateWidth = UIScreen.main.bounds.width - 60
+        //let approximateWidth = self.scrollView.frame.width - 60
         comments.forEach { comment in
             let hgt = CommonUtils.heightForView(text: comment.comments, font:UIFont(name: "Verdana", size: 13)! ,width: approximateWidth)
             let height = hgt < 40 ? 40: ceil(hgt)
@@ -1023,7 +1024,7 @@ extension NewsDetailedViewController:UITableViewDataSource,UITableViewDelegate{
     
    func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
     //removed CommonUtils.calculateHeight
-    let estimatedHgt = CommonUtils.heightForView(text: comments[indexPath.row].comments, font: UIFont(name: "Verdana", size: 13)!,width: self.tableView.layer.frame.width-60)
+    let estimatedHgt = CommonUtils.heightForView(text: comments[indexPath.row].comments, font: UIFont(name: "Verdana", size: 13)!,width: UIScreen.main.bounds.width - 60 /*self.tableView.layer.frame.width-60*/)
         let height = estimatedHgt < 40 ? 40 : ceil(estimatedHgt)
     print("cell height: \(height)")
         return height
