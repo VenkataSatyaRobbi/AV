@@ -46,6 +46,16 @@ class CommonUtils {
         return height
     }
     
+    static func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat {
+        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = font
+        label.text = text
+        label.sizeToFit()
+        return label.frame.height
+    }
+    
    static func addLineToView(view : UIView, position : LINE_POSITION, color: UIColor, width: Double) {
         let lineView = UIView()
         lineView.backgroundColor = color
