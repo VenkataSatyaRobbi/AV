@@ -29,7 +29,7 @@ class CommentsTableCell:UITableViewCell{
             commentlabel.numberOfLines = 0
             commentlabel.sizeToFit()
             commentlabel.textAlignment = .justified
-        commentlabel.lineBreakMode = .byWordWrapping
+            commentlabel.lineBreakMode = .byWordWrapping
             return commentlabel
     }()
     
@@ -56,15 +56,19 @@ class CommentsTableCell:UITableViewCell{
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addSubview(profileImageView)
         self.addSubview(comment)
-        self.addSubview(commentedDateLabel)
+        //self.addSubview(commentedDateLabel)
         
         profileImageView.leftAnchor.constraint(equalTo: leftAnchor, constant:10).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant:30).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant:30).isActive = true
+        profileImageView.topAnchor.constraint(equalTo: topAnchor, constant:0).isActive = true
         
-        comment.leftAnchor.constraint(equalTo: leftAnchor, constant:55).isActive = true
+        comment.leftAnchor.constraint(equalTo: leftAnchor, constant:50).isActive = true
         //comment.heightAnchor.constraint(equalToConstant:30).isActive = true
-        comment.widthAnchor.constraint(equalToConstant:self.frame.width).isActive = true
+        comment.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 60).isActive = true
+        comment.topAnchor.constraint(equalTo: topAnchor, constant:0).isActive = true
+        
+        
         
         //commentedDateLabel.leftAnchor.constraint(equalTo: leftAnchor, constant:55).isActive = true
         //comment.heightAnchor.constraint(equalToConstant:20).isActive = true
@@ -119,7 +123,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         postedBylabel.translatesAutoresizingMaskIntoConstraints = false
         postedBylabel.numberOfLines = 0
         postedBylabel.sizeToFit()
-        postedBylabel.font = UIFont(name: "Verdana", size: 14)
+        postedBylabel.font = UIFont(name: "Verdana", size: 15)
         postedBylabel.textColor = UIColor.blue
         postedBylabel.textAlignment = .justified
         return postedBylabel
@@ -263,10 +267,10 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         
         }
         var commentsHeight:CGFloat = 0
+        let approximateWidth = self.scrollView.frame.width - 60
         comments.forEach { comment in
-            let approximateWidth = tableView.layer.frame.width - 50
-            let hgt = CommonUtils.calculateHeight(text: comment.comments, width: approximateWidth)
-            let height = hgt < 40 ? 40:hgt
+            let hgt = CommonUtils.heightForView(text: comment.comments, font:UIFont(name: "Verdana", size: 13)! ,width: approximateWidth)
+            let height = hgt < 40 ? 40: ceil(hgt)
             commentsHeight = commentsHeight + height
         }
     
@@ -309,23 +313,24 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         
         NewsDetailedVCNewsContent.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:300).isActive = true
         NewsDetailedVCNewsContent.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10).isActive = true
-        let contentHeight = calculateHeight(text:NewsDetailedVCNewsContent.text!)
+        //let contentHeight = calculateHeight(text:NewsDetailedVCNewsContent.text!)
+        let contentHeight = CommonUtils.heightForView(text:NewsDetailedVCNewsContent.text!, font:UIFont(name: "Verdana", size: 15)!, width:self.scrollView.frame.width - 20)
         NewsDetailedVCNewsContent.heightAnchor.constraint(equalToConstant:contentHeight).isActive = true
         NewsDetailedVCNewsContent.widthAnchor.constraint(equalToConstant:self.view.frame.width-20).isActive = true
         
         writeCommentLabel.leftAnchor.constraint(equalTo:scrollView.leftAnchor, constant: 10).isActive = true
-        writeCommentLabel.topAnchor.constraint(equalTo:scrollView.topAnchor, constant: 300 + contentHeight).isActive = true
+        writeCommentLabel.topAnchor.constraint(equalTo:scrollView.topAnchor, constant: 310 + contentHeight).isActive = true
         writeCommentLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
         writeCommentLabel.widthAnchor.constraint(equalToConstant:self.view.frame.width-20).isActive = true
         //writeCommentLabel.text = "\(getCommentsCount()) Comments"
         
         writeComment.leftAnchor.constraint(equalTo:scrollView.leftAnchor, constant: 10).isActive = true
-        writeComment.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:320 + contentHeight).isActive = true
+        writeComment.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:330 + contentHeight).isActive = true
         writeComment.heightAnchor.constraint(equalToConstant:50).isActive = true
         writeComment.widthAnchor.constraint(equalToConstant:self.view.frame.width-20).isActive = true
         
         postCommentButton.leftAnchor.constraint(equalTo:scrollView.leftAnchor, constant: 10).isActive = true
-        postCommentButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:375 + contentHeight).isActive = true
+        postCommentButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:385 + contentHeight).isActive = true
         postCommentButton.heightAnchor.constraint(equalToConstant:30).isActive = true
         postCommentButton.widthAnchor.constraint(equalToConstant:self.view.frame.width-20).isActive = true
         postCommentButton.addTarget(self,action: #selector(self.postCommentAction(_:)),for: .touchUpInside)
@@ -341,13 +346,15 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         if comments.count > 0 {
             let indexPath = NSIndexPath(row:comments.count-1, section: 0)
             tableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: false)
-            tableView.frame = CGRect(x: 0, y: (415 + contentHeight), width: self.view.frame.width, height: commentsHeight)
-            
+            //tableView.frame = CGRect(x: 0, y: (415 + contentHeight), width: tableView.layer.frame.width-65, height: commentsHeight)
+            tableView.frame = CGRect(x: 0, y: (425 + contentHeight), width: self.view.frame.width, height: commentsHeight)
+            print("self.view.frame.width: \(self.view.frame.width)");
             self.scrollView.addSubview(tableView)
             self.scrollView.isScrollEnabled = true
         }
-        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height:370 + contentHeight + commentsHeight + 10)
-        // 10 height for bottom
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 380 + contentHeight + commentsHeight + 50)
+        print("commentsHeight: \(commentsHeight)")
+        // 40 space for bottom
         let NewsDetailAVPostStorageRef = Storage.storage().reference(forURL:photoUrl)
         NewsDetailAVPostStorageRef.downloadURL { (url, error) in
             if error != nil{
@@ -373,6 +380,8 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         super.viewDidLoad()
         //self.likeButton.tintColor = UIColor.gray
         //self.dislikeButton.tintColor = UIColor.gray
+        
+        
         
         let postRef = DBProvider.instance.newsFeedRef.child(postId)
         postRef.child("usercomments").queryOrdered(byChild: "type").queryEqual(toValue: "Like").observeSingleEvent(of: DataEventType.value){
@@ -429,13 +438,14 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         self.scrollView.addSubview(writeComment)
         self.scrollView.addSubview(postCommentButton)
         //self.scrollView.addSubview(oldCommentsLabel)
+        //self.scrollView.addSubview(tableView)
         
         tableView.register(CommentsTableCell.self, forCellReuseIdentifier: "CommentsTableCell")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.bounces = false
-        tableView.isScrollEnabled = true
-       // self.scrollView.addSubview(tableView)
+        tableView.isScrollEnabled = false
+       
         
         scrollView.isScrollEnabled = true
         scrollView.delegate = self
@@ -454,7 +464,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
                 self.NewsDetailedVCDateAndLocation.text = dict["newsLocation"] as? String
                 self.NewsDetailedVCImageCourtesy.text = dict["photoCourtesy"] as? String
                 let time = dict["timestamp"] as! Double
-                self.postedDate = self.postedDateFormat(time:time)
+                self.postedDate = self.postedDateFormat(time:time/1000)
                 self.NewsDetailedVCDateAndLocation.text = self.NewsDetailedVCDateAndLocation.text! + " - " + self.postedDate
                 self.NewsDetailedVCNewsContent.text = dict["newsContent"] as? String
             }
@@ -532,7 +542,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
             let comment = PostComment(profileImageUrl: "", userId: AVAuthService.getCurrentUserId(), type: "", comments: self.writeComment.text, commentDate: Date())
             self.fetchProfileImageURL(comment: comment)
             
-            let commentHeight = CommonUtils.calculateHeight(text: self.writeComment.text,width: self.tableView.frame.width-50)
+            let commentHeight = CommonUtils.heightForView(text: self.writeComment.text, font: UIFont(name: "Verdana", size: 13)!,width: self.tableView.frame.width-60)
             let height = commentHeight < 40 ? 40 : commentHeight
             self.tableView.contentSize = CGSize(width: self.view.frame.size.width, height:self.tableView.contentSize.height + height)
             self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height:self.scrollView.contentSize.height + height)
@@ -540,10 +550,12 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
             self.writeComment.text = ""
             self.textViewDidChange(self.writeComment)
             self.textViewDidEndEditing(self.writeComment)
+            self.checkCurrentUserComments()
             self.getCommentsCount()
             ProgressHUD.dismiss()
             //self.postCommentButton.isEnabled = false
-            self.tableView.reloadData()
+            
+            //self.tableView.reloadData()
         })
         
     }
@@ -909,7 +921,8 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
     }
     
     func calculateHeight(text:String) -> CGFloat {
-        let attributes: [NSAttributedStringKey : Any] = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15.0)]
+        //let attributes: [NSAttributedStringKey : Any] = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15.0)]
+        let attributes: [NSAttributedStringKey : Any] = [NSAttributedStringKey.font : UIFont(name: "Verdana", size: 15)!]
         //Add AvalinNext Regular
         let approximateWidth = self.scrollView.frame.width - 10
         let size = CGSize(width: approximateWidth, height:10000)
@@ -922,7 +935,6 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         DBProvider.instance.newsFeedRef.child(postId).child("usercomments").queryOrdered(byChild: "type").queryEqual(toValue: "").observeSingleEvent(of: DataEventType.value){
             (snapShot:DataSnapshot) in
             self.writeCommentLabel.text = String(snapShot.childrenCount) + " Comments"
-            
         }
     }
     
@@ -973,7 +985,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         let postDateDate = dateFormatter.date(from: postDate)
         
         let dateFormatter2 = DateFormatter()
-        dateFormatter2.dateFormat = "EEEE, MMM dd, yyyy. HH':'mm"
+        dateFormatter2.dateFormat = "EEEE, MMM dd, yyyy. h:mm a"
         let currentDateString: String = dateFormatter2.string(from: postDateDate!)
         return currentDateString
     }
@@ -981,10 +993,10 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == self.scrollView{
            // scrollView.contentOffset.y = scrollView.contentOffset.y + tableView.frame.height
-            print("scrollview")
+            //print("scrollview")
         }
         else if scrollView == self.tableView{
-             print("tableview")
+             //print("tableview")
         }
        
         
@@ -994,6 +1006,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
 extension NewsDetailedViewController:UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("comments count: \(comments.count)")
         return comments.count
     }
     
@@ -1009,10 +1022,12 @@ extension NewsDetailedViewController:UITableViewDataSource,UITableViewDelegate{
     }
     
    func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
-    
-        let estimatedHgt = CommonUtils.calculateHeight(text: comments[indexPath.row].comments,width: tableView.layer.frame.width-50)
-        let height = estimatedHgt < 40 ? 40 : estimatedHgt
+    //removed CommonUtils.calculateHeight
+    let estimatedHgt = CommonUtils.heightForView(text: comments[indexPath.row].comments, font: UIFont(name: "Verdana", size: 13)!,width: self.tableView.layer.frame.width-60)
+        let height = estimatedHgt < 40 ? 40 : ceil(estimatedHgt)
+    print("cell height: \(height)")
         return height
     }
     
 }
+
