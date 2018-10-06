@@ -288,7 +288,25 @@
          contextName = "closure #1 in VotesCollectionViewController.fetchFirstOpinion():VotesCollectionViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "userDic?[&quot;SelectedOption&quot;] as! String">
+            </PersistentString>
+            <PersistentString
+               value = "AVAuthService.getCurrentUserId() == user.key">
+            </PersistentString>
+            <PersistentString
+               value = "user.value as? Any">
+            </PersistentString>
+            <PersistentString
+               value = "NSDate().timeIntervalSince1970">
+            </PersistentString>
+            <PersistentString
+               value = "snapshot.key">
+            </PersistentString>
+            <PersistentString
                value = "snapshot.accessibilityElementCount()">
+            </PersistentString>
+            <PersistentString
+               value = "napshot.value as? [String: Opinion] ">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

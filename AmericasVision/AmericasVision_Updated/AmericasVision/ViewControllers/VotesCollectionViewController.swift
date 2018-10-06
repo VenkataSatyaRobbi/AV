@@ -361,9 +361,9 @@ class VoteCell: UICollectionViewCell{
     }
     
     @IBAction func updateTime() {
-        let currentDate = Date()
+        let currentDate = CommonUtils.getThisMonthEnd()
         let calendar = Calendar.current
-        let diffDateComponents = calendar.dateComponents([.day, .hour, .minute, .second], from: releaseDate! as Date,to: currentDate)
+        let diffDateComponents = calendar.dateComponents([.day, .hour, .minute, .second], from: Date() as Date,to: currentDate)
         let countdown = "\(diffDateComponents.day ?? 0) : \(diffDateComponents.hour ?? 0) : \(diffDateComponents.minute ?? 0) : \(diffDateComponents.second ?? 0)"
         headerTimer.text = countdown
     }
@@ -401,9 +401,8 @@ class VotesCollectionViewController: UICollectionViewController{
     }
     
     func fetchFirstOpinion(){
-        DBProvider.instance.opinionRef.queryOrdered(byChild: "Date").observe(.childAdded)
-            //queryOrdered(byChild: "Date").observe(.childAdded)
-        { (snapshot: DataSnapshot) in
+        let ref = DBProvider.instance.opinionRef
+        ref.queryOrdered(byChild: "Date").observe(.childAdded){(snapshot: DataSnapshot) in
             if let dict = snapshot.value as? [String: Any] {
                 let id = snapshot.key as String
                 let question = dict["Question"] as! String
@@ -415,20 +414,18 @@ class VotesCollectionViewController: UICollectionViewController{
                 let count3 = dict["Count3"] as! NSNumber
                 let publishDate = dict["Date"] as! Double
                 let opinion = Opinion.init(id:id,question: question, option1: option1, option2: option2, option3: option3, publishDate: publishDate,count1: count1,count2: count2,count3: count3)
-                self.isUserVoted(opinion:opinion)
-            }
-            
-        }
-    }
-    
-    func isUserVoted(opinion:Opinion){
-        DBProvider.instance.opinionRef.child(opinion.id).child("voteusers").child(AVAuthService.getCurrentUserId())
-            .observe(.childAdded){(snapshot:DataSnapshot) in
-            if let data = snapshot.value as? String {
-                opinion.selectedOption = data
+                let users = dict["voteusers"] as! [String: Any]
+                for user in users{
+                    if AVAuthService.getCurrentUserId() == user.key as String {
+                        let userDic = user.value as? [String: Any]
+                        opinion.selectedOption = userDic?["SelectedOption"] as! String
+                        break
+                    }
+                }
                 self.opinions.append(opinion)
                 self.collectionView?.reloadData()
-             }
+            }
+            
         }
     }
     

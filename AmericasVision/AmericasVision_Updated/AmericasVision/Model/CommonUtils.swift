@@ -78,6 +78,14 @@ class CommonUtils {
         }
     }
     
+    static func getThisMonthEnd() -> Date {
+        let components:NSDateComponents = Calendar.current.dateComponents([.year, .month], from: Date()) as NSDateComponents
+        components.month += 1
+        components.day = 1
+        components.day -= 1
+        return (Calendar.current.date(from: components as DateComponents) as? Date)!
+    }
+    
     static func reachabilityAlert(){
 //        if Reachability.isConnectedToNetwork() == true {
 //            println("Internet connection OK")
