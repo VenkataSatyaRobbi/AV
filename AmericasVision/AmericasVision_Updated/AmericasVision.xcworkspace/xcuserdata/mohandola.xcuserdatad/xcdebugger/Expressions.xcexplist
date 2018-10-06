@@ -83,6 +83,47 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in AVSettingsViewController.loadGlobalInfo():AVSettingsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "child.value">
+            </PersistentString>
+            <PersistentString
+               value = "self.settings">
+            </PersistentString>
+            <PersistentString
+               value = "dict[key] as? String">
+            </PersistentString>
+            <PersistentString
+               value = "key">
+            </PersistentString>
+            <PersistentString
+               value = "child">
+            </PersistentString>
+            <PersistentString
+               value = "child.value as! String">
+            </PersistentString>
+            <PersistentString
+               value = "snapshot.value as? [String,Any?]">
+            </PersistentString>
+            <PersistentString
+               value = "snapshot as NSDictionary">
+            </PersistentString>
+            <PersistentString
+               value = "child.value as String">
+            </PersistentString>
+            <PersistentString
+               value = "child.key as String">
+            </PersistentString>
+            <PersistentString
+               value = "name">
+            </PersistentString>
+            <PersistentString
+               value = "dict[key]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "NewsTableViewCell.setCollectionViewDataSourceDelegate&lt;A&gt;(_:forRow:):NewsTableViewCell.swift">
          <PersistentStrings>
             <PersistentString
@@ -214,10 +255,10 @@
          contextName = "NewsDetailedViewController.loadPost():NewsDetailedViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = ".value">
+               value = "DBProvider.instance.newsFeedRef.queryEqual(toValue: &quot;postID&quot;).observe(.childAdded){ (snapshot: DataSnapshot) in }">
             </PersistentString>
             <PersistentString
-               value = "DBProvider.instance.newsFeedRef.queryEqual(toValue: &quot;postID&quot;).observe(.childAdded){ (snapshot: DataSnapshot) in }">
+               value = ".value">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -288,19 +329,10 @@
          contextName = "closure #1 in VotesCollectionViewController.fetchFirstOpinion():VotesCollectionViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "userDic?[&quot;SelectedOption&quot;] as! String">
+               value = "snapshot.key">
             </PersistentString>
             <PersistentString
                value = "AVAuthService.getCurrentUserId() == user.key">
-            </PersistentString>
-            <PersistentString
-               value = "user.value as? Any">
-            </PersistentString>
-            <PersistentString
-               value = "NSDate().timeIntervalSince1970">
-            </PersistentString>
-            <PersistentString
-               value = "snapshot.key">
             </PersistentString>
             <PersistentString
                value = "snapshot.accessibilityElementCount()">
@@ -308,13 +340,27 @@
             <PersistentString
                value = "napshot.value as? [String: Opinion] ">
             </PersistentString>
+            <PersistentString
+               value = "userDic?[&quot;SelectedOption&quot;] as! String">
+            </PersistentString>
+            <PersistentString
+               value = "user.value as? Any">
+            </PersistentString>
+            <PersistentString
+               value = "NSDate().timeIntervalSince1970">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "ChatPrivateViewController.goBack(_:):ChatPrivateViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "FeedsTableViewCell.registerCollectoinView&lt;A&gt;(datasource:):FeedsTableViewCell.swift">
+         contextName = "closure #1 in VotedUsersTableViewController.getUsers():VotedUsersTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "snapshot.key as String">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "NewsFeedPoliticsViewController.tableView(_:didSelectRowAt:):NewsFeedPoliticsViewController.swift">
@@ -323,6 +369,9 @@
                value = "posts[indexPath.row].caption">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FeedsTableViewCell.registerCollectoinView&lt;A&gt;(datasource:):FeedsTableViewCell.swift">
       </ContextState>
       <ContextState
          contextName = "static CommonUtils.convertFromTimestamp(seconds:):CommonUtils.swift">
@@ -355,9 +404,6 @@
          contextName = "MyProfileViewController.updateProfile():MyProfileViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "UserDefaults.getLoginUserInfo():UserDefaultsHelper.swift">
-      </ContextState>
-      <ContextState
          contextName = "DBProvider.mediaMessageRef.getter:DBProvider.swift">
          <PersistentStrings>
             <PersistentString
@@ -374,12 +420,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in VotedUsersTableViewController.getUsers():VotedUsersTableViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "snapshot.key as String">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "UserDefaults.getLoginUserInfo():UserDefaultsHelper.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in VotesCollectionViewController.isUserVoted(id:index:):VotesCollectionViewController.swift">

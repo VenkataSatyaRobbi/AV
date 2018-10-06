@@ -317,7 +317,7 @@
                         <segue destination="fTh-Os-Wjg" kind="modal" identifier="ChatFromSideMenuSegue" customClass="SWRevealViewControllerSeguePushController" id="yzM-jZ-7dJ"/>
                         <segue destination="uct-0f-f13" kind="modal" identifier="NewsFeedFromSideMenuSegue" customClass="SWRevealViewControllerSeguePushController" id="vhs-nr-zxy"/>
                         <segue destination="mFN-OW-rVF" kind="modal" identifier="MyProfileFromSideMenuSegue" customClass="SWRevealViewControllerSeguePushController" id="Jbx-9Y-faC"/>
-                        <segue destination="ZlL-qD-swP" kind="modal" identifier="SettingFromSideMenuSegue" id="kZw-bv-cXT"/>
+                        <segue destination="ZlL-qD-swP" kind="modal" identifier="SettingFromSideMenuSegue" customClass="SWRevealViewControllerSeguePushController" id="kZw-bv-cXT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVg-da-H5w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -514,16 +514,26 @@
         <scene sceneID="FOi-7J-1nv">
             <objects>
                 <viewController storyboardIdentifier="SettingsDetailedViewController" id="ksu-3P-hcs" customClass="SettingsDetailedViewController" customModule="AmericasVision" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hsF-vg-x3b">
+                    <view key="view" contentMode="scaleToFill" id="hsF-vg-x3b" propertyAccessControl="none">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" id="3K0-Ci-XTd">
+                                <rect key="frame" x="0.0" y="71" width="375" height="596"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" id="OUG-Ix-1dp"/>
+                    <connections>
+                        <outlet property="webView" destination="3K0-Ci-XTd" id="Dvc-YZ-5yf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6m-0i-qkj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2025" y="909"/>
+            <point key="canvasLocation" x="2024.8" y="908.9955022488756"/>
         </scene>
         <!--Political News-->
         <scene sceneID="LJX-Bn-XwM">
@@ -1147,7 +1157,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="eLJ-GP-7vK">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="73" width="375" height="594"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -1188,7 +1198,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="TAA-hX-bsY"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="homeButton" destination="TAA-hX-bsY" id="pGw-wb-UBX"/>
+                        <outlet property="homeButton" destination="TAA-hX-bsY" id="oWM-pF-a5v"/>
                         <outlet property="settingsTableview" destination="eLJ-GP-7vK" id="jrT-IV-IXM"/>
                         <segue destination="ksu-3P-hcs" kind="push" identifier="SettingsDetailedSegue" id="zj5-kE-PhI"/>
                     </connections>
@@ -1483,7 +1493,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SlideCollectionViewCell" id="9EZ-Mf-yfB" customClass="SlideCollectionViewCell" customModule="AmericasVision" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="1" width="142" height="110"/>
+                                                            <rect key="frame" x="0.0" y="0.5" width="142" height="110"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="142" height="110"/>
@@ -1701,9 +1711,9 @@
         <image name="sportsselected" width="19" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gEB-8k-KId"/>
+        <segue reference="S67-of-WU0"/>
         <segue reference="tcg-Fz-vNU"/>
-        <segue reference="ow8-Ni-goa"/>
+        <segue reference="oYk-K1-Fyu"/>
         <segue reference="yj6-fy-86n"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import FirebaseDatabase
+
 
 class AVSettingsViewController:UIViewController,UITableViewDataSource,UITableViewDelegate{
     
     @IBOutlet weak var homeButton: UIBarButtonItem!
     @IBOutlet weak var settingsTableview: UITableView!
     
-    let settings = ["Do not disturb","Notification", "Privacy policy", "Terms of use","Rate & Feedback","Company Info","Version","Get Help"]
+    var settings = [AVInfo]()
     let cellReuseIdentifier = "SettingCell"
     
     let disturbSwitch: UISwitch = {
@@ -30,6 +32,24 @@ class AVSettingsViewController:UIViewController,UITableViewDataSource,UITableVie
         return sc
     }()
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        sideMenus()
+        loadGlobalInfo()
+        self.navigationItem.title =  "User Preferences"
+        settingsTableview.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        settingsTableview.delegate = self
+        settingsTableview.dataSource = self
+        settingsTableview.tableFooterView = UIView()
+        disturbSwitch.addTarget(self, action:#selector(AVSettingsViewController.categorySwitchValueChanged(_:)), for: .valueChanged)
+        notificationSwitch.addTarget(self, action:#selector(AVSettingsViewController.categorySwitchValueChanged(_:)), for: .valueChanged)
+        
+    }
+    
     func sideMenus(){
         if revealViewController() != nil {
             homeButton.target = revealViewController()
@@ -39,20 +59,9 @@ class AVSettingsViewController:UIViewController,UITableViewDataSource,UITableVie
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         sideMenus()
-        self.navigationItem.title = "User Preferences"
-        settingsTableview.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-        settingsTableview.delegate = self
-        settingsTableview.dataSource = self
-        settingsTableview.tableFooterView = UIView()
-        disturbSwitch.addTarget(self, action:#selector(AVSettingsViewController.categorySwitchValueChanged(_:)), for: .valueChanged)
-        notificationSwitch.addTarget(self, action:#selector(AVSettingsViewController.categorySwitchValueChanged(_:)), for: .valueChanged)
-    }
-    
-    func getSettingInfo(){
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,20 +70,23 @@ class AVSettingsViewController:UIViewController,UITableViewDataSource,UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellReuseIdentifier)
-        cell.textLabel?.text = settings[indexPath.row]
-        if settings[indexPath.row] == "Do not disturb" {
+        
+        if settings[indexPath.row].name == "Do not disturb" {
             cell.contentView.addSubview(disturbSwitch)
             disturbSwitch.centerYAnchor.constraint(equalTo: cell.centerYAnchor).isActive = true
             disturbSwitch.centerXAnchor.constraint(equalTo: cell.centerXAnchor, constant: (self.settingsTableview.frame.width/2)-50).isActive = true
-            cell.detailTextLabel?.text = "Notification"
-        }else if settings[indexPath.row] == "Notification" {
+            cell.textLabel?.text = settings[indexPath.row].name
+            cell.detailTextLabel?.text = settings[indexPath.row].value
+        }else if settings[indexPath.row].name == "Notification" {
            cell.contentView.addSubview(notificationSwitch)
             notificationSwitch.centerYAnchor.constraint(equalTo: cell.centerYAnchor).isActive = true
             notificationSwitch.centerXAnchor.constraint(equalTo: cell.centerXAnchor, constant: (self.settingsTableview.frame.width/2)-50).isActive = true
-            cell.detailTextLabel?.text = "Notification will not make Sound or vibrate"
-        }else if settings[indexPath.row] == "Version" {
-            cell.detailTextLabel?.text = "Version 1.0 and Lasted Updated on 1-Sep-2018"
+            cell.textLabel?.text = settings[indexPath.row].value
+        }else if settings[indexPath.row].name == "Version" {
+            cell.textLabel?.text = settings[indexPath.row].name
+            cell.detailTextLabel?.text = settings[indexPath.row].value
         }else {
+           cell.textLabel?.text = settings[indexPath.row].name
            cell.accessoryType = .disclosureIndicator
         }
         return cell
@@ -85,17 +97,34 @@ class AVSettingsViewController:UIViewController,UITableViewDataSource,UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if settings[indexPath.row] != "Do not disturb" && settings[indexPath.row] != "Notification"
-           && settings[indexPath.row] != "Version"{
+        if settings[indexPath.row].name != "Do not disturb" && settings[indexPath.row].name != "Notification"
+           && settings[indexPath.row].name != "Version"{
             let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
             let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "SettingsDetailedViewController") as! SettingsDetailedViewController
-            destinationViewController.name = settings[indexPath.row]
+            destinationViewController.name = settings[indexPath.row].name
+            destinationViewController.displayText = settings[indexPath.row].value
             self.navigationController?.pushViewController(destinationViewController, animated: true)
         }
     }
     
     @IBAction func categorySwitchValueChanged(_ sender : UISwitch!){
-        
+
+    }
+    
+    func loadGlobalInfo(){
+        let ref = DBProvider.instance.preferenceRef
+        ref.observeSingleEvent(of : .value, with: {(snapshot: DataSnapshot) in
+            var items = [AVInfo]()
+            for item in snapshot.children{
+                let child = item as! DataSnapshot
+                let name = child.key as String
+                let valueText = child.value as! String
+                let info = AVInfo(name: name, value: valueText)
+                items.append(info)
+            }
+            self.settings = items
+            self.settingsTableview.reloadData()
+        })
     }
     
 }

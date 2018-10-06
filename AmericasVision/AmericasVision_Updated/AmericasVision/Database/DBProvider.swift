@@ -68,6 +68,10 @@ class DBProvider {
         return databaseRef.child(Constants.DB_PRIVATE_MEDIA_MESSAGES)
     }
     
+    var preferenceRef: DatabaseReference {
+        return databaseRef.child(Constants.DB_SETTINGS)
+    }
+    
     var videoStorageRef: StorageReference {
         return storageRef.child(Constants.DB_VIDEO_MESSAGES)
     }
@@ -113,6 +117,10 @@ class DBProvider {
             let AVDBnewuserref = self.userRef.child(userId!)
             AVDBnewuserref.setValue(["FirstName": userInfo.firstName, "LastName": userInfo.lastName, "Phone": userInfo.phone, "Email": userInfo.email, "ProfileImageURL": profileImageURL, "UserId": userInfo.userid ])
         })
+    }
+    
+    func getGlobalSettingInfo(key:String) -> String {
+       return ""
     }
    
     

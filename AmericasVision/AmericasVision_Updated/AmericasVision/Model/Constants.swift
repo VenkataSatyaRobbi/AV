@@ -19,6 +19,7 @@ class Constants {
     static let DB_CHATCONTACTS = "users"
     static let DB_POSTS = "posts"
     static let DB_USERS = "users"
+    static let DB_SETTINGS = "globalsettings"
     static let DB_MESSAGES = "publicmessages"
     static let DB_PRIVATE_MESSAGES = "privatemessage"
     static let DB_MEDIA_MESSAGES = "mediapublicmessages"

@@ -71,6 +71,7 @@
 		DCBEBC3C20A78BF200E8EAEA /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */; };
 		DCBEBC4120A78FCC00E8EAEA /* DBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBEBC4020A78FCC00E8EAEA /* DBProvider.swift */; };
 		DCC76A9521036B88003FC4FC /* PublicMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC76A9421036B88003FC4FC /* PublicMessageHandler.swift */; };
+		DCC8AEAE2168E53800A1C848 /* AVInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC8AEAD2168E53800A1C848 /* AVInfo.swift */; };
 		DCD10FB92142F868007A3779 /* AVCommonFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD10FB82142F868007A3779 /* AVCommonFields.swift */; };
 		DCEBA7DD21326C45001555F6 /* MusicByAlbumCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEBA7DC21326C45001555F6 /* MusicByAlbumCollectionViewController.swift */; };
 		DCEE7F80215EC2D9007303B0 /* SettingsDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE7F7F215EC2D9007303B0 /* SettingsDetailedViewController.swift */; };
@@ -166,6 +167,7 @@
 		DCBEBC3B20A78BF200E8EAEA /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		DCBEBC4020A78FCC00E8EAEA /* DBProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBProvider.swift; sourceTree = "<group>"; };
 		DCC76A9421036B88003FC4FC /* PublicMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMessageHandler.swift; sourceTree = "<group>"; };
+		DCC8AEAD2168E53800A1C848 /* AVInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVInfo.swift; sourceTree = "<group>"; };
 		DCD10FB82142F868007A3779 /* AVCommonFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCommonFields.swift; sourceTree = "<group>"; };
 		DCEBA7DC21326C45001555F6 /* MusicByAlbumCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicByAlbumCollectionViewController.swift; sourceTree = "<group>"; };
 		DCEE7F7F215EC2D9007303B0 /* SettingsDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDetailedViewController.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				DC04CDDF210D9AC600E70B6B /* CommonUtils.swift */,
 				DC8C89FB21122DE900AE8E92 /* Opinion.swift */,
 				DC7C017D21379FC600C6DE67 /* PostComment.swift */,
+				DCC8AEAD2168E53800A1C848 /* AVInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				D4FA4A082086D86700CC425B /* CurrentUserInfo.swift in Sources */,
 				DC46B8D620C7104400188EC9 /* ChatPublicViewController.swift in Sources */,
 				DCBB0ACD215578E6008056A5 /* VotedUsersTableViewController.swift in Sources */,
+				DCC8AEAE2168E53800A1C848 /* AVInfo.swift in Sources */,
 				DC7F1D9A20CD9E8C005CB41F /* PrivateMessageHandler.swift in Sources */,
 				D4FA49F0207AF45500CC425B /* ProfileMenuTableViewCell.swift in Sources */,
 				DC33663F20B9BB2F002B8064 /* ChatTableViewCell.swift in Sources */,
