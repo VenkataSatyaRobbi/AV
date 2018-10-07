@@ -66,6 +66,8 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
         cell?.ChatTableViewCellUsername?.text = contact.name
         cell?.ChatTableViewCellImage.loadImageUsingCache(urlStr: contact.profileImageUrl)
         cell?.ChatTableViewCellCaption.text = contact.status
+        cell?.ChatTableViewCellComment.text = "got you " //contact.latestComment
+        cell?.ChatTableViewCellDate.text = "1-Jan-18 4.40PM" //contact.latestCommentDate
         return cell!
     }
     
@@ -198,14 +200,16 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
                 if let myContacts = snapShot.value as? NSDictionary{
                     for(_,value) in myContacts{
                         if let contactData = value as? NSDictionary{
-                           let  userId = contactData[Constants.TOID] as? String
-                           let  status = contactData[Constants.STATUS] as? NSNumber
+                           let userId = contactData[Constants.TOID] as? String
+                           let status = contactData[Constants.STATUS] as? NSNumber
+                           let latestComment = contactData[Constants.LATESTCOMMENT] as? String
+                           let latestCommentDate =  contactData[Constants.LATESTCOMMENTDATE] as? String
                            if status == 1{
-                            self.populateContacts(userId: userId!, status: "Pending")
+                            self.populateContacts(userId: userId!, status: "Pending",latestComment:latestComment!,latestCommentDate: latestCommentDate!)
                            }else if status == 2{
-                            self.populateContacts(userId: userId!, status:"Accepted")
+                            self.populateContacts(userId: userId!, status:"Accepted",latestComment:latestComment!,latestCommentDate: latestCommentDate!)
                            }else if status == 3{
-                            self.populateContacts(userId: userId!, status:"Blocked")
+                            self.populateContacts(userId: userId!, status:"Blocked",latestComment:latestComment!,latestCommentDate: latestCommentDate!)
                            }
                            self.contactsTable.reloadData()
                         }
@@ -221,12 +225,14 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
                     if let contactData = value as? NSDictionary{
                         let  userId = contactData[Constants.ACTIONID] as? String == AVAuthService.getCurrentUserId() ? contactData[Constants.FROMID] as? String : contactData[Constants.ACTIONID] as? String
                         let  status = contactData[Constants.STATUS] as? NSNumber
+                        let latestComment = contactData[Constants.LATESTCOMMENT] as? String
+                        let latestCommentDate = contactData[Constants.LATESTCOMMENTDATE] as? String
                         if status == 1{
-                            self.populateContacts(userId: userId!, status:"Pending")
+                            self.populateContacts(userId: userId!, status:"Pending",latestComment:latestComment!,latestCommentDate: latestCommentDate!)
                         }else if status == 2{
-                            self.populateContacts(userId: userId!, status:"Accepted")
+                            self.populateContacts(userId: userId!, status:"Accepted",latestComment:latestComment!,latestCommentDate: latestCommentDate!)
                         }else if status == 3{
-                            self.populateContacts(userId: userId!, status:"Blocked")
+                            self.populateContacts(userId: userId!, status:"Blocked",latestComment:latestComment!,latestCommentDate: latestCommentDate!)
                         }
                         self.contactsTable.reloadData()
                     }
@@ -235,10 +241,12 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
         }
     }
     
-    func populateContacts(userId:String,status:String){
+    func populateContacts(userId:String,status:String,latestComment:String,latestCommentDate:String){
         for (index, contact) in contacts.enumerated() {
             if contact.id == userId {
                 self.contacts[index].status = status
+                self.contacts[index].latestComment = latestComment
+                self.contacts[index].latestCommentDate = latestCommentDate
             }
         }
     }

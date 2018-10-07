@@ -72,7 +72,7 @@ class VoteCell: UICollectionViewCell{
     
     let optionOne: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.gray
+        label.textColor = UIColor.darkGray
         label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
@@ -82,7 +82,7 @@ class VoteCell: UICollectionViewCell{
     
     let optionTwo: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.gray
+        label.textColor = UIColor.darkGray
         label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
@@ -92,7 +92,7 @@ class VoteCell: UICollectionViewCell{
     
     let OptionThree: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.gray
+        label.textColor = UIColor.darkGray
         label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()

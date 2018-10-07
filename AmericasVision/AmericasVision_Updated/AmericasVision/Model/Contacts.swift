@@ -14,12 +14,16 @@ class Contacts{
     var  _id = ""
     var _profileImageUrl: String = ""
     var _status = ""
+    var _latestComment = ""
+    var _latestCommentDate = ""
     
     init(name:String, id:String,profileImageUrl:String,status:String) {
         _name = name
         _id = id
         _profileImageUrl = profileImageUrl
         _status = status
+        _latestComment = ""
+        _latestCommentDate = ""
     }
     
     var name :String {
@@ -43,5 +47,22 @@ class Contacts{
         }
     }
     
+    var latestComment:String {
+        get{
+            return _latestComment
+        }
+        set(value){
+            _latestComment = value
+        }
+    }
+    
+    var latestCommentDate:String {
+        get{
+            return _latestCommentDate
+        }
+        set(value){
+            _latestCommentDate = value
+        }
+    }
     
 }

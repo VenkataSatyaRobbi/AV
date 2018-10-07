@@ -14,6 +14,8 @@ class ChatTableViewCell: UITableViewCell {
     @IBOutlet weak var ChatTableViewCellUsername: UILabel!
     @IBOutlet weak var ChatTableViewCellCaption: UILabel!
     @IBOutlet weak var chatTableview: UITableView!
+    @IBOutlet weak var ChatTableViewCellDate: UILabel!
+    @IBOutlet weak var ChatTableViewCellComment: UILabel!
     
     var postID: String!
     

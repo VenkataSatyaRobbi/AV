@@ -43,5 +43,6 @@ class Constants {
     static let STATUS = "status"
     static let ACTIONID = "action_id"
     
-    
+    static let  LATESTCOMMENTDATE = "latestCommentDate"
+    static let  LATESTCOMMENT = "latestComment"
 }
