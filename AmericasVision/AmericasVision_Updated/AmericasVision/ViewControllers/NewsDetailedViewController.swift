@@ -33,7 +33,7 @@ class CommentsTableCell:UITableViewCell{
             return commentlabel
     }()
     
-    let commentedDateLabel: UILabel = {
+    let commentedDate: UILabel = {
         let commentedDateLabel = UILabel()
         commentedDateLabel.textColor = UIColor.black
         commentedDateLabel.font = UIFont(name: "Verdana", size: 13)
@@ -56,24 +56,23 @@ class CommentsTableCell:UITableViewCell{
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addSubview(profileImageView)
         self.addSubview(comment)
-        //self.addSubview(commentedDateLabel)
+        self.addSubview(commentedDate)
         
         profileImageView.leftAnchor.constraint(equalTo: leftAnchor, constant:10).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant:30).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant:30).isActive = true
-        profileImageView.topAnchor.constraint(equalTo: topAnchor, constant:0).isActive = true
+        profileImageView.topAnchor.constraint(equalTo: topAnchor, constant:5).isActive = true
         
         comment.leftAnchor.constraint(equalTo: leftAnchor, constant:50).isActive = true
         //comment.heightAnchor.constraint(equalToConstant:30).isActive = true
         comment.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 60).isActive = true
-        comment.topAnchor.constraint(equalTo: topAnchor, constant:0).isActive = true
+        comment.topAnchor.constraint(equalTo: topAnchor, constant:5).isActive = true
         
+        commentedDate.leftAnchor.constraint(equalTo: leftAnchor, constant:50).isActive = true
+        commentedDate.heightAnchor.constraint(equalToConstant:20).isActive = true
+        commentedDate.widthAnchor.constraint(equalToConstant:self.frame.width).isActive = true
+        //commentedDate.topAnchor.constraint(equalTo: topAnchor, constant: 50).isActive = true
         
-        
-        //commentedDateLabel.leftAnchor.constraint(equalTo: leftAnchor, constant:55).isActive = true
-        //comment.heightAnchor.constraint(equalToConstant:20).isActive = true
-        //commentedDateLabel.widthAnchor.constraint(equalToConstant:self.frame.width).isActive = true
-       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -82,6 +81,8 @@ class CommentsTableCell:UITableViewCell{
 }
 
 class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextViewDelegate {
+    
+    let cellSpacingHeight: CGFloat = 5
     
     var NewsDetailedVCImage : UIImageView = {
         let NewsDetailedVCImageview = UIImageView()
@@ -254,7 +255,9 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
     var commentKey = String()
     var userAlreadyLiked: Bool = false
     var userAlreadyDisliked: Bool = false
+    var commentedDate = String()
     var currentUserid: String = AVAuthService.getCurrentUserId()
+    var commentDateDouble = Double()
     
     @IBOutlet weak var scrollView: UIScrollView!
     var tableView: UITableView = UITableView()
@@ -272,7 +275,8 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         comments.forEach { comment in
             let hgt = CommonUtils.heightForView(text: comment.comments, font:UIFont(name: "Verdana", size: 13)! ,width: approximateWidth)
             let height = hgt < 40 ? 40: ceil(hgt)
-            commentsHeight = commentsHeight + height
+            commentsHeight = commentsHeight + height + 40
+
         }
     
         NewsDetailedVCImage.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:1).isActive = true
@@ -539,14 +543,16 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
                 return
             }
             
+            //commentDateDouble = commentTimestamp as Double
             
-            let comment = PostComment(profileImageUrl: "", userId: AVAuthService.getCurrentUserId(), type: "", comments: self.writeComment.text, commentDate: Date())
+            let comment = PostComment(profileImageUrl: "", userId: AVAuthService.getCurrentUserId(), type: "", comments: self.writeComment.text, commentDate: Double(commentTimestamp as! NSNumber))
+            
             self.fetchProfileImageURL(comment: comment)
             
             let commentHeight = CommonUtils.heightForView(text: self.writeComment.text, font: UIFont(name: "Verdana", size: 13)!,width: self.tableView.frame.width-60)
             let height = commentHeight < 40 ? 40 : commentHeight
-            self.tableView.contentSize = CGSize(width: self.view.frame.size.width, height:self.tableView.contentSize.height + height)
-            self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height:self.scrollView.contentSize.height + height)
+            self.tableView.contentSize = CGSize(width: self.view.frame.size.width, height:self.tableView.contentSize.height + height + 40)
+            self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height:self.scrollView.contentSize.height + height + 40)
             
             self.writeComment.text = ""
             self.textViewDidChange(self.writeComment)
@@ -939,6 +945,8 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         }
     }
     
+    
+    
     func checkCurrentUserComments(){
         
         DBProvider.instance.newsFeedRef.child(postId).child("usercomments").observeSingleEvent(of: DataEventType.value){
@@ -950,7 +958,10 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
                         let userId = commentDic["userId"] as? String
                         if "" == commentDic["type"] as? String {
                             let comments = commentDic["comments"] as? String
-                            let comment = PostComment(profileImageUrl: "", userId: AVAuthService.getCurrentUserId(), type: "", comments: comments!, commentDate: Date())
+                            
+                            let commentTimestamp = commentDic["commentTimestamp"] as! Double
+                            
+                            let comment = PostComment(profileImageUrl: "", userId: AVAuthService.getCurrentUserId(), type: "", comments: comments!, commentDate: commentTimestamp)
                             //print(snapShot.childrenCount)
                             self.fetchProfileImageURL(comment:comment)
                         }
@@ -1011,14 +1022,38 @@ extension NewsDetailedViewController:UITableViewDataSource,UITableViewDelegate{
         return comments.count
     }
     
+    // Set the spacing between sections
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    // Make the background color show through
+    /*func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }*/
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentsTableCell") as! CommentsTableCell
-       
+        
         let url = comments[indexPath.row].profileImageUrl as String
         cell.profileImageView.loadImageUsingCache(urlStr: url)
         cell.comment.text = comments[indexPath.row].comments as String
-        //cell.commentedDateLabel.text = comments[indexPath.row].commentDate
+        let commentAtRow = comments[indexPath.row].comments as String
+        //self.commentedDate = self.postedDateFormat(time:time/1000)
+        //cell.commentedDate.text = comments[indexPath.row].commentDate as? String
+        //cell.commentedDate.topAnchor.constraint(equalTo: self.top, constant:)
+        let hgt = CommonUtils.heightForView(text: commentAtRow, font:UIFont(name: "Verdana", size: 13)! ,width: UIScreen.main.bounds.width - 60)
+        let height = hgt < 40 ? 40: ceil(hgt)
+        let heightConstraint = NSLayoutConstraint(item: cell.commentedDate, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: cell, attribute: NSLayoutAttribute.top, multiplier: 1, constant: (height+10))
         
+        cell.addConstraint(heightConstraint)
+        let commentedDateString = self.postedDateFormat(time: (comments[indexPath.row].commentDate)/1000)
+        cell.commentedDate.text = "Commented Date: \(commentedDateString)"
+        cell.commentedDate.font = UIFont(name: "Verdana", size: 12)
+        cell.commentedDate.textColor = UIColor.gray
+        print("date label text: \(cell.commentedDate.text ?? "default value")")
         return cell
     }
     
@@ -1026,8 +1061,7 @@ extension NewsDetailedViewController:UITableViewDataSource,UITableViewDelegate{
     //removed CommonUtils.calculateHeight
     let estimatedHgt = CommonUtils.heightForView(text: comments[indexPath.row].comments, font: UIFont(name: "Verdana", size: 13)!,width: UIScreen.main.bounds.width - 60 /*self.tableView.layer.frame.width-60*/)
         let height = estimatedHgt < 40 ? 40 : ceil(estimatedHgt)
-    print("cell height: \(height)")
-        return height
+        return height + 40
     }
     
 }
