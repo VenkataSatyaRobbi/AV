@@ -14,10 +14,10 @@ class PostComment{
     var userId: String
     var type: String
     var comments: String
-    var commentDate:Date
+    var commentDate:Double
     
     
-    init(profileImageUrl:String, userId: String, type: String, comments: String, commentDate: Date){
+    init(profileImageUrl:String, userId: String, type: String, comments: String, commentDate: Double){
         self.profileImageUrl = profileImageUrl
         self.userId = userId
         self.type = type
