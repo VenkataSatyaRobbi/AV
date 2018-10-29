@@ -90,11 +90,12 @@ extension NewsSportsViewController:UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
+        
         if row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FeedsTableViewCell", for: indexPath) as? FeedsTableViewCell
             cell?.registerCollectoinView(datasource: self)
             return cell!
-        }else{
+        }else {
             let newsRow = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
             //newsRow.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
             newsRow.headLines.text = posts[indexPath.row].postTitle
@@ -140,13 +141,13 @@ extension NewsSportsViewController:UICollectionViewDataSource,UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         
-        return 1
+        return 3
         //return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let row = indexPath.row
-        if row < 1{
+        if row < 3{
             //if row < 4{
             print("fun the loading posts..\(self.posts.count)")
             let newsRow = collectionView.dequeueReusableCell(withReuseIdentifier:"SlideCollectionViewCell", for: indexPath) as! SlideCollectionViewCell
@@ -175,5 +176,16 @@ extension NewsSportsViewController:UICollectionViewDataSource,UICollectionViewDe
             return cell
         }
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
+        let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "NewsDetailedViewController") as! NewsDetailedViewController
+        
+        destinationViewController.postId = posts[indexPath.row].postID
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
+        
+        let rowDataPostID = posts[indexPath.row].postID
+        print("rowdata ID value: \(rowDataPostID)")
     }
 }
