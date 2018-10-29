@@ -151,13 +151,13 @@ extension NewsEntertainmentViewController:UICollectionViewDataSource,UICollectio
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //  return 2
-        return 1
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let row = indexPath.row
         //if row < 2{
-        if row < 1{
+        if row < 4{
             print("fun the loading posts..\(self.posts.count)")
             let newsRow = collectionView.dequeueReusableCell(withReuseIdentifier:"SlideCollectionViewCell", for: indexPath) as! SlideCollectionViewCell
             newsRow.headlines.text = posts[indexPath.row].postTitle
