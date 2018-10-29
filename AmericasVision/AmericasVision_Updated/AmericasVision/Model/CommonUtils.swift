@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import FirebaseAuth
+import FirebaseStorage
+import FirebaseDatabase
 
 enum LINE_POSITION {
     case LINE_POSITION_TOP
@@ -33,6 +36,16 @@ class CommonUtils {
         let dateFormatter =  DateFormatter()
         dateFormatter.dateFormat = "MMM d, h:mm a"
         return dateFormatter.string(from: date)
+    }
+    
+    static func convertServerValueTimestampToFullDate(serverTimestamp: Double) -> String {
+        let x = serverTimestamp / 1000
+        let date = NSDate(timeIntervalSince1970: x)
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .long
+        
+        return formatter.string(from: date as Date)
     }
     
     static func calculateHeight(text:String, width: CGFloat)  -> CGFloat {
