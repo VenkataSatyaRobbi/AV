@@ -22,15 +22,15 @@ class CommentsTableCell:UITableViewCell{
     }()
     
     let comment: UILabel = {
-            let commentlabel = UILabel()
-            commentlabel.textColor = UIColor.black
-            commentlabel.font = UIFont(name: "Verdana", size: 13)
-            commentlabel.translatesAutoresizingMaskIntoConstraints = false
-            commentlabel.numberOfLines = 0
-            commentlabel.sizeToFit()
-            commentlabel.textAlignment = .justified
-            commentlabel.lineBreakMode = .byWordWrapping
-            return commentlabel
+        let commentlabel = UILabel()
+        commentlabel.textColor = UIColor.black
+        commentlabel.font = UIFont(name: "Verdana", size: 13)
+        commentlabel.translatesAutoresizingMaskIntoConstraints = false
+        commentlabel.numberOfLines = 0
+        commentlabel.sizeToFit()
+        commentlabel.textAlignment = .justified
+        commentlabel.lineBreakMode = .byWordWrapping
+        return commentlabel
     }()
     
     let commentedDate: UILabel = {
@@ -43,15 +43,15 @@ class CommentsTableCell:UITableViewCell{
         commentedDateLabel.textAlignment = .justified
         return commentedDateLabel
     }()
- 
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addSubview(profileImageView)
@@ -74,7 +74,7 @@ class CommentsTableCell:UITableViewCell{
         //commentedDate.topAnchor.constraint(equalTo: topAnchor, constant: 50).isActive = true
         
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -145,22 +145,22 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         let dislikeimage = UIImage(named: "dislike")
         dislikeButtonbutton.translatesAutoresizingMaskIntoConstraints = false
         //dislikeButtonbutton.setImage(UIImage(named: "dislike"), for: .normal)
-    dislikeButtonbutton.setImage(dislikeimage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: .normal)
+        dislikeButtonbutton.setImage(dislikeimage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: .normal)
         dislikeButtonbutton.tintColor = UIColor.gray
         return dislikeButtonbutton
     }()
     
     /*let oldCommentsLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.sizeToFit()
-        label.text = "Previous Comments"
-        label.font = UIFont.boldSystemFont(ofSize: 13)
-        label.textAlignment = .justified
-        label.textColor = UIColor.blue
-        return label
-    }()*/
+     let label = UILabel()
+     label.translatesAutoresizingMaskIntoConstraints = false
+     label.numberOfLines = 0
+     label.sizeToFit()
+     label.text = "Previous Comments"
+     label.font = UIFont.boldSystemFont(ofSize: 13)
+     label.textAlignment = .justified
+     label.textColor = UIColor.blue
+     return label
+     }()*/
     
     let writeCommentLabel: UILabel = {
         let writeCommentLabel = UILabel()
@@ -184,19 +184,19 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         return writeCommenttext
     }()
     
-   /* let oldComments: UILabel = {
-        let oldCommentslabel = UILabel()
-        oldCommentslabel.translatesAutoresizingMaskIntoConstraints = false
-        oldCommentslabel.numberOfLines = 0
-        oldCommentslabel.sizeToFit()
-        oldCommentslabel.font = UIFont.systemFont(ofSize: 13)
-        oldCommentslabel.textAlignment = .justified
-        oldCommentslabel.backgroundColor = UIColor.lightGray
-        oldCommentslabel.layer.borderColor = UIColor.lightGray.cgColor
-        oldCommentslabel.layer.borderWidth = 1.0;
-        oldCommentslabel.layer.cornerRadius = 5.0;
-        return oldCommentslabel
-    }()*/
+    /* let oldComments: UILabel = {
+     let oldCommentslabel = UILabel()
+     oldCommentslabel.translatesAutoresizingMaskIntoConstraints = false
+     oldCommentslabel.numberOfLines = 0
+     oldCommentslabel.sizeToFit()
+     oldCommentslabel.font = UIFont.systemFont(ofSize: 13)
+     oldCommentslabel.textAlignment = .justified
+     oldCommentslabel.backgroundColor = UIColor.lightGray
+     oldCommentslabel.layer.borderColor = UIColor.lightGray.cgColor
+     oldCommentslabel.layer.borderWidth = 1.0;
+     oldCommentslabel.layer.cornerRadius = 5.0;
+     return oldCommentslabel
+     }()*/
     
     let NewsDetailedVCDateAndLocation: UILabel = {
         let NewsDetailedVCDateAndLocationlabel = UILabel()
@@ -258,16 +258,17 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
     var commentedDate = String()
     var currentUserid: String = AVAuthService.getCurrentUserId()
     var commentDateDouble = Double()
+    var commentedUserId = String()
     
     @IBOutlet weak var scrollView: UIScrollView!
     var tableView: UITableView = UITableView()
     
     override func viewDidAppear(_ animated: Bool) {
-       DBProvider.instance.userRef.child(postedUserId).observe(.value) { (snapshot) in
-                let userFirstName = (snapshot.value as! NSDictionary)["FirstName"] as? String
-                let userLastName = (snapshot.value as! NSDictionary)["LastName"] as? String
-                self.postedBy.text = "Posted by: " + userFirstName! + ", " + userLastName!
-        
+        DBProvider.instance.userRef.child(postedUserId).observe(.value) { (snapshot) in
+            let userFirstName = (snapshot.value as! NSDictionary)["FirstName"] as? String
+            let userLastName = (snapshot.value as! NSDictionary)["LastName"] as? String
+            self.postedBy.text = "Posted by: " + userFirstName! + ", " + userLastName!
+            
         }
         var commentsHeight:CGFloat = 0
         let approximateWidth = UIScreen.main.bounds.width - 60
@@ -276,9 +277,9 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
             let hgt = CommonUtils.heightForView(text: comment.comments, font:UIFont(name: "Verdana", size: 13)! ,width: approximateWidth)
             let height = hgt < 40 ? 40: ceil(hgt)
             commentsHeight = commentsHeight + height + 40
-
+            
         }
-    
+        
         NewsDetailedVCImage.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:1).isActive = true
         NewsDetailedVCImage.heightAnchor.constraint(equalToConstant:200).isActive = true
         NewsDetailedVCImage.widthAnchor.constraint(equalToConstant:self.view.frame.width).isActive = true
@@ -341,9 +342,9 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         postCommentButton.addTarget(self,action: #selector(self.postCommentAction(_:)),for: .touchUpInside)
         
         /*oldCommentsLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10).isActive = true
-        oldCommentsLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:350 + contentHeight).isActive = true
-        oldCommentsLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
-        oldCommentsLabel.widthAnchor.constraint(equalToConstant:self.view.frame.width-20).isActive = true*/
+         oldCommentsLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:350 + contentHeight).isActive = true
+         oldCommentsLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
+         oldCommentsLabel.widthAnchor.constraint(equalToConstant:self.view.frame.width-20).isActive = true*/
         
         likeLabel.text = likesCount.stringValue
         dislikeLabel.text = dislikesCount.stringValue
@@ -358,7 +359,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
             self.scrollView.isScrollEnabled = true
         }
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 380 + contentHeight + commentsHeight + 50)
-        print("commentsHeight: \(commentsHeight)")
+        //print("commentsHeight: \(commentsHeight)")
         // 40 space for bottom
         let NewsDetailAVPostStorageRef = Storage.storage().reference(forURL:photoUrl)
         NewsDetailAVPostStorageRef.downloadURL { (url, error) in
@@ -379,14 +380,12 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
             }).resume()
         }
         
-     }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.likeButton.tintColor = UIColor.gray
         //self.dislikeButton.tintColor = UIColor.gray
-        
-        
         
         let postRef = DBProvider.instance.newsFeedRef.child(postId)
         postRef.child("usercomments").queryOrdered(byChild: "type").queryEqual(toValue: "Like").observeSingleEvent(of: DataEventType.value){
@@ -395,10 +394,8 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
                 for(key,value) in mycomments{
                     if let commentDic = value as? NSDictionary{
                         let userId = commentDic["userId"] as? String
-                        print("Like userID: \(userId)")
-                        print("Like getCurrentUserId: \(self.currentUserid)")
                         if userId == self.currentUserid{
-                            print("userid found")
+                            //print("userid found")
                             self.userAlreadyLiked = true
                             self.likeButton.tintColor = UIColor.blue
                             break
@@ -413,10 +410,8 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
                 for(key,value) in mycomments{
                     if let commentDic = value as? NSDictionary{
                         let userId = commentDic["userId"] as? String
-                        print("Dislike userID: \(userId)")
-                        print("Dislike getCurrentUserId: \(self.currentUserid)")
                         if userId == self.currentUserid{
-                            print("userid found");
+                            //print("userid found");
                             self.userAlreadyDisliked = true
                             self.dislikeButton.tintColor = UIColor.red
                             break
@@ -450,7 +445,6 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         tableView.dataSource = self
         tableView.bounces = false
         tableView.isScrollEnabled = false
-       
         
         scrollView.isScrollEnabled = true
         scrollView.delegate = self
@@ -469,39 +463,65 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
                 self.NewsDetailedVCDateAndLocation.text = dict["newsLocation"] as? String
                 self.NewsDetailedVCImageCourtesy.text = dict["photoCourtesy"] as? String
                 let time = dict["timestamp"] as! Double
-                self.postedDate = self.postedDateFormat(time:time/1000)
+                self.postedDate = CommonUtils.convertServerValueTimestampToFullDate(serverTimestamp:time)
+                //self.postedDate = self.postedDateFormat(time:time/1000)
                 self.NewsDetailedVCDateAndLocation.text = self.NewsDetailedVCDateAndLocation.text! + " - " + self.postedDate
                 self.NewsDetailedVCNewsContent.text = dict["newsContent"] as? String
             }
         }
-        
         checkCurrentUserComments()
         getCommentsCount()
-        
         
     }
     
     func fetchProfileImageURL(comment:PostComment){
         DBProvider.instance.userRef.child(comment.userId).observeSingleEvent(of: DataEventType.value){
-                (snapShot:DataSnapshot) in
+            (snapShot:DataSnapshot) in
             comment.profileImageUrl = ((snapShot.value as! NSDictionary)["ProfileImageURL"] as? String)!
+            print("profileImageUrl in fetchProfileImageURL: \(comment.profileImageUrl)")
             self.comments.append(comment)
+            print("self.comments: \(self.comments)")
+            
         }
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(true)
-//        if(self.writeComment.hasText == true){
-//            self.postCommentButton.isEnabled = true
-//            self.postCommentButton.tintColor = UIColor.white
-//            self.postCommentButton.backgroundColor = UIColor.blue
-//        }
-//        else{
-//            self.postCommentButton.isEnabled = false
-//            self.postCommentButton.tintColor = UIColor.darkGray
-//            self.postCommentButton.backgroundColor = UIColor.gray
-//        }
-//    }
+    func fetchProfileImageURLusingUserID(userID: String) -> String {
+        var profileImageUrl = ""
+        print("userID passed: \(userID)")
+        //Database.database().reference().child("users").child(userID).observeSingleEvent(of: DataEventType.value) { (snapshot: DataSnapshot) in
+        DBProvider.instance.userRef.child(userID).observeSingleEvent(of: DataEventType.value){
+            (snapShot:DataSnapshot) in
+            profileImageUrl = ((snapShot.value as! NSDictionary)["ProfileImageURL"] as? String)!
+            //if let profileDict = snapShot.value as? [String: Any] {
+            //   profileImageUrl = profileDict["ProfileImageURL"] as! String
+            
+            print("profileImageUrl in fetchProfileImageURLusingUserID: \(profileImageUrl)")
+            //}
+        }
+        /*DBProvider.instance.userRef.child(userID).observeSingleEvent(of: DataEventType.value){
+         (snapshot: DataSnapshot) in
+         if let profileDict = snapshot.value as? [String: Any] {
+         profileImageUrl = profileDict["ProfileImageURL"] as! String
+         print("profileImageUrl in fetchProfileImageURLusingUserID: \(profileImageUrl)")
+         }
+         //let profileImageUrl = ((snapShot.value as! NSDictionary)["ProfileImageURL"] as? String)!
+         }*/
+        return profileImageUrl
+    }
+    
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        super.viewWillAppear(true)
+    //        if(self.writeComment.hasText == true){
+    //            self.postCommentButton.isEnabled = true
+    //            self.postCommentButton.tintColor = UIColor.white
+    //            self.postCommentButton.backgroundColor = UIColor.blue
+    //        }
+    //        else{
+    //            self.postCommentButton.isEnabled = false
+    //            self.postCommentButton.tintColor = UIColor.darkGray
+    //            self.postCommentButton.backgroundColor = UIColor.gray
+    //        }
+    //    }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         
@@ -531,10 +551,55 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         }
     }
     
+    func loadComments(){
+        DBProvider.instance.newsFeedRef.child(postId).child("usercomments").queryOrdered(byChild: "type").queryEqual(toValue: "").observe(.childAdded) { (commentSnapshot: DataSnapshot) in
+            
+            if let commentDict = commentSnapshot.value as? [String: Any] {
+                let userIdString = commentDict["userId"] as! String
+                //print("userIdString: \(userIdString)")
+                let typeString = commentDict["type"] as! String
+                let commentsString = commentDict["comments"] as! String
+                print("commentsString: \(commentsString)")
+                let commentDateDouble = commentDict["commentTimestamp"] as! Double
+                //print("commentDateDouble: \(commentDateDouble)")
+                let profileImageURLString = self.fetchProfileImageURLusingUserID(userID: userIdString)
+                print("profileImageURLString: \(profileImageURLString)")
+                let comment = PostComment(profileImageUrl: profileImageURLString, userId: userIdString, type: typeString, comments: commentsString, commentDate: commentDateDouble)
+                
+                //let comment = PostComment(profileImageUrl: "", userId: userIdString, type: typeString, comments: commentsString, commentDate: commentDateDouble)
+                //self.fetchProfileImageURL(comment:comment)
+                
+                print("comment: \(comment)")
+                self.comments.append(comment)
+                print("self.comments: \(self.comments)")
+                //self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func insertPostedCommentInTable(comment:PostComment){
+        DBProvider.instance.userRef.child(comment.userId).observeSingleEvent(of: DataEventType.value){
+            (snapShot:DataSnapshot) in
+            comment.profileImageUrl = ((snapShot.value as! NSDictionary)["ProfileImageURL"] as? String)!
+            print("profileImageUrl in fetchProfileImageURL: \(comment.profileImageUrl)")
+            self.comments.append(comment)
+            let indexPath = IndexPath (row: self.comments.count - 1,section:0)
+            print("indexpath: \(indexPath)")
+            self.tableView.beginUpdates()
+            self.tableView.insertRows(at: [indexPath], with: .automatic)
+            self.tableView.endUpdates()
+            //self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            print("self.comments: \(self.comments)")
+            
+        }
+    }
+    
+    
     @IBAction func postCommentAction(_ sender: Any) {
         //postCommentButton.isEnabled = false
         ProgressHUD.show("", interaction: true)
-        let commentTimestamp = ServerValue.timestamp()
+        let commentTimestamp = NSDate().timeIntervalSince1970
+        
         let postRef = DBProvider.instance.newsFeedRef.child(postId)
         let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
         commentsRef.setValue(["userId": AVAuthService.getCurrentUserId(),"type": "", "comments": writeComment.text as String, "commentTimestamp": commentTimestamp], withCompletionBlock:{(error, ref) in
@@ -544,30 +609,32 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
             }
             
             //commentDateDouble = commentTimestamp as Double
-            
-            let comment = PostComment(profileImageUrl: "", userId: AVAuthService.getCurrentUserId(), type: "", comments: self.writeComment.text, commentDate: Double(commentTimestamp as! NSNumber))
-            
-            self.fetchProfileImageURL(comment: comment)
+            //let comment = PostComment(profileImageUrl: "", userId: AVAuthService.getCurrentUserId(), type: "", comments: self.writeComment.text, commentDate: Double(commentTimestamp as! NSNumber))
+            //self.fetchProfileImageURL(comment: comment)
             
             let commentHeight = CommonUtils.heightForView(text: self.writeComment.text, font: UIFont(name: "Verdana", size: 13)!,width: self.tableView.frame.width-60)
             let height = commentHeight < 40 ? 40 : commentHeight
             self.tableView.contentSize = CGSize(width: self.view.frame.size.width, height:self.tableView.contentSize.height + height + 40)
             self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height:self.scrollView.contentSize.height + height + 40)
-            
+            let comment = PostComment(profileImageUrl: "", userId: AVAuthService.getCurrentUserId(), type: "", comments: self.writeComment.text, commentDate: commentTimestamp)
             self.writeComment.text = ""
             self.textViewDidChange(self.writeComment)
             self.textViewDidEndEditing(self.writeComment)
-            self.checkCurrentUserComments()
-            self.getCommentsCount()
-            ProgressHUD.dismiss()
-            //self.postCommentButton.isEnabled = false
             
+            self.getCommentsCount()
+            //self.comments.removeAll()
+            //self.checkCurrentUserComments()
+            //self.loadComments()
+            
+            self.insertPostedCommentInTable(comment:comment)
+            //self.postCommentButton.isEnabled = false
             //self.tableView.reloadData()
+            ProgressHUD.dismiss()
         })
         
     }
     
-     @IBAction func likesAction(_ sender: Any) {
+    @IBAction func likesAction(_ sender: Any) {
         let postRef = DBProvider.instance.newsFeedRef.child(postId)
         if self.likesCount.intValue > 0
         {
@@ -605,10 +672,8 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
                                             ProgressHUD.showError(error!.localizedDescription)
                                             return
                                         }
-                                        
                 })
                 self.likeButton.tintColor = UIColor.blue
-                
                 self.userAlreadyLiked = true
                 let likecount = self.likesCount.intValue + 1
                 let value = likecount as NSNumber
@@ -653,86 +718,55 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         }
         else
         {
-
-            
-                let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
-                commentsRef.setValue(["type": "Like", "userId": self.currentUserid,
-                                      "comments": ""], withCompletionBlock:{(error, ref) in
-                                        if error != nil{
-                                            ProgressHUD.showError(error!.localizedDescription)
-                                            return
-                                        }
-                                        
-                })
-                self.userAlreadyLiked = true
+            let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
+            commentsRef.setValue(["type": "Like", "userId": self.currentUserid,
+                                  "comments": ""], withCompletionBlock:{(error, ref) in
+                                    if error != nil{
+                                        ProgressHUD.showError(error!.localizedDescription)
+                                        return
+                                    }
+            })
+            self.userAlreadyLiked = true
             self.likeButton.tintColor = UIColor.blue
             let likecount = self.likesCount.intValue + 1
             let value = likecount as NSNumber
             self.likesCount = value
             self.updateCountInPost()
-                
-                if self.dislikesCount.intValue > 0 {
-                    if self.userAlreadyDisliked == true {
-                        
-                        postRef.child("usercomments").queryOrdered(byChild: "type").queryEqual(toValue: "Dislike").observeSingleEvent(of: DataEventType.value){
-                            (snapShot:DataSnapshot) in
-                            if let mycomments = snapShot.value as? NSDictionary{
-                                for(key,value) in mycomments{
-                                    if let commentDic = value as? NSDictionary{
-                                        let userId = commentDic["userId"] as? String
-                                        if userId == self.currentUserid{
-                                            postRef.child("usercomments").child(key as! String).removeValue()
-                                            self.userAlreadyDisliked = false
-                                            self.dislikeButton.tintColor = UIColor.gray
-                                            let dislikecount = self.dislikesCount.intValue - 1
-                                            let value = dislikecount as NSNumber
-                                            self.dislikesCount = value
-                                            self.updateCountInPost()
-                                            break
-                                        }
-                                        else{
-                                            
-                                        }
+            
+            if self.dislikesCount.intValue > 0 {
+                if self.userAlreadyDisliked == true {
+                    postRef.child("usercomments").queryOrdered(byChild: "type").queryEqual(toValue: "Dislike").observeSingleEvent(of: DataEventType.value){
+                        (snapShot:DataSnapshot) in
+                        if let mycomments = snapShot.value as? NSDictionary{
+                            for(key,value) in mycomments{
+                                if let commentDic = value as? NSDictionary{
+                                    let userId = commentDic["userId"] as? String
+                                    if userId == self.currentUserid{
+                                        postRef.child("usercomments").child(key as! String).removeValue()
+                                        self.userAlreadyDisliked = false
+                                        self.dislikeButton.tintColor = UIColor.gray
+                                        let dislikecount = self.dislikesCount.intValue - 1
+                                        let value = dislikecount as NSNumber
+                                        self.dislikesCount = value
+                                        self.updateCountInPost()
+                                        break
+                                    }
+                                    else{
+                                        
                                     }
                                 }
                             }
                         }
                     }
-                    else{
-                        print("userAlreadyDisliked false. do nothing.")
-                    }
                 }
                 else{
-                    print("dislikeCount = 0. do nothing")
+                    print("userAlreadyDisliked false. do nothing.")
                 }
+            }
+            else{
+                print("dislikeCount = 0. do nothing")
+            }
         }
-        
-/*        if(self.dislikesCount.intValue > 0){
-            let dislikecount = self.dislikesCount.intValue - 1
-            let value = dislikecount as NSNumber
-            
-            self.dislikesCount = value
-            NSLog("remove user dislike comments and add like comment section")
-            DBProvider.instance.newsFeedRef.child(postId).child("usercomments").child(commentKey).updateChildValues(["type": "Like"])
-        }else{
-            let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
-            commentsRef.setValue(["type": "Like", "userId": AVAuthService.getCurrentUserId(),
-                                  "comments": ""], withCompletionBlock:{(error, ref) in
-                if error != nil{
-                    ProgressHUD.showError(error!.localizedDescription)
-                    return
-                }
-                
-            })
-        }
-        self.likeToggle = true
-        let likecount = self.likesCount.intValue + 1
-        let value = likecount as NSNumber
-        self.likesCount = value */
-       // self.toggleLikeDislike()
-        //print("before Update Count in post called")
-        //self.updateCountInPost()
- 
     }
     
     @IBAction func dislikeAction(_ sender: Any){
@@ -776,7 +810,6 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
                                         
                 })
                 self.dislikeButton.tintColor = UIColor.red
-                
                 self.userAlreadyDisliked = true
                 let dislikecount = self.dislikesCount.intValue + 1
                 let value = dislikecount as NSNumber
@@ -814,14 +847,12 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
                     }
                 }
                 else{
-                    print("dislikeCount = 0. do nothing")
+                    print("likeCount = 0. do nothing")
                 }
             }
         }
         else
         {
-            
-            
             let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
             commentsRef.setValue(["type": "Dislike", "userId": self.currentUserid,
                                   "comments": ""], withCompletionBlock:{(error, ref) in
@@ -829,7 +860,6 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
                                         ProgressHUD.showError(error!.localizedDescription)
                                         return
                                     }
-                                    
             })
             self.userAlreadyDisliked = true
             self.dislikeButton.tintColor = UIColor.red
@@ -840,7 +870,6 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
             
             if self.likesCount.intValue > 0 {
                 if self.userAlreadyLiked == true {
-                    
                     postRef.child("usercomments").queryOrdered(byChild: "type").queryEqual(toValue: "Like").observeSingleEvent(of: DataEventType.value){
                         (snapShot:DataSnapshot) in
                         if let mycomments = snapShot.value as? NSDictionary{
@@ -870,38 +899,10 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
                 }
             }
             else{
-                print("dislikeCount = 0. do nothing")
+                print("likeCount = 0. do nothing")
             }
         }
     }
-    
-    /*{
-        let postRef = DBProvider.instance.newsFeedRef.child(postId)
-        let userId = AVAuthService.getCurrentUserId()
-        if(self.likesCount.intValue > 0){
-            let likecount = self.likesCount.intValue - 1
-            let value = likecount as NSNumber
-            self.likesCount = value
-            NSLog("remove user like comments and add dislike comment section")
-            DBProvider.instance.newsFeedRef.child(postId).child("usercomments").child(commentKey).updateChildValues(["type": "Dislike"])
-        }else{
-            let commentsRef =  postRef.child("usercomments").child(postRef.childByAutoId().key)
-            commentsRef.setValue(["type": "Dislike", "userId": userId ,
-              "comments": ""], withCompletionBlock:{(error, ref) in
-                if error != nil{
-                    ProgressHUD.showError(error!.localizedDescription)
-                    return
-                }
-                
-            })
-        }
-        self.likeToggle = false
-        let dislikecount = self.dislikesCount.intValue + 1
-        let value = dislikecount as NSNumber
-        self.dislikesCount = value
-        self.toggleLikeDislike()
-        self.updateCountInPost()
-    }*/
     
     func toggleLikeDislike() {
         if likeToggle == true {
@@ -937,15 +938,13 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         let height = estimatedSize.height
         return height
     }
-   
+    
     func getCommentsCount(){
         DBProvider.instance.newsFeedRef.child(postId).child("usercomments").queryOrdered(byChild: "type").queryEqual(toValue: "").observeSingleEvent(of: DataEventType.value){
             (snapShot:DataSnapshot) in
             self.writeCommentLabel.text = String(snapShot.childrenCount) + " Comments"
         }
     }
-    
-    
     
     func checkCurrentUserComments(){
         
@@ -967,25 +966,25 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
                         }
                         
                         /*if AVAuthService.getCurrentUserId() == userId {
-                            self.commentKey = (key as? String)!
-                            let type = commentDic["type"] as? String
-                            if type == "Like" {
-                                self.likeToggle = true
-                                self.toggleLikeDislike()
-                            }else if type == "Dislike" {
-                                self.likeToggle = false
-                                self.toggleLikeDislike()
-                            }else{
-                                NSLog("general user comments")
-                            }
-                            
-                        }*/
+                         self.commentKey = (key as? String)!
+                         let type = commentDic["type"] as? String
+                         if type == "Like" {
+                         self.likeToggle = true
+                         self.toggleLikeDislike()
+                         }else if type == "Dislike" {
+                         self.likeToggle = false
+                         self.toggleLikeDislike()
+                         }else{
+                         NSLog("general user comments")
+                         }
+                         
+                         }*/
                     }
                 }
             }
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -1004,13 +1003,13 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == self.scrollView{
-           // scrollView.contentOffset.y = scrollView.contentOffset.y + tableView.frame.height
+            // scrollView.contentOffset.y = scrollView.contentOffset.y + tableView.frame.height
             //print("scrollview")
         }
         else if scrollView == self.tableView{
-             //print("tableview")
+            //print("tableview")
         }
-       
+        
         
     }
 }
@@ -1018,7 +1017,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
 extension NewsDetailedViewController:UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("comments count: \(comments.count)")
+        //print("comments count: \(comments.count)")
         return comments.count
     }
     
@@ -1029,14 +1028,16 @@ extension NewsDetailedViewController:UITableViewDataSource,UITableViewDelegate{
     
     // Make the background color show through
     /*func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor.clear
-        return headerView
-    }*/
+     let headerView = UIView()
+     headerView.backgroundColor = UIColor.clear
+     return headerView
+     }*/
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("in cellforrowatindexpath")
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentsTableCell") as! CommentsTableCell
         
+        //print("profileimageurl in tableview indexpath function: \(comments[indexPath.row].profileImageUrl)")
         let url = comments[indexPath.row].profileImageUrl as String
         cell.profileImageView.loadImageUsingCache(urlStr: url)
         cell.comment.text = comments[indexPath.row].comments as String
@@ -1049,20 +1050,79 @@ extension NewsDetailedViewController:UITableViewDataSource,UITableViewDelegate{
         let heightConstraint = NSLayoutConstraint(item: cell.commentedDate, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: cell, attribute: NSLayoutAttribute.top, multiplier: 1, constant: (height+10))
         
         cell.addConstraint(heightConstraint)
-        let commentedDateString = self.postedDateFormat(time: (comments[indexPath.row].commentDate)/1000)
-        cell.commentedDate.text = "Commented Date: \(commentedDateString)"
+        //let commentedDateString = self.postedDateFormat(time: (comments[indexPath.row].commentDate)/1000)
+        let commentedTimestamp = (comments[indexPath.row].commentDate)
+        //print("commentedTimestamp: \(commentedTimestamp)")
+        let currentTimestamp = NSDate().timeIntervalSince1970
+        //print("currentTimestamp: \(currentTimestamp)")
+        
+        let duration = currentTimestamp - commentedTimestamp
+        var commentString = ""
+        let minutes = Int(duration/60)
+        let hours = Int(duration/3600)
+        let days = Int(duration/86400)
+        let months = Int(duration/2592000)
+        let years = Int(duration/31104000)
+        if duration < 60 {
+            commentString = "few seconds ago"
+        }
+        else if duration < 300 {
+            commentString = "few minutes ago"
+        }
+        else if duration < 3600 {
+            if minutes < 2{
+                commentString = "\(minutes) minute ago"
+            }else if minutes >= 2 {
+                commentString = "\(minutes) minutes ago"
+            }
+        }
+        else if duration < 86400 {
+            if hours < 2 {
+                commentString = "\(hours) hour ago"
+            }else if hours >= 2 {
+                commentString = "\(hours) hours ago"
+            }
+        }
+        else if duration < 2592000 {
+            if days < 2 {
+                commentString = "\(days) day ago"
+            }else if days >= 2 {
+                commentString = "\(days) days ago"
+            }
+        }
+        else if duration < 31104000 {
+            if months < 2 {
+                commentString = "\(months) month ago"
+            }else if months >= 2 {
+                commentString = "\(months) months ago"
+            }
+        }
+        else if duration > 31104000 {
+            if years < 2 {
+                commentString = "\(years) year ago"
+            }else if years >= 2 {
+                commentString = "\(years) years ago"
+            }
+        }
+        else{
+            commentString = "long time back"
+        }
+        
+        cell.commentedDate.text = "\(commentString)"
+        //cell.commentedDate.text = "Commented \(commentedDateString)"
         cell.commentedDate.font = UIFont(name: "Verdana", size: 12)
         cell.commentedDate.textColor = UIColor.gray
-        print("date label text: \(cell.commentedDate.text ?? "default value")")
+        //print("date label text: \(cell.commentedDate.text ?? "default value")")
         return cell
     }
     
-   func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
-    //removed CommonUtils.calculateHeight
-    let estimatedHgt = CommonUtils.heightForView(text: comments[indexPath.row].comments, font: UIFont(name: "Verdana", size: 13)!,width: UIScreen.main.bounds.width - 60 /*self.tableView.layer.frame.width-60*/)
+    func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
+        //removed CommonUtils.calculateHeight
+        let estimatedHgt = CommonUtils.heightForView(text: comments[indexPath.row].comments, font: UIFont(name: "Verdana", size: 13)!,width: UIScreen.main.bounds.width - 60 /*self.tableView.layer.frame.width-60*/)
         let height = estimatedHgt < 40 ? 40 : ceil(estimatedHgt)
         return height + 40
     }
     
 }
+
 
