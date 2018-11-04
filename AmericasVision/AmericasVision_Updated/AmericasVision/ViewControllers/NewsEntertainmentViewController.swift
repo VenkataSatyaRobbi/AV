@@ -80,7 +80,7 @@ extension NewsEntertainmentViewController:UITableViewDataSource,UITableViewDeleg
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return posts.count
+        return posts.count-2
     }
     
     func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
@@ -90,9 +90,9 @@ extension NewsEntertainmentViewController:UITableViewDataSource,UITableViewDeleg
         }else{
             let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]
             let approximateWidth = tableView.layer.frame.width - 20
-            let size = CGSize(width: approximateWidth, height:1000)
-            let estimatedSize = NSString(string: posts[indexPath.row].caption!).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
-            let height = estimatedSize.height + 120
+            let size = CGSize(width: approximateWidth, height:10000)
+            let estimatedSize = NSString(string: posts[indexPath.row+2].caption!).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+            let height = estimatedSize.height + 110 + 20
             return height
         }
     }
@@ -106,11 +106,11 @@ extension NewsEntertainmentViewController:UITableViewDataSource,UITableViewDeleg
         }else{
             let newsRow = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
             //newsRow.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-            newsRow.headLines.text = posts[indexPath.row].postTitle
-            newsRow.caption.text = posts[indexPath.row].caption
-            newsRow.Id = self.posts[indexPath.row].postID
+            newsRow.headLines.text = posts[indexPath.row+2].postTitle
+            newsRow.caption.text = posts[indexPath.row+2].caption
+            newsRow.Id = self.posts[indexPath.row+2].postID
             
-            let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
+            let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item+2].photoUrl)
             AVPostStorageRef.downloadURL { (url, error) in
                 if error != nil{
                     print(error?.localizedDescription as Any)
@@ -138,11 +138,11 @@ extension NewsEntertainmentViewController:UITableViewDataSource,UITableViewDeleg
         let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "NewsDetailedViewController") as! NewsDetailedViewController
         
         
-        destinationViewController.postId = posts[indexPath.row].postID
+        destinationViewController.postId = posts[indexPath.row+2].postID
        
         self.navigationController?.pushViewController(destinationViewController, animated: true)
         
-        let rowDataPostID = posts[indexPath.row].postID
+        let rowDataPostID = posts[indexPath.row+2].postID
         print("rowdata ID value: \(rowDataPostID)")
     }
 }
@@ -151,13 +151,13 @@ extension NewsEntertainmentViewController:UICollectionViewDataSource,UICollectio
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //  return 2
-        return 4
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let row = indexPath.row
         //if row < 2{
-        if row < 4{
+        if row < 3{
             print("fun the loading posts..\(self.posts.count)")
             let newsRow = collectionView.dequeueReusableCell(withReuseIdentifier:"SlideCollectionViewCell", for: indexPath) as! SlideCollectionViewCell
             newsRow.headlines.text = posts[indexPath.row].postTitle
