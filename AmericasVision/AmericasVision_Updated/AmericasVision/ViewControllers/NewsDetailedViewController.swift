@@ -268,16 +268,17 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
             let userFirstName = (snapshot.value as! NSDictionary)["FirstName"] as? String
             let userLastName = (snapshot.value as! NSDictionary)["LastName"] as? String
             self.postedBy.text = "Posted by: " + userFirstName! + ", " + userLastName!
-            
         }
+        
         var commentsHeight:CGFloat = 0
         let approximateWidth = UIScreen.main.bounds.width - 60
         //let approximateWidth = self.scrollView.frame.width - 60
         comments.forEach { comment in
             let hgt = CommonUtils.heightForView(text: comment.comments, font:UIFont(name: "Verdana", size: 13)! ,width: approximateWidth)
-            let height = hgt < 40 ? 40: ceil(hgt)
+            //let height = hgt < 40 ? 40: ceil(hgt)
+            let height = ceil(hgt)
             commentsHeight = commentsHeight + height + 40
-            
+            insertPostedCommentInTable(comment: comment)
         }
         
         NewsDetailedVCImage.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:1).isActive = true
@@ -613,7 +614,8 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
             //self.fetchProfileImageURL(comment: comment)
             
             let commentHeight = CommonUtils.heightForView(text: self.writeComment.text, font: UIFont(name: "Verdana", size: 13)!,width: self.tableView.frame.width-60)
-            let height = commentHeight < 40 ? 40 : commentHeight
+            //let height = commentHeight < 40 ? 40 : commentHeight
+            let height = commentHeight
             self.tableView.contentSize = CGSize(width: self.view.frame.size.width, height:self.tableView.contentSize.height + height + 40)
             self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height:self.scrollView.contentSize.height + height + 40)
             let comment = PostComment(profileImageUrl: "", userId: AVAuthService.getCurrentUserId(), type: "", comments: self.writeComment.text, commentDate: commentTimestamp)
@@ -627,6 +629,7 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
             //self.loadComments()
             
             self.insertPostedCommentInTable(comment:comment)
+            
             //self.postCommentButton.isEnabled = false
             //self.tableView.reloadData()
             ProgressHUD.dismiss()
@@ -1034,92 +1037,103 @@ extension NewsDetailedViewController:UITableViewDataSource,UITableViewDelegate{
      }*/
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("in cellforrowatindexpath")
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentsTableCell") as! CommentsTableCell
         
         //print("profileimageurl in tableview indexpath function: \(comments[indexPath.row].profileImageUrl)")
         let url = comments[indexPath.row].profileImageUrl as String
         cell.profileImageView.loadImageUsingCache(urlStr: url)
         cell.comment.text = comments[indexPath.row].comments as String
-        let commentAtRow = comments[indexPath.row].comments as String
-        //self.commentedDate = self.postedDateFormat(time:time/1000)
-        //cell.commentedDate.text = comments[indexPath.row].commentDate as? String
-        //cell.commentedDate.topAnchor.constraint(equalTo: self.top, constant:)
-        let hgt = CommonUtils.heightForView(text: commentAtRow, font:UIFont(name: "Verdana", size: 13)! ,width: UIScreen.main.bounds.width - 60)
-        let height = hgt < 40 ? 40: ceil(hgt)
-        let heightConstraint = NSLayoutConstraint(item: cell.commentedDate, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: cell, attribute: NSLayoutAttribute.top, multiplier: 1, constant: (height+10))
+        let commentedUserId = comments[indexPath.row].userId as String
+        var commentedUserName = String()
+        DBProvider.instance.userRef.child(commentedUserId).observe(.value) { (snapshot) in
+            let commentedUserFirstName = (snapshot.value as! NSDictionary)["FirstName"] as? String
+            let commentedUserLastName = (snapshot.value as! NSDictionary)["LastName"] as? String
+            commentedUserName = commentedUserFirstName! + " " + commentedUserLastName!
+            
+            let commentAtRow = self.comments[indexPath.row].comments as String
+            //self.commentedDate = self.postedDateFormat(time:time/1000)
+            //cell.commentedDate.text = comments[indexPath.row].commentDate as? String
+            //cell.commentedDate.topAnchor.constraint(equalTo: self.top, constant:)
+            let hgt = CommonUtils.heightForView(text: commentAtRow, font:UIFont(name: "Verdana", size: 13)! ,width: UIScreen.main.bounds.width - 60)
+            //let height = hgt < 40 ? 40: ceil(hgt)
+            let height = ceil(hgt)
+            let heightConstraint = NSLayoutConstraint(item: cell.commentedDate, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: cell, attribute: NSLayoutAttribute.top, multiplier: 1, constant: (height+10))
+            
+            cell.addConstraint(heightConstraint)
+            //let commentedDateString = self.postedDateFormat(time: (comments[indexPath.row].commentDate)/1000)
+            let commentedTimestamp = (self.comments[indexPath.row].commentDate)
+            let currentTimestamp = NSDate().timeIntervalSince1970
+            
+            let duration = currentTimestamp - commentedTimestamp
+            var commentString = ""
+            let minutes = Int(duration/60)
+            let hours = Int(duration/3600)
+            let days = Int(duration/86400)
+            let months = Int(duration/2592000)
+            let years = Int(duration/31104000)
+            if duration < 60 {
+                commentString = "\(commentedUserName) 𐄁 few seconds ago"
+            }
+            else if duration < 300 {
+                commentString = "\(commentedUserName) 𐄁 few minutes ago"
+            }
+            else if duration < 3600 {
+                if minutes < 2{
+                    commentString = "\(commentedUserName) 𐄁 \(minutes) minute ago"
+                }else if minutes >= 2 {
+                    commentString = "\(commentedUserName) 𐄁 \(minutes) minutes ago"
+                }
+            }
+            else if duration < 86400 {
+                if hours < 2 {
+                    commentString = "\(commentedUserName) 𐄁 \(hours) hour ago"
+                }else if hours >= 2 {
+                    commentString = "\(commentedUserName) 𐄁 \(hours) hours ago"
+                }
+            }
+            else if duration < 2592000 {
+                if days < 2 {
+                    commentString = "\(commentedUserName) 𐄁 \(days) day ago"
+                }else if days >= 2 {
+                    commentString = "\(commentedUserName) 𐄁 \(days) days ago"
+                }
+            }
+            else if duration < 31104000 {
+                if months < 2 {
+                    if days >= 45 {
+                        commentString = "\(commentedUserName) 𐄁 \(days) days ago"
+                    } else if days < 45 {
+                        commentString = "\(commentedUserName) 𐄁 \(months) month ago"
+                    }
+                }else if months >= 2 {
+                    commentString = "\(commentedUserName) 𐄁 \(months) months ago"
+                }
+            }
+            else if duration > 31104000 {
+                if years < 2 {
+                    commentString = "\(commentedUserName) 𐄁 \(years) year ago"
+                }else if years >= 2 {
+                    commentString = "\(commentedUserName) 𐄁 \(years) years ago"
+                }
+            }
+            else{
+                commentString = "\(commentedUserName) 𐄁 long time back"
+            }
+            
+            cell.commentedDate.text = "\(commentString)"
+        }
         
-        cell.addConstraint(heightConstraint)
-        //let commentedDateString = self.postedDateFormat(time: (comments[indexPath.row].commentDate)/1000)
-        let commentedTimestamp = (comments[indexPath.row].commentDate)
-        //print("commentedTimestamp: \(commentedTimestamp)")
-        let currentTimestamp = NSDate().timeIntervalSince1970
-        //print("currentTimestamp: \(currentTimestamp)")
-        
-        let duration = currentTimestamp - commentedTimestamp
-        var commentString = ""
-        let minutes = Int(duration/60)
-        let hours = Int(duration/3600)
-        let days = Int(duration/86400)
-        let months = Int(duration/2592000)
-        let years = Int(duration/31104000)
-        if duration < 60 {
-            commentString = "few seconds ago"
-        }
-        else if duration < 300 {
-            commentString = "few minutes ago"
-        }
-        else if duration < 3600 {
-            if minutes < 2{
-                commentString = "\(minutes) minute ago"
-            }else if minutes >= 2 {
-                commentString = "\(minutes) minutes ago"
-            }
-        }
-        else if duration < 86400 {
-            if hours < 2 {
-                commentString = "\(hours) hour ago"
-            }else if hours >= 2 {
-                commentString = "\(hours) hours ago"
-            }
-        }
-        else if duration < 2592000 {
-            if days < 2 {
-                commentString = "\(days) day ago"
-            }else if days >= 2 {
-                commentString = "\(days) days ago"
-            }
-        }
-        else if duration < 31104000 {
-            if months < 2 {
-                commentString = "\(months) month ago"
-            }else if months >= 2 {
-                commentString = "\(months) months ago"
-            }
-        }
-        else if duration > 31104000 {
-            if years < 2 {
-                commentString = "\(years) year ago"
-            }else if years >= 2 {
-                commentString = "\(years) years ago"
-            }
-        }
-        else{
-            commentString = "long time back"
-        }
-        
-        cell.commentedDate.text = "\(commentString)"
-        //cell.commentedDate.text = "Commented \(commentedDateString)"
         cell.commentedDate.font = UIFont(name: "Verdana", size: 12)
         cell.commentedDate.textColor = UIColor.gray
-        //print("date label text: \(cell.commentedDate.text ?? "default value")")
         return cell
     }
     
     func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{
         //removed CommonUtils.calculateHeight
         let estimatedHgt = CommonUtils.heightForView(text: comments[indexPath.row].comments, font: UIFont(name: "Verdana", size: 13)!,width: UIScreen.main.bounds.width - 60 /*self.tableView.layer.frame.width-60*/)
-        let height = estimatedHgt < 40 ? 40 : ceil(estimatedHgt)
+        //let height = estimatedHgt < 40 ? 40 : ceil(estimatedHgt)
+        let height = ceil(estimatedHgt)
         return height + 40
     }
     
