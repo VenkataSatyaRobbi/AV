@@ -97,10 +97,10 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         NewsDetailedVCImageCourtesylabel.translatesAutoresizingMaskIntoConstraints = false
         NewsDetailedVCImageCourtesylabel.numberOfLines = 0
         NewsDetailedVCImageCourtesylabel.sizeToFit()
-        //NewsDetailedVCImageCourtesylabel.font = UIFont.systemFont(ofSize: 13)
         NewsDetailedVCImageCourtesylabel.font = UIFont(name: "Verdana", size: 13)
         NewsDetailedVCImageCourtesylabel.textColor = UIColor.gray
         NewsDetailedVCImageCourtesylabel.textAlignment = .justified
+        //NewsDetailedVCImageCourtesylabel.backgroundColor = UIColor.cyan
         return NewsDetailedVCImageCourtesylabel
     }()
     
@@ -287,57 +287,58 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         
         NewsDetailedVCImageCourtesy.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10).isActive = true
         NewsDetailedVCImageCourtesy.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:200).isActive = true
-        NewsDetailedVCImageCourtesy.heightAnchor.constraint(equalToConstant:20).isActive = true
+        let imageCourtesyHeight = CommonUtils.heightForView(text:NewsDetailedVCImageCourtesy.text!, font:UIFont(name: "Verdana", size: 13)!, width:self.view.frame.width - 20)
+        NewsDetailedVCImageCourtesy.heightAnchor.constraint(equalToConstant:imageCourtesyHeight).isActive = true
         NewsDetailedVCImageCourtesy.widthAnchor.constraint(equalToConstant:(self.view.frame.width)-20).isActive = true
         
-        postedBy.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:225).isActive = true
+        postedBy.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:(200 + imageCourtesyHeight + 5)).isActive = true
         postedBy.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10).isActive = true
         postedBy.heightAnchor.constraint(equalToConstant:20).isActive = true
         postedBy.widthAnchor.constraint(equalToConstant:(self.view.frame.width)-20).isActive = true
         
         NewsDetailedVCDateAndLocation.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10).isActive = true
-        NewsDetailedVCDateAndLocation.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:250).isActive = true
+        NewsDetailedVCDateAndLocation.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:(200 + imageCourtesyHeight + 5 + 20 + 5)).isActive = true
         NewsDetailedVCDateAndLocation.heightAnchor.constraint(equalToConstant:20).isActive = true
         NewsDetailedVCDateAndLocation.widthAnchor.constraint(equalToConstant:(self.view.frame.width)-20).isActive = true
         
-        likeButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:275).isActive = true
+        likeButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:(200 + imageCourtesyHeight + 5 + 20 + 5 + 20 + 5)).isActive = true
         likeButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10).isActive = true
         likeButton.heightAnchor.constraint(equalToConstant:20).isActive = true
         likeButton.addTarget(self,action: #selector(self.likesAction(_:)),for: .touchUpInside)
         
-        likeLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:275).isActive = true
+        likeLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:(200 + imageCourtesyHeight + 5 + 20 + 5 + 20 + 5)).isActive = true
         likeLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10 + 30).isActive = true
         likeLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
         
-        dislikeButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:275).isActive = true
+        dislikeButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:(200 + imageCourtesyHeight + 5 + 20 + 5 + 20 + 5)).isActive = true
         dislikeButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10 + 30 + 70).isActive = true
         dislikeButton.heightAnchor.constraint(equalToConstant:20).isActive = true
         dislikeButton.addTarget(self,action: #selector(self.dislikeAction(_:)),for: .touchUpInside)
         
-        dislikeLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:275).isActive = true
+        dislikeLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:(200 + imageCourtesyHeight + 5 + 20 + 5 + 20 + 5)).isActive = true
         dislikeLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10 + 30 + 70 + 30).isActive = true
         dislikeLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
         
-        NewsDetailedVCNewsContent.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:300).isActive = true
+        NewsDetailedVCNewsContent.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:(200 + imageCourtesyHeight + 5 + 20 + 5 + 20 + 5 + 20 + 5)).isActive = true
         NewsDetailedVCNewsContent.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant:10).isActive = true
         //let contentHeight = calculateHeight(text:NewsDetailedVCNewsContent.text!)
         let contentHeight = CommonUtils.heightForView(text:NewsDetailedVCNewsContent.text!, font:UIFont(name: "Verdana", size: 15)!, width:self.scrollView.frame.width - 20)
         NewsDetailedVCNewsContent.heightAnchor.constraint(equalToConstant:contentHeight).isActive = true
-        NewsDetailedVCNewsContent.widthAnchor.constraint(equalToConstant:self.view.frame.width-20).isActive = true
-        
+    NewsDetailedVCNewsContent.widthAnchor.constraint(equalToConstant:self.view.frame.width-20).isActive = true
+
         writeCommentLabel.leftAnchor.constraint(equalTo:scrollView.leftAnchor, constant: 10).isActive = true
-        writeCommentLabel.topAnchor.constraint(equalTo:scrollView.topAnchor, constant: 310 + contentHeight).isActive = true
+        writeCommentLabel.topAnchor.constraint(equalTo:scrollView.topAnchor, constant: (200 + imageCourtesyHeight + 5 + 20 + 5 + 20 + 5 + 20 + 5 + 10 + contentHeight)).isActive = true
         writeCommentLabel.heightAnchor.constraint(equalToConstant:20).isActive = true
         writeCommentLabel.widthAnchor.constraint(equalToConstant:self.view.frame.width-20).isActive = true
         //writeCommentLabel.text = "\(getCommentsCount()) Comments"
         
         writeComment.leftAnchor.constraint(equalTo:scrollView.leftAnchor, constant: 10).isActive = true
-        writeComment.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:330 + contentHeight).isActive = true
+        writeComment.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:(200 + imageCourtesyHeight + 5 + 20 + 5 + 20 + 5 + 20 + 5 + 10 + contentHeight + 20)).isActive = true
         writeComment.heightAnchor.constraint(equalToConstant:50).isActive = true
         writeComment.widthAnchor.constraint(equalToConstant:self.view.frame.width-20).isActive = true
         
         postCommentButton.leftAnchor.constraint(equalTo:scrollView.leftAnchor, constant: 10).isActive = true
-        postCommentButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:385 + contentHeight).isActive = true
+        postCommentButton.topAnchor.constraint(equalTo: scrollView.topAnchor, constant:(200 + imageCourtesyHeight + 5 + 20 + 5 + 20 + 5 + 20 + 5 + 10 + contentHeight + 20 + 50 + 5)).isActive = true
         postCommentButton.heightAnchor.constraint(equalToConstant:30).isActive = true
         postCommentButton.widthAnchor.constraint(equalToConstant:self.view.frame.width-20).isActive = true
         postCommentButton.addTarget(self,action: #selector(self.postCommentAction(_:)),for: .touchUpInside)
