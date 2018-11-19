@@ -55,7 +55,7 @@ class SignUpViewController: UIViewController {
         let bottomLayerDateofBirth = CALayer()
         bottomLayerDateofBirth.frame = CGRect(x: 0, y: 29, width: self.view.frame.size.width - 40 , height: 1)
         bottomLayerDateofBirth.backgroundColor = UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1).cgColor
-        DateofBirthField.layer.addSublayer(bottomLayerLastName)
+        DateofBirthField.layer.addSublayer(bottomLayerDateofBirth)
         
         PhoneField.backgroundColor = UIColor.clear
         PhoneField.tintColor = UIColor.white
