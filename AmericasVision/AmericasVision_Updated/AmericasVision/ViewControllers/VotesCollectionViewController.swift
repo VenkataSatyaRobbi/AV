@@ -12,7 +12,7 @@ import FirebaseDatabase
 
 private let reuseIdentifier = "voteCell"
 
-class VoteCell: UICollectionViewCell{
+class VoteCell: UICollectionViewCell,UITextViewDelegate{
    
     var opinionId:String = ""
     var surveyData = [String:NSNumber]()
@@ -100,37 +100,46 @@ class VoteCell: UICollectionViewCell{
         return label
     }()
     
-    let scoreBoard1 :UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 12)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    let scoreBoard1 :UITextView = {
+        let view = UITextView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isEditable = false
+        view.dataDetectorTypes = .link
+        view.textAlignment = .center
+        view.backgroundColor = UIColor.blue
+        view.font = UIFont(name: "Verdana", size: 12)
+        view.textColor = .black
+        view.text = "test"
+        return view
     }()
     
-    let scoreBoard2 :UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 12)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    let scoreBoard2 :UITextView = {
+        let view = UITextView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isEditable = false
+        view.dataDetectorTypes = .link
+        view.textAlignment = .center
+        view.font = UIFont(name: "Verdana", size: 12)
+        view.textColor = .black
+        return view
     }()
     
-    let scoreBoard3 :UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 12)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    let scoreBoard3 :UITextView = {
+        let view = UITextView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isEditable = false
+        view.dataDetectorTypes = .link
+        view.textAlignment = .center
+        view.font = UIFont(name: "Verdana", size: 12)
+        view.textColor = .black
+        return view
     }()
     
     let option1Radio: AVRadioButton = {
         let radioButton = AVRadioButton()
         radioButton.awakeFromNib()
         radioButton.translatesAutoresizingMaskIntoConstraints = false
+        radioButton.tag = 1
         return radioButton
     }()
     
@@ -138,6 +147,7 @@ class VoteCell: UICollectionViewCell{
         let radioButton = AVRadioButton()
         radioButton.awakeFromNib()
         radioButton.translatesAutoresizingMaskIntoConstraints = false
+        radioButton.tag = 2
         return radioButton
     }()
     
@@ -145,31 +155,8 @@ class VoteCell: UICollectionViewCell{
         let radioButton = AVRadioButton()
         radioButton.awakeFromNib()
         radioButton.translatesAutoresizingMaskIntoConstraints = false
+        radioButton.tag = 3
         return radioButton
-    }()
-    
-    let likeButton1: UIButton = {
-        let likeButton = UIButton()
-        likeButton.translatesAutoresizingMaskIntoConstraints = false
-        likeButton.setImage(UIImage(named: "like"), for: .normal)
-        likeButton.tag = 1
-        return likeButton
-    }()
-    
-    let likeButton2: UIButton = {
-        let likeButton = UIButton()
-        likeButton.translatesAutoresizingMaskIntoConstraints = false
-        likeButton.setImage(UIImage(named: "like"), for: .normal)
-        likeButton.tag = 2
-        return likeButton
-    }()
-    
-    let likeButton3: UIButton = {
-        let likeButton = UIButton()
-        likeButton.translatesAutoresizingMaskIntoConstraints = false
-        likeButton.setImage(UIImage(named: "like"), for: .normal)
-        likeButton.tag = 3
-        return likeButton
     }()
     
     let chartView: UIView = {
@@ -196,16 +183,13 @@ class VoteCell: UICollectionViewCell{
         self.headerView.addSubview(headerTimer)
         self.addSubview(headerView)
         self.addSubview(question)
-        likeButton1.addSubview(scoreBoard1)
-        self.addSubview(likeButton1)
-        likeButton2.addSubview(scoreBoard2)
-        self.addSubview(likeButton2)
-        likeButton3.addSubview(scoreBoard3)
-        self.addSubview(likeButton3)
+        self.addSubview(scoreBoard1)
         self.addSubview(option1Radio)
         self.addSubview(optionOne)
+        option2Radio.addSubview(scoreBoard2)
         self.addSubview(option2Radio)
         self.addSubview(optionTwo)
+        option3Radio.addSubview(scoreBoard3)
         self.addSubview(option3Radio)
         self.addSubview(OptionThree)
         self.addSubview(viewfooter)
@@ -244,38 +228,17 @@ class VoteCell: UICollectionViewCell{
         let top2 = top1 + option1Height
         let top3 = top2 + option2Height
         
-        likeButton1.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
-        likeButton1.topAnchor.constraint(equalTo: topAnchor, constant: top1).isActive = true
-        likeButton1.widthAnchor.constraint(equalToConstant:32).isActive = true
-        
-        likeButton2.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
-        likeButton2.topAnchor.constraint(equalTo: topAnchor, constant: top2).isActive = true
-        likeButton2.widthAnchor.constraint(equalToConstant:32).isActive = true
-        
-        likeButton3.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
-        likeButton3.topAnchor.constraint(equalTo: topAnchor, constant: top3).isActive = true
-        likeButton3.widthAnchor.constraint(equalToConstant:32).isActive = true
-        
-        scoreBoard1.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
-        scoreBoard1.topAnchor.constraint(equalTo: topAnchor, constant: top1+22).isActive = true
-        scoreBoard1.widthAnchor.constraint(equalToConstant:32).isActive = true
-        
-        scoreBoard2.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
-        scoreBoard2.topAnchor.constraint(equalTo: topAnchor, constant: top2+22).isActive = true
-        scoreBoard2.widthAnchor.constraint(equalToConstant:32).isActive = true
-        
-        scoreBoard3.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
-        scoreBoard3.topAnchor.constraint(equalTo: topAnchor, constant: top3+22).isActive = true
-        scoreBoard3.widthAnchor.constraint(equalToConstant:32).isActive = true
-        
-        option1Radio.leftAnchor.constraint(equalTo: leftAnchor, constant: 55).isActive = true
+        option1Radio.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
         option1Radio.topAnchor.constraint(equalTo: topAnchor, constant: top1).isActive = true
+        option1Radio.widthAnchor.constraint(equalToConstant:32).isActive = true
         
-        option2Radio.leftAnchor.constraint(equalTo: leftAnchor, constant: 55).isActive = true
+        option2Radio.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
         option2Radio.topAnchor.constraint(equalTo: topAnchor, constant: top2).isActive = true
+        option2Radio.widthAnchor.constraint(equalToConstant:32).isActive = true
         
-        option3Radio.leftAnchor.constraint(equalTo: leftAnchor, constant: 55).isActive = true
+        option3Radio.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
         option3Radio.topAnchor.constraint(equalTo: topAnchor, constant: top3).isActive = true
+        option3Radio.widthAnchor.constraint(equalToConstant:32).isActive = true
         
         option1Radio.alternateButton.append(option2Radio)
         option1Radio.alternateButton.append(option3Radio)
@@ -284,19 +247,31 @@ class VoteCell: UICollectionViewCell{
         option3Radio.alternateButton.append(option1Radio)
         option3Radio.alternateButton.append(option2Radio)
         
-        optionOne.leftAnchor.constraint(equalTo: leftAnchor, constant: 100).isActive = true
+        scoreBoard1.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        scoreBoard1.topAnchor.constraint(equalTo: topAnchor , constant: top1+22).isActive = true
+        scoreBoard1.widthAnchor.constraint(equalToConstant:self.frame.width).isActive = true
+        
+        scoreBoard2.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
+        scoreBoard2.topAnchor.constraint(equalTo: topAnchor, constant: top2+30).isActive = true
+        scoreBoard2.widthAnchor.constraint(equalToConstant:32).isActive = true
+        
+        scoreBoard3.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
+        scoreBoard3.topAnchor.constraint(equalTo: topAnchor, constant: top3+30).isActive = true
+        scoreBoard3.widthAnchor.constraint(equalToConstant:32).isActive = true
+        
+        optionOne.leftAnchor.constraint(equalTo: leftAnchor, constant: 45).isActive = true
         optionOne.topAnchor.constraint(equalTo: topAnchor, constant: top1).isActive = true
-        optionOne.widthAnchor.constraint(equalToConstant: self.frame.width - 95 ).isActive = true
+        optionOne.widthAnchor.constraint(equalToConstant: self.frame.width - 45 ).isActive = true
         optionOne.heightAnchor.constraint(equalToConstant: option1Height)
         
-        optionTwo.leftAnchor.constraint(equalTo: leftAnchor, constant: 100).isActive = true
+        optionTwo.leftAnchor.constraint(equalTo: leftAnchor, constant: 45).isActive = true
         optionTwo.topAnchor.constraint(equalTo: topAnchor, constant: top2).isActive = true
-        optionTwo.widthAnchor.constraint(equalToConstant: self.frame.width - 95 ).isActive = true
+        optionTwo.widthAnchor.constraint(equalToConstant: self.frame.width - 45 ).isActive = true
         optionTwo.heightAnchor.constraint(equalToConstant: option2Height)
         
-        OptionThree.leftAnchor.constraint(equalTo: leftAnchor, constant: 100).isActive = true
+        OptionThree.leftAnchor.constraint(equalTo: leftAnchor, constant: 45).isActive = true
         OptionThree.topAnchor.constraint(equalTo: topAnchor, constant: top3).isActive = true
-        OptionThree.widthAnchor.constraint(equalToConstant: self.frame.width - 95 ).isActive = true
+        OptionThree.widthAnchor.constraint(equalToConstant: self.frame.width - 45 ).isActive = true
         OptionThree.heightAnchor.constraint(equalToConstant: option3Height)
    
         viewfooter.leftAnchor.constraint(equalTo: leftAnchor, constant: 15).isActive = true
@@ -311,8 +286,10 @@ class VoteCell: UICollectionViewCell{
     }
     
    func pieChartSetup(){
-        setupPieChart()
-        fillChart()
+        if !totalCount.isEqual(to: 0) {
+            setupPieChart()
+            fillChart()
+        }
     }
     
     func setupPieChart() {
@@ -346,6 +323,7 @@ class VoteCell: UICollectionViewCell{
         formatter.maximumFractionDigits = 0
         chartData.setValueFormatter(DefaultValueFormatter(formatter: formatter))
         pieChart.data = chartData
+        pieChart.drawEntryLabelsEnabled = false
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -414,12 +392,14 @@ class VotesCollectionViewController: UICollectionViewController{
                 let count3 = dict["Count3"] as! NSNumber
                 let publishDate = dict["Date"] as! Double
                 let opinion = Opinion.init(id:id,question: question, option1: option1, option2: option2, option3: option3, publishDate: publishDate,count1: count1,count2: count2,count3: count3)
-                let users = dict["voteusers"] as! [String: Any]
-                for user in users{
-                    if AVAuthService.getCurrentUserId() == user.key as String {
-                        let userDic = user.value as? [String: Any]
-                        opinion.selectedOption = userDic?["SelectedOption"] as! String
-                        break
+                let users = dict["voteusers"] as? [String: Any]
+                if users?.isEmpty == false {
+                    for user in users!{
+                        if AVAuthService.getCurrentUserId() == user.key as String {
+                            let userDic = user.value as? [String: Any]
+                            opinion.selectedOption = userDic?["SelectedOption"] as! String
+                            break
+                        }
                     }
                 }
                 self.opinions.append(opinion)
@@ -507,9 +487,19 @@ class VotesCollectionViewController: UICollectionViewController{
         
         cell.viewfooter.tag = indexPath.item
         cell.viewfooter.addTarget(self,action: #selector(self.handlePollButton(_:)),for: .touchUpInside)
-        cell.likeButton1.addTarget(self,action: #selector(self.getVotedUsers(_:)),for: .touchUpInside)
-        cell.likeButton2.addTarget(self,action: #selector(self.getVotedUsers(_:)),for: .touchUpInside)
-        cell.likeButton3.addTarget(self,action: #selector(self.getVotedUsers(_:)),for: .touchUpInside)
+        
+        let score1Gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureAction(sender:)))
+        score1Gesture.name = "1"
+        cell.scoreBoard1.addGestureRecognizer(score1Gesture)
+        
+        let score2Gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureAction(sender:)))
+        score1Gesture.name = "2"
+        cell.scoreBoard2.addGestureRecognizer(score2Gesture)
+        
+        let score3Gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureAction(sender:)))
+        score1Gesture.name = "3"
+        cell.scoreBoard3.addGestureRecognizer(score3Gesture)
+        
         return cell
     }
     
@@ -519,12 +509,18 @@ class VotesCollectionViewController: UICollectionViewController{
         var selectedOption = ""
         if cell.option1Radio.isSelected {
             selectedOption = cell.optionOne.text!
+            let count1 = opinions[indexPath.row].count1.intValue + 1
+            cell.scoreBoard1.text = (count1 as NSNumber).stringValue
             cell.option1Radio.unselectAlternateButtons()
         }else if cell.option2Radio.isSelected {
             selectedOption = cell.optionTwo.text!
+            let count2 = opinions[indexPath.row].count2.intValue + 1
+            cell.scoreBoard2.text = (count2 as NSNumber).stringValue
             cell.option2Radio.unselectAlternateButtons()
         }else{
             selectedOption = cell.OptionThree.text!
+            let count3 = opinions[indexPath.row].count3.intValue + 1
+            cell.scoreBoard3.text = (count3 as NSNumber).stringValue
             cell.option3Radio.unselectAlternateButtons()
         }
         
@@ -539,30 +535,48 @@ class VotesCollectionViewController: UICollectionViewController{
             cell.option1Radio.isEnabled = false
             cell.option2Radio.isEnabled = false
             cell.option3Radio.isEnabled = false
+            cell.viewfooter.isEnabled = false
+            cell.viewfooter.setTitle("Thanks for your Opinion", for: .normal)
         })
+        
+        let ref = userOpinionRef.child(cell.opinionId)
+        if cell.option1Radio.isSelected {
+            ref.updateChildValues(["Count1":opinions[indexPath.row].count1.intValue + 1])
+        }else if cell.option2Radio.isSelected {
+            ref.updateChildValues(["Count2":opinions[indexPath.row].count2.intValue + 1])
+        }else{
+            ref.updateChildValues(["Count3":opinions[indexPath.row].count3.intValue + 1])
+        }
         collectionView?.reloadData()
     }
     
-    @IBAction func getVotedUsers(_ sender: UIButton) {
-        let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to:self.collectionView)
-        let indexPath = self.collectionView?.indexPathForItem(at: buttonPosition)
+    @IBAction func tapGestureAction(sender: UITapGestureRecognizer) {
+        // let buttonRow = sender.tag
+        let p = sender.location(in: self.collectionView)
+        let indexPath = self.collectionView?.indexPathForItem(at: p)
+        if indexPath == nil {
+            print("press on cell view, not row.")
+        }
         let cell = collectionView?.cellForItem(at: indexPath!) as! VoteCell
         let storyBoard : UIStoryboard = UIStoryboard(name: "AV", bundle:nil)
         let nextViewController = VotedUsersTableViewController()
         nextViewController.opinionId = cell.opinionId
         
-        if sender.tag == 1 {
-            nextViewController.option = cell.optionOne.text!
-            nextViewController.title = "Option 1"
-        }else if sender.tag == 2 {
-            nextViewController.option = cell.optionTwo.text!
-            nextViewController.title = "Option 2"
-        }else{
-            nextViewController.option = cell.OptionThree.text!
-            nextViewController.title = "Option 3"
-        }
-        self.navigationController?.pushViewController(nextViewController, animated: true)
        
+        if sender.state == UIGestureRecognizerState.began {
+            if sender.name == "1" {
+                nextViewController.option = cell.optionOne.text!
+                nextViewController.title = "Option 1"
+            }else if sender.name == "2" {
+                nextViewController.option = cell.optionTwo.text!
+                nextViewController.title = "Option 2"
+            }else{
+                nextViewController.option = cell.OptionThree.text!
+                nextViewController.title = "Option 3"
+            }
+            self.navigationController?.pushViewController(nextViewController, animated: true)
+            sender.view?.becomeFirstResponder()
+        }
     }
     
 }

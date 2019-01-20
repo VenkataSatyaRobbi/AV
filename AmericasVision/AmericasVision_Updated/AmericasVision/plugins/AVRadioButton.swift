@@ -15,12 +15,10 @@ class AVRadioButton: UIButton {
     var alternateButton = [AVRadioButton]()
     
     override func awakeFromNib() {
-        self.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        self.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        self.layer.cornerRadius = 12
-        self.layer.borderWidth = 1.0
+        let image = UIImage(named: "like")
+        self.setImage(image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: .normal)
+        self.tintColor = UIColor.gray
         self.layer.masksToBounds = true
-        
     }
     
     func unselectAlternateButtons(){
@@ -47,13 +45,10 @@ class AVRadioButton: UIButton {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                self.layer.backgroundColor = UIColor.blue.cgColor
-                self.layer.borderColor = UIColor.blue.cgColor
-                let image = UIImage(named: "check")
-                self.setBackgroundImage(image, for: UIControlState.normal)
+                self.tintColor = UIColor.blue
             } else {
-                self.layer.backgroundColor = UIColor.white.cgColor
-                  
+                //self.layer.backgroundColor = UIColor.gray.cgColor
+                self.tintColor = UIColor.gray
             }
         }
     }

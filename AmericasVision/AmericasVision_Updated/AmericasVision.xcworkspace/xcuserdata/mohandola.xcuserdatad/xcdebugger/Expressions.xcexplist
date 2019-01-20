@@ -25,6 +25,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "VoteCell.pieChartSetup():VotesCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "totalCount.isEqual(to: 0)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "VoteCell.addAllignments():VotesCollectionViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -86,13 +94,25 @@
          contextName = "closure #1 in AVSettingsViewController.loadGlobalInfo():AVSettingsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "child.value">
+               value = "child.key as String">
+            </PersistentString>
+            <PersistentString
+               value = "dict[key] as? String">
+            </PersistentString>
+            <PersistentString
+               value = "child.value as! String">
             </PersistentString>
             <PersistentString
                value = "self.settings">
             </PersistentString>
             <PersistentString
-               value = "dict[key] as? String">
+               value = "snapshot.value as? [String,Any?]">
+            </PersistentString>
+            <PersistentString
+               value = "child.value as String">
+            </PersistentString>
+            <PersistentString
+               value = "child.value">
             </PersistentString>
             <PersistentString
                value = "key">
@@ -101,19 +121,7 @@
                value = "child">
             </PersistentString>
             <PersistentString
-               value = "child.value as! String">
-            </PersistentString>
-            <PersistentString
-               value = "snapshot.value as? [String,Any?]">
-            </PersistentString>
-            <PersistentString
                value = "snapshot as NSDictionary">
-            </PersistentString>
-            <PersistentString
-               value = "child.value as String">
-            </PersistentString>
-            <PersistentString
-               value = "child.key as String">
             </PersistentString>
             <PersistentString
                value = "name">
@@ -230,6 +238,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "ChatContactsViewController.prepare(for:sender:):ChatContactsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "segue.identifier">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ChatPrivateViewController.collectionView(_:attributedTextForCellBottomLabelAt:):ChatPrivateViewController.swift">
       </ContextState>
       <ContextState
@@ -248,6 +264,14 @@
          <PersistentStrings>
             <PersistentString
                value = "posts.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VotesCollectionViewController.tapGestureAction(sender:):VotesCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -427,6 +451,17 @@
          <PersistentStrings>
             <PersistentString
                value = "snapshot.value as? String ">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AVRadioButton.isSelected.didset:AVRadioButton.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "isSelected">
+            </PersistentString>
+            <PersistentString
+               value = "self.imageView.tintColor">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

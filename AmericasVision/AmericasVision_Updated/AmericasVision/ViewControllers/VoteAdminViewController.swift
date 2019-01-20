@@ -23,7 +23,7 @@ class VoteAdminViewController: UIViewController{
         SendButton.layer.cornerRadius = 5
         SendButton.clipsToBounds = true
         
-        QuestionsView.text = "Questions"
+        //QuestionsView.. = "Questions"
         QuestionsView.textColor = UIColor.lightGray
         
         optionOne.text = nil

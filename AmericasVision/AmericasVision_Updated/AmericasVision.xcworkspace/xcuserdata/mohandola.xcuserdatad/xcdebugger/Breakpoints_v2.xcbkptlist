@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/Model/UserDefaultsHelper.swift"
-            timestampString = "559668721.884599"
+            timestampString = "564240906.006423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
@@ -234,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ChatPublicViewController.swift"
-            timestampString = "560197075.59008"
+            timestampString = "569689410.719202"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
@@ -250,7 +250,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ChatPublicViewController.swift"
-            timestampString = "560197075.59017"
+            timestampString = "569689410.719274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -490,12 +490,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.03882"
+            timestampString = "569689410.719467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "584"
             endingLineNumber = "584"
-            landmarkName = "likesAction(_:)"
+            landmarkName = "insertPostedCommentInTable(comment:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -506,7 +506,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/VoteAdminViewController.swift"
-            timestampString = "560505524.798755"
+            timestampString = "569689410.7195311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
@@ -554,7 +554,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/VoteAdminViewController.swift"
-            timestampString = "560505524.798813"
+            timestampString = "569689410.719583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
@@ -570,7 +570,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/VoteAdminViewController.swift"
-            timestampString = "560505524.798867"
+            timestampString = "569689410.719746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -602,7 +602,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ChatPublicViewController.swift"
-            timestampString = "560197075.590502"
+            timestampString = "569689410.71989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/VotesCollectionViewController.swift"
-            timestampString = "560610161.759433"
+            timestampString = "569689410.720015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "519"
-            endingLineNumber = "519"
+            startingLineNumber = "509"
+            endingLineNumber = "509"
             landmarkName = "handlePollButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -650,12 +650,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.03907"
+            timestampString = "569689410.7207119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "584"
             endingLineNumber = "584"
-            landmarkName = "likesAction(_:)"
+            landmarkName = "insertPostedCommentInTable(comment:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -666,13 +666,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.039122"
+            timestampString = "569689410.720805"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "515"
             endingLineNumber = "515"
-            landmarkName = "textViewDidChange(_:)"
-            landmarkType = "7">
+            landmarkName = "NewsDetailedViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -682,13 +682,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.039171"
+            timestampString = "569689410.7208771"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "516"
             endingLineNumber = "516"
-            landmarkName = "textViewDidChange(_:)"
-            landmarkType = "7">
+            landmarkName = "NewsDetailedViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -714,7 +714,7 @@
                   moduleName = "AmericasVision"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mohandola/Documents/Iphone%20Projects/AV/AmericasVision/AmericasVision_Updated/AmericasVision/cells/NewsTableViewCell.swift"
-                  timestampString = "560610161.849613"
+                  timestampString = "569689410.7718199"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -729,7 +729,7 @@
                   moduleName = "AmericasVision"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mohandola/Documents/Iphone%20Projects/AV/AmericasVision/AmericasVision_Updated/AmericasVision/cells/NewsTableViewCell.swift"
-                  timestampString = "560610161.852963"
+                  timestampString = "569689410.775227"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -826,12 +826,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.039319"
+            timestampString = "569689410.721108"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "584"
             endingLineNumber = "584"
-            landmarkName = "likesAction(_:)"
+            landmarkName = "insertPostedCommentInTable(comment:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -874,12 +874,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.0393699"
+            timestampString = "569689410.72118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "584"
             endingLineNumber = "584"
-            landmarkName = "likesAction(_:)"
+            landmarkName = "insertPostedCommentInTable(comment:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -890,12 +890,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.0394191"
+            timestampString = "569689410.721249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "584"
             endingLineNumber = "584"
-            landmarkName = "likesAction(_:)"
+            landmarkName = "insertPostedCommentInTable(comment:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -906,13 +906,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.039467"
+            timestampString = "569689410.7213171"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "490"
             endingLineNumber = "490"
-            landmarkName = "NewsDetailedViewController"
-            landmarkType = "3">
+            landmarkName = "fetchProfileImageURLusingUserID(userID:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -954,11 +954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/VotesCollectionViewController.swift"
-            timestampString = "560610161.759854"
+            timestampString = "569689410.721429"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "521"
-            endingLineNumber = "521"
+            startingLineNumber = "511"
+            endingLineNumber = "511"
             landmarkName = "handlePollButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1050,7 +1050,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.039719"
+            timestampString = "569689410.7222"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "425"
@@ -1066,7 +1066,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.03977"
+            timestampString = "569689410.72229"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "402"
@@ -1082,7 +1082,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.039819"
+            timestampString = "569689410.722363"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "412"
@@ -1098,12 +1098,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.039867"
+            timestampString = "569689410.722435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "574"
             endingLineNumber = "574"
-            landmarkName = "likesAction(_:)"
+            landmarkName = "loadComments()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1114,7 +1114,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.039915"
+            timestampString = "569689410.722507"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "366"
@@ -1130,7 +1130,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.039963"
+            timestampString = "569689410.722579"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "387"
@@ -1146,13 +1146,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.040012"
+            timestampString = "569689410.722649"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "386"
             endingLineNumber = "386"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            landmarkName = "NewsDetailedViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1162,7 +1162,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.04006"
+            timestampString = "569689410.722719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "395"
@@ -1178,7 +1178,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.040105"
+            timestampString = "569689410.722788"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "388"
@@ -1194,12 +1194,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.040152"
+            timestampString = "569689410.722858"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "577"
             endingLineNumber = "577"
-            landmarkName = "likesAction(_:)"
+            landmarkName = "loadComments()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1210,12 +1210,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.040198"
+            timestampString = "569689410.722927"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "564"
             endingLineNumber = "564"
-            landmarkName = "likesAction(_:)"
+            landmarkName = "loadComments()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1226,12 +1226,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.040244"
+            timestampString = "569689410.722996"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "567"
             endingLineNumber = "567"
-            landmarkName = "likesAction(_:)"
+            landmarkName = "loadComments()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1242,7 +1242,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.040292"
+            timestampString = "569689410.7230639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "319"
@@ -1258,7 +1258,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/NewsDetailedViewController.swift"
-            timestampString = "560519332.040339"
+            timestampString = "569689410.723134"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "322"
@@ -1274,11 +1274,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.760377"
+            timestampString = "569689410.723207"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "searchBar(_:textDidChange:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1290,11 +1290,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.761072"
+            timestampString = "569689410.7232831"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "searchBar(_:textDidChange:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1306,7 +1306,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ChatPublicViewController.swift"
-            timestampString = "560197075.5914429"
+            timestampString = "569689410.723354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "166"
@@ -1322,13 +1322,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/MyProfileViewController.swift"
-            timestampString = "560541488.889535"
+            timestampString = "569687638.193895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "sideMenus()"
-            landmarkType = "7">
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "MyProfileViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1338,11 +1338,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/MyProfileViewController.swift"
-            timestampString = "560541488.889637"
+            timestampString = "569687638.19397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
             landmarkName = "updateProfile(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1354,11 +1354,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.761686"
+            timestampString = "569689410.723488"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "longPressed(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1370,11 +1370,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.762172"
+            timestampString = "569689410.723559"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "longPressMenuItem(frame:contact:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1386,11 +1386,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.7626491"
+            timestampString = "569689410.723629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "fetchUserStatus()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1402,13 +1402,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.763088"
+            timestampString = "569689410.723696"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "addMessageActionTapped(sender:)"
-            landmarkType = "7">
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "ChatContactsViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -1450,59 +1450,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.763491"
+            timestampString = "569689410.723768"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
-            landmarkName = "ChatContactsViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.763913"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
-            landmarkName = "ChatContactsViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.76424"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "longPressMenuItem(frame:contact:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.764547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "fetchUserStatus()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1514,11 +1466,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.764853"
+            timestampString = "569689410.723838"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "ChatContactsViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
+            timestampString = "569689410.723905"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "addMessageActionTapped(sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
+            timestampString = "569689410.723971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "239"
             endingLineNumber = "239"
+            landmarkName = "fetchUserStatus()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
+            timestampString = "569689410.724039"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "fetchUserStatus()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1546,11 +1546,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/VotesCollectionViewController.swift"
-            timestampString = "560610161.7651941"
+            timestampString = "569689410.724151"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
+            startingLineNumber = "508"
+            endingLineNumber = "508"
             landmarkName = "handlePollButton(_:)"
             landmarkType = "7">
             <Locations>
@@ -1594,11 +1594,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/VotesCollectionViewController.swift"
-            timestampString = "560610161.7652529"
+            timestampString = "569689410.724914"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "509"
-            endingLineNumber = "509"
+            startingLineNumber = "489"
+            endingLineNumber = "489"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1674,39 +1674,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.765362"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
-            landmarkName = "fetchUserStatus()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.765673"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
-            landmarkName = "fetchUserStatus()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.76598"
+            timestampString = "569689410.7255861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "216"
@@ -1722,11 +1690,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.766281"
+            timestampString = "569689410.7256759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "fetchUserStatus()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
+            timestampString = "569689410.72588"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
+            landmarkName = "fetchUserStatus()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
+            timestampString = "569689410.725956"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "fetchUserStatus()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1754,11 +1754,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/VotesCollectionViewController.swift"
-            timestampString = "560610161.766765"
+            timestampString = "569689410.726066"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "517"
-            endingLineNumber = "517"
+            startingLineNumber = "507"
+            endingLineNumber = "507"
             landmarkName = "handlePollButton(_:)"
             landmarkType = "7">
             <Locations>
@@ -1802,11 +1802,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/plugins/AVRadioButton.swift"
-            timestampString = "559417940.615206"
+            timestampString = "569673789.1347049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "touchesBegan(_:with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1818,27 +1818,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/VotesCollectionViewController.swift"
-            timestampString = "560610161.7668819"
+            timestampString = "569689410.726674"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
-            landmarkName = "addAllignments()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AmericasVision/ViewControllers/VotesCollectionViewController.swift"
-            timestampString = "560610161.766937"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "481"
-            endingLineNumber = "481"
+            startingLineNumber = "461"
+            endingLineNumber = "461"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1850,11 +1834,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/VotesCollectionViewController.swift"
-            timestampString = "560610161.766989"
+            timestampString = "569689410.727176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "482"
-            endingLineNumber = "482"
+            startingLineNumber = "462"
+            endingLineNumber = "462"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1866,11 +1850,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/VotesCollectionViewController.swift"
-            timestampString = "560610161.767036"
+            timestampString = "569689410.727596"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "489"
-            endingLineNumber = "489"
+            startingLineNumber = "469"
+            endingLineNumber = "469"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1882,11 +1866,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.767084"
+            timestampString = "569689410.727995"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "addMessageActionTapped(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1898,11 +1882,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.767458"
+            timestampString = "569689410.728083"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "addMessageActionTapped(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1978,11 +1962,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/VotesCollectionViewController.swift"
-            timestampString = "560610161.767808"
+            timestampString = "569689410.728251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "343"
+            endingLineNumber = "343"
             landmarkName = "updateTime()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1994,11 +1978,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/VotesCollectionViewController.swift"
-            timestampString = "560610161.767864"
+            timestampString = "569689410.728644"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "368"
-            endingLineNumber = "368"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
             landmarkName = "updateTime()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2006,11 +1990,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ProfileMenuViewController.swift"
-            timestampString = "560610161.767915"
+            timestampString = "564420655.353616"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
@@ -2026,12 +2010,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
-            timestampString = "560610161.767962"
+            timestampString = "569689410.728984"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
             landmarkName = "fetchUserStatus()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
+            timestampString = "569689410.7290421"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "fetchUserStatus()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AmericasVision/ViewControllers/ChatContactsViewController.swift"
+            timestampString = "569689410.729092"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "searchBar(_:textDidChange:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AmericasVision/ViewControllers/VotesCollectionViewController.swift"
+            timestampString = "569689410.729141"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
+            landmarkName = "pieChartSetup()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AmericasVision/plugins/AVRadioButton.swift"
+            timestampString = "569673789.137025"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "isSelected"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AmericasVision/ViewControllers/VotesCollectionViewController.swift"
+            timestampString = "569689410.729471"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "555"
+            endingLineNumber = "555"
+            landmarkName = "tapGestureAction(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
