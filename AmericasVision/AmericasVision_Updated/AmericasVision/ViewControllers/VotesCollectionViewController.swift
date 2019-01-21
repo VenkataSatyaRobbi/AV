@@ -295,8 +295,8 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
         self.chartView.addSubview(pieChart)
         pieChart.centerXAnchor.constraint(equalTo: chartView.centerXAnchor, constant: 0).isActive = true
         pieChart.centerYAnchor.constraint(equalTo: chartView.centerYAnchor, constant: 0).isActive = true
-        pieChart.widthAnchor.constraint(equalTo: chartView.widthAnchor, multiplier: 1).isActive = true
-        pieChart.heightAnchor.constraint(equalTo: chartView.heightAnchor, multiplier: 1).isActive = true
+        pieChart.widthAnchor.constraint(equalTo: chartView.widthAnchor, multiplier: 0.9).isActive = true
+        pieChart.heightAnchor.constraint(equalTo: chartView.heightAnchor, multiplier: 0.9).isActive = true
     }
     
     func fillChart() {
@@ -306,7 +306,7 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
             let entry = PieChartDataEntry(value: percent, label: key)
             dataEntries.append(entry)
         }
-        let chartDataSet = PieChartDataSet(values: dataEntries, label: "opp")
+        let chartDataSet = PieChartDataSet(values: dataEntries, label: "")
         chartDataSet.colors = ChartColorTemplates.material()
         chartDataSet.sliceSpace = 2
         chartDataSet.selectionShift = 5
@@ -352,7 +352,7 @@ class VotesCollectionViewController: UICollectionViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Opinion Poll"
+        self.navigationItem.title = "Opinion Polls"
         sideMenus()
         self.collectionView?.backgroundColor = UIColor.white
             //UIColor(red: 100/255, green:100/255, blue: 100/255, alpha: 1)
@@ -437,7 +437,7 @@ class VotesCollectionViewController: UICollectionViewController{
         let id = opinions[indexPath.row].id
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! VoteCell
         
-        cell.header.text = "Question-" + String(indexPath.row+1)
+        cell.header.text = "Opinion Poll -" + String(indexPath.row+1)
         cell.opinionId = id
         cell.question.text = opinions[indexPath.row].question
         cell.optionOne.text = opinions[indexPath.row].option1
