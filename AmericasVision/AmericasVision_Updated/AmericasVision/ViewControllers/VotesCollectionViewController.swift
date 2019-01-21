@@ -12,7 +12,7 @@ import FirebaseDatabase
 
 private let reuseIdentifier = "voteCell"
 
-class VoteCell: UICollectionViewCell,UITextViewDelegate{
+class VoteCell: UICollectionViewCell,UITextFieldDelegate{
    
     var opinionId:String = ""
     var surveyData = [String:NSNumber]()
@@ -100,35 +100,28 @@ class VoteCell: UICollectionViewCell,UITextViewDelegate{
         return label
     }()
     
-    let scoreBoard1 :UITextView = {
-        let view = UITextView()
+    let scoreBoard1 :UITextField = {
+        let view = UITextField()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.isEditable = false
-        view.dataDetectorTypes = .link
         view.textAlignment = .center
-        view.backgroundColor = UIColor.blue
         view.font = UIFont(name: "Verdana", size: 12)
         view.textColor = .black
-        view.text = "test"
+        view.isUserInteractionEnabled = true
         return view
     }()
     
-    let scoreBoard2 :UITextView = {
-        let view = UITextView()
+    let scoreBoard2 :UITextField = {
+        let view = UITextField()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.isEditable = false
-        view.dataDetectorTypes = .link
         view.textAlignment = .center
         view.font = UIFont(name: "Verdana", size: 12)
         view.textColor = .black
         return view
     }()
     
-    let scoreBoard3 :UITextView = {
-        let view = UITextView()
+    let scoreBoard3 :UITextField = {
+        let view = UITextField()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.isEditable = false
-        view.dataDetectorTypes = .link
         view.textAlignment = .center
         view.font = UIFont(name: "Verdana", size: 12)
         view.textColor = .black
@@ -186,10 +179,10 @@ class VoteCell: UICollectionViewCell,UITextViewDelegate{
         self.addSubview(scoreBoard1)
         self.addSubview(option1Radio)
         self.addSubview(optionOne)
-        option2Radio.addSubview(scoreBoard2)
+        self.addSubview(scoreBoard2)
         self.addSubview(option2Radio)
         self.addSubview(optionTwo)
-        option3Radio.addSubview(scoreBoard3)
+        self.addSubview(scoreBoard3)
         self.addSubview(option3Radio)
         self.addSubview(OptionThree)
         self.addSubview(viewfooter)
@@ -201,7 +194,8 @@ class VoteCell: UICollectionViewCell,UITextViewDelegate{
         self.layer.shadowOpacity = 0.5
         self.layer.masksToBounds = false
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
-       
+        
+        
     }
     
     func addAllignments(){
@@ -247,16 +241,16 @@ class VoteCell: UICollectionViewCell,UITextViewDelegate{
         option3Radio.alternateButton.append(option1Radio)
         option3Radio.alternateButton.append(option2Radio)
         
-        scoreBoard1.leftAnchor.constraint(equalTo: leftAnchor, constant: 20).isActive = true
+        scoreBoard1.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
         scoreBoard1.topAnchor.constraint(equalTo: topAnchor , constant: top1+22).isActive = true
-        scoreBoard1.widthAnchor.constraint(equalToConstant:self.frame.width).isActive = true
+        scoreBoard1.widthAnchor.constraint(equalToConstant:32).isActive = true
         
         scoreBoard2.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
-        scoreBoard2.topAnchor.constraint(equalTo: topAnchor, constant: top2+30).isActive = true
+        scoreBoard2.topAnchor.constraint(equalTo: topAnchor, constant: top2+22).isActive = true
         scoreBoard2.widthAnchor.constraint(equalToConstant:32).isActive = true
         
         scoreBoard3.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
-        scoreBoard3.topAnchor.constraint(equalTo: topAnchor, constant: top3+30).isActive = true
+        scoreBoard3.topAnchor.constraint(equalTo: topAnchor, constant: top3+22).isActive = true
         scoreBoard3.widthAnchor.constraint(equalToConstant:32).isActive = true
         
         optionOne.leftAnchor.constraint(equalTo: leftAnchor, constant: 45).isActive = true
@@ -376,6 +370,7 @@ class VotesCollectionViewController: UICollectionViewController{
         collectionView?.dataSource = self
         collectionView?.delegate = self
         
+        
     }
     
     func fetchFirstOpinion(){
@@ -483,7 +478,7 @@ class VotesCollectionViewController: UICollectionViewController{
         cell.surveyData.updateValue(opinions[indexPath.row].count2, forKey: opinions[indexPath.row].option2)
         cell.surveyData.updateValue(opinions[indexPath.row].count3, forKey: opinions[indexPath.row].option3)
         cell.totalCount = opinions[indexPath.row].count1.doubleValue + opinions[indexPath.row].count2.doubleValue + opinions[indexPath.row].count3.doubleValue
-        cell.pieChartSetup( )
+        cell.pieChartSetup()
         
         cell.scoreBoard1.text = opinions[indexPath.row].count1.stringValue
         cell.scoreBoard2.text = opinions[indexPath.row].count2.stringValue
@@ -497,11 +492,11 @@ class VotesCollectionViewController: UICollectionViewController{
         cell.scoreBoard1.addGestureRecognizer(score1Gesture)
         
         let score2Gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureAction(sender:)))
-        score1Gesture.name = "2"
+        score2Gesture.name = "2"
         cell.scoreBoard2.addGestureRecognizer(score2Gesture)
         
         let score3Gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureAction(sender:)))
-        score1Gesture.name = "3"
+        score3Gesture.name = "3"
         cell.scoreBoard3.addGestureRecognizer(score3Gesture)
         
         return cell
@@ -567,7 +562,7 @@ class VotesCollectionViewController: UICollectionViewController{
         nextViewController.opinionId = cell.opinionId
         
        
-        if sender.state == UIGestureRecognizerState.began {
+        if sender.state == UIGestureRecognizerState.ended {
             if sender.name == "1" {
                 nextViewController.option = cell.optionOne.text!
                 nextViewController.title = "Option 1"
