@@ -297,6 +297,11 @@
       </ContextState>
       <ContextState
          contextName = "VotesCollectionViewController.handlePollButton(_:):VotesCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.scoreBoard1.text">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "NewsDetailedViewController.calculateHeight():NewsDetailedViewController.swift">

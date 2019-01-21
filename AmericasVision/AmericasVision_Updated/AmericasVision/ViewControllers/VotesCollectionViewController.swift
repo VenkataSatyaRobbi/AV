@@ -540,13 +540,23 @@ class VotesCollectionViewController: UICollectionViewController{
         
         let ref = userOpinionRef.child(cell.opinionId)
         if cell.option1Radio.isSelected {
-            ref.updateChildValues(["Count1":opinions[indexPath.row].count1.intValue + 1])
+            let value1 = opinions[indexPath.row].count1.doubleValue + 1
+            ref.updateChildValues(["Count1":value1])
+            cell.surveyData.updateValue(NSNumber.init(value: value1), forKey: opinions[indexPath.row].option1)
         }else if cell.option2Radio.isSelected {
-            ref.updateChildValues(["Count2":opinions[indexPath.row].count2.intValue + 1])
+            let value2 = opinions[indexPath.row].count2.doubleValue + 1
+            ref.updateChildValues(["Count2":value2])
+            cell.surveyData.updateValue(NSNumber.init(value: value2), forKey: opinions[indexPath.row].option2)
         }else{
-            ref.updateChildValues(["Count3":opinions[indexPath.row].count3.intValue + 1])
+            let value3 = opinions[indexPath.row].count3.doubleValue + 1
+            ref.updateChildValues(["Count3":value3])
+            cell.surveyData.updateValue(NSNumber.init(value: value3), forKey: opinions[indexPath.row].option3)
         }
+        
+        cell.totalCount = cell.totalCount + 1
+        cell.pieChartSetup()
         collectionView?.reloadData()
+        
     }
     
     @IBAction func tapGestureAction(sender: UITapGestureRecognizer) {
