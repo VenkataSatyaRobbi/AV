@@ -45,7 +45,7 @@ class VoteAdminViewController: UIViewController{
                 return
             }
             ProgressHUD.showSuccess("Done")
-            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
         })
     }
     

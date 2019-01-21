@@ -785,13 +785,7 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Vote Admin" id="OG1-He-4sV">
-                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="tYL-fk-s8I">
-                            <connections>
-                                <action selector="CancelPostTouchUpInside:" destination="RDR-id-S0S" id="qFZ-Z5-wWP"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Vote Admin" id="OG1-He-4sV"/>
                     <connections>
                         <outlet property="QuestionsView" destination="Wzh-Zo-yGz" id="ouA-Wq-sfE"/>
                         <outlet property="SendButton" destination="d5e-lg-f3X" id="eqV-Bg-mMg"/>
@@ -1509,7 +1503,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SlideCollectionViewCell" id="9EZ-Mf-yfB" customClass="SlideCollectionViewCell" customModule="AmericasVision" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.5" width="142" height="110"/>
+                                                            <rect key="frame" x="0.0" y="1" width="142" height="110"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="142" height="110"/>

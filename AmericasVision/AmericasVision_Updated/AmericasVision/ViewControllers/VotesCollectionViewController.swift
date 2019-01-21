@@ -404,13 +404,14 @@ class VotesCollectionViewController: UICollectionViewController{
                 }
                 self.opinions.append(opinion)
                 self.collectionView?.reloadData()
-            }
             
+            }
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         sideMenus()
+        
     }
     
     func sideMenus(){
@@ -435,6 +436,9 @@ class VotesCollectionViewController: UICollectionViewController{
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        opinions = opinions.sorted(by: { $0.publishDate > $1.publishDate })
+        
         let id = opinions[indexPath.row].id
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! VoteCell
         

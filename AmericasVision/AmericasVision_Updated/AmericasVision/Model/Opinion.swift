@@ -8,7 +8,8 @@
 
 import Foundation
 
-class Opinion{
+class Opinion: Comparable{
+    
     var id: String
     var question: String
     var option1: String
@@ -33,4 +34,13 @@ class Opinion{
         self.selectedOption = ""
     }
     
+    static func < (lhs: Opinion, rhs: Opinion) -> Bool {
+        return lhs.publishDate < rhs.publishDate
+    }
+    
+    static func == (lhs: Opinion, rhs: Opinion) -> Bool {
+        return lhs.publishDate == rhs.publishDate
+    }
+    
+   
 }
