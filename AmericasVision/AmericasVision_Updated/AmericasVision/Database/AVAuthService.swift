@@ -126,4 +126,9 @@
             
         }
         
+        static func isAdmin() -> Bool{
+            return Auth.auth().currentUser!.email == "giri@gmail.com"
+        }
+    
+        
     }

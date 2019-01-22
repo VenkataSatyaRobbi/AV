@@ -45,6 +45,11 @@
       </ContextState>
       <ContextState
          contextName = "VotesCollectionViewController.viewDidLoad():VotesCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "AVAuthService.isAdmin()">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MyProfileViewController.datePickerFromValueChanged(sender:):MyProfileViewController.swift">
@@ -151,6 +156,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "static AVAuthService.isAdmin():AVAuthService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Auth.auth().currentUser!.email">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "AppDelegate.application(_:didFinishLaunchingWithOptions:):AppDelegate.swift">
          <PersistentStrings>
             <PersistentString
@@ -209,6 +222,11 @@
       </ContextState>
       <ContextState
          contextName = "MyProfileViewController.updateProfile(_:):MyProfileViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "YearsFromBirth">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "AVRadioButton.unselectAlternateButtons():AVRadioButton.swift">

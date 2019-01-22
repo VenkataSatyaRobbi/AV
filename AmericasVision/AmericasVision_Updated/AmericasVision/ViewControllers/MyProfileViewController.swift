@@ -52,6 +52,12 @@ class MyProfileViewController: UIViewController {
         emailText.translatesAutoresizingMaskIntoConstraints = false
         return emailText
     }()
+    let textMobileNo: UITextField = {
+        let text = UITextField()
+        text.isEnabled = false
+        text.translatesAutoresizingMaskIntoConstraints = false
+        return text
+    }()
     let textPwd: UITextField = {
         let passwordText = UITextField()
         passwordText.isSecureTextEntry = true
@@ -109,7 +115,21 @@ class MyProfileViewController: UIViewController {
         textUserName.text = userInfo.firstName
         textEmail.text = userInfo.email
         textDOB.text = userInfo.dob
+        textMobileNo.text = userInfo.phone
         profileImage.image = userInfo.profileImage
+        let dateofBirthDateFormatter = DateFormatter()
+        dateofBirthDateFormatter.dateFormat = "dd-MM-yyyy"
+        dateofBirthDateFormatter.dateStyle = .medium
+        let DateofBirthDate = dateofBirthDateFormatter.date(from: textDOB.text!)
+        let dateComponentsFormatter = DateComponentsFormatter()
+        dateComponentsFormatter.allowedUnits = [NSCalendar.Unit.minute,NSCalendar.Unit.hour,NSCalendar.Unit.day]
+        
+        let interval =  DateNow.timeIntervalSince(DateofBirthDate!)
+        let DateDiff = dateComponentsFormatter.string(from: interval)!
+        if (DateDiff.contains("d")){
+            let day = DateDiff.substring(to: (DateDiff.range(of: "d")?.lowerBound)!)
+            YearsFromBirth  = Int( day.replacingOccurrences(of: ",", with: ""))!/365
+        }
     }
     
     func sideMenus(){
@@ -131,6 +151,9 @@ class MyProfileViewController: UIViewController {
 
         profileBackView.addSubview(textEmail)
          CommonUtils.addLineToView(view: textEmail, position:.LINE_POSITION_BOTTOM, color: UIColor(red: 6/255, green: 90/255, blue: 1157/255, alpha: 1), width: 0.5)
+        
+        profileBackView.addSubview(textMobileNo)
+        CommonUtils.addLineToView(view: textMobileNo, position:.LINE_POSITION_BOTTOM, color: UIColor(red: 6/255, green: 90/255, blue: 1157/255, alpha: 1), width: 0.5)
         
         profileBackView.addSubview(textDOB)
         CommonUtils.addLineToView(view: textDOB, position:.LINE_POSITION_BOTTOM, color: UIColor(red: 6/255, green: 90/255, blue: 1157/255, alpha: 1), width: 0.5)
@@ -194,21 +217,27 @@ class MyProfileViewController: UIViewController {
         textEmail.heightAnchor.constraint(equalToConstant:30).isActive = true
         textEmail.widthAnchor.constraint(equalToConstant:self.view.frame.width - 80).isActive = true
         
-        textDOB.topAnchor.constraint(equalTo: self.view.topAnchor, constant:180 + textFieldHight * 2).isActive = true
+        textMobileNo.topAnchor.constraint(equalTo: self.view.topAnchor, constant:180 + textFieldHight * 2).isActive = true
+        textMobileNo.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:50).isActive = true
+        textMobileNo.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant:-50).isActive = true
+        textMobileNo.heightAnchor.constraint(equalToConstant:30).isActive = true
+        textMobileNo.widthAnchor.constraint(equalToConstant:self.view.frame.width - 80).isActive = true
+        
+        textDOB.topAnchor.constraint(equalTo: self.view.topAnchor, constant:180 + textFieldHight * 3).isActive = true
         textDOB.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:50).isActive = true
         textDOB.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant:-50).isActive = true
         textDOB.heightAnchor.constraint(equalToConstant:30).isActive = true
         textDOB.widthAnchor.constraint(equalToConstant:self.view.frame.width - 80).isActive = true
         textDOB.addTarget(self, action: #selector(DateofBirthFieldTouched), for: UIControlEvents.touchDown)
 
-        textPwd.topAnchor.constraint(equalTo: self.view.topAnchor, constant:180 + textFieldHight * 3).isActive = true
+        textPwd.topAnchor.constraint(equalTo: self.view.topAnchor, constant:180 + textFieldHight * 4).isActive = true
         textPwd.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:50).isActive = true
         textPwd.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant:-50).isActive = true
         textPwd.heightAnchor.constraint(equalToConstant:30).isActive = true
         textPwd.widthAnchor.constraint(equalToConstant:self.view.frame.width - 80).isActive = true
         textPwd.placeholder = "Password"
         
-        textConfirmPwd.topAnchor.constraint(equalTo: self.view.topAnchor, constant:180 + textFieldHight * 4).isActive = true
+        textConfirmPwd.topAnchor.constraint(equalTo: self.view.topAnchor, constant:180 + textFieldHight * 5).isActive = true
         textConfirmPwd.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:50).isActive = true
         textConfirmPwd.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant:-50).isActive = true
         textConfirmPwd.heightAnchor.constraint(equalToConstant:30).isActive = true

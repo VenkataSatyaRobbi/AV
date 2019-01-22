@@ -369,8 +369,9 @@ class VotesCollectionViewController: UICollectionViewController{
         collectionView!.register(VoteCell.self, forCellWithReuseIdentifier: "cell")
         collectionView?.dataSource = self
         collectionView?.delegate = self
-        
-        
+        if( AVAuthService.isAdmin()){
+            self.navigationItem.rightBarButtonItem = nil
+        }
     }
     
     func fetchFirstOpinion(){
