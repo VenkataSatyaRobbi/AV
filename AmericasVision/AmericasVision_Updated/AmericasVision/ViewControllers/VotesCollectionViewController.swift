@@ -101,31 +101,33 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
     }()
     
     let scoreBoard1 :UILabel = {
-        let view = UILabel()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.textAlignment = .center
-        view.font = UIFont(name: "Verdana", size: 12)
-        view.textColor = .black
-        view.isUserInteractionEnabled = true
-        return view
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.font = UIFont(name: "Verdana", size: 12)
+        label.textColor = .black
+        label.isUserInteractionEnabled = true
+        return label
     }()
     
     let scoreBoard2 :UILabel = {
-        let view = UILabel()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.textAlignment = .center
-        view.font = UIFont(name: "Verdana", size: 12)
-        view.textColor = .black
-        return view
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.font = UIFont(name: "Verdana", size: 12)
+        label.textColor = .black
+        label.isUserInteractionEnabled = true
+        return label
     }()
     
     let scoreBoard3 :UILabel = {
-        let view = UILabel()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.textAlignment = .center
-        view.font = UIFont(name: "Verdana", size: 12)
-        view.textColor = .black
-        return view
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.font = UIFont(name: "Verdana", size: 12)
+        label.textColor = .black
+        label.isUserInteractionEnabled = true
+        return label
     }()
     
     let option1Radio: AVRadioButton = {
@@ -302,8 +304,6 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
     func fillChart() {
         var dataEntries = [PieChartDataEntry]()
         for (key, val) in surveyData {
-            print(key)
-            print(val)
             let percent = Double(val.doubleValue * 100 / totalCount)
             let entry = PieChartDataEntry(value: percent, label: key)
             dataEntries.append(entry)
@@ -486,6 +486,13 @@ class VotesCollectionViewController: UICollectionViewController{
         cell.scoreBoard1.text = opinions[indexPath.row].count1.stringValue
         cell.scoreBoard2.text = opinions[indexPath.row].count2.stringValue
         cell.scoreBoard3.text = opinions[indexPath.row].count3.stringValue
+        
+        cell.scoreBoard1.attributedText = NSAttributedString(string: opinions[indexPath.row].count1.stringValue, attributes:
+            [.underlineStyle: NSUnderlineStyle.styleSingle.rawValue])
+        cell.scoreBoard2.attributedText = NSAttributedString(string: opinions[indexPath.row].count2.stringValue, attributes:
+            [.underlineStyle: NSUnderlineStyle.styleSingle.rawValue])
+        cell.scoreBoard3.attributedText = NSAttributedString(string: opinions[indexPath.row].count3.stringValue, attributes:
+            [.underlineStyle: NSUnderlineStyle.styleSingle.rawValue])
         
         cell.viewfooter.tag = indexPath.item
         cell.viewfooter.addTarget(self,action: #selector(self.handlePollButton(_:)),for: .touchUpInside)
