@@ -100,8 +100,8 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
         return label
     }()
     
-    let scoreBoard1 :UITextField = {
-        let view = UITextField()
+    let scoreBoard1 :UILabel = {
+        let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.textAlignment = .center
         view.font = UIFont(name: "Verdana", size: 12)
@@ -110,8 +110,8 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
         return view
     }()
     
-    let scoreBoard2 :UITextField = {
-        let view = UITextField()
+    let scoreBoard2 :UILabel = {
+        let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.textAlignment = .center
         view.font = UIFont(name: "Verdana", size: 12)
@@ -119,8 +119,8 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
         return view
     }()
     
-    let scoreBoard3 :UITextField = {
-        let view = UITextField()
+    let scoreBoard3 :UILabel = {
+        let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.textAlignment = .center
         view.font = UIFont(name: "Verdana", size: 12)
@@ -302,6 +302,8 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
     func fillChart() {
         var dataEntries = [PieChartDataEntry]()
         for (key, val) in surveyData {
+            print(key)
+            print(val)
             let percent = Double(val.doubleValue * 100 / totalCount)
             let entry = PieChartDataEntry(value: percent, label: key)
             dataEntries.append(entry)
@@ -369,7 +371,7 @@ class VotesCollectionViewController: UICollectionViewController{
         collectionView!.register(VoteCell.self, forCellWithReuseIdentifier: "cell")
         collectionView?.dataSource = self
         collectionView?.delegate = self
-        if( AVAuthService.isAdmin()){
+        if(!AVAuthService.isAdmin()){
             self.navigationItem.rightBarButtonItem = nil
         }
     }
@@ -507,25 +509,37 @@ class VotesCollectionViewController: UICollectionViewController{
         let indexPath = IndexPath.init(item: sender.tag, section: 0)
         let cell = collectionView?.cellForItem(at: indexPath) as! VoteCell
         var selectedOption = ""
+        
+        let userOpinionRef = DBProvider.instance.opinionRef
+        let ref = userOpinionRef.child(cell.opinionId)
         if cell.option1Radio.isSelected {
             selectedOption = cell.optionOne.text!
-            let count1 = opinions[indexPath.row].count1.intValue + 1
-            cell.scoreBoard1.text = (count1 as NSNumber).stringValue
+            let value1 = opinions[indexPath.row].count1.doubleValue + 1
+            opinions[indexPath.row].count1 = NSNumber.init(value: value1)
+            cell.scoreBoard1.text = opinions[indexPath.row].count1.stringValue
+            cell.surveyData.updateValue(NSNumber.init(value: value1), forKey: opinions[indexPath.row].option1)
+            ref.updateChildValues(["Count1":value1])
             cell.option1Radio.unselectAlternateButtons()
         }else if cell.option2Radio.isSelected {
             selectedOption = cell.optionTwo.text!
-            let count2 = opinions[indexPath.row].count2.intValue + 1
-            cell.scoreBoard2.text = (count2 as NSNumber).stringValue
+            let value2 = opinions[indexPath.row].count2.doubleValue + 1
+            opinions[indexPath.row].count2 = NSNumber.init(value: value2)
+            cell.scoreBoard2.text = opinions[indexPath.row].count2.stringValue
+            cell.surveyData.updateValue(NSNumber.init(value: value2), forKey: opinions[indexPath.row].option2)
+            ref.updateChildValues(["Count2":value2])
             cell.option2Radio.unselectAlternateButtons()
-        }else{
+        }else if cell.option3Radio.isSelected {
             selectedOption = cell.OptionThree.text!
-            let count3 = opinions[indexPath.row].count3.intValue + 1
-            cell.scoreBoard3.text = (count3 as NSNumber).stringValue
+            let value3 = opinions[indexPath.row].count3.doubleValue + 1
+            opinions[indexPath.row].count3 = NSNumber.init(value: value3)
+            cell.scoreBoard3.text = opinions[indexPath.row].count3.stringValue
+            cell.surveyData.updateValue(NSNumber.init(value: value3), forKey: opinions[indexPath.row].option3)
+            ref.updateChildValues(["Count3":value3])
             cell.option3Radio.unselectAlternateButtons()
         }
         
         let userId = AVAuthService.getCurrentUserId()
-        let userOpinionRef = DBProvider.instance.opinionRef
+        
         let userRef =  userOpinionRef.child(cell.opinionId).child("voteusers").child(userId)
         userRef.setValue(["SelectedOption": selectedOption], withCompletionBlock:{(error, ref) in
             if error != nil{
@@ -539,25 +553,8 @@ class VotesCollectionViewController: UICollectionViewController{
             cell.viewfooter.setTitle("Thanks for your Opinion", for: .normal)
         })
         
-        let ref = userOpinionRef.child(cell.opinionId)
-        if cell.option1Radio.isSelected {
-            let value1 = opinions[indexPath.row].count1.doubleValue + 1
-            ref.updateChildValues(["Count1":value1])
-            cell.surveyData.updateValue(NSNumber.init(value: value1), forKey: opinions[indexPath.row].option1)
-        }else if cell.option2Radio.isSelected {
-            let value2 = opinions[indexPath.row].count2.doubleValue + 1
-            ref.updateChildValues(["Count2":value2])
-            cell.surveyData.updateValue(NSNumber.init(value: value2), forKey: opinions[indexPath.row].option2)
-        }else{
-            let value3 = opinions[indexPath.row].count3.doubleValue + 1
-            ref.updateChildValues(["Count3":value3])
-            cell.surveyData.updateValue(NSNumber.init(value: value3), forKey: opinions[indexPath.row].option3)
-        }
-        
         cell.totalCount = cell.totalCount + 1
-        cell.pieChartSetup()
-        collectionView?.reloadData()
-        
+        self.collectionView?.reloadData()
     }
     
     @IBAction func tapGestureAction(sender: UITapGestureRecognizer) {
