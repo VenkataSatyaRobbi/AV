@@ -163,7 +163,7 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
     lazy var pieChart: PieChartView = {
         let p = PieChartView()
         p.translatesAutoresizingMaskIntoConstraints = false
-        p.noDataText = "No date to display"
+        p.noDataText = "No data to display the Chart"
         p.legend.enabled = false
         p.chartDescription?.text = ""
         p.drawHoleEnabled = false
@@ -282,7 +282,9 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
     }
     
     func pieChartSetup(totalCount:Double){
-        if !totalCount.isEqual(to: 0) {
+        if totalCount.isEqual(to: 0) {
+            pieChart.clear()
+        } else{
             setupPieChart()
             fillChart(totalCount:totalCount)
         }
@@ -304,7 +306,7 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
     func fillChart(totalCount:Double) {
         var dataEntries = [PieChartDataEntry]()
         for (key, val) in surveyData {
-            let percent = Double(val.doubleValue * 100 / totalCount)
+            let percent = Double(val.doubleValue / totalCount ) * 100
             let entry = PieChartDataEntry(value: percent, label: key)
             dataEntries.append(entry)
         }
@@ -446,6 +448,20 @@ class VotesCollectionViewController: UICollectionViewController{
         cell.optionOne.text = opinions[indexPath.row].option1
         cell.optionTwo.text = opinions[indexPath.row].option2
         cell.OptionThree.text = opinions[indexPath.row].option3
+        let totalCount:Double = opinions[indexPath.row].count1.doubleValue + opinions[indexPath.row].count2.doubleValue + opinions[indexPath.row].count3.doubleValue
+        
+        //Reset Value 
+        if totalCount.isEqual(to: 0) {
+            opinions[indexPath.row].selectedOption = ""
+            cell.option1Radio.isEnabled = true
+            cell.option2Radio.isEnabled = true
+            cell.option3Radio.isEnabled = true
+            cell.viewfooter.isEnabled = true
+            cell.option1Radio.isSelected = false
+            cell.option2Radio.isSelected = false
+            cell.option3Radio.isSelected = false
+            cell.viewfooter.setTitle("Save", for: .normal)
+        }
         
         cell.startTimer()
         cell.releaseDate = CommonUtils.convertTimeFromSeconds(seconds: opinions[indexPath.row].publishDate)
@@ -477,10 +493,10 @@ class VotesCollectionViewController: UICollectionViewController{
            cell.viewfooter.setTitle("Thanks for your Opinion", for: .normal)
         }
         
+        cell.surveyData.removeAll()
         cell.surveyData.updateValue(opinions[indexPath.row].count1, forKey: opinions[indexPath.row].option1)
         cell.surveyData.updateValue(opinions[indexPath.row].count2, forKey: opinions[indexPath.row].option2)
         cell.surveyData.updateValue(opinions[indexPath.row].count3, forKey: opinions[indexPath.row].option3)
-        let totalCount:Double = opinions[indexPath.row].count1.doubleValue + opinions[indexPath.row].count2.doubleValue + opinions[indexPath.row].count3.doubleValue
         cell.pieChartSetup(totalCount: totalCount)
         
         cell.scoreBoard1.text = opinions[indexPath.row].count1.stringValue
@@ -593,5 +609,5 @@ class VotesCollectionViewController: UICollectionViewController{
             sender.view?.becomeFirstResponder()
         }
     }
-    
+
 }
