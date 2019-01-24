@@ -306,7 +306,7 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
     func fillChart(totalCount:Double) {
         var dataEntries = [PieChartDataEntry]()
         for (key, val) in surveyData {
-            let percent = Double(val.doubleValue / totalCount ) * 100
+            let percent = Double(val.doubleValue / totalCount)
             let entry = PieChartDataEntry(value: percent, label: key)
             dataEntries.append(entry)
         }
@@ -318,7 +318,7 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
         let chartData = PieChartData(dataSet: chartDataSet)
         let formatter = NumberFormatter()
         formatter.numberStyle = .percent
-        formatter.maximumFractionDigits = 0
+        formatter.maximumFractionDigits = 2
         chartData.setValueFormatter(DefaultValueFormatter(formatter: formatter))
         pieChart.data = chartData
         pieChart.drawEntryLabelsEnabled = false
@@ -450,7 +450,7 @@ class VotesCollectionViewController: UICollectionViewController{
         cell.OptionThree.text = opinions[indexPath.row].option3
         let totalCount:Double = opinions[indexPath.row].count1.doubleValue + opinions[indexPath.row].count2.doubleValue + opinions[indexPath.row].count3.doubleValue
         
-        //Reset Value 
+        //Reset Value
         if totalCount.isEqual(to: 0) {
             opinions[indexPath.row].selectedOption = ""
             cell.option1Radio.isEnabled = true
@@ -513,17 +513,20 @@ class VotesCollectionViewController: UICollectionViewController{
         cell.viewfooter.tag = indexPath.item
         cell.viewfooter.addTarget(self,action: #selector(self.handlePollButton(_:)),for: .touchUpInside)
         
-        let score1Gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureAction(sender:)))
-        score1Gesture.name = "1"
-        cell.scoreBoard1.addGestureRecognizer(score1Gesture)
+        if (AVAuthService.isAdmin()){
+            let score1Gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureAction(sender:)))
+            score1Gesture.name = "1"
+            cell.scoreBoard1.addGestureRecognizer(score1Gesture)
+            
+            let score2Gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureAction(sender:)))
+            score2Gesture.name = "2"
+            cell.scoreBoard2.addGestureRecognizer(score2Gesture)
+            
+            let score3Gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureAction(sender:)))
+            score3Gesture.name = "3"
+            cell.scoreBoard3.addGestureRecognizer(score3Gesture)
+        }
         
-        let score2Gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureAction(sender:)))
-        score2Gesture.name = "2"
-        cell.scoreBoard2.addGestureRecognizer(score2Gesture)
-        
-        let score3Gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureAction(sender:)))
-        score3Gesture.name = "3"
-        cell.scoreBoard3.addGestureRecognizer(score3Gesture)
         
         return cell
     }
