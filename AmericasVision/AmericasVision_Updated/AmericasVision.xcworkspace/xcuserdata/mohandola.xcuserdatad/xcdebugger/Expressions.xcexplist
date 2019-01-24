@@ -189,10 +189,16 @@
          contextName = "VotesCollectionViewController.collectionView(_:cellForItemAt:):VotesCollectionViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "opinion[indexPath.row]">
+               value = "opinions[indexPath.row].count1.doubleValue + opinions[indexPath.row].count2.doubleValue + opinions[indexPath.row].count3.doubleValue">
             </PersistentString>
             <PersistentString
-               value = "opinion[indexPath.row].option1">
+               value = "cell.totalCount">
+            </PersistentString>
+            <PersistentString
+               value = "opinions[indexPath.row].option3">
+            </PersistentString>
+            <PersistentString
+               value = "opinions[indexPath.row].option1">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

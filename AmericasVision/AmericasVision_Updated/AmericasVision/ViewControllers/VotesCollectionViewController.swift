@@ -16,7 +16,7 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
    
     var opinionId:String = ""
     var surveyData = [String:NSNumber]()
-    var totalCount:Double = 0
+    //var totalCount:Double = 0
     var questionTextheight:CGFloat = 0
     var option1Height:CGFloat = 0
     var option2Height:CGFloat = 0
@@ -281,10 +281,10 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
         chartView.widthAnchor.constraint(equalToConstant: self.frame.width-10).isActive = true
     }
     
-   func pieChartSetup(){
+    func pieChartSetup(totalCount:Double){
         if !totalCount.isEqual(to: 0) {
             setupPieChart()
-            fillChart()
+            fillChart(totalCount:totalCount)
         }
     }
     
@@ -301,7 +301,7 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
         pieChart.heightAnchor.constraint(equalTo: chartView.heightAnchor, multiplier: 0.9).isActive = true
     }
     
-    func fillChart() {
+    func fillChart(totalCount:Double) {
         var dataEntries = [PieChartDataEntry]()
         for (key, val) in surveyData {
             let percent = Double(val.doubleValue * 100 / totalCount)
@@ -480,8 +480,8 @@ class VotesCollectionViewController: UICollectionViewController{
         cell.surveyData.updateValue(opinions[indexPath.row].count1, forKey: opinions[indexPath.row].option1)
         cell.surveyData.updateValue(opinions[indexPath.row].count2, forKey: opinions[indexPath.row].option2)
         cell.surveyData.updateValue(opinions[indexPath.row].count3, forKey: opinions[indexPath.row].option3)
-        cell.totalCount = opinions[indexPath.row].count1.doubleValue + opinions[indexPath.row].count2.doubleValue + opinions[indexPath.row].count3.doubleValue
-        cell.pieChartSetup()
+        let totalCount:Double = opinions[indexPath.row].count1.doubleValue + opinions[indexPath.row].count2.doubleValue + opinions[indexPath.row].count3.doubleValue
+        cell.pieChartSetup(totalCount: totalCount)
         
         cell.scoreBoard1.text = opinions[indexPath.row].count1.stringValue
         cell.scoreBoard2.text = opinions[indexPath.row].count2.stringValue
@@ -559,8 +559,9 @@ class VotesCollectionViewController: UICollectionViewController{
             cell.viewfooter.isEnabled = false
             cell.viewfooter.setTitle("Thanks for your Opinion", for: .normal)
         })
+        let totalCount:Double = opinions[indexPath.row].count1.doubleValue + opinions[indexPath.row].count2.doubleValue + opinions[indexPath.row].count3.doubleValue
+        cell.pieChartSetup(totalCount: totalCount)
         
-        cell.totalCount = cell.totalCount + 1
         self.collectionView?.reloadData()
     }
     
