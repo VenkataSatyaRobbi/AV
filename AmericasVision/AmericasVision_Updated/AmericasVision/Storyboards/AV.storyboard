@@ -715,7 +715,11 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="pWs-2x-BT5">
                         <barButtonItem key="leftBarButtonItem" title="Home" image="home" landscapeImage="home" largeContentSizeImage="home" id="2SK-3h-se1"/>
-                        <barButtonItem key="rightBarButtonItem" title="Admin" image="adminconsole" landscapeImage="adminconsole" largeContentSizeImage="adminconsole" id="XcY-T4-TUc"/>
+                        <barButtonItem key="rightBarButtonItem" title="Admin" image="adminconsole" landscapeImage="adminconsole" largeContentSizeImage="adminconsole" id="XcY-T4-TUc">
+                            <connections>
+                                <segue destination="RDR-id-S0S" kind="push" id="rKT-ml-NMu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -1503,7 +1507,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SlideCollectionViewCell" id="9EZ-Mf-yfB" customClass="SlideCollectionViewCell" customModule="AmericasVision" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.5" width="142" height="110"/>
+                                                            <rect key="frame" x="0.0" y="1" width="142" height="110"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="142" height="110"/>
@@ -1617,7 +1621,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SlideCollectionViewCell" id="v0g-rl-WKa" customClass="SlideCollectionViewCell" customModule="AmericasVision" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.5" width="142" height="110"/>
+                                                            <rect key="frame" x="0.0" y="1" width="142" height="110"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="142" height="110"/>
@@ -1721,9 +1725,9 @@
         <image name="sportsselected" width="19" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gEB-8k-KId"/>
+        <segue reference="rKT-ml-NMu"/>
         <segue reference="tcg-Fz-vNU"/>
-        <segue reference="ow8-Ni-goa"/>
+        <segue reference="Mny-Li-mV7"/>
         <segue reference="yj6-fy-86n"/>
     </inferredMetricsTieBreakers>
 </document>

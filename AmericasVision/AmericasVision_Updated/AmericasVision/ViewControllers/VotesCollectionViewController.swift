@@ -16,7 +16,6 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
    
     var opinionId:String = ""
     var surveyData = [String:NSNumber]()
-    //var totalCount:Double = 0
     var questionTextheight:CGFloat = 0
     var option1Height:CGFloat = 0
     var option2Height:CGFloat = 0
@@ -356,6 +355,9 @@ class VotesCollectionViewController: UICollectionViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if Reachability.isConnectedToNetwork() == false {
+            present(Reachability.showNetworkAlert(), animated: true, completion: nil)
+        }
         self.navigationItem.title = "Opinion Polls"
         sideMenus()
         self.collectionView?.backgroundColor = UIColor.white

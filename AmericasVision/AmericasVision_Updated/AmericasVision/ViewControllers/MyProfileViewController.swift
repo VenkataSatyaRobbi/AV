@@ -142,6 +142,9 @@ class MyProfileViewController: UIViewController {
     }
     //6,90,157
     override func viewWillAppear(_ animated: Bool) {
+        if Reachability.isConnectedToNetwork() == false {
+            present(Reachability.showNetworkAlert(), animated: true, completion: nil)
+        }
         spinner.startAnimating()
         sideMenus()
         self.navigationController?.isNavigationBarHidden = true
