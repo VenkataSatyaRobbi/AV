@@ -537,7 +537,7 @@ class VotesCollectionViewController: UICollectionViewController{
         let indexPath = IndexPath.init(item: sender.tag, section: 0)
         let cell = collectionView?.cellForItem(at: indexPath) as! VoteCell
         var selectedOption = ""
-        
+        var error:Bool  = false
         let userOpinionRef = DBProvider.instance.opinionRef
         let ref = userOpinionRef.child(cell.opinionId)
         if cell.option1Radio.isSelected {
@@ -564,26 +564,35 @@ class VotesCollectionViewController: UICollectionViewController{
             cell.surveyData.updateValue(NSNumber.init(value: value3), forKey: opinions[indexPath.row].option3)
             ref.updateChildValues(["Count3":value3])
             cell.option3Radio.unselectAlternateButtons()
+        }else{
+            error = true
         }
         
-        let userId = AVAuthService.getCurrentUserId()
-        
-        let userRef =  userOpinionRef.child(cell.opinionId).child("voteusers").child(userId)
-        userRef.setValue(["SelectedOption": selectedOption], withCompletionBlock:{(error, ref) in
-            if error != nil{
-                ProgressHUD.showError(error!.localizedDescription)
-                return
-            }
-            cell.option1Radio.isEnabled = false
-            cell.option2Radio.isEnabled = false
-            cell.option3Radio.isEnabled = false
-            cell.viewfooter.isEnabled = false
-            cell.viewfooter.setTitle("Thanks for your Opinion", for: .normal)
-        })
-        let totalCount:Double = opinions[indexPath.row].count1.doubleValue + opinions[indexPath.row].count2.doubleValue + opinions[indexPath.row].count3.doubleValue
-        cell.pieChartSetup(totalCount: totalCount)
-        
-        self.collectionView?.reloadData()
+        if(error){
+            let errorAlert = UIAlertController(title: "Errors",
+                                               message: "Please Vote", preferredStyle: .alert)
+            errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(errorAlert, animated: true, completion: nil)
+        }else{
+            let userId = AVAuthService.getCurrentUserId()
+            
+            let userRef =  userOpinionRef.child(cell.opinionId).child("voteusers").child(userId)
+            userRef.setValue(["SelectedOption": selectedOption], withCompletionBlock:{(error, ref) in
+                if error != nil{
+                    ProgressHUD.showError(error!.localizedDescription)
+                    return
+                }
+                cell.option1Radio.isEnabled = false
+                cell.option2Radio.isEnabled = false
+                cell.option3Radio.isEnabled = false
+                cell.viewfooter.isEnabled = false
+                cell.viewfooter.setTitle("Thanks for your Opinion", for: .normal)
+            })
+            let totalCount:Double = opinions[indexPath.row].count1.doubleValue + opinions[indexPath.row].count2.doubleValue + opinions[indexPath.row].count3.doubleValue
+            cell.pieChartSetup(totalCount: totalCount)
+            
+            self.collectionView?.reloadData()
+        }
     }
     
     @IBAction func tapGestureAction(sender: UITapGestureRecognizer) {

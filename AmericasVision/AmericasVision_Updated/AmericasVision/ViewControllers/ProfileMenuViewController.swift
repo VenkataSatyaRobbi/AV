@@ -35,7 +35,7 @@ class ProfileMenuViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
         ProfileMenuOptionsArray = ["AV News","AV Music Store","AV Market Place","AV Messaging","AV Voting Tracker","My Profile","Settings","Sign out"]
-        ProfileMenuImagesArray = [UIImage(named: "newsfeed")!,UIImage(named: "music")!,UIImage(named: "marketplace")!,UIImage(named: "chat")!,UIImage(named: "voting")!,UIImage(named: "profile")!, UIImage(named: "settings")!, UIImage(named: "signout")!]
+        ProfileMenuImagesArray = [UIImage(named: "AVNews")!,UIImage(named: "AVMusic")!,UIImage(named: "AVMarketplace")!,UIImage(named: "AVChat")!,UIImage(named: "AVVoting")!,UIImage(named: "AVProfile")!, UIImage(named: "AVSettings")!, UIImage(named: "AVSignout")!]
         
         if Auth.auth().currentUser != nil {
             let AVStorageRef = Storage.storage().reference(forURL: PropertyConfig.FIRSTORAGE_ROOT_REF).child("profileImage").child((Auth.auth().currentUser?.uid)!)

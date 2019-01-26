@@ -49,8 +49,7 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
         
         gradientLayer.frame = CGRect(x:0, y:0, width:375, height:64)
         //UINavigationBar.appearance().layer.addSublayer(gradientLayer)
-        self.navigationController?.navigationBar.tintColor = UIColor.green
-
+        
     }
     
     @IBAction func PostCategoryTextTouched(_ sender: Any) {
@@ -101,7 +100,7 @@ class NewsFeedAdminViewController: UIViewController, UIPickerViewDataSource, UIP
     
     @IBAction func CancelPostTouchUpInside(_ sender: UIBarButtonItem) {
         self.PhotoCaptionAdmin.text = ""
-        self.PhotoAdmin.image = UIImage(named: "camera")
+        self.PhotoAdmin.image = UIImage(named: "picture")
         self.PostSelectedPhoto = nil
         self.selectedPostCategory = nil
         self.PostTitle.text = ""
