@@ -245,6 +245,8 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         
         var commentsHeight:CGFloat = 0
         let approximateWidth = UIScreen.main.bounds.width - 60
+        
+        comments = comments.sorted(by: { $0.commentDate > $1.commentDate })
         comments.forEach { comment in
             let hgt = CommonUtils.heightForView(text: comment.comments, font:UIFont(name: "Verdana", size: 13)! ,width: approximateWidth)
             commentsHeight = commentsHeight + ceil(hgt) + 40
@@ -410,7 +412,6 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
         
         scrollView.isScrollEnabled = true
         scrollView.delegate = self
-        self.navigationItem.title = "Details"
         writeComment.delegate = self
         self.postCommentButton.isEnabled = false
         self.postCommentButton.tintColor = UIColor.darkGray
@@ -485,7 +486,6 @@ class NewsDetailedViewController: UIViewController,UIScrollViewDelegate, UITextV
     func insertPostedCommentInTable(comment:PostComment){
         let row = self.comments.count > 0 ? self.comments.count - 1 : 0
         let indexPath = IndexPath (row: row,section:0) 
-        print("indexpath: \(indexPath)")
         self.tableView.beginUpdates()
         self.tableView.insertRows(at: [indexPath], with: .automatic)
         self.tableView.endUpdates()
