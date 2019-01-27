@@ -99,6 +99,7 @@
         
         static func getCurrentUserName() -> String{
             return UserDefaults.standard.getLoginUserInfo().firstName! + UserDefaults.standard.getLoginUserInfo().lastName!
+            
         }
         
         static func updateUserProfile(phone: String, dob:String,email: String, password: String, confirmpassword: String, imagedata: Data, onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessage: String?) -> Void) {

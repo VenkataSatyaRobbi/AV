@@ -25,7 +25,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "VotedUsersTableViewController.viewWillAppear(_:):VotedUsersTableViewController.swift">
+         contextName = "VoteCell.pieChartSetup():VotesCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "totalCount.isEqual(to: 0)">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "VoteCell.addAllignments():VotesCollectionViewController.swift">
@@ -56,6 +61,22 @@
          <PersistentStrings>
             <PersistentString
                value = "Int(day.replacingOccurrences(of: &quot;,&quot;, with: &quot;&quot;))/365">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #2 in NewsDetailedViewController.viewDidAppear(_:):NewsDetailedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "comments">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NewsDetailedViewController.insertPostedCommentInTable(comment:):NewsDetailedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.tableView.numberOfRows(inSection: 0)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -94,10 +115,10 @@
          contextName = "closure #1 in AVSettingsViewController.loadGlobalInfo():AVSettingsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "name">
+               value = "snapshot as NSDictionary">
             </PersistentString>
             <PersistentString
-               value = "dict[key]">
+               value = "dict[key] as? String">
             </PersistentString>
             <PersistentString
                value = "child.value as! String">
@@ -124,10 +145,10 @@
                value = "child">
             </PersistentString>
             <PersistentString
-               value = "snapshot as NSDictionary">
+               value = "name">
             </PersistentString>
             <PersistentString
-               value = "dict[key] as? String">
+               value = "dict[key]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -189,10 +210,10 @@
          contextName = "VotesCollectionViewController.collectionView(_:cellForItemAt:):VotesCollectionViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "opinions[indexPath.row].count1.doubleValue + opinions[indexPath.row].count2.doubleValue + opinions[indexPath.row].count3.doubleValue">
+               value = "cell.totalCount">
             </PersistentString>
             <PersistentString
-               value = "cell.totalCount">
+               value = "opinions[indexPath.row].count1.doubleValue + opinions[indexPath.row].count2.doubleValue + opinions[indexPath.row].count3.doubleValue">
             </PersistentString>
             <PersistentString
                value = "opinions[indexPath.row].option3">
@@ -274,7 +295,7 @@
          contextName = "closure #1 in NewsDetailedViewController.checkCurrentUserComments():NewsDetailedViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "snapshot.value">
+               value = "self.comments">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -301,10 +322,10 @@
          contextName = "NewsDetailedViewController.loadPost():NewsDetailedViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = ".value">
+               value = "DBProvider.instance.newsFeedRef.queryEqual(toValue: &quot;postID&quot;).observe(.childAdded){ (snapshot: DataSnapshot) in }">
             </PersistentString>
             <PersistentString
-               value = "DBProvider.instance.newsFeedRef.queryEqual(toValue: &quot;postID&quot;).observe(.childAdded){ (snapshot: DataSnapshot) in }">
+               value = ".value">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -374,6 +395,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in NewsDetailedViewController.insertPostedCommentInTable(comment:):NewsDetailedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(snapShot.value as! NSDictionary)[&quot;FirstName&quot;] as? String">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "VoteAdminViewController.publishAction(_:):VoteAdminViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -388,25 +417,25 @@
          contextName = "closure #1 in VotesCollectionViewController.fetchFirstOpinion():VotesCollectionViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "userDic?[&quot;SelectedOption&quot;] as! String">
+               value = "snapshot.key">
             </PersistentString>
             <PersistentString
                value = "AVAuthService.getCurrentUserId() == user.key">
-            </PersistentString>
-            <PersistentString
-               value = "user.value as? Any">
-            </PersistentString>
-            <PersistentString
-               value = "NSDate().timeIntervalSince1970">
-            </PersistentString>
-            <PersistentString
-               value = "snapshot.key">
             </PersistentString>
             <PersistentString
                value = "snapshot.accessibilityElementCount()">
             </PersistentString>
             <PersistentString
                value = "napshot.value as? [String: Opinion] ">
+            </PersistentString>
+            <PersistentString
+               value = "userDic?[&quot;SelectedOption&quot;] as! String">
+            </PersistentString>
+            <PersistentString
+               value = "user.value as? Any">
+            </PersistentString>
+            <PersistentString
+               value = "NSDate().timeIntervalSince1970">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -455,6 +484,9 @@
                value = "self.scrollView.contentSize">
             </PersistentString>
             <PersistentString
+               value = "comments">
+            </PersistentString>
+            <PersistentString
                value = "560 + contentHeight">
             </PersistentString>
          </PersistentStrings>
@@ -497,6 +529,14 @@
             </PersistentString>
             <PersistentString
                value = "self.imageView.tintColor">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in NewsDetailedViewController.postCommentAction(_:):NewsDetailedViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.comments">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -566,6 +606,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "VotedUsersTableViewController.viewWillAppear(_:):VotedUsersTableViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "ChatContactsViewController.addMessageActionTapped(sender:):ChatContactsViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -587,14 +630,6 @@
          <PersistentStrings>
             <PersistentString
                value = "data[Constants.MESSAGE_DATE]">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "VoteCell.pieChartSetup():VotesCollectionViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "totalCount.isEqual(to: 0)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -12,15 +12,6 @@ class MyProfileViewController: UIViewController {
     
     @IBOutlet weak var MyProfileHomeButton: UIBarButtonItem!
     
-    let spinner : UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView()
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.isHidden = true
-        spinner.backgroundColor = .blue
-        spinner.layer.cornerRadius = 3.0
-        return spinner
-    }()
-  
     let header: UIView = {
         let header = UIImageView()
         header.image = UIImage(named: "nabar")
@@ -145,7 +136,7 @@ class MyProfileViewController: UIViewController {
         if Reachability.isConnectedToNetwork() == false {
             present(Reachability.showNetworkAlert(), animated: true, completion: nil)
         }
-        spinner.startAnimating()
+        ProgressHUD.show("", interaction: true)
         sideMenus()
         self.navigationController?.isNavigationBarHidden = true
         profileBackView.addSubview(profileImage)
@@ -171,7 +162,6 @@ class MyProfileViewController: UIViewController {
         self.view.addSubview(header)
         self.view.addSubview(profileBackView)
         self.view.addSubview(btnBack)
-        self.view.addSubview(spinner)
         
         var textFieldHight = (self.view.frame.height - 180) / 5
         if textFieldHight > 60{
@@ -254,11 +244,7 @@ class MyProfileViewController: UIViewController {
         btnsubmit.widthAnchor.constraint(equalToConstant:self.view.frame.width - 80).isActive = true
         btnsubmit.addTarget(self,action: #selector(self.updateProfile(_:)),for: .touchUpInside)
         
-        spinner.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant:(self.view.frame.width/2)-20).isActive = true
-        spinner.topAnchor.constraint(equalTo: self.view.topAnchor, constant:self.view.frame.height/2).isActive = true
-        spinner.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        spinner.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        spinner.stopAnimating()
+        ProgressHUD.dismiss()
     }
     
     override func didReceiveMemoryWarning() {
@@ -300,31 +286,28 @@ class MyProfileViewController: UIViewController {
     }
     
     @IBAction func updateProfile(_ sender: Any) {
-        spinner.startAnimating()
         if(YearsFromBirth <= 18){
-            spinner.stopAnimating()
             let errorAlert = UIAlertController(title: "Errors",
                                                message: "Your Age must be more then 18 years", preferredStyle: .alert)
             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(errorAlert, animated: true, completion: nil)
         }else if (textPwd.text?.isEmpty)! || (textConfirmPwd.text?.isEmpty)! {
-            spinner.stopAnimating()
             let resetEmailSentAlert = UIAlertController(title: "Errors", message: "Please enter Passoword and Confirm Password", preferredStyle: .alert)
             resetEmailSentAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(resetEmailSentAlert, animated: true, completion: nil)
         }else if textPwd.text != textConfirmPwd.text {
-            spinner.stopAnimating()
-            let errorAlert = UIAlertController(title: "Errors",
+             let errorAlert = UIAlertController(title: "Errors",
                                                message: "Confirm password mismatch", preferredStyle: .alert)
             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(errorAlert, animated: true, completion: nil)
         }
         else{
-            updateProfile()
+           updateProfile()
         }
     }
     
     func updateProfile(){
+        ProgressHUD.show("", interaction: true)
         let imageData = UIImageJPEGRepresentation(userInfo.profileImage, 0.1)
         AVAuthService.updateUserProfile(phone: userInfo.phone!, dob: textDOB.text!, email: userInfo.email!, password: textPwd.text!, confirmpassword: textConfirmPwd.text!, imagedata: imageData!, onSuccess: {
             let successAlert = UIAlertController(title: "Success",
@@ -334,12 +317,12 @@ class MyProfileViewController: UIViewController {
             AVAuthService.saveProfileInfoToUserDefaults()
             self.textPwd.text = ""
             self.textConfirmPwd.text = ""
-            self.spinner.stopAnimating()
+            ProgressHUD.dismiss()
             
         }, onError: {
             (errorString) in
             print(errorString!)
-             self.spinner.stopAnimating()
+            ProgressHUD.dismiss()
         })
     }
     
