@@ -27,7 +27,8 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
     let header: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.white
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        //label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont(name: "Verdana-Bold", size: 13)
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -36,7 +37,7 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
     let headerTimer: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.white
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont(name: "Copperplate-Bold", size: 14)
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -48,7 +49,8 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
         button.backgroundColor = UIColor(red: 6/255, green: 90/255, blue: 157/255, alpha: 1)
         button.layer.cornerRadius = 4.0
         button.setTitleColor(UIColor.white, for: .normal)
-        button.setTitle("Save", for: .normal)
+        button.setTitle("Submit Opinion", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Verdana-Bold", size: 14)
         return button
     }()
     
@@ -62,7 +64,8 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
     let question: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.black
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        //label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont(name: "Verdana-Bold", size: 13)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.numberOfLines = 0
@@ -72,7 +75,7 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
     let optionOne: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.darkGray
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont(name: "Verdana", size: 13)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.numberOfLines = 0
@@ -82,7 +85,7 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
     let optionTwo: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.darkGray
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont(name: "Verdana", size: 13)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.numberOfLines = 0
@@ -92,7 +95,7 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
     let OptionThree: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.darkGray
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont(name: "Verdana", size: 13)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.numberOfLines = 0
@@ -214,24 +217,24 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
         headerTimer.topAnchor.constraint(equalTo: topAnchor, constant:0).isActive = true
         headerTimer.heightAnchor.constraint(equalToConstant:35).isActive = true
         
-        question.leftAnchor.constraint(equalTo: leftAnchor, constant:5).isActive = true
+        question.leftAnchor.constraint(equalTo: leftAnchor, constant:15).isActive = true
         question.topAnchor.constraint(equalTo: topAnchor, constant:40).isActive = true
         question.heightAnchor.constraint(equalToConstant:questionTextheight).isActive = true
-        question.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
+        question.widthAnchor.constraint(equalToConstant: self.frame.width-30).isActive = true
         
-        let top1 = questionTextheight + 40
-        let top2 = top1 + option1Height
-        let top3 = top2 + option2Height
+        let top1 = questionTextheight + 40 + 15
+        let top2 = top1 + option1Height + 5
+        let top3 = top2 + option2Height + 5
         
-        option1Radio.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
+        option1Radio.leftAnchor.constraint(equalTo: leftAnchor, constant: 15).isActive = true
         option1Radio.topAnchor.constraint(equalTo: topAnchor, constant: top1).isActive = true
         option1Radio.widthAnchor.constraint(equalToConstant:32).isActive = true
         
-        option2Radio.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
+        option2Radio.leftAnchor.constraint(equalTo: leftAnchor, constant: 15).isActive = true
         option2Radio.topAnchor.constraint(equalTo: topAnchor, constant: top2).isActive = true
         option2Radio.widthAnchor.constraint(equalToConstant:32).isActive = true
         
-        option3Radio.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
+        option3Radio.leftAnchor.constraint(equalTo: leftAnchor, constant: 15).isActive = true
         option3Radio.topAnchor.constraint(equalTo: topAnchor, constant: top3).isActive = true
         option3Radio.widthAnchor.constraint(equalToConstant:32).isActive = true
         
@@ -242,35 +245,35 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
         option3Radio.alternateButton.append(option1Radio)
         option3Radio.alternateButton.append(option2Radio)
         
-        scoreBoard1.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
+        scoreBoard1.leftAnchor.constraint(equalTo: leftAnchor, constant: 15).isActive = true
         scoreBoard1.topAnchor.constraint(equalTo: topAnchor , constant: top1+22).isActive = true
         scoreBoard1.widthAnchor.constraint(equalToConstant:32).isActive = true
         
-        scoreBoard2.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
+        scoreBoard2.leftAnchor.constraint(equalTo: leftAnchor, constant: 15).isActive = true
         scoreBoard2.topAnchor.constraint(equalTo: topAnchor, constant: top2+22).isActive = true
         scoreBoard2.widthAnchor.constraint(equalToConstant:32).isActive = true
         
-        scoreBoard3.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
+        scoreBoard3.leftAnchor.constraint(equalTo: leftAnchor, constant: 15).isActive = true
         scoreBoard3.topAnchor.constraint(equalTo: topAnchor, constant: top3+22).isActive = true
         scoreBoard3.widthAnchor.constraint(equalToConstant:32).isActive = true
         
-        optionOne.leftAnchor.constraint(equalTo: leftAnchor, constant: 45).isActive = true
+        optionOne.leftAnchor.constraint(equalTo: leftAnchor, constant: 55).isActive = true
         optionOne.topAnchor.constraint(equalTo: topAnchor, constant: top1).isActive = true
-        optionOne.widthAnchor.constraint(equalToConstant: self.frame.width - 45 ).isActive = true
+        optionOne.widthAnchor.constraint(equalToConstant: self.frame.width - 70 ).isActive = true
         optionOne.heightAnchor.constraint(equalToConstant: option1Height)
         
-        optionTwo.leftAnchor.constraint(equalTo: leftAnchor, constant: 45).isActive = true
+        optionTwo.leftAnchor.constraint(equalTo: leftAnchor, constant: 55).isActive = true
         optionTwo.topAnchor.constraint(equalTo: topAnchor, constant: top2).isActive = true
-        optionTwo.widthAnchor.constraint(equalToConstant: self.frame.width - 45 ).isActive = true
+        optionTwo.widthAnchor.constraint(equalToConstant: self.frame.width - 70 ).isActive = true
         optionTwo.heightAnchor.constraint(equalToConstant: option2Height)
         
-        OptionThree.leftAnchor.constraint(equalTo: leftAnchor, constant: 45).isActive = true
+        OptionThree.leftAnchor.constraint(equalTo: leftAnchor, constant: 55).isActive = true
         OptionThree.topAnchor.constraint(equalTo: topAnchor, constant: top3).isActive = true
-        OptionThree.widthAnchor.constraint(equalToConstant: self.frame.width - 45 ).isActive = true
+        OptionThree.widthAnchor.constraint(equalToConstant: self.frame.width - 70 ).isActive = true
         OptionThree.heightAnchor.constraint(equalToConstant: option3Height)
    
         viewfooter.leftAnchor.constraint(equalTo: leftAnchor, constant: 15).isActive = true
-        viewfooter.topAnchor.constraint(equalTo: topAnchor, constant: top3 + option3Height + 5).isActive = true
+        viewfooter.topAnchor.constraint(equalTo: topAnchor, constant: top3 + option3Height + 10).isActive = true
         viewfooter.heightAnchor.constraint(equalToConstant:32).isActive = true
         viewfooter.widthAnchor.constraint(equalToConstant: self.frame.width-30).isActive = true
         
@@ -339,7 +342,7 @@ class VoteCell: UICollectionViewCell,UITextFieldDelegate{
         let currentDate = CommonUtils.getThisMonthEnd()
         let calendar = Calendar.current
         let diffDateComponents = calendar.dateComponents([.day, .hour, .minute, .second], from: Date() as Date,to: currentDate)
-        let countdown = "\(diffDateComponents.day ?? 0) : \(diffDateComponents.hour ?? 0) : \(diffDateComponents.minute ?? 0) : \(diffDateComponents.second ?? 0)"
+        let countdown = "\(diffDateComponents.day ?? 0)d : \(diffDateComponents.hour ?? 0)h : \(diffDateComponents.minute ?? 0)m : \(diffDateComponents.second ?? 0)s"
         headerTimer.text = countdown
     }
     
@@ -468,10 +471,11 @@ class VotesCollectionViewController: UICollectionViewController{
         cell.startTimer()
         cell.releaseDate = CommonUtils.convertTimeFromSeconds(seconds: opinions[indexPath.row].publishDate)
         
-        let questionTextheight = CommonUtils.calculateHeight(text:opinions[indexPath.row].question, width: (self.collectionView?.frame.size.width)! - 20)
-        let option1Height = CommonUtils.calculateHeight(text:opinions[indexPath.row].option1, width: (self.collectionView?.frame.size.width)! - 95)
-        let option2Height = CommonUtils.calculateHeight(text:opinions[indexPath.row].option2, width: (self.collectionView?.frame.size.width)! - 95)
-        let option3Height = CommonUtils.calculateHeight(text:opinions[indexPath.row].option3, width: (self.collectionView?.frame.size.width)! - 95)
+        //let questionTextheight = CommonUtils.calculateHeight(text:opinions[indexPath.row].question, width: (self.collectionView?.frame.size.width)! - 20)
+        let questionTextheight = CommonUtils.heightForView(text: opinions[indexPath.row].question, font: UIFont(name: "Verdana-Bold", size: 13)!, width: (self.collectionView?.frame.size.width)! - 60)
+        let option1Height = CommonUtils.heightForView(text:opinions[indexPath.row].option1, font: UIFont(name: "Verdana", size: 13)!, width: (self.collectionView?.frame.size.width)! - 110)
+        let option2Height = CommonUtils.heightForView(text:opinions[indexPath.row].option2,font: UIFont(name: "Verdana-Bold", size: 13)!, width: (self.collectionView?.frame.size.width)! - 110)
+        let option3Height = CommonUtils.heightForView(text:opinions[indexPath.row].option3,font: UIFont(name: "Verdana-Bold", size: 13)!, width: (self.collectionView?.frame.size.width)! - 110)
         cell.questionTextheight = questionTextheight
         
         cell.option1Height = option1Height > 40 ? option1Height : 40
