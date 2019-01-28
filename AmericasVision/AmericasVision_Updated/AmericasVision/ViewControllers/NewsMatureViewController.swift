@@ -36,24 +36,26 @@ class MatureCell: UICollectionViewCell{
     }()
     
     override init(frame: CGRect) {
+        
         super.init(frame: frame)
         backgroundColor = UIColor.white
         self.addSubview(imageView)
         self.addSubview(headLines)
+        let width = (self.contentView.frame.width)
+ 
+        imageView.heightAnchor.constraint(equalToConstant:100).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant:width).isActive = true
+
+        headLines.topAnchor.constraint(equalTo: topAnchor, constant:100).isActive = true
+        headLines.widthAnchor.constraint(equalToConstant: width).isActive = true
+        
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 3.0)
         self.layer.shadowRadius = 3.0
         self.layer.shadowOpacity = 0.5
         self.layer.masksToBounds = false
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.layer.cornerRadius).cgPath
-    }
-    
-    func setAllignments(imageHeight:CGFloat,width:CGFloat,headHeight:CGFloat){
-        imageView.heightAnchor.constraint(equalToConstant:imageHeight).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant:width).isActive = true
-        headLines.topAnchor.constraint(equalTo: topAnchor, constant:imageHeight + 5).isActive = true
-        headLines.widthAnchor.constraint(equalToConstant: width).isActive = true
-        headLines.heightAnchor.constraint(equalToConstant: headHeight+5).isActive = true
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -65,17 +67,25 @@ class MatureCell: UICollectionViewCell{
     }
 }
 
-class NewsMatureViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
+class NewsMatureViewController: UICollectionViewController {
     
     @IBOutlet weak var NewsFeedMatureHomeButton: UIBarButtonItem!
-    let imageHeight:CGFloat = 100
+    
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    var cellwidth :CGFloat = 0
+    var cellHeight :CGFloat = 130
     var posts = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Mature News"
         self.collectionView?.backgroundColor = UIColor.white
+        
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        cellwidth = (self.view.frame.width-30)/2
+
+        layout.itemSize = CGSize(width: cellwidth, height: cellHeight)
+
         self.collectionView?.collectionViewLayout = layout
         collectionView!.register(MatureCell.self, forCellWithReuseIdentifier: "MatureCell")
         collectionView?.dataSource = self
@@ -131,11 +141,9 @@ class NewsMatureViewController: UICollectionViewController,UICollectionViewDeleg
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MatureCell", for: indexPath) as! MatureCell
-        cell.headLines.text = posts[indexPath.item].postTitle
-        let width:CGFloat = ((self.collectionView?.frame.width)! - 30)/2
-        let titleHeight:CGFloat = CommonUtils.heightForView(text: posts[indexPath.item].postTitle, font:UIFont(name: "Verdana", size: 12)! ,width: width)
-        cell.setAllignments(imageHeight:imageHeight,width: width,headHeight: titleHeight)
+        let item = collectionView.dequeueReusableCell(withReuseIdentifier: "MatureCell", for: indexPath) as! MatureCell
+        item.headLines.text = posts[indexPath.item].postTitle
+        
         let AVPostStorageRef = Storage.storage().reference(forURL: posts[indexPath.item].photoUrl)
         AVPostStorageRef.downloadURL { (url, error) in
             if error != nil{
@@ -151,14 +159,13 @@ class NewsMatureViewController: UICollectionViewController,UICollectionViewDeleg
                 guard let imageData = UIImage(data: data!) else { return }
                 DispatchQueue.main.async {
                     print(imageData)
-                    cell.imageView.image = imageData
+                    item.imageView.image = imageData
                 }
                 
             }).resume()
             
         }
-        
-        return cell
+        return item
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -166,15 +173,8 @@ class NewsMatureViewController: UICollectionViewController,UICollectionViewDeleg
         let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "NewsDetailedViewController") as! NewsDetailedViewController
         destinationViewController.postId = posts[indexPath.row].postID
         self.navigationController?.pushViewController(destinationViewController, animated: true)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MatureCell", for: indexPath) as! MatureCell
-        layout.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-        let width:CGFloat = ((self.collectionView?.frame.width)! - 30)/2
-        let titleHeight:CGFloat = CommonUtils.heightForView(text: posts[indexPath.item].postTitle, font:UIFont(name: "Verdana", size: 12)! ,width: width)
-        cell.setAllignments(imageHeight:imageHeight,width: width, headHeight: titleHeight)
-        return CGSize(width: width, height: imageHeight + titleHeight + 10)
+        let rowDataPostID = posts[indexPath.row].postID
+        print("rowdata ID value: \(rowDataPostID)")
     }
     
 }
