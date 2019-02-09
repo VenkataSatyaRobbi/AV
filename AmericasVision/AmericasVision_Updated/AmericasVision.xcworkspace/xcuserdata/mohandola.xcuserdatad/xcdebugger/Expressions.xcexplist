@@ -289,6 +289,14 @@
          contextName = "ChatPrivateViewController.collectionView(_:attributedTextForCellBottomLabelAt:):ChatPrivateViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "ChatTabBarController.viewDidLoad():ChatTabBarController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.navigationController?.navigationBar">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ChatPublicViewController.collectionView(_:messageBubbleImageDataForItemAt:):ChatPublicViewController.swift">
       </ContextState>
       <ContextState

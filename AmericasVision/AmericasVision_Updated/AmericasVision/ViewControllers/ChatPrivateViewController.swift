@@ -36,10 +36,6 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
         self.senderDisplayName = AVAuthService.getCurrentUserName()
         self.navigationItem.title = contact?.name
          
-       // let navImage = UIImage(named: "profile")
-       // let profileImage = UIImageView(image: navImage)
-       // profileImage.loadImageUsingCache(urlStr: (contact?.profileImageUrl)!)
-       // self.navigationItem.leftBarButtonItems?.append(UIBarButtonItem(image: profileImage.image, style: UIBarButtonItemStyle.plain, target: nil, action: nil))
         PrivateMessageHandler.Instance.observeMessages(contactId:(contact?.id)!)
         self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero;
         self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero;

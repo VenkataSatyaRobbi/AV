@@ -20,16 +20,18 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
 
     @IBOutlet weak var contactsTable: UITableView!
     @IBOutlet weak var ChatPrivateHomeButton: UIBarButtonItem!
-    @IBOutlet weak var searchBar: UISearchBar!
+    lazy var searchBar:UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width-80, height: 15))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sideMenus()
-        self.navigationItem.title = "Contacts"
+        searchBar.placeholder = "Name or Mobile Number"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView:searchBar)
         DBProvider.instance.delegate = self
         DBProvider.instance.getContacts()
         searchBar.delegate = self
         contactsTable.tableFooterView = UIView()
+        
      }
     
     func dataReceived(contacts: [Contacts]) {
@@ -69,6 +71,10 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
         cell?.ChatTableViewCellComment.text = "got you " //contact.latestComment
         cell?.ChatTableViewCellDate.text = "1-Jan-18 4.40PM" //contact.latestCommentDate
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 32
     }
     
     func tableView(_ tableView: UITableView,heightForRowAt indexPath: IndexPath) -> CGFloat{

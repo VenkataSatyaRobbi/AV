@@ -17,20 +17,25 @@ import SDWebImage
 
 class ChatPublicViewController: JSQMessagesViewController,PublicMessageReceivedDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
+    @IBOutlet weak var ChatPublicHomeButton: UIBarButtonItem!
     private var messages = [JSQMessage]()
     
     let picker =  UIImagePickerController();
     
     @IBOutlet weak var backToContacts: UIBarButtonItem!
     
-    @IBAction func goBack(_ sender: Any) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "AV", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "AVmessageTabVC") as! UITabBarController
-        self.present(nextViewController, animated:true, completion:nil)
+    func sideMenus(){
+        if revealViewController() != nil {
+            ChatPublicHomeButton.target = revealViewController()
+            ChatPublicHomeButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            revealViewController().rearViewRevealWidth = 260
+            view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sideMenus()
         picker.delegate = self
         PublicMessageHandler.Instance.delegate = self
         view.backgroundColor = UIColor.groupTableViewBackground

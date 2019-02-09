@@ -52,6 +52,7 @@
 		DC33664720C5B092002B8064 /* MusicAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33664620C5B092002B8064 /* MusicAdminViewController.swift */; };
 		DC46B8D620C7104400188EC9 /* ChatPublicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46B8D520C7104400188EC9 /* ChatPublicViewController.swift */; };
 		DC4A12B1209F2BD7007C4755 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */; };
+		DC69B9AB2208A0D400AE08ED /* ChatTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC69B9AA2208A0D400AE08ED /* ChatTabBarController.swift */; };
 		DC6F3FF42109043D001795DF /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6F3FF32109043D001795DF /* Charts.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		DC7C017E21379FC600C6DE67 /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7C017D21379FC600C6DE67 /* PostComment.swift */; };
 		DC7F1D9A20CD9E8C005CB41F /* PrivateMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F1D9920CD9E8C005CB41F /* PrivateMessageHandler.swift */; };
@@ -146,6 +147,7 @@
 		DC33664620C5B092002B8064 /* MusicAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAdminViewController.swift; sourceTree = "<group>"; };
 		DC46B8D520C7104400188EC9 /* ChatPublicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPublicViewController.swift; sourceTree = "<group>"; };
 		DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
+		DC69B9AA2208A0D400AE08ED /* ChatTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTabBarController.swift; sourceTree = "<group>"; };
 		DC6F3FED21090062001795DF /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6F3FF32109043D001795DF /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6F3FFA210A25F8001795DF /* FileExplorer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FileExplorer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,6 +266,7 @@
 				DCBEBC3920A7871800E8EAEA /* ChatContactsViewController.swift */,
 				D408D2E9209E8622008DD80A /* ChatPrivateViewController.swift */,
 				DC46B8D520C7104400188EC9 /* ChatPublicViewController.swift */,
+				DC69B9AA2208A0D400AE08ED /* ChatTabBarController.swift */,
 				D408D2E3209E706F008DD80A /* MarketPlaceCollectionViewController.swift */,
 				DC33664620C5B092002B8064 /* MusicAdminViewController.swift */,
 				D408D2ED209E8831008DD80A /* MusicByTrackTableViewController.swift */,
@@ -538,6 +541,7 @@
 				D408D2E4209E706F008DD80A /* MarketPlaceCollectionViewController.swift in Sources */,
 				DCF8AB2F20B1527E0064FF72 /* NewsSportsViewController.swift in Sources */,
 				D46390FB207036F300C4E3DA /* AppDelegate.swift in Sources */,
+				DC69B9AB2208A0D400AE08ED /* ChatTabBarController.swift in Sources */,
 				DC4A12B1209F2BD7007C4755 /* MusicViewController.swift in Sources */,
 				DC96CB262157774900A42052 /* MusicAlbumListController.swift in Sources */,
 				D4FA49EE207AF0EC00CC425B /* ProfileMenuViewController.swift in Sources */,
