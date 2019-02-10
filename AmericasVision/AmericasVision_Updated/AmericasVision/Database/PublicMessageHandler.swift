@@ -10,7 +10,7 @@ import FirebaseDatabase
 import FirebaseStorage
 
 protocol PublicMessageReceivedDelegate: class {
-    func messageReceived(senderId:String,senderName:String,text:String,url:String)
+    func messageReceived(senderId:String,senderName:String,time:Double,text:String,url:String)
     //func messageReceived(senderId:String,senderName:String,url:String)
 }
 
@@ -37,7 +37,8 @@ class PublicMessageHandler {
                     if let senderName = data[Constants.SENDERNAME] as? String {
                         if let text = data[Constants.TEXT] as? String {
                             if let url = data[Constants.URL] as? String {
-                                self.delegate?.messageReceived(senderId: senderId,senderName: senderName ,text: text,url:url)
+                                let time:Double = data[Constants.MESSAGE_DATE] as? Double ?? 0
+                                self.delegate?.messageReceived(senderId: senderId,senderName: senderName,time:time ,text: text,url:url)
                             }
                         }
                     }

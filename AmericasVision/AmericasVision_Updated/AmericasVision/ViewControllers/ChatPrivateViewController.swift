@@ -107,6 +107,7 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
                                     photo?.appliesMediaViewMaskAsOutgoing = false
                                 }
                                 self.messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: date, media: photo))
+                                self.messages = self.messages.sorted(by: { $0.date < $1.date })
                                 self.collectionView.reloadData()
                             }
                         })
@@ -119,8 +120,10 @@ class ChatPrivateViewController: JSQMessagesViewController,PrivateMessageReceive
             }
         }else{
             messages.append(JSQMessage(senderId: senderId, senderDisplayName: senderName, date: date, text:text))
+            messages = messages.sorted(by: { $0.date < $1.date })
             collectionView.reloadData()
         }
+        
      }
     
     //Collection view functions

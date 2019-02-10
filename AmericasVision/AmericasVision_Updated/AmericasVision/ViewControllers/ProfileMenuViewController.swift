@@ -110,12 +110,11 @@ class ProfileMenuViewController: UIViewController, UITableViewDelegate, UITableV
     func Signout() {
         do {
             try Auth.auth().signOut()
+            UserDefaults.standard.set(false, forKey: AVRootSwitcher.isSignIn)
         }catch let SignOutError {
             print(SignOutError)
         }
-        let storyboard = UIStoryboard(name: "AV", bundle: nil)
-        let signinViewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-        self.present(signinViewController, animated: true, completion: nil)
+        AVRootSwitcher.updateRootViewController()
     }
     
 }

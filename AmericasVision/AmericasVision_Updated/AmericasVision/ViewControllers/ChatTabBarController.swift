@@ -25,10 +25,13 @@ class ChatTabBarController: UITabBarController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBar.barTintColor = .white
+        self.tabBar.barTintColor = UIColor.lightGray
         let indicatorColor:UIColor = UIColor(red: 6/255, green: 90/255, blue: 157/255, alpha: 1)
         self.tabBar.selectionIndicatorImage = UIImage().createSelectionIndicator(color: indicatorColor, size: CGSize(width: tabBar.frame.width/CGFloat(tabBar.items!.count), height:  30), lineWidth: 2.0)
-    }
+        self.tabBar.tintColor = UIColor(red: 6/255, green: 90/255, blue: 157/255, alpha: 1)
+        let font:CGFloat = 30
+        self.tabBarItem.setTitleTextAttributes([NSAttributedStringKey.font: font], for: .normal)
+   }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

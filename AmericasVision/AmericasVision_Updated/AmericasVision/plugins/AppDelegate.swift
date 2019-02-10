@@ -35,6 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       //  application.statusBarStyle = .lightContent
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
+        AVRootSwitcher.updateRootViewController()
+        
+        
+        
+        
         FirebaseApp.configure()
         //FBSDKLoginButton.classForCoder()
         

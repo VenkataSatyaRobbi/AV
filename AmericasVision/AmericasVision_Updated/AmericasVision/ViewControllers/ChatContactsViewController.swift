@@ -20,12 +20,16 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
 
     @IBOutlet weak var contactsTable: UITableView!
     @IBOutlet weak var ChatPrivateHomeButton: UIBarButtonItem!
-    lazy var searchBar:UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width-80, height: 15))
+    lazy var searchBar:UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width-80, height: 30))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sideMenus()
         searchBar.placeholder = "Name or Mobile Number"
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        searchBar.widthAnchor.constraint(equalToConstant: self.view.frame.width-80).isActive = true
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView:searchBar)
         DBProvider.instance.delegate = self
         DBProvider.instance.getContacts()
@@ -60,8 +64,8 @@ class ChatContactsViewController: UIViewController ,UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? ChatTableViewCell
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(sender:)))
-        cell?.addGestureRecognizer(longPressRecognizer)
+        //let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(sender:)))
+        //cell?.addGestureRecognizer(longPressRecognizer)
      
         let contact = filterContacts[indexPath.row]
       //  longPressRecognizer.tag = indexPath.row

@@ -94,7 +94,10 @@
         }
         
         static func getCurrentUserId() -> String{
-            return Auth.auth().currentUser!.uid
+            if Auth.auth().currentUser != nil{
+                return Auth.auth().currentUser!.uid
+            }
+            return ""
         }
         
         static func getCurrentUserName() -> String{
@@ -128,7 +131,10 @@
         }
         
         static func isAdmin() -> Bool{
-            return Auth.auth().currentUser!.email == "giri@gmail.com"
+            if Auth.auth().currentUser != nil{
+               return Auth.auth().currentUser!.email == "giri@gmail.com"
+            }
+            return false
         }
     
         

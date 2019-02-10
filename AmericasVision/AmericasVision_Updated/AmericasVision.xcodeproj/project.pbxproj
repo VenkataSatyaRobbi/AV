@@ -53,6 +53,7 @@
 		DC46B8D620C7104400188EC9 /* ChatPublicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46B8D520C7104400188EC9 /* ChatPublicViewController.swift */; };
 		DC4A12B1209F2BD7007C4755 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */; };
 		DC69B9AB2208A0D400AE08ED /* ChatTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC69B9AA2208A0D400AE08ED /* ChatTabBarController.swift */; };
+		DC69B9AD2210180200AE08ED /* AVRootSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC69B9AC2210180200AE08ED /* AVRootSwitcher.swift */; };
 		DC6F3FF42109043D001795DF /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6F3FF32109043D001795DF /* Charts.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		DC7C017E21379FC600C6DE67 /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7C017D21379FC600C6DE67 /* PostComment.swift */; };
 		DC7F1D9A20CD9E8C005CB41F /* PrivateMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7F1D9920CD9E8C005CB41F /* PrivateMessageHandler.swift */; };
@@ -148,6 +149,7 @@
 		DC46B8D520C7104400188EC9 /* ChatPublicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPublicViewController.swift; sourceTree = "<group>"; };
 		DC4A12B0209F2BD7007C4755 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		DC69B9AA2208A0D400AE08ED /* ChatTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTabBarController.swift; sourceTree = "<group>"; };
+		DC69B9AC2210180200AE08ED /* AVRootSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVRootSwitcher.swift; sourceTree = "<group>"; };
 		DC6F3FED21090062001795DF /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6F3FF32109043D001795DF /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6F3FFA210A25F8001795DF /* FileExplorer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FileExplorer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -330,6 +332,7 @@
 				DC0C6E06212070F4000F284D /* AVLabel.swift */,
 				DCD10FB82142F868007A3779 /* AVCommonFields.swift */,
 				DC96CB2B21580C9700A42052 /* Reachability.swift */,
+				DC69B9AC2210180200AE08ED /* AVRootSwitcher.swift */,
 			);
 			path = plugins;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				DC4A12B1209F2BD7007C4755 /* MusicViewController.swift in Sources */,
 				DC96CB262157774900A42052 /* MusicAlbumListController.swift in Sources */,
 				D4FA49EE207AF0EC00CC425B /* ProfileMenuViewController.swift in Sources */,
+				DC69B9AD2210180200AE08ED /* AVRootSwitcher.swift in Sources */,
 				DC96CB2821577C6100A42052 /* MusicTrack.swift in Sources */,
 				DC8C89FA2112233700AE8E92 /* VoteAdminViewController.swift in Sources */,
 				DCF8AB2D20B1505F0064FF72 /* FeedsTableViewCell.swift in Sources */,

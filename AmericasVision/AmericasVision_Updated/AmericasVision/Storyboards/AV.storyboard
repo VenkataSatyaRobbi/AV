@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="jWU-YA-LEo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="8q6-zD-caN">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1510,7 +1510,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SlideCollectionViewCell" id="9EZ-Mf-yfB" customClass="SlideCollectionViewCell" customModule="AmericasVision" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="1" width="142" height="110"/>
+                                                            <rect key="frame" x="0.0" y="0.5" width="142" height="110"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="142" height="110"/>
@@ -1624,7 +1624,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SlideCollectionViewCell" id="v0g-rl-WKa" customClass="SlideCollectionViewCell" customModule="AmericasVision" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="1" width="142" height="110"/>
+                                                            <rect key="frame" x="0.0" y="0.5" width="142" height="110"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="142" height="110"/>
@@ -1727,8 +1727,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="S67-of-WU0"/>
-        <segue reference="tcg-Fz-vNU"/>
+        <segue reference="UiU-gu-JPd"/>
         <segue reference="oYk-K1-Fyu"/>
-        <segue reference="yj6-fy-86n"/>
+        <segue reference="PJU-NC-kYU"/>
     </inferredMetricsTieBreakers>
 </document>

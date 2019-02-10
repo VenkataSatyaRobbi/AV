@@ -91,7 +91,7 @@ class ChatPublicViewController: JSQMessagesViewController,PublicMessageReceivedD
         collectionView.reloadData()
     }
     
-    func messageReceived(senderId: String, senderName:String,text: String,url: String) {
+    func messageReceived(senderId: String, senderName:String,time:Double,text: String,url: String) {
         if url.isEmpty {
             messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
             collectionView.reloadData()
@@ -120,11 +120,9 @@ class ChatPublicViewController: JSQMessagesViewController,PublicMessageReceivedD
                 }
             }
         }
-       
+        messages = messages.sorted(by: { $0.date < $1.date })
     }
     
-    //Collection view functions
-
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         let message = messages[indexPath.item]

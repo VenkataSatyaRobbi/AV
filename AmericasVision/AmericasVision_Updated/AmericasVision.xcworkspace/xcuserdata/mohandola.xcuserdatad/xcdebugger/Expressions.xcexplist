@@ -169,6 +169,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "static AVRootSwitcher.updateRootViewController():AVRootSwitcher.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "mainStoryBoard.instantiateViewController(withIdentifier: AVRootSwitcher.mainTabBarController)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in closure #1 in VotedUsersTableViewController.getUsers():VotedUsersTableViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -191,7 +199,7 @@
                value = "">
             </PersistentString>
             <PersistentString
-               value = "UINavigationBar.appearance().layer">
+               value = "self.window?.rootViewController">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -361,6 +369,14 @@
          <PersistentStrings>
             <PersistentString
                value = "cell.scoreBoard1.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SignInViewController.viewDidAppear(_:):SignInViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Auth.auth().currentUser">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
