@@ -97,8 +97,22 @@ class AVSettingsViewController:UIViewController,UITableViewDataSource,UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if settings[indexPath.row].name != "Do not disturb" && settings[indexPath.row].name != "Notification"
-           && settings[indexPath.row].name != "Version"{
+        if settings[indexPath.row].name == "Rate & Feedback" {
+            let appID = "Your App ID on App Store"
+            //let urlStr = "itms-apps://itunes.apple.com/app/id\(appID)" // (Option 1) Open App Page
+            let urlStr = "itms-apps://itunes.apple.com/app/viewContentsUserReviews?id=\(appID)" // (Option 2) Open App Review Tab
+            
+            
+            if let url = URL(string: urlStr), UIApplication.shared.canOpenURL(url) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
+            }
+        }
+        else if settings[indexPath.row].name != "Do not disturb" && settings[indexPath.row].name != "Notification"
+           && settings[indexPath.row].name != "Version" && settings[indexPath.row].name != "Rate & Feedback" {
             let AVstoryboard = UIStoryboard(name: "AV", bundle: nil)
             let destinationViewController = AVstoryboard.instantiateViewController(withIdentifier: "SettingsDetailedViewController") as! SettingsDetailedViewController
             destinationViewController.name = settings[indexPath.row].name
